@@ -4,27 +4,25 @@ project(ss)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
-find_package(Qt5Core)
-find_package(Qt5Widgets)
-find_package(Qt5DBus)
-find_package(Qt5Network)
-get_target_property(QtCore_location Qt5::Core LOCATION)
-set(CMAKE_CXX_FLAGS_COVERAGE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-arcs -ftest-coverage")
-set_target_properties(Qt5::Core PROPERTIES MAP_IMPORTED_CONFIG_COVERAGE "RELEASE")
-foreach(plugin ${Qt5Network_PLUGINS})
-    get_target_property(_loc ${plugin} LOCATION)
-    message("Plugin ${plugin} is at location ${_loc}")
-endforeach()
-include_directories(
-        /usr/include/qtshadowsocks
-        /usr/include/botan-1.10
-)
-set(SOURCE_FILES main.cpp)
-add_executable(ss ${SOURCE_FILES})
-target_link_libraries(ss
-        QtShadowsocks
-        Qt5::Core
-        Qt5::Widgets
-        Qt5::DBus
-        Qt5::Network
+set(CMAKE_AUTORCC ON)
+set(CMAKE_CXX_FLAGS -Wall)
+if (NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))
+    set(CMAKE_CXX_FLAGS -O3)
+endif ()
+
+file(GLOB SRCS "*.h" "*.cpp")
+
+find_package(PkgConfig REQUIRED)
+find_package(Qt5 REQUIRED Core Gui Widgets Network)
+pkg_check_modules(QtShadowsocks REQUIRED QtShadowsocks)
+pkg_check_modules(Botan REQUIRED botan-1.10)
+add_executable(ss ${SRCS})
+target_include_directories(ss PUBLIC
+        ${QtShadowsocks_INCLUDE_DIRS}
+        ${Botan_INCLUDE_DIRS}
         )
+target_link_libraries(ss
+        ${QtShadowsocks_LIBRARIES}
+        ${Botan_LIBRARIES}
+        )
+qt5_use_modules(${PROJECT_NAME} Core Gui Widgets Network)
