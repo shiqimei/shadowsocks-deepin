@@ -3,8 +3,12 @@
 #include <QtCore/QJsonDocument>
 #include <QtCore/QJsonObject>
 #include <QtCore/QCoreApplication>
+#include <QSystemTrayIcon>
+#include <QMenu>
+#include <QAction>
 #include <common.h>
 #include "controller.h"
+#include "SystemTrayIcon.h"
 #include <DApplication>
 #include <dlabel.h>
 #include <DPlatformWindowHandle>
@@ -44,8 +48,17 @@ bool readConfig(const QString &file) {
     return true;
 }
 int main(int argc, char *argv[]) {
-    QCoreApplication a(argc, argv);
+
+    DApplication::loadDXcbPlugin();
+    DApplication a(argc, argv);
+    a.setOrganizationName("pikachu");
+    a.setApplicationName("deepin-ss");
+    a.setApplicationVersion("0.0.1");
+    a.setTheme("light");
     Dtk::Util::DLogManager::registerConsoleAppender();
+    SystemTrayIcon systemTrayIcon(&a);
+    systemTrayIcon.show();
+#if 1
     bool success = readConfig("/etc/ss/ss.json");
     if (!success) {
         qDebug() << "讀取文件失敗";
@@ -54,20 +67,27 @@ int main(int argc, char *argv[]) {
         qDebug() << "讀取文件成功";
     }
     auto controller = new QSS::Controller(true, false, nullptr);
-    QObject::connect(controller, &QSS::Controller::debug, &a, [](QString log) {
-        qDebug() << "[QSS::Controller::debug]" << log;
-    });
+//    QObject::connect(controller, &QSS::Controller::debug, &a, [](QString log) {
+//        qDebug() << "[QSS::Controller::debug]" << log;
+//    });
     QObject::connect(controller, &QSS::Controller::info, &a, [](QString log) {
         qDebug() << "[QSS::Controller::info]" << log;
     });
     controller->setup(profile);
-    success = controller->start();
-    if (!success) {
-        qDebug() << "啓動失敗";
-        exit(0);
-    } else {
-        qDebug() << "啓動成功";
-    }
-
+    QObject::connect(systemTrayIcon.startSystemAgentAction,&QAction::triggered,[&controller](bool checked){
+        if(checked){
+            controller->start();
+        } else{
+            controller->stop();
+        }
+    });
+//    success = controller->start();
+//    if (!success) {
+//        qDebug() << "啓動失敗";
+//        exit(0);
+//    } else {
+//        qDebug() << "啓動成功";
+//    }
+#endif
     return a.exec();
 }
