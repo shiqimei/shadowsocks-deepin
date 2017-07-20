@@ -3,10 +3,12 @@
 //
 
 #include "SystemTrayIcon.h"
+#include "EditServerWidget.h"
 
-SystemTrayIcon::SystemTrayIcon(QObject *parent)
+SystemTrayIcon::SystemTrayIcon(Profile* profile,QObject *parent)
         : QSystemTrayIcon(parent),
           networkInter("com.deepin.daemon.Network", "/com/deepin/daemon/Network", QDBusConnection::sessionBus(), this) {
+    this->profile=profile;
     setIcon(QIcon(":/icons/shadowsocks.ico"));
     menu = new QMenu("menu");
     startSystemAgentAction = new QAction("启动系统代理", this);
@@ -119,18 +121,22 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
             qDebug() << "启动系统代理";
             systemAgentModeMenu->setEnabled(true);
             if (pacModeAction->isChecked()){
-                setProxyMethod("auto");
+                setAutoProxy();
             } else{
-                setProxyMethod("manual");
+                setManualProxy();
             }
         }
     });
     connect(systemAgentModeActionGroup,&QActionGroup::triggered,[this](QAction *action){
         if(action==pacModeAction){
-            setProxyMethod("auto");
+            setAutoProxy();
         } else{
-            setProxyMethod("manual");
+            setManualProxy();
         }
+    });
+    connect(editServerAction,&QAction::triggered,[this](){
+        EditServerWidget w;
+        int ret = w.exec();
     });
     connect(exitAction, &QAction::triggered, []() {
         qApp->exit();
@@ -145,4 +151,28 @@ void SystemTrayIcon::setProxyMethod(QString proxyMethod) {
         qDebug()<<"success to set proxy method "<<proxyMethod;
     });
     connect(w, &QDBusPendingCallWatcher::finished, w, &QDBusPendingCallWatcher::deleteLater);
+}
+
+void SystemTrayIcon::setManualProxy() {
+    setProxyMethod("manual");
+    QString type="socks";
+//    QString addr="127.0.0.1";
+    QString addr=profile->local_address;
+//    QString port="1080";
+    QString port=QString::number(profile->local_port);
+    QDBusPendingCallWatcher *w = new QDBusPendingCallWatcher(networkInter.SetProxy(type, addr, port), this);
+    QObject::connect(w, &QDBusPendingCallWatcher::finished, [=] {
+        qDebug()<<"set proxy"<<type<<addr<<port;
+    });
+}
+
+void SystemTrayIcon::setAutoProxy() {
+    setProxyMethod("auto");
+    // 目前先写死吧
+    QString proxy="file:///etc/ss/autoproxy.pac";
+    QDBusPendingCallWatcher *w = new QDBusPendingCallWatcher(networkInter.SetAutoProxy(proxy), this);
+
+    QObject::connect(w, &QDBusPendingCallWatcher::finished, [](){
+        qDebug()<<"finished";
+    });
 }

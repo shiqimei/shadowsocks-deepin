@@ -13,13 +13,15 @@
 #include <QMenu>
 #include <QDebug>
 #include <com_deepin_daemon_network.h>
-
+#include <profile.h>
+using QSS::Profile;
 using NetworkInter = com::deepin::daemon::Network;
 class SystemTrayIcon: public QSystemTrayIcon {
 public:
-    SystemTrayIcon(QObject *parent);
+    SystemTrayIcon(Profile* profile,QObject *parent);
 
 private:
+    Profile* profile;
     /**
      * deepin提供的辅助类
      */
@@ -27,11 +29,15 @@ private:
     /**
      * 更改代理方法
      * @param proxyMethod
+     * 可用参数
      * none
      * manual
      * auto
      */
     void setProxyMethod(QString proxyMethod);
+    void setNoneProxy();
+    void setManualProxy();
+    void setAutoProxy();
 public:
     QMenu* menu;
     /**

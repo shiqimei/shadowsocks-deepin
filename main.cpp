@@ -55,8 +55,9 @@ int main(int argc, char *argv[]) {
     a.setApplicationName("deepin-ss");
     a.setApplicationVersion("0.0.1");
     a.setTheme("light");
+    a.setWindowIcon(QIcon(":/icons/shadowsocks.ico"));
     Dtk::Util::DLogManager::registerConsoleAppender();
-    SystemTrayIcon systemTrayIcon(&a);
+    SystemTrayIcon systemTrayIcon(&profile,&a);
     systemTrayIcon.show();
 #if 1
     bool success = readConfig("/etc/ss/ss.json");
@@ -65,6 +66,14 @@ int main(int argc, char *argv[]) {
         exit(0);
     } else {
         qDebug() << "讀取文件成功";
+    }
+    QFile pacFile("/etc/ss/autoproxy.pac");
+    if(!pacFile.exists()){
+        qDebug()<<"file /etc/ss/autoproxy.pac"<<"不存在";
+        qDebug()<<"可以前往"<<"https://raw.githubusercontent.com/PikachuHy/ss/master/autoproxy.pac"<<"下载";
+        qDebug()<<"然后放在/ect/ss目录下";
+        qDebug()<<"注意：这不是最新的，仅仅作为测试使用";
+        exit(0);
     }
     auto controller = new QSS::Controller(true, false, nullptr);
 //    QObject::connect(controller, &QSS::Controller::debug, &a, [](QString log) {
