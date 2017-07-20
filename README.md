@@ -19,7 +19,8 @@ sudo apt install libssl-dev libbotan1.10-dev
 
 #### 当前进度
 
-配合proxychains,能够进行代理
+- 配合proxychains,能够进行代理
+- 能够在PAC模式和全局模式之间切换
 
 ui界面
 
