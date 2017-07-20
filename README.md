@@ -30,6 +30,27 @@ ui界面
 
 由于目前还很简陋，大量配置是写死的。
 
+在使用前，需要自己有ss的账号。
+
 ss配置文件在/etc/ss/ss.json
 
-pac文件需要自己先在控制中心的自动代理有配置，今天学习deepin-control-center居然忘了这个地方了。
+ss.json示例
+
+```json
+{
+"server":"server addr",
+"server_port":20526,
+"local_address":"127.0.0.1",
+"local_port":1080,
+"password":"password",
+"timeout":300,
+"method":"aes-256-cfb",
+"fast_open":false
+}
+```
+
+更详细的请参考官网[shadowsocks Quick Guide](http://shadowsocks.org/en/config/quick-guide.html)
+
+pac文件也放在/etc/ss下。项目中附带一个可用的pac文件。
+
+我后面会写界面去调的。
