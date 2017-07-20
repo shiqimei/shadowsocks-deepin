@@ -4,18 +4,23 @@
 
 #include "SystemTrayIcon.h"
 
-SystemTrayIcon::SystemTrayIcon(QObject *parent) : QSystemTrayIcon(parent) {
+SystemTrayIcon::SystemTrayIcon(QObject *parent)
+        : QSystemTrayIcon(parent),
+          networkInter("com.deepin.daemon.Network", "/com/deepin/daemon/Network", QDBusConnection::sessionBus(), this) {
     setIcon(QIcon(":/icons/shadowsocks.ico"));
-
-
     menu = new QMenu("menu");
     startSystemAgentAction = new QAction("启动系统代理", this);
     startSystemAgentAction->setCheckable(true);
     menu->addAction(startSystemAgentAction);
 
     systemAgentModeMenu = new QMenu("系统代理模式", menu);
+    QActionGroup* systemAgentModeActionGroup=new QActionGroup(this);
     pacModeAction = new QAction("PAC模式", this);
     globelModeAction = new QAction("全局模式", this);
+    systemAgentModeActionGroup->addAction(pacModeAction);
+    systemAgentModeActionGroup->addAction(globelModeAction);
+    pacModeAction->setCheckable(true);
+    globelModeAction->setCheckable(true);
     systemAgentModeMenu->addAction(pacModeAction);
     systemAgentModeMenu->addAction(globelModeAction);
     menu->addMenu(systemAgentModeMenu);
@@ -81,7 +86,7 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent) : QSystemTrayIcon(parent) {
     showLogAction = new QAction("显示日志", this);
     detailedLogAction = new QAction("详细记录日志", this);
     updateMenu = new QMenu("更新", helpMenu);
-    checkForUpdateAction=new QAction("检查更新",this);
+    checkForUpdateAction = new QAction("检查更新", this);
     updateMenu->addAction(checkForUpdateAction);
     updateMenu->addSeparator();
     checkForUpdatesAtStartupAction = new QAction("启动时检查更新", this);
@@ -102,14 +107,42 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent) : QSystemTrayIcon(parent) {
     setContextMenu(menu);
 
 
+    startSystemAgentAction->setChecked(false);
+    globelModeAction->setChecked(true);
+    systemAgentModeMenu->setEnabled(false);
     connect(startSystemAgentAction, &QAction::triggered, [this](bool checked) {
-        if (!checked){
-            qDebug()<<"取消系统代理";
+        if (!checked) {
+            qDebug() << "取消系统代理";
+            systemAgentModeMenu->setEnabled(false);
+            setProxyMethod("none");
+        } else {
+            qDebug() << "启动系统代理";
+            systemAgentModeMenu->setEnabled(true);
+            if (pacModeAction->isChecked()){
+                setProxyMethod("auto");
+            } else{
+                setProxyMethod("manual");
+            }
+        }
+    });
+    connect(systemAgentModeActionGroup,&QActionGroup::triggered,[this](QAction *action){
+        if(action==pacModeAction){
+            setProxyMethod("auto");
         } else{
-            qDebug()<<"启动系统代理";
+            setProxyMethod("manual");
         }
     });
     connect(exitAction, &QAction::triggered, []() {
         qApp->exit();
     });
+
+
+}
+
+void SystemTrayIcon::setProxyMethod(QString proxyMethod) {
+    QDBusPendingCallWatcher *w = new QDBusPendingCallWatcher(networkInter.SetProxyMethod(proxyMethod), this);
+    QObject::connect(w, &QDBusPendingCallWatcher::finished, [=] {
+        qDebug()<<"success to set proxy method "<<proxyMethod;
+    });
+    connect(w, &QDBusPendingCallWatcher::finished, w, &QDBusPendingCallWatcher::deleteLater);
 }

@@ -9,12 +9,29 @@
 #include <QSystemTrayIcon>
 #include <QIcon>
 #include <QAction>
+#include <QActionGroup>
 #include <QMenu>
 #include <QDebug>
+#include <com_deepin_daemon_network.h>
+
+using NetworkInter = com::deepin::daemon::Network;
 class SystemTrayIcon: public QSystemTrayIcon {
 public:
     SystemTrayIcon(QObject *parent);
 
+private:
+    /**
+     * deepin提供的辅助类
+     */
+    NetworkInter networkInter;
+    /**
+     * 更改代理方法
+     * @param proxyMethod
+     * none
+     * manual
+     * auto
+     */
+    void setProxyMethod(QString proxyMethod);
 public:
     QMenu* menu;
     /**
