@@ -25,3 +25,11 @@ sudo apt install libssl-dev libbotan1.10-dev
 ui界面
 
 ![ui界面](./ui.gif)
+
+### 说明
+
+由于目前还很简陋，大量配置是写死的。
+
+ss配置文件在/etc/ss/ss.json
+
+pac文件需要自己先在控制中心的自动代理有配置，今天学习deepin-control-center居然忘了这个地方了。
