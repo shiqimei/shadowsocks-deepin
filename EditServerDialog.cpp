@@ -39,7 +39,8 @@ EditServerDialog::EditServerDialog(QWidget *parent) :
             ui->encryptComboBox->setCurrentText(item->profile.method);
             ui->remarkLineEdit->setText(item->text());
             ui->timeoutSpinBox->setValue(item->profile.timeout);
-            ui->proxyPortSpinBox->setValue(localPort);
+            ui->proxyPortSpinBox->setValue(item->profile.local_port);
+            localPort=item->profile.local_port;
 
         }
     });
