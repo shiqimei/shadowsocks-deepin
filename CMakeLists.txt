@@ -9,13 +9,13 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_CXX_FLAGS -Wall)
 set(CMAKE_BUILD_TYPE Debug CACHE STRING "set build type to debug")
 #set(CMAKE_BUILD_TYPE Release CACHE STRING "set build type to Release")
-
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
 if (NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))
     set(CMAKE_CXX_FLAGS -O3)
 endif ()
 
-file(GLOB SRCS "*.h" "*.cpp" "*.qrc")
-
+file(GLOB SRCS "*.h" "*.cpp" "*.qrc" "*.ui")
+add_subdirectory(widgets)
 find_package(PkgConfig REQUIRED)
 find_package(Qt5 REQUIRED Core Gui Widgets Network DBus)
 pkg_check_modules(QtShadowsocks REQUIRED QtShadowsocks)
@@ -23,7 +23,7 @@ pkg_check_modules(Botan REQUIRED botan-1.10)
 pkg_check_modules(DtkBase REQUIRED dtkbase)
 pkg_check_modules(DtkWidget REQUIRED dtkwidget)
 pkg_check_modules(DFrameworkDBus REQUIRED dframeworkdbus)
-add_executable(ss ${SRCS})
+add_executable(ss ${SRCS} ConfigUtil.cpp ConfigUtil.h)
 target_include_directories(ss PUBLIC
         ${QtShadowsocks_INCLUDE_DIRS}
         ${Botan_INCLUDE_DIRS}
