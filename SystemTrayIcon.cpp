@@ -3,7 +3,6 @@
 //
 
 #include "SystemTrayIcon.h"
-#include "EditServerWidget.h"
 #include "EditServerDialog.h"
 void output(Profile& profile){
     qDebug()<<"profile";

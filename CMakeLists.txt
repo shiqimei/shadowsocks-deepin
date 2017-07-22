@@ -15,7 +15,7 @@ if (NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))
 endif ()
 
 file(GLOB SRCS "*.h" "*.cpp" "*.qrc" "*.ui")
-add_subdirectory(widgets)
+#add_subdirectory(widgets)
 find_package(PkgConfig REQUIRED)
 find_package(Qt5 REQUIRED Core Gui Widgets Network DBus)
 pkg_check_modules(QtShadowsocks REQUIRED QtShadowsocks)
