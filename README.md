@@ -21,10 +21,13 @@ sudo apt install libssl-dev libbotan1.10-dev
 
 - 配合proxychains,能够进行代理
 - 能够在PAC模式和全局模式之间切换
+- 能够编辑服务器配置，并把配置文件写在`~/.ss/gui-config.json`，格式同其他的ss客户端
 
 ui界面
 
 ![ui界面](./ui.gif)
+
+![编辑服务器配置](./editServer.png)
 
 ### 说明
 
