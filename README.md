@@ -22,6 +22,7 @@ sudo apt install libssl-dev libbotan1.10-dev
 - 配合proxychains,能够进行代理
 - 能够在PAC模式和全局模式之间切换
 - 能够编辑服务器配置，并把配置文件写在`~/.ss/gui-config.json`，格式同其他的ss客户端
+- pac文件默认从网上下载到本地，文件就是项目中的那个
 
 ui界面
 
@@ -29,31 +30,3 @@ ui界面
 
 ![编辑服务器配置](./editServer.png)
 
-### 说明
-
-由于目前还很简陋，大量配置是写死的。
-
-在使用前，需要自己有ss的账号。
-
-ss配置文件在/etc/ss/ss.json
-
-ss.json示例
-
-```json
-{
-"server":"server addr",
-"server_port":20526,
-"local_address":"127.0.0.1",
-"local_port":1080,
-"password":"password",
-"timeout":300,
-"method":"aes-256-cfb",
-"fast_open":false
-}
-```
-
-更详细的请参考官网[shadowsocks Quick Guide](http://shadowsocks.org/en/config/quick-guide.html)
-
-pac文件也放在/etc/ss下。项目中附带一个可用的pac文件。
-
-我后面会写界面去调的。
