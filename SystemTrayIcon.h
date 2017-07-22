@@ -14,14 +14,25 @@
 #include <QDebug>
 #include <com_deepin_daemon_network.h>
 #include <profile.h>
+#include <controller.h>
+#include "EditServerDialog.h"
+#include "ConfigUtil.h"
+
+using QSS::Controller;
 using QSS::Profile;
 using NetworkInter = com::deepin::daemon::Network;
-class SystemTrayIcon: public QSystemTrayIcon {
+class ServerAction:public QAction{
 public:
-    SystemTrayIcon(Profile* profile,QObject *parent);
+    ServerAction(const QString &text, QObject *parent);
+    Profile profile;
+};
+class SystemTrayIcon: public QSystemTrayIcon {
+    Q_OBJECT
+public:
+    SystemTrayIcon(QObject *parent);
 
 private:
-    Profile* profile;
+    QList<Config> configs;
     /**
      * deepin提供的辅助类
      */
@@ -38,8 +49,16 @@ private:
     void setNoneProxy();
     void setManualProxy();
     void setAutoProxy();
+    void initConfig();
+
+private slots:
+    void updateServerMenu();
+    void onServerActionTriggered(QAction* action);
 public:
+    Controller* controller;
+    EditServerDialog* editServerDialog;
     QMenu* menu;
+    QActionGroup* serverGroup;
     /**
      * 启动系统代理
      */
@@ -180,6 +199,8 @@ public:
      * 退出
      */
     QAction* exitAction;
+    QString localAddress;
+    QString localPort;
 private:
 
 };

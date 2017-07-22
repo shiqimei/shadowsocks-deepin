@@ -4,11 +4,17 @@
 
 #include "SystemTrayIcon.h"
 #include "EditServerWidget.h"
-
-SystemTrayIcon::SystemTrayIcon(Profile* profile,QObject *parent)
+#include "EditServerDialog.h"
+void output(Profile& profile){
+    qDebug()<<"profile";
+    qDebug()<<"server"<<profile.server<<profile.server_port<<profile.password;
+    qDebug()<<"local "<<profile.local_address<<profile.local_port;
+    qDebug()<<"method"<<profile.method;
+    qDebug()<<"timeout"<<profile.timeout;
+}
+SystemTrayIcon::SystemTrayIcon(QObject *parent)
         : QSystemTrayIcon(parent),
           networkInter("com.deepin.daemon.Network", "/com/deepin/daemon/Network", QDBusConnection::sessionBus(), this) {
-    this->profile=profile;
     setIcon(QIcon(":/icons/shadowsocks.ico"));
     menu = new QMenu("menu");
     startSystemAgentAction = new QAction("启动系统代理", this);
@@ -31,21 +37,12 @@ SystemTrayIcon::SystemTrayIcon(Profile* profile,QObject *parent)
     loadBalancingAction = new QAction("负载均衡", this);
     highAvailabilityAction = new QAction("高可用", this);
     accordingToStatisticsAction = new QAction("根据统计", this);
+    serverGroup=new QActionGroup(this);
     editServerAction = new QAction("编辑服务器...", this);
     statisticsConfigurationAction = new QAction("统计配置...", this);
     shareServerConfigurationAction = new QAction("分享服务器配置...", this);
     scanThe2DCodeOnTheScreenAction = new QAction("扫描屏幕上的二维码...", this);
     importTheURLFromTheClipboardAction = new QAction("从剪贴板导入URL...", this);
-    serverMenu->addAction(loadBalancingAction);
-    serverMenu->addAction(highAvailabilityAction);
-    serverMenu->addAction(accordingToStatisticsAction);
-    serverMenu->addSeparator();
-    serverMenu->addAction(editServerAction);
-    serverMenu->addAction(statisticsConfigurationAction);
-    serverMenu->addSeparator();
-    serverMenu->addAction(shareServerConfigurationAction);
-    serverMenu->addAction(scanThe2DCodeOnTheScreenAction);
-    serverMenu->addAction(importTheURLFromTheClipboardAction);
     menu->addMenu(serverMenu);
 
     pacMenu = new QMenu("PAC", menu);
@@ -112,11 +109,24 @@ SystemTrayIcon::SystemTrayIcon(Profile* profile,QObject *parent)
     startSystemAgentAction->setChecked(false);
     globelModeAction->setChecked(true);
     systemAgentModeMenu->setEnabled(false);
+
+    controller=new Controller(true);
+        QObject::connect(controller, &QSS::Controller::debug, [](QString log) {
+        qDebug() << "[QSS::Controller::debug]" << log;
+    });
+    QObject::connect(controller, &QSS::Controller::info, [](QString log) {
+        qDebug() << "[QSS::Controller::info]" << log;
+    });
+//    editServerDialog=new EditServerDialog(profiles);
+    initConfig();
+
     connect(startSystemAgentAction, &QAction::triggered, [this](bool checked) {
+
         if (!checked) {
             qDebug() << "取消系统代理";
             systemAgentModeMenu->setEnabled(false);
             setProxyMethod("none");
+            controller->stop();
         } else {
             qDebug() << "启动系统代理";
             systemAgentModeMenu->setEnabled(true);
@@ -125,7 +135,10 @@ SystemTrayIcon::SystemTrayIcon(Profile* profile,QObject *parent)
             } else{
                 setManualProxy();
             }
+
+            controller->start();
         }
+
     });
     connect(systemAgentModeActionGroup,&QActionGroup::triggered,[this](QAction *action){
         if(action==pacModeAction){
@@ -134,15 +147,39 @@ SystemTrayIcon::SystemTrayIcon(Profile* profile,QObject *parent)
             setManualProxy();
         }
     });
+    connect(serverGroup,&QActionGroup::triggered,this,&SystemTrayIcon::onServerActionTriggered);
     connect(editServerAction,&QAction::triggered,[this](){
-        EditServerWidget w;
-        int ret = w.exec();
+//        EditServerDialog* w = new EditServerDialog(profiles, nullptr);
+//        w->show();
+        EditServerDialog* w = new EditServerDialog();
+        int ret=w->exec();
+        if(ret==QDialog::Accepted){
+#ifdef QT_DEBUG
+            qDebug()<<"保存配置";
+#endif
+            configs=ConfigUtil::readConfig();
+            updateServerMenu();
+            if(startSystemAgentAction->isChecked()){
+#ifdef QT_DEBUG
+                qDebug()<<"重新启动";
+#endif
+                controller->stop();
+                if (!configs.isEmpty()){
+                    Profile& profile=configs.first().profile;
+                    controller->setup(profile);
+                    localAddress=profile.local_address;
+                    localPort=QString::number(profile.local_port);
+                    controller->start();
+                }
+            }
+        }
     });
     connect(exitAction, &QAction::triggered, []() {
         qApp->exit();
     });
 
 
+    updateServerMenu();
 }
 
 void SystemTrayIcon::setProxyMethod(QString proxyMethod) {
@@ -157,9 +194,9 @@ void SystemTrayIcon::setManualProxy() {
     setProxyMethod("manual");
     QString type="socks";
 //    QString addr="127.0.0.1";
-    QString addr=profile->local_address;
+    QString addr=localAddress;
 //    QString port="1080";
-    QString port=QString::number(profile->local_port);
+    QString port=localPort;
     QDBusPendingCallWatcher *w = new QDBusPendingCallWatcher(networkInter.SetProxy(type, addr, port), this);
     QObject::connect(w, &QDBusPendingCallWatcher::finished, [=] {
         qDebug()<<"set proxy"<<type<<addr<<port;
@@ -175,4 +212,68 @@ void SystemTrayIcon::setAutoProxy() {
     QObject::connect(w, &QDBusPendingCallWatcher::finished, [](){
         qDebug()<<"finished";
     });
+}
+
+void SystemTrayIcon::updateServerMenu() {
+#ifdef QT_DEBUG
+    qDebug()<<"刷新服务器列表";
+#endif
+    serverMenu->clear();
+    serverMenu->addAction(loadBalancingAction);
+    serverMenu->addAction(highAvailabilityAction);
+    serverMenu->addAction(accordingToStatisticsAction);
+    serverMenu->addSeparator();
+    if(!configs.isEmpty()){
+        delete serverGroup;
+        QAction* t;
+        serverGroup=new QActionGroup(this);
+        connect(serverGroup,&QActionGroup::triggered,this,&SystemTrayIcon::onServerActionTriggered);
+        for (int i = 0; i < configs.size(); ++i) {
+            auto it=configs[i];
+#ifdef QT_DEBUG
+            qDebug()<<it.remarks;
+#endif
+            ServerAction* action=new ServerAction(it.remarks,this);
+            action->profile=it.profile;
+            action->setCheckable(true);
+            serverGroup->addAction(action);
+            serverMenu->addAction(action);
+            if(i==0){
+                t=action;
+            }
+#ifdef QT_DEBUG
+            output(action->profile);
+#endif
+        }
+        serverMenu->addSeparator();
+        t->trigger();
+    } else{
+        startSystemAgentAction->setEnabled(false);
+    }
+    serverMenu->addAction(editServerAction);
+    serverMenu->addAction(statisticsConfigurationAction);
+    serverMenu->addSeparator();
+    serverMenu->addAction(shareServerConfigurationAction);
+    serverMenu->addAction(scanThe2DCodeOnTheScreenAction);
+    serverMenu->addAction(importTheURLFromTheClipboardAction);
+
+}
+
+void SystemTrayIcon::initConfig() {
+    configs=ConfigUtil::readConfig();
+}
+
+void SystemTrayIcon::onServerActionTriggered(QAction *action) {
+    ServerAction* serverAction= dynamic_cast<ServerAction *>(action);
+    controller->setup(serverAction->profile);
+    localAddress=serverAction->profile.local_address;
+    localPort=QString::number(serverAction->profile.local_port);
+    if(startSystemAgentAction->isChecked()){
+        controller->stop();
+        controller->start();
+    }
+}
+
+ServerAction::ServerAction(const QString &text, QObject *parent) : QAction(text, parent) {
+
 }
