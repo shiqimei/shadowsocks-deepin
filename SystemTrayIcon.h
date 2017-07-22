@@ -32,6 +32,7 @@ public:
     SystemTrayIcon(QObject *parent);
 
 private:
+    QString pacPath;
     QList<Config> configs;
     /**
      * deepin提供的辅助类
@@ -50,7 +51,7 @@ private:
     void setManualProxy();
     void setAutoProxy();
     void initConfig();
-
+    void downloadPac();
 private slots:
     void updateServerMenu();
     void onServerActionTriggered(QAction* action);

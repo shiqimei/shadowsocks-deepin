@@ -2,6 +2,7 @@
 // Created by pikachu on 17-7-20.
 //
 
+#include <QtNetwork/QNetworkReply>
 #include "SystemTrayIcon.h"
 #include "EditServerDialog.h"
 void output(Profile& profile){
@@ -204,8 +205,7 @@ void SystemTrayIcon::setManualProxy() {
 
 void SystemTrayIcon::setAutoProxy() {
     setProxyMethod("auto");
-    // 目前先写死吧
-    QString proxy="file:///etc/ss/autoproxy.pac";
+    QString proxy="file://"+pacPath;
     QDBusPendingCallWatcher *w = new QDBusPendingCallWatcher(networkInter.SetAutoProxy(proxy), this);
 
     QObject::connect(w, &QDBusPendingCallWatcher::finished, [](){
@@ -260,6 +260,7 @@ void SystemTrayIcon::updateServerMenu() {
 
 void SystemTrayIcon::initConfig() {
     configs=ConfigUtil::readConfig();
+    downloadPac();
 }
 
 void SystemTrayIcon::onServerActionTriggered(QAction *action) {
@@ -271,6 +272,47 @@ void SystemTrayIcon::onServerActionTriggered(QAction *action) {
         controller->stop();
         controller->start();
     }
+}
+
+void SystemTrayIcon::downloadPac() {
+    QFile *pacFile;//文件指针
+    QNetworkReply *pacReply;
+    QNetworkAccessManager *pacManager;
+    //下载文件之前先在本地创建一个文件
+    QDir file;//文件夹
+    QString fileStr = QObject::tr("%1/.ss/").arg(QDir::homePath());
+    QString fileName = fileStr + "/autoproxy.pac";
+    //判断文件夹是否存在 不存在创建
+    if (!file.exists(fileStr)) {
+        file.mkpath(fileStr);
+    }
+    pacFile = new QFile(fileName);
+    //判断文件是否可写入 不可写删除 指针赋值0
+    if (!pacFile->open(QIODevice::WriteOnly)) {
+        delete pacFile;
+        pacFile = 0;
+        return;
+    }
+    //开始请求 下载文件
+    QUrl  serviceUrl = QUrl("https://raw.githubusercontent.com/PikachuHy/ss/master/autoproxy.pac");
+    pacManager = new QNetworkAccessManager();
+//get方式请求 如需加密用post
+    pacReply=pacManager->get(QNetworkRequest(serviceUrl));
+    QObject::connect(pacReply,&QNetworkReply::readyRead,[=](){
+        if(pacFile){
+            pacFile->write(pacReply->readAll());
+        }
+
+    });//数据写入
+    QObject::connect(pacReply,&QNetworkReply::finished,[=](){
+        //刷新文件
+        pacFile->flush();
+        pacFile->close();
+        pacFile->deleteLater();
+        pacReply->deleteLater();
+        pacManager->deleteLater();
+        pacPath=fileName;
+    });//请求完成
 }
 
 ServerAction::ServerAction(const QString &text, QObject *parent) : QAction(text, parent) {
