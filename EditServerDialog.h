@@ -48,6 +48,7 @@ private:
     int localPort;
     QList<ServerItem*> serverItemList;
     void updateListWidget();
+    void setFormEnabled(bool flag);
 };
 
 #endif // EDITSERVERDIALOG_H

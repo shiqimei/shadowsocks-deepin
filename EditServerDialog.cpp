@@ -126,7 +126,7 @@ void EditServerDialog::onListWidgetChange() {
     ui->copyPushButton->setEnabled(count > 0);
     ui->upPushButton->setEnabled(curRow > 0);
     ui->downPushButton->setEnabled(curRow != count - 1);
-
+    setFormEnabled(count>0);
 }
 
 void EditServerDialog::on_removePushButton_clicked() {
@@ -180,6 +180,8 @@ void EditServerDialog::initConfig() {
     updateListWidget();
     if(ui->listWidget->count()>0){
         ui->listWidget->setCurrentRow(0);
+    } else{
+
     }
 
 }
@@ -199,7 +201,19 @@ void EditServerDialog::updateListWidget() {
     }
     if(!serverItemList.isEmpty()){
         ui->listWidget->addItem(serverItemList[0]);
+    } else{
+        setFormEnabled(false);
     }
+}
+
+void EditServerDialog::setFormEnabled(bool flag) {
+    ui->serverAddressLineEdit->setEnabled(flag);
+    ui->serverPortSpinBox->setEnabled(flag);
+    ui->passwordLineEdit->setEnabled(flag);
+    ui->encryptComboBox->setEnabled(flag);
+    ui->remarkLineEdit->setEnabled(flag);
+    ui->timeoutSpinBox->setEnabled(flag);
+    ui->proxyPortSpinBox->setEnabled(flag);
 }
 
 ServerItem::ServerItem(const Profile &profile, QString remarks, QListWidget *view, int type)
