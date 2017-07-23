@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=Deepin Shadowsocks Client
+Name[zh_CN]=Deepin影梭客户端
+GenericName=Shadowsocks Client
+GenericName[zh_CN]=影梭客户端
+Comment=If you want to keep a secret, you must also hide it from yourself.
+Comment[zh_CN]=If you want to keep a secret, you must also hide it from yourself.
+Exec=deepin-ss-client %f
+Icon=deepin-ss-client
+Terminal=false
+Type=Application
+Categories=System;
+MimeType=application/vnd.debian.binary-package;
+NotShowIn=KDE;
+StartupNotify=true
+Keywords=ss;socks;qt5;gfw
