@@ -26,7 +26,7 @@ sudo apt install libssl-dev libbotan1.10-dev
 
 ui界面
 
-![ui界面](./ui.gif)
+![ui界面](images/ui.gif)
 
-![编辑服务器配置](./editServer.png)
+![编辑服务器配置](images/editServer.png)
 
