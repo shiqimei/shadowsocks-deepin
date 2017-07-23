@@ -39,3 +39,11 @@ target_link_libraries(${PROJECT_NAME}
         ${DFrameworkDBus_LIBRARIES}
         )
 qt5_use_modules(${PROJECT_NAME} Core Gui Widgets Network DBus)
+
+# Install settings
+if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+    set(CMAKE_INSTALL_PREFIX /usr)
+endif ()
+
+install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+install(FILES ${PROJECT_NAME}.desktop DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications)
