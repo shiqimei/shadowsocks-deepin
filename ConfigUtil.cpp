@@ -122,3 +122,4 @@ void ConfigUtil::saveConfig(QList<Config> configList) {
     configFile.write(jsonDocument.toJson());
     configFile.close();
 }
+

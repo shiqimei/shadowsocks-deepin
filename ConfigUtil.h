@@ -8,8 +8,23 @@
 #include <profile.h>
 #include <QtCore/QJsonDocument>
 #include <QtCore/QList>
-
+#include <QDir>
 using QSS::Profile;
+class PacConfig{
+public:
+    bool is_local ;
+    QString localFilePath;
+    QString onlineUrl;
+
+    QString getProxy(){
+        if (is_local){
+            return QObject::tr("file://%1").arg(localFilePath);
+        } else{
+            return onlineUrl;
+        }
+    }
+};
+
 class Config{
 public:
     Profile profile;

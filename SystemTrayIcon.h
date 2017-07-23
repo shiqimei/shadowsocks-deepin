@@ -32,7 +32,7 @@ public:
     SystemTrayIcon(QObject *parent);
 
 private:
-    QString pacPath;
+    PacConfig pacConfig;
     QList<Config> configs;
     /**
      * deepin提供的辅助类

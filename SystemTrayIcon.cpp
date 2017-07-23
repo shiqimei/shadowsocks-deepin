@@ -5,6 +5,8 @@
 #include <QtNetwork/QNetworkReply>
 #include "SystemTrayIcon.h"
 #include "EditServerDialog.h"
+#include "EditOnlinePacUrlDialog.h"
+
 void output(Profile& profile){
     qDebug()<<"profile";
     qDebug()<<"server"<<profile.server<<profile.server_port<<profile.password;
@@ -48,6 +50,11 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     pacMenu = new QMenu("PAC", menu);
     useLocalPacAction = new QAction("使用本地PAC", this);
     useOnlinePacAction = new QAction("使用在线PAC", this);
+    useLocalPacAction->setCheckable(true);
+    useOnlinePacAction->setCheckable(true);
+    QActionGroup* pacGroup=new QActionGroup(this);
+    pacGroup->addAction(useLocalPacAction);
+    pacGroup->addAction(useOnlinePacAction);
     editLocalPacFileAction = new QAction("编辑本地PAC文件...", this);
     updateLocalPacFromGFWListAction = new QAction("从GFWList更新本地PAC", this);
     editUserRulesForGFWListAction = new QAction("编辑GFWList的用户规则...", this);
@@ -174,6 +181,27 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
             }
         }
     });
+    connect(pacGroup,&QActionGroup::triggered,[=](QAction *action){
+        if (action==useLocalPacAction){
+            pacConfig.is_local=true;
+#ifdef QT_DEBUG
+            qDebug()<<"use local pac";
+#endif
+        } else{
+#ifdef QT_DEBUG
+            qDebug()<<"use online pac";
+#endif
+            EditOnlinePacUrlDialog dialog(pacConfig.onlineUrl);
+            int ret = dialog.exec();
+            if(ret==QDialog::Accepted){
+                pacConfig.onlineUrl=dialog.getOnlinePacUrl();
+                pacConfig.is_local= false;
+            } else{
+                useLocalPacAction->trigger();
+            }
+        }
+        setAutoProxy();
+    });
     connect(exitAction, &QAction::triggered, []() {
         qApp->exit();
     });
@@ -205,11 +233,11 @@ void SystemTrayIcon::setManualProxy() {
 
 void SystemTrayIcon::setAutoProxy() {
     setProxyMethod("auto");
-    QString proxy="file://"+pacPath;
+    QString proxy=pacConfig.getProxy();
     QDBusPendingCallWatcher *w = new QDBusPendingCallWatcher(networkInter.SetAutoProxy(proxy), this);
 
-    QObject::connect(w, &QDBusPendingCallWatcher::finished, [](){
-        qDebug()<<"finished";
+    QObject::connect(w, &QDBusPendingCallWatcher::finished, [=](){
+        qDebug()<<"set auto proxy finished"<<proxy;
     });
 }
 
@@ -275,6 +303,7 @@ void SystemTrayIcon::onServerActionTriggered(QAction *action) {
 }
 
 void SystemTrayIcon::downloadPac() {
+    pacConfig.onlineUrl="https://raw.githubusercontent.com/PikachuHy/ss/master/autoproxy.pac";
     QFile *pacFile;//文件指针
     QNetworkReply *pacReply;
     QNetworkAccessManager *pacManager;
@@ -311,7 +340,9 @@ void SystemTrayIcon::downloadPac() {
         pacFile->deleteLater();
         pacReply->deleteLater();
         pacManager->deleteLater();
-        pacPath=fileName;
+        pacConfig.localFilePath=fileName;
+        pacConfig.is_local=true;
+        useLocalPacAction->trigger();
     });//请求完成
 }
 
