@@ -197,7 +197,9 @@ void EditServerDialog::updateListWidget() {
         qDebug()<<item->text();
 #endif
     }
-    ui->listWidget->addItem(serverItemList[0]);
+    if(!serverItemList.isEmpty()){
+        ui->listWidget->addItem(serverItemList[0]);
+    }
 }
 
 ServerItem::ServerItem(const Profile &profile, QString remarks, QListWidget *view, int type)

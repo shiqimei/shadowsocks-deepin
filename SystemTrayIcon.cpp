@@ -114,7 +114,6 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
 
 
     startSystemAgentAction->setChecked(false);
-    globelModeAction->setChecked(true);
     systemAgentModeMenu->setEnabled(false);
 
     controller=new Controller(true);
@@ -127,8 +126,9 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
 //    editServerDialog=new EditServerDialog(profiles);
     initConfig();
 
-    connect(startSystemAgentAction, &QAction::triggered, [this](bool checked) {
+    connect(startSystemAgentAction, &QAction::changed, [this]() {
 
+        bool checked=startSystemAgentAction->isChecked();
         if (!checked) {
             qDebug() << "取消系统代理";
             systemAgentModeMenu->setEnabled(false);
@@ -139,11 +139,17 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
             systemAgentModeMenu->setEnabled(true);
             if (pacModeAction->isChecked()){
                 setAutoProxy();
-            } else{
+            } else if(globelModeAction->isChecked()){
                 setManualProxy();
+            } else{
+                pacModeAction->trigger();
             }
 
-            controller->start();
+            for(auto&it:serverGroup->actions()){
+                ServerAction* action= dynamic_cast<ServerAction *>(it);
+                controller->setup(action->profile);
+                controller->start();
+            }
         }
 
     });
@@ -156,16 +162,41 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     });
     connect(serverGroup,&QActionGroup::triggered,this,&SystemTrayIcon::onServerActionTriggered);
     connect(editServerAction,&QAction::triggered,[this](){
-//        EditServerDialog* w = new EditServerDialog(profiles, nullptr);
-//        w->show();
+#ifdef QT_DEBUG
+        qDebug()<<"启动服务器配置界面";
+#endif
         EditServerDialog* w = new EditServerDialog();
         int ret=w->exec();
         if(ret==QDialog::Accepted){
+            configs = ConfigUtil::readConfig();
 #ifdef QT_DEBUG
-            qDebug()<<"保存配置";
+            qDebug()<<"configs.isEmpty()"<<configs.isEmpty()<<"startSystemAgentAction->isEnabled()"<<startSystemAgentAction->isEnabled();
+            qDebug()<<"configs.isEmpty() && startSystemAgentAction->isEnabled()"<<(configs.isEmpty() && startSystemAgentAction->isEnabled());
+            qDebug()<<"!configs.isEmpty() && !startSystemAgentAction->isEnabled()"<<(!configs.isEmpty() && !startSystemAgentAction->isEnabled());
 #endif
-            configs=ConfigUtil::readConfig();
+            if(configs.isEmpty() && startSystemAgentAction->isEnabled()){
+                startSystemAgentAction->setChecked(false);
+                startSystemAgentAction->setEnabled(false);
+            } else if (!configs.isEmpty() && !startSystemAgentAction->isEnabled()){
+                startSystemAgentAction->setEnabled(true);
+            }
             updateServerMenu();
+//#ifdef QT_DEBUG
+//            qDebug()<<"保存配置";
+//#endif
+//            configs=ConfigUtil::readConfig();
+//            updateServerMenu();
+//#ifdef QT_DEBUG
+//            qDebug()<<configs.isEmpty();
+//#endif
+//            if(!configs.isEmpty()){
+//                startSystemAgentAction->setCheckable(true);
+//            } else{
+//                if(startSystemAgentAction->isChecked()){
+//                    startSystemAgentAction->trigger();
+//                }
+//                startSystemAgentAction->setCheckable(false);
+//            }
             if(startSystemAgentAction->isChecked()){
 #ifdef QT_DEBUG
                 qDebug()<<"重新启动";
@@ -208,6 +239,10 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
 
 
     updateServerMenu();
+    if(!configs.isEmpty()){
+        startSystemAgentAction->trigger();
+        pacModeAction->trigger();
+    }
 }
 
 void SystemTrayIcon::setProxyMethod(QString proxyMethod) {
@@ -273,7 +308,9 @@ void SystemTrayIcon::updateServerMenu() {
 #endif
         }
         serverMenu->addSeparator();
-        t->trigger();
+        if (t!= nullptr){
+            t->trigger();
+        }
     } else{
         startSystemAgentAction->setEnabled(false);
     }
@@ -298,6 +335,7 @@ void SystemTrayIcon::onServerActionTriggered(QAction *action) {
     localPort=QString::number(serverAction->profile.local_port);
     if(startSystemAgentAction->isChecked()){
         controller->stop();
+        controller->setup(serverAction->profile);
         controller->start();
     }
 }
@@ -342,7 +380,9 @@ void SystemTrayIcon::downloadPac() {
         pacManager->deleteLater();
         pacConfig.localFilePath=fileName;
         pacConfig.is_local=true;
-        useLocalPacAction->trigger();
+        if (!configs.isEmpty()){
+            useLocalPacAction->trigger();
+        }
     });//请求完成
 }
 
