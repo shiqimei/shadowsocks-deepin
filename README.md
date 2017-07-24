@@ -1,4 +1,4 @@
-# README
+# Deepin Shadowsocks Client
 
 本项目的计划在deepin上实现win版ss的功能。我习惯了win上能自由在全局和局部代理切换，在deepin上没有相应的软件，ss-qt５只能是要么全局，要么不开。
 

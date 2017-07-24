@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.7)
-project(deepin-ss-client)
+project(deepin-shadowsocks-client)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -47,3 +47,4 @@ endif ()
 
 install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 install(FILES ${PROJECT_NAME}.desktop DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications)
+install(FILES shadowsocks.ico DESTINATION /opt/${PROJECT_NAME})
