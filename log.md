@@ -62,4 +62,8 @@ dh_make -f ../deepin-shadowsocks-client-0.1.0.tar.gz -c gpl3 -s
 dpkg-buildpackage -us -uc -b
 sudo apt purge deepin-shadowsocks-client 
 ```
+保存 git密码
+```
+git config --global credential.helper store
+```
 
