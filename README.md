@@ -6,19 +6,19 @@ Thanks a lot for [Shadowsocks for Windows](https://github.com/shadowsocks/shadow
 
 [中文说明](https://github.com/PikachuHy/deepin-shadowsocks-client/wiki/%E6%B7%B1%E5%BA%A6%E5%BD%B1%E6%A2%AD%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
 
-#### Features
+### Features
 
 1. System proxy configuration
 2. PAC mode and global mode
-#### Download
+### Download
 
 Download the [latest release.](https://github.com/PikachuHy/deepin-shadowsocks-client/releases)
 
-#### Requirements
+### Requirements
 
 [Deepin 15.4.1](https://www.deepin.org/download/) or higher. 
 
-#### Basic
+### Basic
 
 1. Find Shadowsocks icon
 2. You can add multiple servers in servers menu
@@ -28,13 +28,13 @@ Download the [latest release.](https://github.com/PikachuHy/deepin-shadowsocks-c
   system proxy. Set Socks5 or HTTP proxy to 127.0.0.1:1080. You can change this
   port in `Servers -> Edit Servers`
 
-#### PAC
+### PAC
 
 1. You can change PAC rules by editing the PAC file. When you save the PAC file
   with any editor, Shadowsocks will notify browsers about the change automatically
 2. You can also use online PAC URL
 
-#### Develop
+### Develop
 
 [CLion 2017.2](https://www.jetbrains.com/clion/) & [Qt 5.6](https://www.qt.io/) are required.
 
@@ -45,6 +45,6 @@ sudo apt install libssl-dev libbotan1.10-dev
 
 
 
-#### License
+### License
 
 Deepin Shadowsocks Client is licensed under [GPLv3](LICENSE).
