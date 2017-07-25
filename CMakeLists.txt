@@ -23,7 +23,7 @@ pkg_check_modules(Botan REQUIRED botan-1.10)
 pkg_check_modules(DtkBase REQUIRED dtkbase)
 pkg_check_modules(DtkWidget REQUIRED dtkwidget)
 pkg_check_modules(DFrameworkDBus REQUIRED dframeworkdbus)
-pkg_check_modules(QRencode REQUIRED libqrencode)
+pkg_check_modules(QRencode REQUIRED libqrencode zbar)
 add_executable(${PROJECT_NAME} ${SRCS})
 target_include_directories(${PROJECT_NAME} PUBLIC
         ${QtShadowsocks_INCLUDE_DIRS}

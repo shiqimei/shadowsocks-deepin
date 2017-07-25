@@ -14,7 +14,10 @@
 #include <DPlatformWindowHandle>
 #include <DLog>
 #include <dutility.h>
-
+#include <QScreen>
+#include <QDesktopServices>
+#include <QDesktopWidget>
+#include "UriHelper.h"
 using QSS::Controller;
 using QSS::Profile;
 DWIDGET_USE_NAMESPACE
@@ -32,5 +35,7 @@ int main(int argc, char *argv[]) {
     Dtk::Util::DLogManager::registerConsoleAppender();
     SystemTrayIcon systemTrayIcon(&a);
     systemTrayIcon.show();
+
+
     return a.exec();
 }

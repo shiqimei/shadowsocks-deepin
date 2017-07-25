@@ -18,6 +18,10 @@
 #include "EditServerDialog.h"
 #include "ConfigUtil.h"
 #include "ShareServerConfigWidget.h"
+#include <QScreen>
+#include <QDesktopServices>
+#include <QDesktopWidget>
+#include "UriHelper.h"
 using QSS::Controller;
 using QSS::Profile;
 using NetworkInter = com::deepin::daemon::Network;
@@ -55,6 +59,8 @@ private:
 private slots:
     void updateServerMenu();
     void onServerActionTriggered(QAction* action);
+    void onEditServerActionTriggered(bool isNew= false);
+    void onScanThe2DCodeOnTheScreenActionTriggered();
 public:
     ShareServerConfigWidget* shareServerConfigWidget;
     Controller* controller;

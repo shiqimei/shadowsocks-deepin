@@ -11,7 +11,7 @@
 
 //#define QT_DEBUG 0
 //#undef QT_DEBUG
-EditServerDialog::EditServerDialog(QWidget *parent) :
+EditServerDialog::EditServerDialog(bool isNew, QWidget *parent) :
         QDialog(parent),
         ui(new Ui::EditServerDialog){
     ui->setupUi(this);
@@ -102,6 +102,9 @@ EditServerDialog::EditServerDialog(QWidget *parent) :
     setLayout(ui->mainLayout);
     onListWidgetChange();
     initConfig();
+    if(isNew){
+        ui->listWidget->setCurrentRow(ui->listWidget->count()-1);
+    }
 }
 
 EditServerDialog::~EditServerDialog() {

@@ -3,6 +3,7 @@
 //
 
 #include <QtNetwork/QNetworkReply>
+#include <QtWidgets/QMessageBox>
 #include "SystemTrayIcon.h"
 #include "EditOnlinePacUrlDialog.h"
 void output(Profile& profile){
@@ -159,57 +160,7 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
         }
     });
     connect(serverGroup,&QActionGroup::triggered,this,&SystemTrayIcon::onServerActionTriggered);
-    connect(editServerAction,&QAction::triggered,[this](){
-#ifdef QT_DEBUG
-        qDebug()<<"启动服务器配置界面";
-#endif
-        EditServerDialog* w = new EditServerDialog();
-        int ret=w->exec();
-        if(ret==QDialog::Accepted){
-            configs = ConfigUtil::readConfig();
-#ifdef QT_DEBUG
-            qDebug()<<"configs.isEmpty()"<<configs.isEmpty()<<"startSystemAgentAction->isEnabled()"<<startSystemAgentAction->isEnabled();
-            qDebug()<<"configs.isEmpty() && startSystemAgentAction->isEnabled()"<<(configs.isEmpty() && startSystemAgentAction->isEnabled());
-            qDebug()<<"!configs.isEmpty() && !startSystemAgentAction->isEnabled()"<<(!configs.isEmpty() && !startSystemAgentAction->isEnabled());
-#endif
-            if(configs.isEmpty() && startSystemAgentAction->isEnabled()){
-                startSystemAgentAction->setChecked(false);
-                startSystemAgentAction->setEnabled(false);
-            } else if (!configs.isEmpty() && !startSystemAgentAction->isEnabled()){
-                startSystemAgentAction->setEnabled(true);
-            }
-            updateServerMenu();
-//#ifdef QT_DEBUG
-//            qDebug()<<"保存配置";
-//#endif
-//            configs=ConfigUtil::readConfig();
-//            updateServerMenu();
-//#ifdef QT_DEBUG
-//            qDebug()<<configs.isEmpty();
-//#endif
-//            if(!configs.isEmpty()){
-//                startSystemAgentAction->setCheckable(true);
-//            } else{
-//                if(startSystemAgentAction->isChecked()){
-//                    startSystemAgentAction->trigger();
-//                }
-//                startSystemAgentAction->setCheckable(false);
-//            }
-            if(startSystemAgentAction->isChecked()){
-#ifdef QT_DEBUG
-                qDebug()<<"重新启动";
-#endif
-                controller->stop();
-                if (!configs.isEmpty()){
-                    Profile& profile=configs.first().profile;
-                    controller->setup(profile);
-                    localAddress=profile.local_address;
-                    localPort=QString::number(profile.local_port);
-                    controller->start();
-                }
-            }
-        }
-    });
+    connect(editServerAction,&QAction::triggered,this,&SystemTrayIcon::onEditServerActionTriggered);
     connect(pacGroup,&QActionGroup::triggered,[=](QAction *action){
         if (action==useLocalPacAction){
             pacConfig.is_local=true;
@@ -238,6 +189,7 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
         shareServerConfigWidget=new ShareServerConfigWidget();
         shareServerConfigWidget->exec();
     });
+    connect(scanThe2DCodeOnTheScreenAction,&QAction::triggered,this,&SystemTrayIcon::onScanThe2DCodeOnTheScreenActionTriggered);
     connect(exitAction, &QAction::triggered, []() {
         qApp->exit();
     });
@@ -389,6 +341,90 @@ void SystemTrayIcon::downloadPac() {
             useLocalPacAction->trigger();
         }
     });//请求完成
+}
+
+void SystemTrayIcon::onEditServerActionTriggered(bool isNew) {
+#ifdef QT_DEBUG
+    qDebug()<<"启动服务器配置界面";
+#endif
+    EditServerDialog* w = new EditServerDialog(isNew);
+    int ret=w->exec();
+    if(ret==QDialog::Accepted){
+        configs = ConfigUtil::readConfig();
+#ifdef QT_DEBUG
+        qDebug()<<"configs.isEmpty()"<<configs.isEmpty()<<"startSystemAgentAction->isEnabled()"<<startSystemAgentAction->isEnabled();
+        qDebug()<<"configs.isEmpty() && startSystemAgentAction->isEnabled()"<<(configs.isEmpty() && startSystemAgentAction->isEnabled());
+        qDebug()<<"!configs.isEmpty() && !startSystemAgentAction->isEnabled()"<<(!configs.isEmpty() && !startSystemAgentAction->isEnabled());
+#endif
+        if(configs.isEmpty() && startSystemAgentAction->isEnabled()){
+            startSystemAgentAction->setChecked(false);
+            startSystemAgentAction->setEnabled(false);
+        } else if (!configs.isEmpty() && !startSystemAgentAction->isEnabled()){
+            startSystemAgentAction->setEnabled(true);
+        }
+        updateServerMenu();
+//#ifdef QT_DEBUG
+//            qDebug()<<"保存配置";
+//#endif
+//            configs=ConfigUtil::readConfig();
+//            updateServerMenu();
+//#ifdef QT_DEBUG
+//            qDebug()<<configs.isEmpty();
+//#endif
+//            if(!configs.isEmpty()){
+//                startSystemAgentAction->setCheckable(true);
+//            } else{
+//                if(startSystemAgentAction->isChecked()){
+//                    startSystemAgentAction->trigger();
+//                }
+//                startSystemAgentAction->setCheckable(false);
+//            }
+        if(startSystemAgentAction->isChecked()){
+#ifdef QT_DEBUG
+            qDebug()<<"重新启动";
+#endif
+            controller->stop();
+            if (!configs.isEmpty()){
+                Profile& profile=configs.first().profile;
+                controller->setup(profile);
+                localAddress=profile.local_address;
+                localPort=QString::number(profile.local_port);
+                controller->start();
+            }
+        }
+    }
+}
+
+void SystemTrayIcon::onScanThe2DCodeOnTheScreenActionTriggered() {
+    QString uri;
+    QList<QScreen *> screens = qApp->screens();
+    for (QList<QScreen *>::iterator sc = screens.begin();
+         sc != screens.end();
+         ++sc) {
+        QImage raw_sc = (*sc)->grabWindow(qApp->desktop()->winId()).toImage();
+        QString result = URIHelper::decodeImage(raw_sc);
+        if (!result.isNull()) {
+            uri = result;
+        }
+    }
+    qDebug()<<"扫描到二维码"<<uri;
+    if(uri.isEmpty() || uri.isNull()){
+        qDebug()<<"二维码是空的";
+        QMessageBox::critical(
+                nullptr,
+                tr("未找到二维码"),
+                tr("没有找到包含有效ss uri的二维码"));
+    } else{
+        Profile profile = QSS::Profile(uri.toUtf8());
+        Config config;
+        config.profile=profile;
+        config.remarks=profile.server;
+        configs.append(config);
+        ConfigUtil::saveConfig(configs);
+//            editServerAction->trigger();
+        onEditServerActionTriggered(true);
+    }
+
 }
 
 ServerAction::ServerAction(const QString &text, QObject *parent) : QAction(text, parent) {

@@ -22,7 +22,7 @@ class EditServerDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit EditServerDialog(QWidget *parent= nullptr);
+    explicit EditServerDialog(bool isNew= false, QWidget *parent= nullptr);
     ~EditServerDialog();
 
 private slots:
