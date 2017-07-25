@@ -57,13 +57,12 @@ ui界面
 打包记录
 
 ```shell
-tar -cvzf deepin-shadowsocks-client-0.1.0.tar.gz deepin-shadowsocks-client-0.1.0
-dh_make -f ../deepin-shadowsocks-client-0.1.0.tar.gz -c gpl3 -s 
+tar -cvzf shadowsocks-client-0.1.0.tar.gz shadowsocks-client-0.1.0
+dh_make -f ../shadowsocks-client-0.1.0.tar.gz -c gpl3 -s
 dpkg-buildpackage -us -uc -b
-sudo apt purge deepin-shadowsocks-client 
+sudo apt purge shadowsocks-client
 ```
 保存 git密码
 ```
 git config --global credential.helper store
 ```
-

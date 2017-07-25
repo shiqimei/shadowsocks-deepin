@@ -1,6 +1,6 @@
-# Deepin Shadowsocks Client
+# Shadowsocks Client
 
-Deepin Shadowsocks Client: If you want to keep a secret, you must also hide it from yourself.
+Shadowsocks Client: If you want to keep a secret, you must also hide it from yourself.
 
 Thanks a lot for [Shadowsocks for Windows](https://github.com/shadowsocks/shadowsocks-windows).
 
@@ -16,7 +16,7 @@ Download the [latest release.](https://github.com/PikachuHy/deepin-shadowsocks-c
 
 ### Requirements
 
-[Deepin 15.4.1](https://www.deepin.org/download/) or higher. 
+[Deepin 15.4.1](https://www.deepin.org/download/) or higher.
 
 ### Basic
 
@@ -45,15 +45,15 @@ sudo apt install libssl-dev libbotan1.10-dev
 sudo apt install libdtkbase-dev libdtkwidget-dev
 sudo apt install libdframeworkdbus-dev
 
-cd deepin-shadowsocks-client
+cd shadowsocks-client
 mkdir build && cd build
 cmake ..
 make -j4
-./deepin-shadowsocks-client
+./shadowsocks-client
 ```
 
 
 
 ### License
 
-Deepin Shadowsocks Client is licensed under [GPLv3](LICENSE).
+Shadowsocks Client is licensed under [GPLv3](LICENSE).
