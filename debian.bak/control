@@ -1,14 +1,14 @@
-Source: deepin-shadowsocks-client
+Source: shadowsocks-client
 Section: utils
 Priority: optional
 Maintainer: PikachuHy <2931408816@qq.com>
-Build-Depends: debhelper (>= 9), qt5-qmake, qt5-default, qtbase5-dev, pkg-config, libdtkbase-dev, libdtkutil-dev, libdtkwidget-dev, qttools5-dev-tools, libqtshadowsocks-dev, libbotan1.10-dev, libdframeworkdbus-dev, libqrencode-dev, libzbar-dev
+Build-Depends: debhelper (>= 9), qt5-qmake, qt5-default, qtbase5-dev, pkg-config, libdtkbase-dev, libdtkutil-dev, libdtkwidget-dev, libqtshadowsocks-dev, libbotan1.10-dev, libdframeworkdbus-dev, libqrencode-dev, libzbar-dev
 Standards-Version: 3.9.8
 Homepage: <insert the upstream URL, if relevant>
 #Vcs-Git: https://anonscm.debian.org/collab-maint/deepin-shadowsocks-client.git
 #Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/deepin-shadowsocks-client.git
 
-Package: deepin-shadowsocks-client
+Package: shadowsocks-client
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: If you want to keep a secret, you must also hide it from yourself.
