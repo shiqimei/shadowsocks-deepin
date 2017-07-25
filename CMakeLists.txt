@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.7)
-project(deepin-shadowsocks-client)
+project(shadowsocks-client)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
