@@ -6,6 +6,8 @@
 #include <QtWidgets/QMessageBox>
 #include "SystemTrayIcon.h"
 #include "EditOnlinePacUrlDialog.h"
+#include "SsValidator.h"
+
 void output(Profile& profile){
     qDebug()<<"profile";
     qDebug()<<"server"<<profile.server<<profile.server_port<<profile.password;
@@ -190,6 +192,25 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
         shareServerConfigWidget->exec();
     });
     connect(scanThe2DCodeOnTheScreenAction,&QAction::triggered,this,&SystemTrayIcon::onScanThe2DCodeOnTheScreenActionTriggered);
+    connect(importTheURLFromTheClipboardAction,&QAction::triggered,[=](){
+        QString uri=QApplication::clipboard()->text().trimmed();
+        qDebug()<<"uri"<<uri;
+        if(!SSValidator::validate(uri)){
+            QMessageBox::critical(
+                    nullptr,
+                    tr("从剪贴板导入URL错误"),
+                    tr("没有找到包含有效ss uri的字符串"));
+        } else{
+            Profile profile = QSS::Profile(uri.toUtf8());
+            Config config;
+            config.profile=profile;
+            config.remarks=profile.server;
+            configs.append(config);
+            ConfigUtil::saveConfig(configs);
+//            editServerAction->trigger();
+            onEditServerActionTriggered(true);
+        }
+    });
     connect(exitAction, &QAction::triggered, []() {
         qApp->exit();
     });
@@ -408,8 +429,7 @@ void SystemTrayIcon::onScanThe2DCodeOnTheScreenActionTriggered() {
         }
     }
     qDebug()<<"扫描到二维码"<<uri;
-    if(uri.isEmpty() || uri.isNull()){
-        qDebug()<<"二维码是空的";
+    if(!SSValidator::validate(uri)){
         QMessageBox::critical(
                 nullptr,
                 tr("未找到二维码"),
