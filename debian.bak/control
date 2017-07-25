@@ -2,7 +2,7 @@ Source: deepin-shadowsocks-client
 Section: utils
 Priority: optional
 Maintainer: PikachuHy <2931408816@qq.com>
-Build-Depends: debhelper (>= 9), qt5-qmake, qt5-default, qtbase5-dev, pkg-config, libdtkbase-dev, libdtkutil-dev, libdtkwidget-dev, qttools5-dev-tools, libqtshadowsocks-dev, libbotan1.10-dev, libdframeworkdbus-dev
+Build-Depends: debhelper (>= 9), qt5-qmake, qt5-default, qtbase5-dev, pkg-config, libdtkbase-dev, libdtkutil-dev, libdtkwidget-dev, qttools5-dev-tools, libqtshadowsocks-dev, libbotan1.10-dev, libdframeworkdbus-dev, libqrencode-dev
 Standards-Version: 3.9.8
 Homepage: <insert the upstream URL, if relevant>
 #Vcs-Git: https://anonscm.debian.org/collab-maint/deepin-shadowsocks-client.git

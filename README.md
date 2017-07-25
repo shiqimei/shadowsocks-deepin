@@ -44,6 +44,7 @@ sudo apt install libqtshadowsocks-dev
 sudo apt install libssl-dev libbotan1.10-dev
 sudo apt install libdtkbase-dev libdtkwidget-dev
 sudo apt install libdframeworkdbus-dev
+sudo apt install libqrencode-dev
 
 cd shadowsocks-client
 mkdir build && cd build
