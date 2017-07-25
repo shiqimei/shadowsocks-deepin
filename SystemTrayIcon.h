@@ -17,7 +17,7 @@
 #include <controller.h>
 #include "EditServerDialog.h"
 #include "ConfigUtil.h"
-
+#include "ShareServerConfigWidget.h"
 using QSS::Controller;
 using QSS::Profile;
 using NetworkInter = com::deepin::daemon::Network;
@@ -56,6 +56,7 @@ private slots:
     void updateServerMenu();
     void onServerActionTriggered(QAction* action);
 public:
+    ShareServerConfigWidget* shareServerConfigWidget;
     Controller* controller;
     EditServerDialog* editServerDialog;
     QMenu* menu;

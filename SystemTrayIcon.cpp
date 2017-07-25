@@ -4,9 +4,7 @@
 
 #include <QtNetwork/QNetworkReply>
 #include "SystemTrayIcon.h"
-#include "EditServerDialog.h"
 #include "EditOnlinePacUrlDialog.h"
-
 void output(Profile& profile){
     qDebug()<<"profile";
     qDebug()<<"server"<<profile.server<<profile.server_port<<profile.password;
@@ -232,6 +230,13 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
             }
         }
         setAutoProxy();
+    });
+    connect(shareServerConfigurationAction,&QAction::triggered,[=](){
+#ifdef QT_DEBUG
+        qDebug()<<"打开分享窗口";
+#endif
+        shareServerConfigWidget=new ShareServerConfigWidget();
+        shareServerConfigWidget->exec();
     });
     connect(exitAction, &QAction::triggered, []() {
         qApp->exit();
