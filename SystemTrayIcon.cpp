@@ -4,6 +4,7 @@
 
 #include <QtNetwork/QNetworkReply>
 #include <QtWidgets/QMessageBox>
+#include <QtWidgets/QFileDialog>
 #include "SystemTrayIcon.h"
 #include "EditOnlinePacUrlDialog.h"
 #include "SsValidator.h"
@@ -183,6 +184,14 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
             }
         }
         setAutoProxy();
+    });
+    connect(editLocalPacFileAction,&QAction::triggered,[=](){
+       QFileDialog* fileDialog = new QFileDialog();
+        fileDialog->setDirectory(tr("%1/.ss").arg(QDir::homePath()));
+        QString path=tr("%1/.ss/autoproxy.pac").arg(QDir::homePath());
+        qDebug()<<"path"<<path;
+        fileDialog->selectFile(path);
+        fileDialog->show();
     });
     connect(shareServerConfigurationAction,&QAction::triggered,[=](){
 #ifdef QT_DEBUG
