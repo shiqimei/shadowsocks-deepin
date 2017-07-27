@@ -8,7 +8,7 @@
 #include "SystemTrayIcon.h"
 #include "EditOnlinePacUrlDialog.h"
 #include "SsValidator.h"
-
+#include <GfwlistToPacUtil.h>
 void output(Profile& profile){
     qDebug()<<"profile";
     qDebug()<<"server"<<profile.server<<profile.server_port<<profile.password;
@@ -186,22 +186,22 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
         setAutoProxy();
     });
     connect(editLocalPacFileAction,&QAction::triggered,[=](){
-//       QFileDialog* fileDialog = new QFileDialog();
-//        fileDialog->setDirectory(tr("%1/.ss").arg(QDir::homePath()));
         QString path=tr("%1/.ss/autoproxy.pac").arg(QDir::homePath());
         qDebug()<<"path"<<path;
         QDesktopServices::openUrl(QUrl(tr("file:///%1").arg(path)));
-//        fileDialog->selectFile(path);
-//        fileDialog->show();
+    });
+    connect(updateLocalPacFromGFWListAction,&QAction::triggered,[=](){
+        GfwlistToPacUtil* gfwlistToPacUtil=new GfwlistToPacUtil();
+        gfwlistToPacUtil->gfwlist2pac();
+        connect(gfwlistToPacUtil,&GfwlistToPacUtil::finished,[=](){
+           qDebug()<<"更新完毕";
+            QMessageBox::information(nullptr,"从GFWList更新本地PAC","从GFWList更新本地PAC成功");
+        });
     });
     connect(editUserRulesForGFWListAction,&QAction::triggered,[=](){
-//        QFileDialog* fileDialog = new QFileDialog();
-//        fileDialog->setDirectory(tr("%1/.ss").arg(QDir::homePath()));
         QString path=tr("%1/.ss/user-rule.txt").arg(QDir::homePath());
         qDebug()<<"path"<<path;
         QDesktopServices::openUrl(QUrl(tr("file:///%1").arg(path)));
-//        fileDialog->selectFile(path);
-//        fileDialog->show();
     });
     connect(copyLocalPacUrlAction,&QAction::triggered,[=](){
        QApplication::clipboard()->setText(tr("file://%1").arg(pacConfig.localFilePath));
@@ -243,6 +243,9 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
 //            editServerAction->trigger();
             onEditServerActionTriggered(true);
         }
+    });
+    connect(aboutAction, &QAction::triggered, []() {
+        QDesktopServices::openUrl(tr("https://github.com/PikachuHy/shadowsocks-client"));
     });
     connect(exitAction, &QAction::triggered, []() {
         qApp->exit();

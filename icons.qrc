@@ -8,4 +8,7 @@
         <file>Resources/ssIn24.png</file>
         <file>Resources/ssOut24.png</file>
     </qresource>
+    <qresource>
+        <file>proxy.pac</file>
+    </qresource>
 </RCC>

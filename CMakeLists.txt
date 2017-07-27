@@ -42,7 +42,6 @@ target_link_libraries(${PROJECT_NAME}
         ${QRencode_LIBRARIES}
         )
 qt5_use_modules(${PROJECT_NAME} Core Gui Widgets Network DBus)
-
 # Install settings
 if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     set(CMAKE_INSTALL_PREFIX /usr)
