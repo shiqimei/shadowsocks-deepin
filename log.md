@@ -66,3 +66,7 @@ sudo apt purge shadowsocks-client
 ```
 git config --global credential.helper store
 ```
+gfwlist2pac使用方法
+```shell
+gfwlist2pac -i ~/Desktop/gfwlist.txt -f ~/Desktop/proxy.pac -p "SOCKS5 127.0.0.1:1080"
+```

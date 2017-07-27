@@ -22,6 +22,7 @@
 #include <QDesktopServices>
 #include <QDesktopWidget>
 #include <QClipboard>
+#include <QDesktopServices>
 #include "UriHelper.h"
 using QSS::Controller;
 using QSS::Profile;

@@ -186,12 +186,33 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
         setAutoProxy();
     });
     connect(editLocalPacFileAction,&QAction::triggered,[=](){
-       QFileDialog* fileDialog = new QFileDialog();
-        fileDialog->setDirectory(tr("%1/.ss").arg(QDir::homePath()));
+//       QFileDialog* fileDialog = new QFileDialog();
+//        fileDialog->setDirectory(tr("%1/.ss").arg(QDir::homePath()));
         QString path=tr("%1/.ss/autoproxy.pac").arg(QDir::homePath());
         qDebug()<<"path"<<path;
-        fileDialog->selectFile(path);
-        fileDialog->show();
+        QDesktopServices::openUrl(QUrl(tr("file:///%1").arg(path)));
+//        fileDialog->selectFile(path);
+//        fileDialog->show();
+    });
+    connect(editUserRulesForGFWListAction,&QAction::triggered,[=](){
+//        QFileDialog* fileDialog = new QFileDialog();
+//        fileDialog->setDirectory(tr("%1/.ss").arg(QDir::homePath()));
+        QString path=tr("%1/.ss/user-rule.txt").arg(QDir::homePath());
+        qDebug()<<"path"<<path;
+        QDesktopServices::openUrl(QUrl(tr("file:///%1").arg(path)));
+//        fileDialog->selectFile(path);
+//        fileDialog->show();
+    });
+    connect(editOnlinePacUrlAction,&QAction::triggered,[=](){
+
+        EditOnlinePacUrlDialog dialog(pacConfig.onlineUrl);
+        int ret = dialog.exec();
+        if(ret==QDialog::Accepted){
+            pacConfig.onlineUrl=dialog.getOnlinePacUrl();
+            if(!pacConfig.is_local){
+                setAutoProxy();
+            }
+        }
     });
     connect(shareServerConfigurationAction,&QAction::triggered,[=](){
 #ifdef QT_DEBUG
