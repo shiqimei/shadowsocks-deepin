@@ -24,6 +24,9 @@ public:
 signals:
 
     void finished();
+
+private:
+    QSet<QString> set;
 };
 
 

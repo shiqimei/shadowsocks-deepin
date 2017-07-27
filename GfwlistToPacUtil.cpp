@@ -29,6 +29,14 @@ void GfwlistToPacUtil::gfwlist2pac() {
         }
         auto content = QByteArray::fromBase64(gfwlistFile.readAll());
         auto domains=parseGfwlist(content);
+        QFile userRulesFile(tr("%1/.ss/user-rule.txt").arg(QDir::homePath()));
+        if(userRulesFile.exists()){
+            if(!userRulesFile.open(QIODevice::ReadOnly|QIODevice::Text)){
+                qDebug()<<"文件打开失败";
+                exit(0);
+            }
+            domains=parseGfwlist(userRulesFile.readAll());
+        }
         QJsonObject jsonObject;
         for(auto&it:domains){
             jsonObject.insert(it,1);
@@ -48,7 +56,6 @@ void GfwlistToPacUtil::gfwlist2pac() {
 }
 
 QSet<QString> GfwlistToPacUtil::parseGfwlist(QByteArray byteArray) {
-    QSet<QString> set;
     QTextStream stream(byteArray);
     QJsonObject jsonObject;
     while (!stream.atEnd()){
