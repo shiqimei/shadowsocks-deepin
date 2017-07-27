@@ -203,6 +203,9 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
 //        fileDialog->selectFile(path);
 //        fileDialog->show();
     });
+    connect(copyLocalPacUrlAction,&QAction::triggered,[=](){
+       QApplication::clipboard()->setText(tr("file://%1").arg(pacConfig.localFilePath));
+    });
     connect(editOnlinePacUrlAction,&QAction::triggered,[=](){
 
         EditOnlinePacUrlDialog dialog(pacConfig.onlineUrl);
