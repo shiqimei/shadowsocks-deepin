@@ -117,6 +117,7 @@ void GfwlistToPacUtil::addDomainToSet(QSet<QString>& set, QString something) {
 
 QString GfwlistToPacUtil::generatePac(QString domains, QString proxy) {
 
+//    QFile file(":/abp.js");
     QFile file(":/proxy.pac");
     if(!file.exists()){
         qDebug()<<"文件不存在"<<file.fileName();
@@ -129,5 +130,6 @@ QString GfwlistToPacUtil::generatePac(QString domains, QString proxy) {
     QString proxy_content=file.readAll();
     proxy_content=proxy_content.replace("__PROXY__",proxy);
     proxy_content=proxy_content.replace("__DOMAINS__",domains);
+//    proxy_content=proxy_content.replace("__RULES__",domains);
     return proxy_content;
 }

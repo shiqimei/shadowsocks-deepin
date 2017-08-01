@@ -70,3 +70,13 @@ gfwlist2pac使用方法
 ```shell
 gfwlist2pac -i ~/Desktop/gfwlist.txt -f ~/Desktop/proxy.pac -p "SOCKS5 127.0.0.1:1080"
 ```
+
+
+    
+编辑本地PAC文件
+从GFWList更新本地PAC
+编辑GFWList的用户规则
+保护本地PAC
+复制本地PAC网址
+编辑在线PAC网址
+     

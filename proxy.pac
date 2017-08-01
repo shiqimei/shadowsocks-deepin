@@ -3,7 +3,7 @@
 
 var domains = __DOMAINS__;
 
-var proxy = __PROXY__;
+var proxy = '__PROXY__';
 
 var direct = 'DIRECT;';
 
