@@ -35,4 +35,7 @@ ShareServerConfigWidget::ShareServerConfigWidget(QWidget *parent) : QDialog(pare
         qRencodeWidget->setString(ssUri);
         lineEdit->setText(ssUri);
     });
+    if(!configs.isEmpty()){
+        listWidget->setCurrentRow(0);
+    }
 }
