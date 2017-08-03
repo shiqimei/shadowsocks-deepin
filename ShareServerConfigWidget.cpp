@@ -10,19 +10,22 @@ ShareServerConfigWidget::ShareServerConfigWidget(QWidget *parent) : QDialog(pare
     listWidget=new QListWidget(this);
     configs = ConfigUtil::readConfig();
     lineEdit=new QLineEdit();
+#ifdef QT_DEBUG
     qDebug()<<"发生了什么"<<configs.size();
+#endif
+    for(auto&config:configs){
+        listWidget->addItem(config.remarks);
+    }
     if(!configs.isEmpty()){
         ssUri=configs.first().getSsUri();
         qRencodeWidget=new QRencodeWidget(ssUri);
         lineEdit->setText(ssUri);
+        listWidget->setCurrentRow(0);
 #ifdef QT_DEBUG
         qDebug()<<"使用 ss: "<<ssUri;
 #endif
     } else{
         qRencodeWidget=new QRencodeWidget("");
-    }
-    for(auto&config:configs){
-        listWidget->addItem(config.remarks);
     }
     QGridLayout* mainLayout = new QGridLayout();
     mainLayout->addWidget(qRencodeWidget,0,0);
@@ -35,7 +38,4 @@ ShareServerConfigWidget::ShareServerConfigWidget(QWidget *parent) : QDialog(pare
         qRencodeWidget->setString(ssUri);
         lineEdit->setText(ssUri);
     });
-    if(!configs.isEmpty()){
-        listWidget->setCurrentRow(0);
-    }
 }
