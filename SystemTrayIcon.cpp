@@ -18,7 +18,8 @@ void output(Profile& profile){
 }
 SystemTrayIcon::SystemTrayIcon(QObject *parent)
         : QSystemTrayIcon(parent),
-          networkInter("com.deepin.daemon.Network", "/com/deepin/daemon/Network", QDBusConnection::sessionBus(), this) {
+          networkInter("com.deepin.daemon.Network", "/com/deepin/daemon/Network", QDBusConnection::sessionBus(), this),
+          logFile(tr("%1/.ss/log").arg(QDir::homePath())){
     setIcon(QIcon(":/icons/shadowsocks.ico"));
     menu = new QMenu("menu");
     startSystemAgentAction = new QAction("启动系统代理", this);
@@ -118,12 +119,21 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     startSystemAgentAction->setChecked(false);
     systemAgentModeMenu->setEnabled(false);
 
+
+    if(!logFile.open(QIODevice::Append|QIODevice::Text)){
+        qDebug()<<"打开日志文件失败";
+        exit(0);
+    } else{
+        logStream.setDevice(&logFile);
+    }
     controller=new Controller(true);
-        QObject::connect(controller, &QSS::Controller::debug, [](QString log) {
+        QObject::connect(controller, &QSS::Controller::debug, [=](QString log) {
         qDebug() << "[QSS::Controller::debug]" << log;
+        logStream<<QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss:zzz")<<" "<< log<<endl;
     });
-    QObject::connect(controller, &QSS::Controller::info, [](QString log) {
+    QObject::connect(controller, &QSS::Controller::info, [=](QString log) {
         qDebug() << "[QSS::Controller::info]" << log;
+        logStream<<QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss:zzz")<<" " << log<<endl;
     });
 //    editServerDialog=new EditServerDialog(profiles);
     initConfig();
@@ -243,6 +253,10 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
 //            editServerAction->trigger();
             onEditServerActionTriggered(true);
         }
+    });
+    connect(showLogAction,&QAction::triggered,[=](){
+       ShowLogWidget* showLogWidget = new ShowLogWidget();
+        showLogWidget->show();
     });
     connect(aboutAction, &QAction::triggered, []() {
         QDesktopServices::openUrl(tr("https://github.com/PikachuHy/shadowsocks-client"));

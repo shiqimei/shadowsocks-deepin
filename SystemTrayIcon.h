@@ -24,6 +24,7 @@
 #include <QClipboard>
 #include <QDesktopServices>
 #include "UriHelper.h"
+#include "ShowLogWidget.h"
 using QSS::Controller;
 using QSS::Profile;
 using NetworkInter = com::deepin::daemon::Network;
@@ -212,7 +213,8 @@ public:
     QString localAddress;
     QString localPort;
 private:
-
+    QFile logFile;
+    QTextStream logStream;
 };
 
 
