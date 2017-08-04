@@ -57,8 +57,8 @@ ui界面
 打包记录
 
 ```shell
-tar -cvzf shadowsocks-client-0.2.tar.gz shadowsocks-client-0.2
-dh_make -f ../shadowsocks-client-0.2.tar.gz -c gpl3 -s
+tar -cvzf shadowsocks-client-0.3.2.tar.gz shadowsocks-client-0.3.2
+dh_make -f ../shadowsocks-client-0.3.2.tar.gz -c gpl3 -s
 dpkg-buildpackage -us -uc -b
 sudo apt purge shadowsocks-client
 ```
