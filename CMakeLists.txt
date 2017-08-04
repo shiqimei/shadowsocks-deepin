@@ -15,32 +15,17 @@ if (NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))
 endif ()
 
 file(GLOB SRCS "*.h" "*.cpp" "*.qrc" "*.ui")
-#add_subdirectory(widgets)
 find_package(PkgConfig REQUIRED)
 find_package(Qt5 REQUIRED Core Gui Widgets Network DBus)
-pkg_check_modules(QtShadowsocks REQUIRED QtShadowsocks)
-pkg_check_modules(Botan REQUIRED botan-1.10)
-pkg_check_modules(DtkBase REQUIRED dtkbase)
-pkg_check_modules(DtkWidget REQUIRED dtkwidget)
-pkg_check_modules(DFrameworkDBus REQUIRED dframeworkdbus)
-pkg_check_modules(QRencode REQUIRED libqrencode zbar)
+pkg_check_modules(3rd_lib REQUIRED
+        QtShadowsocks
+        botan-1.10
+        dtkbase dtkwidget dframeworkdbus
+        libqrencode zbar
+        )
 add_executable(${PROJECT_NAME} ${SRCS})
-target_include_directories(${PROJECT_NAME} PUBLIC
-        ${QtShadowsocks_INCLUDE_DIRS}
-        ${Botan_INCLUDE_DIRS}
-        ${DtkBase_INCLUDE_DIRS}
-        ${DtkWidget_INCLUDE_DIRS}
-        ${DFrameworkDBus_INCLUDE_DIRS}
-        ${QRencode_INCLUDE_DIRS}
-        )
-target_link_libraries(${PROJECT_NAME}
-        ${QtShadowsocks_LIBRARIES}
-        ${Botan_LIBRARIES}
-        ${DtkBase_LIBRARIES}
-        ${DtkWidget_LIBRARIES}
-        ${DFrameworkDBus_LIBRARIES}
-        ${QRencode_LIBRARIES}
-        )
+target_include_directories(${PROJECT_NAME} PUBLIC ${3rd_lib_INCLUDE_DIRS})
+target_link_libraries(${PROJECT_NAME} ${3rd_lib_LIBRARIES})
 qt5_use_modules(${PROJECT_NAME} Core Gui Widgets Network DBus)
 # Install settings
 if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
