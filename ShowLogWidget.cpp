@@ -7,9 +7,9 @@
 #include "ShowLogWidget.h"
 #include <QScrollBar>
 ShowLogWidget::ShowLogWidget(QWidget *parent) : QWidget(parent) {
-    setMinimumWidth(600);
+    setMinimumWidth(1200);
     plainTextEdit=new QPlainTextEdit();
-    QFile logFile(QObject::tr("%1/.ss/log").arg(QDir::homePath()));
+    QFile logFile(QObject::tr("%1/.cache/pikachu/shadowsocks-client/shadowsocks-client.log").arg(QDir::homePath()));
     if(!logFile.open(QIODevice::ReadOnly|QIODevice::Text)){
         qDebug()<<"打开日志文件失败";
         exit(0);

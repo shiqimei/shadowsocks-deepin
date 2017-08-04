@@ -120,6 +120,8 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     systemAgentModeMenu->setEnabled(false);
 
 
+    detailedLogAction->setCheckable(true);
+    detailedLogAction->setChecked(true);
     if(!logFile.open(QIODevice::Append|QIODevice::Text)){
         qDebug()<<"打开日志文件失败";
         exit(0);

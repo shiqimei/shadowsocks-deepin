@@ -28,15 +28,15 @@ int main(int argc, char *argv[]) {
     DApplication::loadDXcbPlugin();
     DApplication a(argc, argv);
     a.setOrganizationName("pikachu");
-    a.setApplicationName("deepin-ss");
+    a.setApplicationName("shadowsocks-client");
     a.setApplicationVersion("0.0.1");
     qApp->setQuitOnLastWindowClosed(false);
     a.setTheme("light");
-    a.setWindowIcon(QIcon(":/icons/shadowsocks.ico"));
+    QApplication::setWindowIcon(QIcon(":/icons/shadowsocks.ico"));
     Dtk::Util::DLogManager::registerConsoleAppender();
+    Dtk::Util::DLogManager::registerFileAppender();
     SystemTrayIcon systemTrayIcon(&a);
     systemTrayIcon.show();
 
-
-    return a.exec();
+    return QApplication::exec();
 }
