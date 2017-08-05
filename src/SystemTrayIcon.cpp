@@ -313,6 +313,11 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
             onEditServerActionTriggered(true);
         }
     });
+    connect(editShortcutsAction,&QAction::triggered,[=](){
+
+        EditShortcutsWidget* widget = new EditShortcutsWidget();
+        widget->exec();
+    });
     connect(showLogAction, &QAction::triggered, [=]() {
         ShowLogWidget *showLogWidget = new ShowLogWidget();
         showLogWidget->show();

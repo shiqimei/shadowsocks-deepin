@@ -27,6 +27,7 @@
 #include <dwidget_global.h>
 #include "UriHelper.h"
 #include "ShowLogWidget.h"
+#include "EditShortcutsWidget.h"
 using QSS::Controller;
 using QSS::Profile;
 using NetworkInter = com::deepin::daemon::Network;

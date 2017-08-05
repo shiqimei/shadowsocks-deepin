@@ -24,7 +24,7 @@ pkg_check_modules(3rd_lib REQUIRED
         libqrencode zbar
         )
 include_directories(/usr/include/qwt)
-add_executable(${PROJECT_NAME} ${SRCS} src/Util.cpp src/Util.h)
+add_executable(${PROJECT_NAME} ${SRCS})
 target_include_directories(${PROJECT_NAME} PUBLIC ${3rd_lib_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} ${3rd_lib_LIBRARIES})
 qt5_use_modules(${PROJECT_NAME} Core Gui Widgets Network DBus)
