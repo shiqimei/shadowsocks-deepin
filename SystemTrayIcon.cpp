@@ -263,7 +263,9 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     connect(aboutAction, &QAction::triggered, []() {
         QDesktopServices::openUrl(tr("https://github.com/PikachuHy/shadowsocks-client"));
     });
-    connect(exitAction, &QAction::triggered, []() {
+    connect(exitAction, &QAction::triggered, [=]() {
+        setProxyMethod("none");
+        qDebug()<<"退出并取消代理";
         qApp->exit();
     });
 
