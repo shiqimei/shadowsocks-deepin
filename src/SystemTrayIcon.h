@@ -215,6 +215,8 @@ public:
     QAction* exitAction;
     QString localAddress;
     QString localPort;
+    QIcon noProxyIcon;
+    QIcon proxyIcon;
 private:
     QFile logFile;
     QTextStream logStream;

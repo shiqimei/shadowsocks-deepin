@@ -9,27 +9,32 @@
 #include "EditOnlinePacUrlDialog.h"
 #include "SsValidator.h"
 #include "GfwlistToPacUtil.h"
+
 DWIDGET_USE_NAMESPACE
 DUTIL_USE_NAMESPACE
-void output(Profile& profile){
-    qDebug()<<"profile";
-    qDebug()<<"server"<<profile.server<<profile.server_port<<profile.password;
-    qDebug()<<"local "<<profile.local_address<<profile.local_port;
-    qDebug()<<"method"<<profile.method;
-    qDebug()<<"timeout"<<profile.timeout;
+
+void output(Profile &profile) {
+    qDebug() << "profile";
+    qDebug() << "server" << profile.server << profile.server_port << profile.password;
+    qDebug() << "local " << profile.local_address << profile.local_port;
+    qDebug() << "method" << profile.method;
+    qDebug() << "timeout" << profile.timeout;
 }
+
 SystemTrayIcon::SystemTrayIcon(QObject *parent)
         : QSystemTrayIcon(parent),
           networkInter("com.deepin.daemon.Network", "/com/deepin/daemon/Network", QDBusConnection::sessionBus(), this),
-          logFile(tr("%1/.ss/log").arg(QDir::homePath())){
-    setIcon(QIcon(":/icons/shadowsocks.ico"));
+          logFile(tr("%1/.ss/log").arg(QDir::homePath())),
+          noProxyIcon(":/icons/Resources/ss24.png"),
+          proxyIcon(":/icons/Resources/shadowsocks-client.png") {
+    setIcon(noProxyIcon);
     menu = new QMenu("menu");
     startSystemAgentAction = new QAction("启动系统代理", this);
     startSystemAgentAction->setCheckable(true);
     menu->addAction(startSystemAgentAction);
 
     systemAgentModeMenu = new QMenu("系统代理模式", menu);
-    QActionGroup* systemAgentModeActionGroup=new QActionGroup(this);
+    QActionGroup *systemAgentModeActionGroup = new QActionGroup(this);
     pacModeAction = new QAction("PAC模式", this);
     globelModeAction = new QAction("全局模式", this);
     systemAgentModeActionGroup->addAction(pacModeAction);
@@ -44,7 +49,7 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     loadBalancingAction = new QAction("负载均衡", this);
     highAvailabilityAction = new QAction("高可用", this);
     accordingToStatisticsAction = new QAction("根据统计", this);
-    serverGroup=new QActionGroup(this);
+    serverGroup = new QActionGroup(this);
     editServerAction = new QAction("编辑服务器...", this);
     statisticsConfigurationAction = new QAction("统计配置...", this);
     shareServerConfigurationAction = new QAction("分享服务器配置...", this);
@@ -57,7 +62,7 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     useOnlinePacAction = new QAction("使用在线PAC", this);
     useLocalPacAction->setCheckable(true);
     useOnlinePacAction->setCheckable(true);
-    QActionGroup* pacGroup=new QActionGroup(this);
+    QActionGroup *pacGroup = new QActionGroup(this);
     pacGroup->addAction(useLocalPacAction);
     pacGroup->addAction(useOnlinePacAction);
     editLocalPacFileAction = new QAction("编辑本地PAC文件...", this);
@@ -124,142 +129,155 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
 
     detailedLogAction->setCheckable(true);
     detailedLogAction->setChecked(true);
-    if(!logFile.open(QIODevice::Append|QIODevice::Text)){
-        qDebug()<<"打开日志文件失败";
+    if (!logFile.open(QIODevice::Append | QIODevice::Text)) {
+        qDebug() << "打开日志文件失败";
         exit(0);
-    } else{
+    } else {
         logStream.setDevice(&logFile);
     }
-    controller=new Controller(true);
-        QObject::connect(controller, &QSS::Controller::debug, [=](QString log) {
+    controller = new Controller(true);
+    QObject::connect(controller, &QSS::Controller::debug, [=](QString log) {
         qDebug() << "[QSS::Controller::debug]" << log;
-        logStream<<QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss:zzz")<<" "<< log<<endl;
+        logStream << QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss:zzz") << " " << log << endl;
     });
     QObject::connect(controller, &QSS::Controller::info, [=](QString log) {
         qDebug() << "[QSS::Controller::info]" << log;
-        logStream<<QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss:zzz")<<" " << log<<endl;
+        logStream << QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss:zzz") << " " << log << endl;
+    });
+    connect(controller, &QSS::Controller::runningStateChanged, [=](bool flag) {
+        qDebug() << "QSS::Controller::runningStateChanged" << flag;
+    });
+    connect(controller, &QSS::Controller::newBytesReceived, [=](const qint64 bytes) {
+        qDebug() << "QSS::Controller::newBytesReceived" << bytes;
+    });
+    connect(controller, &QSS::Controller::newBytesSent, [=](const qint64 bytes) {
+        qDebug() << "QSS::Controller::newBytesSent" << bytes;
     });
 //    editServerDialog=new EditServerDialog(profiles);
     initConfig();
 
     connect(startSystemAgentAction, &QAction::changed, [this]() {
 
-        bool checked=startSystemAgentAction->isChecked();
+        bool checked = startSystemAgentAction->isChecked();
         if (!checked) {
             qDebug() << "取消系统代理";
             systemAgentModeMenu->setEnabled(false);
             setProxyMethod("none");
             controller->stop();
+            setIcon(noProxyIcon);
+
         } else {
             qDebug() << "启动系统代理";
             systemAgentModeMenu->setEnabled(true);
-            if (pacModeAction->isChecked()){
+            if (pacModeAction->isChecked()) {
                 setAutoProxy();
-            } else if(globelModeAction->isChecked()){
+            } else if (globelModeAction->isChecked()) {
                 setManualProxy();
-            } else{
+            } else {
                 pacModeAction->trigger();
             }
 
-            for(auto&it:serverGroup->actions()){
-                ServerAction* action= dynamic_cast<ServerAction *>(it);
+            for (auto &it:serverGroup->actions()) {
+                ServerAction *action = dynamic_cast<ServerAction *>(it);
                 controller->setup(action->profile);
                 controller->start();
             }
+            setIcon(proxyIcon);
         }
 
     });
-    connect(systemAgentModeActionGroup,&QActionGroup::triggered,[this](QAction *action){
-        if(action==pacModeAction){
+    connect(systemAgentModeActionGroup, &QActionGroup::triggered, [this](QAction *action) {
+        if (action == pacModeAction) {
             setAutoProxy();
-        } else{
+        } else {
             setManualProxy();
         }
     });
-    connect(serverGroup,&QActionGroup::triggered,this,&SystemTrayIcon::onServerActionTriggered);
-    connect(editServerAction,&QAction::triggered,this,&SystemTrayIcon::onEditServerActionTriggered);
-    connect(pacGroup,&QActionGroup::triggered,[=](QAction *action){
-        if (action==useLocalPacAction){
-            pacConfig.is_local=true;
+    connect(serverGroup, &QActionGroup::triggered, this, &SystemTrayIcon::onServerActionTriggered);
+    connect(editServerAction, &QAction::triggered, this, &SystemTrayIcon::onEditServerActionTriggered);
+    connect(pacGroup, &QActionGroup::triggered, [=](QAction *action) {
+        if (action == useLocalPacAction) {
+            pacConfig.is_local = true;
 #ifdef QT_DEBUG
-            qDebug()<<"use local pac";
+            qDebug() << "use local pac";
 #endif
-        } else{
+        } else {
 #ifdef QT_DEBUG
-            qDebug()<<"use online pac";
+            qDebug() << "use online pac";
 #endif
             EditOnlinePacUrlDialog dialog(pacConfig.onlineUrl);
             int ret = dialog.exec();
-            if(ret==QDialog::Accepted){
-                pacConfig.onlineUrl=dialog.getOnlinePacUrl();
-                pacConfig.is_local= false;
-            } else{
+            if (ret == QDialog::Accepted) {
+                pacConfig.onlineUrl = dialog.getOnlinePacUrl();
+                pacConfig.is_local = false;
+            } else {
                 useLocalPacAction->trigger();
             }
         }
         setAutoProxy();
     });
-    connect(editLocalPacFileAction,&QAction::triggered,[=](){
-        QString path=tr("%1/.ss/autoproxy.pac").arg(QDir::homePath());
-        qDebug()<<"path"<<path;
+    connect(editLocalPacFileAction, &QAction::triggered, [=]() {
+        QString path = tr("%1/.ss/autoproxy.pac").arg(QDir::homePath());
+        qDebug() << "path" << path;
         DDesktopServices::showFileItem(path);
     });
-    connect(updateLocalPacFromGFWListAction,&QAction::triggered,[=](){
-        GfwlistToPacUtil* gfwlistToPacUtil=new GfwlistToPacUtil();
+    connect(updateLocalPacFromGFWListAction, &QAction::triggered, [=]() {
+        GfwlistToPacUtil *gfwlistToPacUtil = new GfwlistToPacUtil();
         gfwlistToPacUtil->gfwlist2pac();
-        connect(gfwlistToPacUtil,&GfwlistToPacUtil::finished,[=](){
-           qDebug()<<"更新完毕";
-            QMessageBox::information(nullptr,"从GFWList更新本地PAC","从GFWList更新本地PAC成功");
+        connect(gfwlistToPacUtil, &GfwlistToPacUtil::finished, [=]() {
+            qDebug() << "更新完毕";
+            QMessageBox::information(nullptr, "从GFWList更新本地PAC", "从GFWList更新本地PAC成功");
         });
     });
-    connect(editUserRulesForGFWListAction,&QAction::triggered,[=](){
-        QString path=tr("%1/.ss/user-rule.txt").arg(QDir::homePath());
-        qDebug()<<"path"<<path;
+    connect(editUserRulesForGFWListAction, &QAction::triggered, [=]() {
+        QString path = tr("%1/.ss/user-rule.txt").arg(QDir::homePath());
+        qDebug() << "path" << path;
         DDesktopServices::showFileItem(path);
     });
-    connect(copyLocalPacUrlAction,&QAction::triggered,[=](){
-       QApplication::clipboard()->setText(tr("file://%1").arg(pacConfig.localFilePath));
+    connect(copyLocalPacUrlAction, &QAction::triggered, [=]() {
+        QApplication::clipboard()->setText(tr("file://%1").arg(pacConfig.localFilePath));
     });
-    connect(editOnlinePacUrlAction,&QAction::triggered,[=](){
+    connect(editOnlinePacUrlAction, &QAction::triggered, [=]() {
 
         EditOnlinePacUrlDialog dialog(pacConfig.onlineUrl);
         int ret = dialog.exec();
-        if(ret==QDialog::Accepted){
-            pacConfig.onlineUrl=dialog.getOnlinePacUrl();
-            if(!pacConfig.is_local){
+        if (ret == QDialog::Accepted) {
+            pacConfig.onlineUrl = dialog.getOnlinePacUrl();
+            if (!pacConfig.is_local) {
                 setAutoProxy();
             }
         }
     });
-    connect(shareServerConfigurationAction,&QAction::triggered,[=](){
+    connect(shareServerConfigurationAction, &QAction::triggered, [=]() {
 #ifdef QT_DEBUG
-        qDebug()<<"打开分享窗口";
+        qDebug() << "打开分享窗口";
 #endif
-        shareServerConfigWidget=new ShareServerConfigWidget();
+        shareServerConfigWidget = new ShareServerConfigWidget();
         shareServerConfigWidget->exec();
     });
-    connect(scanThe2DCodeOnTheScreenAction,&QAction::triggered,this,&SystemTrayIcon::onScanThe2DCodeOnTheScreenActionTriggered);
-    connect(importTheURLFromTheClipboardAction,&QAction::triggered,[=](){
-        QString uri=QApplication::clipboard()->text().trimmed();
-        qDebug()<<"uri"<<uri;
-        if(!SSValidator::validate(uri)){
+    connect(scanThe2DCodeOnTheScreenAction, &QAction::triggered, this,
+            &SystemTrayIcon::onScanThe2DCodeOnTheScreenActionTriggered);
+    connect(importTheURLFromTheClipboardAction, &QAction::triggered, [=]() {
+        QString uri = QApplication::clipboard()->text().trimmed();
+        qDebug() << "uri" << uri;
+        if (!SSValidator::validate(uri)) {
             QMessageBox::critical(
                     nullptr,
                     tr("从剪贴板导入URL错误"),
                     tr("没有找到包含有效ss uri的字符串"));
-        } else{
+        } else {
             Profile profile = QSS::Profile(uri.toUtf8());
             Config config;
-            config.profile=profile;
-            config.remarks=profile.server;
+            config.profile = profile;
+            config.remarks = profile.server;
             configs.append(config);
             ConfigUtil::saveConfig(configs);
 //            editServerAction->trigger();
             onEditServerActionTriggered(true);
         }
     });
-    connect(showLogAction,&QAction::triggered,[=](){
-       ShowLogWidget* showLogWidget = new ShowLogWidget();
+    connect(showLogAction, &QAction::triggered, [=]() {
+        ShowLogWidget *showLogWidget = new ShowLogWidget();
         showLogWidget->show();
     });
     connect(aboutAction, &QAction::triggered, []() {
@@ -267,13 +285,13 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     });
     connect(exitAction, &QAction::triggered, [=]() {
         setProxyMethod("none");
-        qDebug()<<"退出并取消代理";
+        qDebug() << "退出并取消代理";
         qApp->exit();
     });
 
 
     updateServerMenu();
-    if(!configs.isEmpty()){
+    if (!configs.isEmpty()) {
         startSystemAgentAction->trigger();
         pacModeAction->trigger();
     }
@@ -282,70 +300,70 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
 void SystemTrayIcon::setProxyMethod(QString proxyMethod) {
     QDBusPendingCallWatcher *w = new QDBusPendingCallWatcher(networkInter.SetProxyMethod(proxyMethod), this);
     QObject::connect(w, &QDBusPendingCallWatcher::finished, [=] {
-        qDebug()<<"success to set proxy method "<<proxyMethod;
+        qDebug() << "success to set proxy method " << proxyMethod;
     });
     connect(w, &QDBusPendingCallWatcher::finished, w, &QDBusPendingCallWatcher::deleteLater);
 }
 
 void SystemTrayIcon::setManualProxy() {
     setProxyMethod("manual");
-    QString type="socks";
+    QString type = "socks";
 //    QString addr="127.0.0.1";
-    QString addr=localAddress;
+    QString addr = localAddress;
 //    QString port="1080";
-    QString port=localPort;
+    QString port = localPort;
     QDBusPendingCallWatcher *w = new QDBusPendingCallWatcher(networkInter.SetProxy(type, addr, port), this);
     QObject::connect(w, &QDBusPendingCallWatcher::finished, [=] {
-        qDebug()<<"set proxy"<<type<<addr<<port;
+        qDebug() << "set proxy" << type << addr << port;
     });
 }
 
 void SystemTrayIcon::setAutoProxy() {
     setProxyMethod("auto");
-    QString proxy=pacConfig.getProxy();
+    QString proxy = pacConfig.getProxy();
     QDBusPendingCallWatcher *w = new QDBusPendingCallWatcher(networkInter.SetAutoProxy(proxy), this);
 
-    QObject::connect(w, &QDBusPendingCallWatcher::finished, [=](){
-        qDebug()<<"set auto proxy finished"<<proxy;
+    QObject::connect(w, &QDBusPendingCallWatcher::finished, [=]() {
+        qDebug() << "set auto proxy finished" << proxy;
     });
 }
 
 void SystemTrayIcon::updateServerMenu() {
 #ifdef QT_DEBUG
-    qDebug()<<"刷新服务器列表";
+    qDebug() << "刷新服务器列表";
 #endif
     serverMenu->clear();
     serverMenu->addAction(loadBalancingAction);
     serverMenu->addAction(highAvailabilityAction);
     serverMenu->addAction(accordingToStatisticsAction);
     serverMenu->addSeparator();
-    if(!configs.isEmpty()){
+    if (!configs.isEmpty()) {
         delete serverGroup;
-        QAction* t;
-        serverGroup=new QActionGroup(this);
-        connect(serverGroup,&QActionGroup::triggered,this,&SystemTrayIcon::onServerActionTriggered);
+        QAction *t;
+        serverGroup = new QActionGroup(this);
+        connect(serverGroup, &QActionGroup::triggered, this, &SystemTrayIcon::onServerActionTriggered);
         for (int i = 0; i < configs.size(); ++i) {
-            auto it=configs[i];
+            auto it = configs[i];
 #ifdef QT_DEBUG
-            qDebug()<<it.remarks;
+            qDebug() << it.remarks;
 #endif
-            ServerAction* action=new ServerAction(it.remarks,this);
-            action->profile=it.profile;
+            ServerAction *action = new ServerAction(it.remarks, this);
+            action->profile = it.profile;
             action->setCheckable(true);
             serverGroup->addAction(action);
             serverMenu->addAction(action);
-            if(i==0){
-                t=action;
+            if (i == 0) {
+                t = action;
             }
 #ifdef QT_DEBUG
             output(action->profile);
 #endif
         }
         serverMenu->addSeparator();
-        if (t!= nullptr){
+        if (t != nullptr) {
             t->trigger();
         }
-    } else{
+    } else {
         startSystemAgentAction->setEnabled(false);
     }
     serverMenu->addAction(editServerAction);
@@ -358,16 +376,16 @@ void SystemTrayIcon::updateServerMenu() {
 }
 
 void SystemTrayIcon::initConfig() {
-    configs=ConfigUtil::readConfig();
+    configs = ConfigUtil::readConfig();
     downloadPac();
 }
 
 void SystemTrayIcon::onServerActionTriggered(QAction *action) {
-    ServerAction* serverAction= dynamic_cast<ServerAction *>(action);
+    ServerAction *serverAction = dynamic_cast<ServerAction *>(action);
     controller->setup(serverAction->profile);
-    localAddress=serverAction->profile.local_address;
-    localPort=QString::number(serverAction->profile.local_port);
-    if(startSystemAgentAction->isChecked()){
+    localAddress = serverAction->profile.local_address;
+    localPort = QString::number(serverAction->profile.local_port);
+    if (startSystemAgentAction->isChecked()) {
         controller->stop();
         controller->setup(serverAction->profile);
         controller->start();
@@ -375,7 +393,7 @@ void SystemTrayIcon::onServerActionTriggered(QAction *action) {
 }
 
 void SystemTrayIcon::downloadPac() {
-    pacConfig.onlineUrl="https://raw.githubusercontent.com/PikachuHy/ss/master/autoproxy.pac";
+    pacConfig.onlineUrl = "https://raw.githubusercontent.com/PikachuHy/ss/master/autoproxy.pac";
     QFile *pacFile;//文件指针
     QNetworkReply *pacReply;
     QNetworkAccessManager *pacManager;
@@ -395,26 +413,26 @@ void SystemTrayIcon::downloadPac() {
         return;
     }
     //开始请求 下载文件
-    QUrl  serviceUrl = QUrl("https://raw.githubusercontent.com/PikachuHy/ss/master/autoproxy.pac");
+    QUrl serviceUrl = QUrl("https://raw.githubusercontent.com/PikachuHy/ss/master/autoproxy.pac");
     pacManager = new QNetworkAccessManager();
 //get方式请求 如需加密用post
-    pacReply=pacManager->get(QNetworkRequest(serviceUrl));
-    QObject::connect(pacReply,&QNetworkReply::readyRead,[=](){
-        if(pacFile){
+    pacReply = pacManager->get(QNetworkRequest(serviceUrl));
+    QObject::connect(pacReply, &QNetworkReply::readyRead, [=]() {
+        if (pacFile) {
             pacFile->write(pacReply->readAll());
         }
 
     });//数据写入
-    QObject::connect(pacReply,&QNetworkReply::finished,[=](){
+    QObject::connect(pacReply, &QNetworkReply::finished, [=]() {
         //刷新文件
         pacFile->flush();
         pacFile->close();
         pacFile->deleteLater();
         pacReply->deleteLater();
         pacManager->deleteLater();
-        pacConfig.localFilePath=fileName;
-        pacConfig.is_local=true;
-        if (!configs.isEmpty()){
+        pacConfig.localFilePath = fileName;
+        pacConfig.is_local = true;
+        if (!configs.isEmpty()) {
             useLocalPacAction->trigger();
         }
     });//请求完成
@@ -422,21 +440,24 @@ void SystemTrayIcon::downloadPac() {
 
 void SystemTrayIcon::onEditServerActionTriggered(bool isNew) {
 #ifdef QT_DEBUG
-    qDebug()<<"启动服务器配置界面";
+    qDebug() << "启动服务器配置界面";
 #endif
-    EditServerDialog* w = new EditServerDialog(isNew);
-    int ret=w->exec();
-    if(ret==QDialog::Accepted){
+    EditServerDialog *w = new EditServerDialog(isNew);
+    int ret = w->exec();
+    if (ret == QDialog::Accepted) {
         configs = ConfigUtil::readConfig();
 #ifdef QT_DEBUG
-        qDebug()<<"configs.isEmpty()"<<configs.isEmpty()<<"startSystemAgentAction->isEnabled()"<<startSystemAgentAction->isEnabled();
-        qDebug()<<"configs.isEmpty() && startSystemAgentAction->isEnabled()"<<(configs.isEmpty() && startSystemAgentAction->isEnabled());
-        qDebug()<<"!configs.isEmpty() && !startSystemAgentAction->isEnabled()"<<(!configs.isEmpty() && !startSystemAgentAction->isEnabled());
+        qDebug() << "configs.isEmpty()" << configs.isEmpty() << "startSystemAgentAction->isEnabled()"
+                 << startSystemAgentAction->isEnabled();
+        qDebug() << "configs.isEmpty() && startSystemAgentAction->isEnabled()"
+                 << (configs.isEmpty() && startSystemAgentAction->isEnabled());
+        qDebug() << "!configs.isEmpty() && !startSystemAgentAction->isEnabled()"
+                 << (!configs.isEmpty() && !startSystemAgentAction->isEnabled());
 #endif
-        if(configs.isEmpty() && startSystemAgentAction->isEnabled()){
+        if (configs.isEmpty() && startSystemAgentAction->isEnabled()) {
             startSystemAgentAction->setChecked(false);
             startSystemAgentAction->setEnabled(false);
-        } else if (!configs.isEmpty() && !startSystemAgentAction->isEnabled()){
+        } else if (!configs.isEmpty() && !startSystemAgentAction->isEnabled()) {
             startSystemAgentAction->setEnabled(true);
         }
         updateServerMenu();
@@ -456,16 +477,16 @@ void SystemTrayIcon::onEditServerActionTriggered(bool isNew) {
 //                }
 //                startSystemAgentAction->setCheckable(false);
 //            }
-        if(startSystemAgentAction->isChecked()){
+        if (startSystemAgentAction->isChecked()) {
 #ifdef QT_DEBUG
-            qDebug()<<"重新启动";
+            qDebug() << "重新启动";
 #endif
             controller->stop();
-            if (!configs.isEmpty()){
-                Profile& profile=configs.first().profile;
+            if (!configs.isEmpty()) {
+                Profile &profile = configs.first().profile;
                 controller->setup(profile);
-                localAddress=profile.local_address;
-                localPort=QString::number(profile.local_port);
+                localAddress = profile.local_address;
+                localPort = QString::number(profile.local_port);
                 controller->start();
             }
         }
@@ -484,17 +505,17 @@ void SystemTrayIcon::onScanThe2DCodeOnTheScreenActionTriggered() {
             uri = result;
         }
     }
-    qDebug()<<"扫描到二维码"<<uri;
-    if(!SSValidator::validate(uri)){
+    qDebug() << "扫描到二维码" << uri;
+    if (!SSValidator::validate(uri)) {
         QMessageBox::critical(
                 nullptr,
                 tr("未找到二维码"),
                 tr("没有找到包含有效ss uri的二维码"));
-    } else{
+    } else {
         Profile profile = QSS::Profile(uri.toUtf8());
         Config config;
-        config.profile=profile;
-        config.remarks=profile.server;
+        config.profile = profile;
+        config.remarks = profile.server;
         configs.append(config);
         ConfigUtil::saveConfig(configs);
 //            editServerAction->trigger();
