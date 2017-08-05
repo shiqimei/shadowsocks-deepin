@@ -8,7 +8,7 @@
 #include "SystemTrayIcon.h"
 #include "EditOnlinePacUrlDialog.h"
 #include "SsValidator.h"
-#include <GfwlistToPacUtil.h>
+#include "GfwlistToPacUtil.h"
 DWIDGET_USE_NAMESPACE
 DUTIL_USE_NAMESPACE
 void output(Profile& profile){

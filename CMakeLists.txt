@@ -14,7 +14,7 @@ if (NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))
     set(CMAKE_CXX_FLAGS -O3)
 endif ()
 
-file(GLOB SRCS "*.h" "*.cpp" "*.qrc" "*.ui")
+file(GLOB SRCS "src/*.h" "src/*.cpp" "*.qrc" "src/*.ui")
 find_package(PkgConfig REQUIRED)
 find_package(Qt5 REQUIRED Core Gui Widgets Network DBus)
 pkg_check_modules(3rd_lib REQUIRED
