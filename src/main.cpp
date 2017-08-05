@@ -19,6 +19,8 @@
 #include <QDesktopWidget>
 #include <QClipboard>
 #include "UriHelper.h"
+#include "Util.h"
+
 using QSS::Controller;
 using QSS::Profile;
 DWIDGET_USE_NAMESPACE

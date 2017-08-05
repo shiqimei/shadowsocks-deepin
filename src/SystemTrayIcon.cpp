@@ -9,6 +9,7 @@
 #include "EditOnlinePacUrlDialog.h"
 #include "SsValidator.h"
 #include "GfwlistToPacUtil.h"
+#include "Util.h"
 
 DWIDGET_USE_NAMESPACE
 DUTIL_USE_NAMESPACE
@@ -24,10 +25,10 @@ void output(Profile &profile) {
 SystemTrayIcon::SystemTrayIcon(QObject *parent)
         : QSystemTrayIcon(parent),
           networkInter("com.deepin.daemon.Network", "/com/deepin/daemon/Network", QDBusConnection::sessionBus(), this),
-          logFile(tr("%1/.ss/log").arg(QDir::homePath())),
-          noProxyIcon(":/icons/Resources/ss24.png"),
-          proxyIcon(":/icons/Resources/shadowsocks-client.png") {
-    setIcon(noProxyIcon);
+          logFile(tr("%1/.ss/log").arg(QDir::homePath())) {
+
+
+    setIcon(QPixmap::fromImage(Util::noProxyIconImage()));
     menu = new QMenu("menu");
     startSystemAgentAction = new QAction("启动系统代理", this);
     startSystemAgentAction->setCheckable(true);
@@ -123,6 +124,39 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     setContextMenu(menu);
 
 
+    for (int i = 0; i < maxLenth; ++i) {
+        inBytes.append(0);
+        outBytes.append(0);
+    }
+    QTimer* timer = new QTimer();
+    connect(timer,&QTimer::timeout,[=](){
+        int type = 0;
+        if(pacModeAction->isChecked()){
+            type = type | Util::Type ::Pac;
+        } else{
+            type = type | Util::Type ::Global;
+        }
+        if(inByte>0){
+            type=type | Util::Type ::In;
+        }
+        inBytes.append(inByte);
+        inByte=0;
+        if(inBytes.size()>maxLenth){
+            inBytes.pop_front();
+        }
+
+        if(outByte>0){
+            type=type|Util::Type ::Out;
+        }
+        outBytes.append(outByte);
+        outByte=0;
+       if(outBytes.size()>maxLenth){
+           outBytes.pop_front();
+       }
+        setIcon(QPixmap::fromImage(Util::proxyIconImage(type)));
+        // 如果显示流量监控窗口 触发重绘
+    });
+    timer->start(300);
     startSystemAgentAction->setChecked(false);
     systemAgentModeMenu->setEnabled(false);
 
@@ -149,9 +183,11 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     });
     connect(controller, &QSS::Controller::newBytesReceived, [=](const qint64 bytes) {
         qDebug() << "QSS::Controller::newBytesReceived" << bytes;
+        inByte+=bytes;
     });
     connect(controller, &QSS::Controller::newBytesSent, [=](const qint64 bytes) {
         qDebug() << "QSS::Controller::newBytesSent" << bytes;
+        outByte+=bytes;
     });
 //    editServerDialog=new EditServerDialog(profiles);
     initConfig();
@@ -164,15 +200,17 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
             systemAgentModeMenu->setEnabled(false);
             setProxyMethod("none");
             controller->stop();
-            setIcon(noProxyIcon);
+            setIcon(QPixmap::fromImage(Util::noProxyIconImage()));
 
         } else {
             qDebug() << "启动系统代理";
             systemAgentModeMenu->setEnabled(true);
             if (pacModeAction->isChecked()) {
                 setAutoProxy();
+                setIcon(QPixmap::fromImage(Util::proxyIconImage(Util::Type::Pac)));
             } else if (globelModeAction->isChecked()) {
                 setManualProxy();
+                setIcon(QPixmap::fromImage(Util::proxyIconImage(Util::Type::Global)));
             } else {
                 pacModeAction->trigger();
             }
@@ -182,7 +220,6 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
                 controller->setup(action->profile);
                 controller->start();
             }
-            setIcon(proxyIcon);
         }
 
     });

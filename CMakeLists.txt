@@ -24,9 +24,9 @@ pkg_check_modules(3rd_lib REQUIRED
         libqrencode zbar
         )
 include_directories(/usr/include/qwt)
-add_executable(${PROJECT_NAME} ${SRCS})
+add_executable(${PROJECT_NAME} ${SRCS} src/Util.cpp src/Util.h)
 target_include_directories(${PROJECT_NAME} PUBLIC ${3rd_lib_INCLUDE_DIRS})
-target_link_libraries(${PROJECT_NAME} ${3rd_lib_LIBRARIES} /usr/lib/libqwt-qt5.so)
+target_link_libraries(${PROJECT_NAME} ${3rd_lib_LIBRARIES})
 qt5_use_modules(${PROJECT_NAME} Core Gui Widgets Network DBus)
 # Install settings
 if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
