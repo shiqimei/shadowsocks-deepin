@@ -5,6 +5,7 @@
 #ifndef SS_SYSTEMTRAYICON_H
 #define SS_SYSTEMTRAYICON_H
 
+#include <DDesktopServices>
 #include <QApplication>
 #include <QSystemTrayIcon>
 #include <QIcon>
@@ -23,11 +24,13 @@
 #include <QDesktopWidget>
 #include <QClipboard>
 #include <QDesktopServices>
+#include <dwidget_global.h>
 #include "UriHelper.h"
 #include "ShowLogWidget.h"
 using QSS::Controller;
 using QSS::Profile;
 using NetworkInter = com::deepin::daemon::Network;
+DWIDGET_USE_NAMESPACE
 class ServerAction:public QAction{
 public:
     ServerAction(const QString &text, QObject *parent);

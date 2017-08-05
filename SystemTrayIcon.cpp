@@ -9,6 +9,8 @@
 #include "EditOnlinePacUrlDialog.h"
 #include "SsValidator.h"
 #include <GfwlistToPacUtil.h>
+DWIDGET_USE_NAMESPACE
+DUTIL_USE_NAMESPACE
 void output(Profile& profile){
     qDebug()<<"profile";
     qDebug()<<"server"<<profile.server<<profile.server_port<<profile.password;
@@ -200,7 +202,7 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     connect(editLocalPacFileAction,&QAction::triggered,[=](){
         QString path=tr("%1/.ss/autoproxy.pac").arg(QDir::homePath());
         qDebug()<<"path"<<path;
-        QDesktopServices::openUrl(QUrl(tr("file:///%1").arg(path)));
+        DDesktopServices::showFileItem(path);
     });
     connect(updateLocalPacFromGFWListAction,&QAction::triggered,[=](){
         GfwlistToPacUtil* gfwlistToPacUtil=new GfwlistToPacUtil();
@@ -213,7 +215,7 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     connect(editUserRulesForGFWListAction,&QAction::triggered,[=](){
         QString path=tr("%1/.ss/user-rule.txt").arg(QDir::homePath());
         qDebug()<<"path"<<path;
-        QDesktopServices::openUrl(QUrl(tr("file:///%1").arg(path)));
+        DDesktopServices::showFileItem(path);
     });
     connect(copyLocalPacUrlAction,&QAction::triggered,[=](){
        QApplication::clipboard()->setText(tr("file://%1").arg(pacConfig.localFilePath));
