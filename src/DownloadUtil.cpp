@@ -10,48 +10,43 @@
 #include "DownloadUtil.h"
 #include <QDebug>
 void DownloadUtil::download(QString url, QString filename) {
-    QFile *pacFile;
-    QNetworkReply *pacReply;
-    QNetworkAccessManager *pacManager;
-    QDir file;//文件夹
-    QString fileStr = QObject::tr("%1/.ss/").arg(QDir::homePath());
-    QString fileName = fileStr + "/gfwlist.txt";
+    QFile *file;
+    QNetworkReply *networkReply;
+    QNetworkAccessManager *networkAccessManager;
+    QFileInfo fileInfo(filename);
+    QDir dir = fileInfo.absoluteDir();
+
     //判断文件夹是否存在 不存在创建
-    if (!file.exists(fileStr)) {
-        file.mkpath(fileStr);
+    if (!dir.exists()) {
+        dir.mkpath(dir.path());
     }
-    pacFile = new QFile(fileName);
-    //判断文件是否可写入 不可写删除 指针赋值0
-    if (!pacFile->open(QIODevice::WriteOnly)) {
-        delete pacFile;
-        pacFile = 0;
+    file = new QFile(filename);
+    //判断文件是否可写入 不可写删除
+    if (!file->open(QIODevice::WriteOnly)) {
+        delete file;
+        file = nullptr;
         qDebug()<<"文件不可写";
         exit(0);
     }
     QUrl  serviceUrl = QUrl(url);
-    pacManager = new QNetworkAccessManager();
-    pacReply=pacManager->get(QNetworkRequest(serviceUrl));
+    networkAccessManager = new QNetworkAccessManager();
+    networkReply=networkAccessManager->get(QNetworkRequest(serviceUrl));
 #ifdef QT_DEBUG
-    qDebug()<<"下载初始化完毕";
+    qDebug()<<"下载初始化完毕"<<"准备下载"<<url;
 #endif
-    QObject::connect(pacReply,&QNetworkReply::readyRead,[=](){
-#ifdef QT_DEBUG
-//        qDebug()<<"&QNetworkReply::readyRead";
-#endif
-        if(pacFile!= nullptr){
-#ifdef QT_DEBUG
-//            qDebug()<<"写入";
-#endif
-            pacFile->write(pacReply->readAll());
+    QObject::connect(networkReply,&QNetworkReply::readyRead,[=](){
+        if(file!= nullptr){
+            file->write(networkReply->readAll());
         }
     });
-    QObject::connect(pacReply,&QNetworkReply::finished,[=](){
+    QObject::connect(networkReply,&QNetworkReply::finished,[=](){
         //刷新文件
-        pacFile->flush();
-        pacFile->close();
-        pacFile->deleteLater();
-        pacReply->deleteLater();
-        pacManager->deleteLater();
+        file->flush();
+        file->close();
+        file->deleteLater();
+        networkReply->deleteLater();
+        networkAccessManager->deleteLater();
+        qDebug()<<"下载完成";
         emit finished();
     });
 }

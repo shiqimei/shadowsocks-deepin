@@ -12,7 +12,6 @@ class DownloadUtil : public QObject {
     Q_OBJECT
 public:
     void download(QString url, QString filename);
-
 signals:
 
     void finished();

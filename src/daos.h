@@ -17,7 +17,6 @@ public:
     GuiConfig get();
 
 private:
-    void openFile();
     QFile configFile;
 };
 

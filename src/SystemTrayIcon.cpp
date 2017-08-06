@@ -11,6 +11,7 @@
 #include "GfwlistToPacUtil.h"
 #include "Util.h"
 #include "PositiveAgentWidget.h"
+#include "UpdateChecker.h"
 
 DWIDGET_USE_NAMESPACE
 DUTIL_USE_NAMESPACE
@@ -30,6 +31,7 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
 
 
     setIcon(QPixmap::fromImage(Util::noProxyIconImage()));
+    guiConfig=guiConfigDao.get();
     menu = new QMenu("menu");
     startSystemAgentAction = new QAction("启动系统代理", this);
     startSystemAgentAction->setCheckable(true);
@@ -327,6 +329,19 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
         ShowLogWidget *showLogWidget = new ShowLogWidget();
         showLogWidget->show();
     });
+    connect(checkForUpdateAction,&QAction::triggered,&updateChecker,&UpdateChecker::checkUpdate);
+    checkForUpdatesAtStartupAction->setCheckable(true);
+    checkTheBetaUpdateAction->setCheckable(true);
+    checkForUpdatesAtStartupAction->setChecked(guiConfig.autoCheckUpdate);
+    checkTheBetaUpdateAction->setChecked(guiConfig.checkPreRelease);
+    connect(checkForUpdatesAtStartupAction,&QAction::triggered,[=](bool checked){
+        guiConfig.autoCheckUpdate=checked;
+        guiConfigDao.save(guiConfig);
+    });
+    connect(checkTheBetaUpdateAction,&QAction::triggered,[=](bool checked){
+        guiConfig.checkPreRelease=checked;
+        guiConfigDao.save(guiConfig);
+    });
     connect(aboutAction, &QAction::triggered, []() {
         QDesktopServices::openUrl(tr("https://github.com/PikachuHy/shadowsocks-client"));
     });
@@ -342,6 +357,10 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
         startSystemAgentAction->trigger();
         pacModeAction->trigger();
     }
+    if(guiConfig.autoCheckUpdate){
+        checkForUpdateAction->triggered();
+    }
+
 }
 
 void SystemTrayIcon::setProxyMethod(QString proxyMethod) {

@@ -4,7 +4,10 @@
 
 #include <QtGui/QPainter>
 #include <QtCore/QMap>
+#include <QtCore/QFile>
 #include "Util.h"
+#include <QDebug>
+#include <QtCore/QDir>
 
 QImage Util::mix(QStringList list) {
     if(list.isEmpty()){
@@ -68,4 +71,35 @@ QImage Util::proxyIconImage(int type) {
     QImage image = mix(list);
     map.insert(type,image);
     return image;
+}
+
+QByteArray Util::readAllFile(QString filename) {
+    QFile file(filename);
+    if(!file.exists()){
+        qDebug()<<"文件不存在";
+        exit(0);
+    }
+    if(!file.open(QIODevice::ReadOnly|QIODevice::Text)){
+        qDebug()<<"打开文件失败";
+        exit(0);
+    }
+//    qDebug()<<"打开文件成功";
+    return file.readAll();
+}
+
+int Util::compareVersion(QString l, QString r) {
+    auto ls = l.split(".");
+    auto rs = r.split(".");
+    for (int i = 0; i < qMax(ls.length(), rs.length()); ++i) {
+        int lp = (i<ls.length())?ls[i].toInt():0;
+        int rp = (i<ls.length())?rs[i].toInt():0;
+        if(lp!=rp){
+            return lp-rp;
+        }
+    }
+    return 0;
+}
+
+QString Util::getFullpath(QString filename) {
+    return QObject::tr("%1/.ss/%2").arg(QDir::homePath()).arg(filename);
 }

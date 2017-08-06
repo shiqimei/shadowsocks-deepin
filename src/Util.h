@@ -21,6 +21,16 @@ public:
     static QImage gray(QImage image);
     static QImage noProxyIconImage();
     static QImage proxyIconImage(int type);
+    static QByteArray readAllFile(QString filename);
+
+    /**
+     * 比较两个版本的大小
+     * @param l
+     * @param r
+     * @return
+     */
+    static int compareVersion(QString l, QString r);
+    static QString getFullpath(QString filename);
 };
 
 

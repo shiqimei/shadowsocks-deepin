@@ -20,6 +20,8 @@
 #include <QClipboard>
 #include "UriHelper.h"
 #include "Util.h"
+#include "daos.h"
+#include "UpdateChecker.h"
 
 using QSS::Controller;
 using QSS::Profile;
@@ -32,7 +34,7 @@ int main(int argc, char *argv[]) {
     if(app.setSingleInstance("shadowsocks-client")){
         app.setOrganizationName("pikachu");
         app.setApplicationName("shadowsocks-client");
-        app.setApplicationVersion("0.0.1");
+        app.setApplicationVersion("0.4.0");
 
         app.setProductIcon(QPixmap::fromImage(QImage(":/icons/Resources/shadowsocks-client.png")));
         app.setProductName("Shadowsocks Client");

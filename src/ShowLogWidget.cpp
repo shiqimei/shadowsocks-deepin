@@ -6,18 +6,20 @@
 #include <QtWidgets/QVBoxLayout>
 #include "ShowLogWidget.h"
 #include <QScrollBar>
+#include <dutility.h>
+
 ShowLogWidget::ShowLogWidget(QWidget *parent) : QWidget(parent) {
     setMinimumWidth(1200);
-    plainTextEdit=new QPlainTextEdit();
+    plainTextEdit = new QPlainTextEdit();
     QFile logFile(QObject::tr("%1/.cache/pikachu/shadowsocks-client/shadowsocks-client.log").arg(QDir::homePath()));
-    if(!logFile.open(QIODevice::ReadOnly|QIODevice::Text)){
-        qDebug()<<"打开日志文件失败";
+    if (!logFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "打开日志文件失败";
         exit(0);
     }
     plainTextEdit->setPlainText(logFile.readAll());
     plainTextEdit->moveCursor(QTextCursor::End);
     plainTextEdit->setReadOnly(true);
-    QVBoxLayout* mainLayout=new QVBoxLayout();
+    QVBoxLayout *mainLayout = new QVBoxLayout();
     mainLayout->addWidget(plainTextEdit);
 //    QScrollBar* scrollBar = plainTextEdit->verticalScrollBar();
 //    if(scrollBar!= nullptr){
@@ -25,4 +27,5 @@ ShowLogWidget::ShowLogWidget(QWidget *parent) : QWidget(parent) {
 //        qDebug()<<"滑动到底部";
 //    }
     setLayout(mainLayout);
+    DUtility::moveToCenter(this);
 }

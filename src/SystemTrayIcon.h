@@ -28,6 +28,9 @@
 #include "UriHelper.h"
 #include "ShowLogWidget.h"
 #include "EditShortcutsWidget.h"
+#include "UpdateChecker.h"
+#include "daos.h"
+
 using QSS::Controller;
 using QSS::Profile;
 using NetworkInter = com::deepin::daemon::Network;
@@ -224,6 +227,9 @@ public:
 private:
     QFile logFile;
     QTextStream logStream;
+    GuiConfig guiConfig;
+    UpdateChecker updateChecker;
+    GuiConfigDao guiConfigDao;
 };
 
 

@@ -8,6 +8,11 @@
 
 #include <QtWidgets/QPlainTextEdit>
 #include <QDebug>
+#include <dwidget_global.h>
+#include <dutil_global.h>
+
+DWIDGET_USE_NAMESPACE
+        DUTIL_USE_NAMESPACE
 class ShowLogWidget: public QWidget {
 public:
     ShowLogWidget(QWidget *parent= nullptr);

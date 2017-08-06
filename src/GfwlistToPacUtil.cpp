@@ -15,10 +15,12 @@
 #include <QtCore/QJsonObject>
 #include <QtCore/QJsonDocument>
 #include "DownloadUtil.h"
+#include "Util.h"
+
 void GfwlistToPacUtil::gfwlist2pac() {
     QString GFWLIST_URL = "https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt";
     DownloadUtil* downloadUtil =new DownloadUtil();
-    downloadUtil->download(GFWLIST_URL,"gfwlist.txt");
+    downloadUtil->download(GFWLIST_URL,Util::getFullpath("gfwlist.txt"));
     QObject::connect(downloadUtil,&DownloadUtil::finished,[=](){
 
         QString gfwlistPath=QObject::tr("%1/.ss/gfwlist.txt").arg(QDir::homePath());

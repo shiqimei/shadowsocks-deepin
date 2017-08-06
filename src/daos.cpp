@@ -7,8 +7,7 @@
 #include "daos.h"
 #include <QDebug>
 GuiConfigDao::GuiConfigDao() {
-//    configFile.setFileName(QObject::tr("%1/.ss/gui-config.json").arg(QDir::homePath()));
-    configFile.setFileName("/home/pikachu/Dropbox/备份/gui-config.json");
+    configFile.setFileName(QObject::tr("%1/.ss/gui-config.json").arg(QDir::homePath()));
     if (!configFile.exists()) {
         qDebug() << "配置文件不存在,写入新的配置文件";
         QDir dir;
@@ -40,9 +39,9 @@ GuiConfig GuiConfigDao::get() {
     }
     QJsonDocument jsonDocument;
     auto json = configFile.readAll();
-    qDebug()<<"json"<<json;
+//    qDebug()<<"json"<<json;
     jsonDocument = jsonDocument.fromJson(json);
-    qDebug()<<"json doc"<<jsonDocument.toJson();
+//    qDebug()<<"json doc"<<jsonDocument.toJson();
     GuiConfig guiConfig;
     guiConfig.fromJsonObject(jsonDocument.object());
     configFile.close();

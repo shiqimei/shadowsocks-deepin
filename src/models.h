@@ -12,6 +12,8 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QDebug>
+#include "Util.h"
+
 class JsonObjectSerializable{
 public:
     virtual QJsonObject toJsonObject() = 0;
@@ -169,6 +171,7 @@ public:
             for(auto&it:configs){
 //                qDebug()<<it.toJsonObject();
                 jsonArray.append(it.toJsonObject());
+
             }
             jsonObject.insert("configs",jsonArray);
         }
@@ -291,4 +294,6 @@ public:
      */
     Hotkey hotkey;
 };
+
+
 #endif //SHADOWSOCKS_CLIENT_MODELS_H
