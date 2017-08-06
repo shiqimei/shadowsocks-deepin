@@ -10,6 +10,7 @@
 #include "SsValidator.h"
 #include "GfwlistToPacUtil.h"
 #include "Util.h"
+#include "PositiveAgentWidget.h"
 
 DWIDGET_USE_NAMESPACE
 DUTIL_USE_NAMESPACE
@@ -113,10 +114,10 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     helpMenu->addAction(showLogAction);
     helpMenu->addAction(detailedLogAction);
     helpMenu->addMenu(updateMenu);
+    aboutAction = new QAction("关于", this);
+    helpMenu->addAction(aboutAction);
     menu->addMenu(helpMenu);
 
-    aboutAction = new QAction("关于", this);
-    menu->addAction(aboutAction);
 
     exitAction = new QAction("退出", this);
     menu->addAction(exitAction);
@@ -313,6 +314,10 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
             onEditServerActionTriggered(true);
         }
     });
+    connect(positiveAgentAction,&QAction::triggered,[=](){
+       PositiveAgentWidget* widget = new PositiveAgentWidget();
+        widget->exec();
+    });
     connect(editShortcutsAction,&QAction::triggered,[=](){
 
         EditShortcutsWidget* widget = new EditShortcutsWidget();
@@ -381,7 +386,7 @@ void SystemTrayIcon::updateServerMenu() {
     serverMenu->addSeparator();
     if (!configs.isEmpty()) {
         delete serverGroup;
-        QAction *t;
+        QAction *t = nullptr;
         serverGroup = new QActionGroup(this);
         connect(serverGroup, &QActionGroup::triggered, this, &SystemTrayIcon::onServerActionTriggered);
         for (int i = 0; i < configs.size(); ++i) {
