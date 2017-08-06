@@ -169,8 +169,6 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     if (!logFile.open(QIODevice::Append | QIODevice::Text)) {
         qDebug() << "打开日志文件失败";
         exit(0);
-    } else {
-        logStream.setDevice(&logFile);
     }
     controller = new Controller(true);
     QObject::connect(controller, &QSS::Controller::debug, [=](QString log) {
