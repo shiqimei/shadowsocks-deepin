@@ -226,7 +226,6 @@ public:
     int maxLenth = 12;
 private:
     QFile logFile;
-    QTextStream logStream;
     GuiConfig guiConfig;
     UpdateChecker updateChecker;
     GuiConfigDao guiConfigDao;

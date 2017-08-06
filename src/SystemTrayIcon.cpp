@@ -175,11 +175,9 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     controller = new Controller(true);
     QObject::connect(controller, &QSS::Controller::debug, [=](QString log) {
         qDebug() << "[QSS::Controller::debug]" << log;
-        logStream << QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss:zzz") << " " << log << endl;
     });
     QObject::connect(controller, &QSS::Controller::info, [=](QString log) {
         qDebug() << "[QSS::Controller::info]" << log;
-        logStream << QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss:zzz") << " " << log << endl;
     });
     connect(controller, &QSS::Controller::runningStateChanged, [=](bool flag) {
         qDebug() << "QSS::Controller::runningStateChanged" << flag;
