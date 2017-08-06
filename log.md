@@ -57,8 +57,9 @@ ui界面
 打包记录
 
 ```shell
-tar -cvzf shadowsocks-client-0.3.2.tar.gz shadowsocks-client-0.3.2
-dh_make -f ../shadowsocks-client-0.3.2.tar.gz -c gpl3 -s
+sudo apt install dh-make fakeroot cmake
+tar -cvzf shadowsocks-client-0.4.0.tar.gz shadowsocks-client-0.4.0
+dh_make -f ../shadowsocks-client-0.4.0.tar.gz -c gpl3 -s
 dpkg-buildpackage -us -uc -b
 sudo apt purge shadowsocks-client
 ```
