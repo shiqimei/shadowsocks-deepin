@@ -316,6 +316,32 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
             onEditServerActionTriggered(true);
         }
     });
+    bootAction->setCheckable(true);
+    QString bootFilename = QObject::tr("%1/.config/autostart/shadowsocks-client.desktop").arg(QDir::homePath());
+    bootAction->setChecked(QFile::exists(bootFilename));
+    connect(bootAction,&QAction::triggered,[=](bool checked){
+        QString filename = "/usr/share/applications/shadowsocks-client.desktop";
+        if(checked){
+            // 把desktop文件复制到~/.config/autostart
+            if(!QFile::exists(filename)){
+                qDebug()<<"不存在文件"<<filename;
+                exit(0);
+            }
+            if(!QFile::exists(bootFilename)){
+                if(!QFile::copy(filename,bootFilename)){
+                    qDebug()<<"复制失败";
+                    exit(0);
+                }
+            }
+        } else{
+            if(QFile::exists(bootFilename)){
+                if(!QFile::remove(bootFilename)){
+                    qDebug()<<"取消开机自启动失败";
+                    exit(0);
+                };
+            }
+        }
+    });
     connect(positiveAgentAction,&QAction::triggered,[=](){
        PositiveAgentWidget* widget = new PositiveAgentWidget();
         widget->exec();
