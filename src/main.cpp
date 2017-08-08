@@ -48,6 +48,11 @@ int main(int argc, char *argv[]) {
         Dtk::Util::DLogManager::registerFileAppender();
         SystemTrayIcon systemTrayIcon(&app);
         systemTrayIcon.show();
+        QDBusConnection connection = QDBusConnection::sessionBus();
+        if (!connection.registerService("com.deepin.dde.Launcher") ||
+            !connection.registerObject("/com/deepin/dde/Launcher", &systemTrayIcon))
+            qWarning() << "register dbus service failed";
+
         return QApplication::exec();
 
     }

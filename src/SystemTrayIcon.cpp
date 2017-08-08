@@ -15,7 +15,7 @@
 
 DWIDGET_USE_NAMESPACE
 DUTIL_USE_NAMESPACE
-
+QSettings SystemTrayIcon::APP_AUTOSTART_CACHE("deepin", "dde-launcher-app-autostart", nullptr);
 void output(Profile &profile) {
     qDebug() << "profile";
     qDebug() << "server" << profile.server << profile.server_port << profile.password;
@@ -181,11 +181,11 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
         qDebug() << "QSS::Controller::runningStateChanged" << flag;
     });
     connect(controller, &QSS::Controller::newBytesReceived, [=](const qint64 bytes) {
-        qDebug() << "QSS::Controller::newBytesReceived" << bytes;
+//        qDebug() << "QSS::Controller::newBytesReceived" << bytes;
         inByte+=bytes;
     });
     connect(controller, &QSS::Controller::newBytesSent, [=](const qint64 bytes) {
-        qDebug() << "QSS::Controller::newBytesSent" << bytes;
+//        qDebug() << "QSS::Controller::newBytesSent" << bytes;
         outByte+=bytes;
     });
 //    editServerDialog=new EditServerDialog(profiles);
@@ -314,27 +314,66 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     });
     bootAction->setCheckable(true);
     QString bootFilename = QObject::tr("%1/.config/autostart/shadowsocks-client.desktop").arg(QDir::homePath());
-    bootAction->setChecked(QFile::exists(bootFilename));
+//    bootAction->setChecked(QFile::exists(bootFilename));
+    bootAction->setChecked(appIsAutoStart());
+    fileSystemWatcher.addPath(QObject::tr("%1/.config/autostart").arg(QDir::homePath()));
+    fileSystemWatcher.addPath(bootFilename);
+    connect(&fileSystemWatcher,&QFileSystemWatcher::directoryChanged,[=](){
+        bootAction->setChecked(appIsAutoStart());
+    });
+    connect(&fileSystemWatcher,&QFileSystemWatcher::fileChanged,[=](const QString &path){
+        qDebug()<<path;
+        qDebug()<<Util::readAllFile(path);
+        bootAction->setChecked(appIsAutoStart());
+    });
+    m_startManagerInterface = new DBusStartManager(nullptr);
     connect(bootAction,&QAction::triggered,[=](bool checked){
-        QString filename = "/usr/share/applications/shadowsocks-client.desktop";
-        if(checked){
-            // 把desktop文件复制到~/.config/autostart
-            if(!QFile::exists(filename)){
-                qDebug()<<"不存在文件"<<filename;
-                exit(0);
-            }
-            if(!QFile::exists(bootFilename)){
-                if(!QFile::copy(filename,bootFilename)){
-                    qDebug()<<"复制失败";
-                    exit(0);
+        QString desktopUrl = "/usr/share/applications/shadowsocks-client.desktop";
+//        if(checked){
+//            // 把desktop文件复制到~/.config/autostart
+//            if(!QFile::exists(filename)){
+//                qDebug()<<"不存在文件"<<filename;
+//                exit(0);
+//            }
+//            if(!QFile::exists(bootFilename)){
+//                if(!QFile::copy(filename,bootFilename)){
+//                    qDebug()<<"复制失败";
+//                    exit(0);
+//                }
+//            }
+//        } else{
+//            if(QFile::exists(bootFilename)){
+//                if(!QFile::remove(bootFilename)){
+//                    qDebug()<<"取消开机自启动失败";
+//                    exit(0);
+//                };
+//            }
+//        }
+        bool m_isItemStartup = appIsAutoStart();
+        bootAction->setChecked(!m_isItemStartup);
+        if (m_isItemStartup){
+            QDBusPendingReply<bool> reply = m_startManagerInterface->RemoveAutostart(desktopUrl);
+            reply.waitForFinished();
+            if (!reply.isError()) {
+                bool ret = reply.argumentAt(0).toBool();
+                qDebug() << "remove from startup:" << ret;
+                if (ret) {
+//                emit signalManager->hideAutoStartLabel(appKey);
                 }
+            } else {
+                qCritical() << reply.error().name() << reply.error().message();
             }
-        } else{
-            if(QFile::exists(bootFilename)){
-                if(!QFile::remove(bootFilename)){
-                    qDebug()<<"取消开机自启动失败";
-                    exit(0);
-                };
+        }else{
+            QDBusPendingReply<bool> reply =  m_startManagerInterface->AddAutostart(desktopUrl);
+            reply.waitForFinished();
+            if (!reply.isError()) {
+                bool ret = reply.argumentAt(0).toBool();
+                qDebug() << "add to startup:" << ret;
+                if (ret){
+//                emit signalManager->showAutoStartLabel(appKey);
+                }
+            } else {
+                qCritical() << reply.error().name() << reply.error().message();
             }
         }
     });
@@ -610,6 +649,30 @@ void SystemTrayIcon::onScanThe2DCodeOnTheScreenActionTriggered() {
         onEditServerActionTriggered(true);
     }
 
+}
+
+bool SystemTrayIcon::appIsAutoStart() {
+    QString desktop = "/usr/share/applications/shadowsocks-client.desktop";
+//    auto w = new QDBusPendingCallWatcher(m_startManagerInterface->IsAutostart(desktop),this);
+//    connect(w,&QDBusPendingCallWatcher::finished,[=](){
+//       qDebug()<<"IsAutoStart完成";
+//    });
+//    QDBusPendingReply<bool> reply = m_startManagerInterface->IsAutostart(desktop);
+//    reply.waitForFinished();
+//    APP_AUTOSTART_CACHE.setValue(desktop, reply.value());
+    qDebug()<<APP_AUTOSTART_CACHE.contains(desktop)<<APP_AUTOSTART_CACHE.value(desktop).toBool();
+    if (APP_AUTOSTART_CACHE.contains(desktop))
+        return APP_AUTOSTART_CACHE.value(desktop).toBool();
+/*
+
+    const bool isAutoStart = m_startManagerInterface->IsAutostart(desktop).value();
+
+    qDebug()<<"isAutoStart"<<isAutoStart;
+    APP_AUTOSTART_CACHE.setValue(desktop, isAutoStart);
+*/
+
+//    return isAutoStart;
+    return false;
 }
 
 ServerAction::ServerAction(const QString &text, QObject *parent) : QAction(text, parent) {

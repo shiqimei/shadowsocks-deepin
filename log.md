@@ -58,8 +58,8 @@ ui界面
 
 ```shell
 sudo apt install dh-make fakeroot cmake
-tar -cvzf shadowsocks-client-0.4.0.tar.gz shadowsocks-client-0.4.0
-dh_make -f ../shadowsocks-client-0.4.0.tar.gz -c gpl3 -s
+tar -cvzf shadowsocks-client-0.4.1.tar.gz shadowsocks-client-0.4.1
+dh_make -f ../shadowsocks-client-0.4.1.tar.gz -c gpl3 -s
 dpkg-buildpackage -us -uc -b
 sudo apt purge shadowsocks-client
 ```
@@ -72,12 +72,19 @@ gfwlist2pac使用方法
 gfwlist2pac -i ~/Desktop/gfwlist.txt -f ~/Desktop/proxy.pac -p "SOCKS5 127.0.0.1:1080"
 ```
 
+字符串搜索
 
-    
+```shell
+find -type f -name '*.cpp'|xargs grep 'APP_AUTOSTART_CACHE'
+```
+
+updatedb
+
 编辑本地PAC文件
 从GFWList更新本地PAC
 编辑GFWList的用户规则
 保护本地PAC
 复制本地PAC网址
 编辑在线PAC网址
-     
+​     
+
