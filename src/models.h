@@ -14,45 +14,52 @@
 #include <QDebug>
 #include "Util.h"
 
-class JsonObjectSerializable{
+class JsonObjectSerializable {
 public:
     virtual QJsonObject toJsonObject() = 0;
+
     virtual void fromJsonObject(QJsonObject jsonObject)=0;
 };
+
 using QSS::Profile;
-class Config:public JsonObjectSerializable{
+
+class Config : public JsonObjectSerializable {
 public:
     Profile profile;
     QString remarks;
-    QString getSsUri(){
+
+    QString getSsUri() {
         // ss://method:password@hostname:port
-        QString plaintext=QObject::tr("%1:%2@%3:%4")
+        QString plaintext = QObject::tr("%1:%2@%3:%4")
                 .arg(profile.method).arg(profile.password)
                 .arg(profile.server).arg(profile.server_port);
-        QString ciphertext=QObject::tr("ss://%1#%2").arg(QString(plaintext.toLocal8Bit().toBase64())).arg(remarks);
+        QString ciphertext = QObject::tr("ss://%1#%2").arg(QString(plaintext.toLocal8Bit().toBase64())).arg(remarks);
         return ciphertext;
     }
 
     QJsonObject toJsonObject() override {
         QJsonObject jsonObject;
-        jsonObject.insert("server",profile.server);
-        jsonObject.insert("server_port",profile.server_port);
-        jsonObject.insert("password",profile.password);
-        jsonObject.insert("method",profile.method);
-        jsonObject.insert("timeout",profile.timeout);
-        jsonObject.insert("remarks",remarks);
+        jsonObject.insert("server", profile.server);
+        jsonObject.insert("server_port", profile.server_port);
+        jsonObject.insert("password", profile.password);
+        jsonObject.insert("method", profile.method);
+        jsonObject.insert("timeout", profile.timeout);
+        jsonObject.insert("remarks", remarks);
         return jsonObject;
     }
+
     void fromJsonObject(QJsonObject jsonObject) override {
         profile.server = jsonObject.value("server").toString("");
-        profile.server_port= static_cast<quint16>(jsonObject.value("server_port").toInt(0));
-        profile.password=jsonObject.value("password").toString("");
-        profile.method=jsonObject.value("method").toString("");
-        profile.timeout=jsonObject.value("timeout").toInt(0);
-        remarks=jsonObject.value("remarks").toString("");
+        profile.server_port = static_cast<quint16>(jsonObject.value("server_port").toInt(0));
+//        profile.password=jsonObject.value("password").toString("");
+        profile.method = jsonObject.value("method").toString("");
+        profile.timeout = jsonObject.value("timeout").toInt(0);
+        qDebug() << profile.server << jsonObject.value("server").toString("");
+        remarks = jsonObject.value("remarks").toString("");
     }
 };
-class Proxy:public JsonObjectSerializable{
+
+class Proxy : public JsonObjectSerializable {
 public:
     /**
      * 是否使用正向代理
@@ -76,42 +83,44 @@ public:
      * 超时(秒)
      */
     int proxyTimeout;
+
     QJsonObject toJsonObject() override {
         QJsonObject jsonObject;
-        jsonObject.insert("useProxy",useProxy);
-        jsonObject.insert("proxyType",proxyPort);
-        jsonObject.insert("proxyServer",proxyPort);
-        jsonObject.insert("proxyTimeout",proxyTimeout);
+        jsonObject.insert("useProxy", useProxy);
+        jsonObject.insert("proxyType", proxyPort);
+        jsonObject.insert("proxyServer", proxyPort);
+        jsonObject.insert("proxyTimeout", proxyTimeout);
         return jsonObject;
     }
 
     void fromJsonObject(QJsonObject jsonObject) override {
-        useProxy=jsonObject.value("useProxy").toBool();
-        proxyPort=jsonObject.value("proxyPort").toInt();
-        proxyServer=jsonObject.value("proxyServer").toString();
-        proxyTimeout=jsonObject.value("proxyTimeout").toInt();
+        useProxy = jsonObject.value("useProxy").toBool();
+        proxyPort = jsonObject.value("proxyPort").toInt();
+        proxyServer = jsonObject.value("proxyServer").toString();
+        proxyTimeout = jsonObject.value("proxyTimeout").toInt();
     }
 };
-class LogViewer:public JsonObjectSerializable{
+
+class LogViewer : public JsonObjectSerializable {
 public:
     QJsonObject toJsonObject() override {
         QJsonObject jsonObject;
-        jsonObject.insert("topMost",topMost);
-        jsonObject.insert("wrapText",wrapText);
-        jsonObject.insert("toolbarShown",toolbarShown);
-        jsonObject.insert("Font",font);
-        jsonObject.insert("TextColor",textColor);
-        jsonObject.insert("BackgroundColor",backgroundColor);
+        jsonObject.insert("topMost", topMost);
+        jsonObject.insert("wrapText", wrapText);
+        jsonObject.insert("toolbarShown", toolbarShown);
+        jsonObject.insert("Font", font);
+        jsonObject.insert("TextColor", textColor);
+        jsonObject.insert("BackgroundColor", backgroundColor);
         return jsonObject;
     }
 
     void fromJsonObject(QJsonObject jsonObject) override {
-        topMost=jsonObject.value("topMost").toBool();
-        wrapText=jsonObject.value("wrapText").toBool();
-        toolbarShown=jsonObject.value("toolbarShown").toBool();
-        font=jsonObject.value("Font").toString();
-        textColor=jsonObject.value("TextColor").toString();
-        backgroundColor=jsonObject.value("BackgroundColor").toString();
+        topMost = jsonObject.value("topMost").toBool();
+        wrapText = jsonObject.value("wrapText").toBool();
+        toolbarShown = jsonObject.value("toolbarShown").toBool();
+        font = jsonObject.value("Font").toString();
+        textColor = jsonObject.value("TextColor").toString();
+        backgroundColor = jsonObject.value("BackgroundColor").toString();
     }
 
     bool topMost;
@@ -130,29 +139,30 @@ public:
      */
     QString textColor;
 };
+
 /**
  * json 首字母全是大写
  */
-class Hotkey:public JsonObjectSerializable{
+class Hotkey : public JsonObjectSerializable {
 public:
     QJsonObject toJsonObject() override {
         QJsonObject jsonObject;
-        jsonObject.insert("SwitchSystemProxy",switchSystemProxy);
-        jsonObject.insert("SwitchSystemProxyMode",switchSystemProxyMode);
-        jsonObject.insert("SwitchAllowLan",switchAllowLan);
-        jsonObject.insert("ShowLogs",showLogs);
-        jsonObject.insert("ServerMoveUp",serverMoveUp);
-        jsonObject.insert("ServerMoveDown",serverMoveDown);
+        jsonObject.insert("SwitchSystemProxy", switchSystemProxy);
+        jsonObject.insert("SwitchSystemProxyMode", switchSystemProxyMode);
+        jsonObject.insert("SwitchAllowLan", switchAllowLan);
+        jsonObject.insert("ShowLogs", showLogs);
+        jsonObject.insert("ServerMoveUp", serverMoveUp);
+        jsonObject.insert("ServerMoveDown", serverMoveDown);
         return jsonObject;
     }
 
     void fromJsonObject(QJsonObject jsonObject) override {
-        switchSystemProxy     = jsonObject.value("SwitchSystemProxy").toString();
+        switchSystemProxy = jsonObject.value("SwitchSystemProxy").toString();
         switchSystemProxyMode = jsonObject.value("SwitchSystemProxyMode").toString();
-        switchAllowLan        = jsonObject.value("SwitchAllowLan").toString();
-        showLogs              = jsonObject.value("ShowLogs").toString();
-        serverMoveUp          = jsonObject.value("ServerMoveUp").toString();
-        serverMoveDown        = jsonObject.value("ServerMoveDown").toString();
+        switchAllowLan = jsonObject.value("SwitchAllowLan").toString();
+        showLogs = jsonObject.value("ShowLogs").toString();
+        serverMoveUp = jsonObject.value("ServerMoveUp").toString();
+        serverMoveDown = jsonObject.value("ServerMoveDown").toString();
     }
 
     QString switchSystemProxy;
@@ -162,62 +172,64 @@ public:
     QString serverMoveUp;
     QString serverMoveDown;
 };
-class GuiConfig : public JsonObjectSerializable{
+
+class GuiConfig : public JsonObjectSerializable {
 public:
     QJsonObject toJsonObject() override {
         QJsonObject jsonObject;
         {
             QJsonArray jsonArray;
-            for(auto&it:configs){
+            for (auto &it:configs) {
 //                qDebug()<<it.toJsonObject();
                 jsonArray.append(it.toJsonObject());
 
             }
-            jsonObject.insert("configs",jsonArray);
+            jsonObject.insert("configs", jsonArray);
         }
-        jsonObject.insert("strategy",strategy);
-        jsonObject.insert("index",index);
-        jsonObject.insert("global",global);
-        jsonObject.insert("enabled",enabled);
-        jsonObject.insert("enabled",enabled);
-        jsonObject.insert("shareOverLan",shareOverLan);
-        jsonObject.insert("localPort",localPort);
-        jsonObject.insert("pacUrl",pacUrl);
-        jsonObject.insert("useOnlinePac",useOnlinePac);
-        jsonObject.insert("secureLocalPac",secureLocalPac);
-        jsonObject.insert("availabilityStatistics",availabilityStatistics);
-        jsonObject.insert("autoCheckUpdate",autoCheckUpdate);
-        jsonObject.insert("checkPreRelease",checkPreRelease);
-        jsonObject.insert("isVerboseLogging",isVerboseLogging);
-        jsonObject.insert("proxy",proxy.toJsonObject());
-        jsonObject.insert("logViewer",logViewer.toJsonObject());
-        jsonObject.insert("hotkey",hotkey.toJsonObject());
+        jsonObject.insert("strategy", strategy);
+        jsonObject.insert("index", index);
+        jsonObject.insert("global", global);
+        jsonObject.insert("enabled", enabled);
+        jsonObject.insert("enabled", enabled);
+        jsonObject.insert("shareOverLan", shareOverLan);
+        jsonObject.insert("localPort", localPort);
+        jsonObject.insert("pacUrl", pacUrl);
+        jsonObject.insert("useOnlinePac", useOnlinePac);
+        jsonObject.insert("secureLocalPac", secureLocalPac);
+        jsonObject.insert("availabilityStatistics", availabilityStatistics);
+        jsonObject.insert("autoCheckUpdate", autoCheckUpdate);
+        jsonObject.insert("checkPreRelease", checkPreRelease);
+        jsonObject.insert("isVerboseLogging", isVerboseLogging);
+        jsonObject.insert("proxy", proxy.toJsonObject());
+        jsonObject.insert("logViewer", logViewer.toJsonObject());
+        jsonObject.insert("hotkey", hotkey.toJsonObject());
         return jsonObject;
     }
 
     void fromJsonObject(QJsonObject jsonObject) override {
         {
             QJsonArray jsonArray = jsonObject.value("configs").toArray();
-            for(auto it:jsonArray){
+            for (auto it:jsonArray) {
                 Config config;
                 config.fromJsonObject(it.toObject());
-                configs.append(config);
+                qDebug() << config.profile.server;
+//                configs.append(config);
             }
         }
 
-        strategy                =jsonObject.value("strategy").toString();
-        index                   =jsonObject.value("index").toInt();
-        global                  =jsonObject.value("global").toBool();
-        enabled                 =jsonObject.value("enabled").toBool();
-        shareOverLan            =jsonObject.value("shareOverLan").toBool();
-        localPort               =jsonObject.value("localPort").toInt();
-        pacUrl                  =jsonObject.value("pacUrl").toString();
-        useOnlinePac            =jsonObject.value("useOnlinePac").toBool();
-        secureLocalPac          =jsonObject.value("secureLocalPac").toBool();
-        availabilityStatistics  =jsonObject.value("availabilityStatistics").toBool();
-        autoCheckUpdate         =jsonObject.value("autoCheckUpdate").toBool();
-        checkPreRelease         =jsonObject.value("checkPreRelease").toBool();
-        isVerboseLogging        =jsonObject.value("isVerboseLogging").toBool();
+        strategy = jsonObject.value("strategy").toString();
+        index = jsonObject.value("index").toInt();
+        global = jsonObject.value("global").toBool();
+        enabled = jsonObject.value("enabled").toBool();
+        shareOverLan = jsonObject.value("shareOverLan").toBool();
+        localPort = jsonObject.value("localPort").toInt();
+        pacUrl = jsonObject.value("pacUrl").toString();
+        useOnlinePac = jsonObject.value("useOnlinePac").toBool();
+        secureLocalPac = jsonObject.value("secureLocalPac").toBool();
+        availabilityStatistics = jsonObject.value("availabilityStatistics").toBool();
+        autoCheckUpdate = jsonObject.value("autoCheckUpdate").toBool();
+        checkPreRelease = jsonObject.value("checkPreRelease").toBool();
+        isVerboseLogging = jsonObject.value("isVerboseLogging").toBool();
 
         proxy.fromJsonObject(jsonObject.value("proxy").toObject());
         logViewer.fromJsonObject(jsonObject.value("logViewer").toObject());

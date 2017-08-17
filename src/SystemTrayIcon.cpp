@@ -12,7 +12,6 @@
 #include "Util.h"
 #include "PositiveAgentWidget.h"
 #include "UpdateChecker.h"
-
 DWIDGET_USE_NAMESPACE
 DUTIL_USE_NAMESPACE
 QSettings SystemTrayIcon::APP_AUTOSTART_CACHE("deepin", "dde-launcher-app-autostart", nullptr);
@@ -27,12 +26,14 @@ void output(Profile &profile) {
 SystemTrayIcon::SystemTrayIcon(QObject *parent)
         : QSystemTrayIcon(parent),
           networkInter("com.deepin.daemon.Network", "/com/deepin/daemon/Network", QDBusConnection::sessionBus(), this),
-          logFile(tr("%1/.ss/log").arg(QDir::homePath())) {
-
-
+          logFile(tr("%1/.ss/log").arg(QDir::homePath())){
     setIcon(QPixmap::fromImage(Util::noProxyIconImage()));
+#if 1
     guiConfig=guiConfigDao.get();
     menu = new QMenu("menu");
+    connect(menu,&QMenu::triggered,[](){
+       qDebug()<<"menu tri";
+    });
     startSystemAgentAction = new QAction("启动系统代理", this);
     startSystemAgentAction->setCheckable(true);
     menu->addAction(startSystemAgentAction);
@@ -223,6 +224,7 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
 
     });
     connect(systemAgentModeActionGroup, &QActionGroup::triggered, [this](QAction *action) {
+
         if (action == pacModeAction) {
             setAutoProxy();
         } else {
@@ -315,7 +317,7 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     bootAction->setCheckable(true);
     QString bootFilename = QObject::tr("%1/.config/autostart/shadowsocks-client.desktop").arg(QDir::homePath());
 //    bootAction->setChecked(QFile::exists(bootFilename));
-    bootAction->setChecked(appIsAutoStart());
+//    bootAction->setChecked(appIsAutoStart());
     fileSystemWatcher.addPath(QObject::tr("%1/.config/autostart").arg(QDir::homePath()));
     fileSystemWatcher.addPath(bootFilename);
     connect(&fileSystemWatcher,&QFileSystemWatcher::directoryChanged,[=](){
@@ -421,7 +423,7 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     if(guiConfig.autoCheckUpdate){
         checkForUpdateAction->triggered();
     }
-
+#endif
 }
 
 void SystemTrayIcon::setProxyMethod(QString proxyMethod) {
@@ -660,9 +662,9 @@ bool SystemTrayIcon::appIsAutoStart() {
 //    QDBusPendingReply<bool> reply = m_startManagerInterface->IsAutostart(desktop);
 //    reply.waitForFinished();
 //    APP_AUTOSTART_CACHE.setValue(desktop, reply.value());
-    qDebug()<<APP_AUTOSTART_CACHE.contains(desktop)<<APP_AUTOSTART_CACHE.value(desktop).toBool();
-    if (APP_AUTOSTART_CACHE.contains(desktop))
-        return APP_AUTOSTART_CACHE.value(desktop).toBool();
+//    qDebug()<<APP_AUTOSTART_CACHE.contains(desktop)<<APP_AUTOSTART_CACHE.value(desktop).toBool();
+//    if (APP_AUTOSTART_CACHE.contains(desktop))
+//        return APP_AUTOSTART_CACHE.value(desktop).toBool();
 /*
 
     const bool isAutoStart = m_startManagerInterface->IsAutostart(desktop).value();

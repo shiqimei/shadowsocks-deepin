@@ -39,12 +39,13 @@ Download the [latest release.](https://github.com/PikachuHy/deepin-shadowsocks-c
 [CLion 2017.2](https://www.jetbrains.com/clion/) & [Qt 5.6](https://www.qt.io/) are required.
 
 ```shell
-sudo apt install qt5-default
-sudo apt install libqtshadowsocks-dev
-sudo apt install libssl-dev libbotan1.10-dev
-sudo apt install libdtkbase-dev libdtkwidget-dev
-sudo apt install libdframeworkdbus-dev
-sudo apt install libqrencode-dev libzbar-dev
+sudo apt update 
+sudo apt install qt5-default -y
+sudo apt install libqtshadowsocks-dev -y
+sudo apt install libssl-dev libbotan1.10-dev -y
+sudo apt install libdtkbase-dev libdtkwidget-dev -y
+sudo apt install libdframeworkdbus-dev -y
+sudo apt install libqrencode-dev libzbar-dev -y
 
 cd shadowsocks-client
 mkdir build && cd build

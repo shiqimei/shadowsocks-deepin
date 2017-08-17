@@ -9,6 +9,7 @@
 #include <QFile>
 #include <QJsonDocument>
 #include "models.h"
+#include "global.h"
 class GuiConfigDao{
 public:
     GuiConfigDao();
@@ -19,5 +20,7 @@ public:
 private:
     QFile configFile;
 };
-
+//#define globalGuiConfigDao Singleton<GuiConfigDao>::instance()
+//globalGuiConfigDao;
+//template <GuiConfigDao> Singleton<GuiConfigDao>::instance();
 #endif //SHADOWSOCKS_CLIENT_DAOS_H
