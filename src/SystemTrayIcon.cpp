@@ -5,6 +5,7 @@
 #include <QtNetwork/QNetworkReply>
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QFileDialog>
+#include <dbusinterface/DBusStartManager.h>
 #include "SystemTrayIcon.h"
 #include "EditOnlinePacUrlDialog.h"
 #include "SsValidator.h"
@@ -12,9 +13,10 @@
 #include "Util.h"
 #include "PositiveAgentWidget.h"
 #include "UpdateChecker.h"
+#include "DownloadUtil.h"
+
 DWIDGET_USE_NAMESPACE
 DUTIL_USE_NAMESPACE
-QSettings SystemTrayIcon::APP_AUTOSTART_CACHE("deepin", "dde-launcher-app-autostart", nullptr);
 void output(Profile &profile) {
     qDebug() << "profile";
     qDebug() << "server" << profile.server << profile.server_port << profile.password;
@@ -314,46 +316,12 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
             onEditServerActionTriggered(true);
         }
     });
+    m_startManagerInterface = new DBusStartManager(this);
     bootAction->setCheckable(true);
-    QString bootFilename = QObject::tr("%1/.config/autostart/shadowsocks-client.desktop").arg(QDir::homePath());
-//    bootAction->setChecked(QFile::exists(bootFilename));
-//    bootAction->setChecked(appIsAutoStart());
-    fileSystemWatcher.addPath(QObject::tr("%1/.config/autostart").arg(QDir::homePath()));
-    fileSystemWatcher.addPath(bootFilename);
-    connect(&fileSystemWatcher,&QFileSystemWatcher::directoryChanged,[=](){
-        bootAction->setChecked(appIsAutoStart());
-    });
-    connect(&fileSystemWatcher,&QFileSystemWatcher::fileChanged,[=](const QString &path){
-        qDebug()<<path;
-        qDebug()<<Util::readAllFile(path);
-        bootAction->setChecked(appIsAutoStart());
-    });
-    m_startManagerInterface = new DBusStartManager(nullptr);
+    QString desktopUrl = "/usr/share/applications/shadowsocks-client.desktop";
+    bootAction->setChecked(m_startManagerInterface->IsAutostart(desktopUrl).value());
     connect(bootAction,&QAction::triggered,[=](bool checked){
-        QString desktopUrl = "/usr/share/applications/shadowsocks-client.desktop";
-//        if(checked){
-//            // 把desktop文件复制到~/.config/autostart
-//            if(!QFile::exists(filename)){
-//                qDebug()<<"不存在文件"<<filename;
-//                exit(0);
-//            }
-//            if(!QFile::exists(bootFilename)){
-//                if(!QFile::copy(filename,bootFilename)){
-//                    qDebug()<<"复制失败";
-//                    exit(0);
-//                }
-//            }
-//        } else{
-//            if(QFile::exists(bootFilename)){
-//                if(!QFile::remove(bootFilename)){
-//                    qDebug()<<"取消开机自启动失败";
-//                    exit(0);
-//                };
-//            }
-//        }
-        bool m_isItemStartup = appIsAutoStart();
-        bootAction->setChecked(!m_isItemStartup);
-        if (m_isItemStartup){
+        if (!checked){
             QDBusPendingReply<bool> reply = m_startManagerInterface->RemoveAutostart(desktopUrl);
             reply.waitForFinished();
             if (!reply.isError()) {
@@ -652,31 +620,6 @@ void SystemTrayIcon::onScanThe2DCodeOnTheScreenActionTriggered() {
     }
 
 }
-
-bool SystemTrayIcon::appIsAutoStart() {
-    QString desktop = "/usr/share/applications/shadowsocks-client.desktop";
-//    auto w = new QDBusPendingCallWatcher(m_startManagerInterface->IsAutostart(desktop),this);
-//    connect(w,&QDBusPendingCallWatcher::finished,[=](){
-//       qDebug()<<"IsAutoStart完成";
-//    });
-//    QDBusPendingReply<bool> reply = m_startManagerInterface->IsAutostart(desktop);
-//    reply.waitForFinished();
-//    APP_AUTOSTART_CACHE.setValue(desktop, reply.value());
-//    qDebug()<<APP_AUTOSTART_CACHE.contains(desktop)<<APP_AUTOSTART_CACHE.value(desktop).toBool();
-//    if (APP_AUTOSTART_CACHE.contains(desktop))
-//        return APP_AUTOSTART_CACHE.value(desktop).toBool();
-/*
-
-    const bool isAutoStart = m_startManagerInterface->IsAutostart(desktop).value();
-
-    qDebug()<<"isAutoStart"<<isAutoStart;
-    APP_AUTOSTART_CACHE.setValue(desktop, isAutoStart);
-*/
-
-//    return isAutoStart;
-    return false;
-}
-
 ServerAction::ServerAction(const QString &text, QObject *parent) : QAction(text, parent) {
 
 }

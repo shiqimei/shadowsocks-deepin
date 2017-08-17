@@ -1,0 +1,30 @@
+     <interface name="com.deepin.StartManager">
+          <method name="AddAutostart">
+               <arg type="s" direction="in"></arg>
+               <arg type="b" direction="out"></arg>
+          </method>
+          <method name="AutostartList">
+               <arg type="as" direction="out"></arg>
+          </method>
+          <method name="IsAutostart">
+               <arg type="s" direction="in"></arg>
+               <arg type="b" direction="out"></arg>
+          </method>
+          <method name="Launch">
+               <arg type="s" direction="in"></arg>
+               <arg type="b" direction="out"></arg>
+          </method>
+          <method name="LaunchWithTimestamp">
+               <arg type="s" direction="in"></arg>
+               <arg type="u" direction="in"></arg>
+               <arg type="b" direction="out"></arg>
+          </method>
+          <method name="RemoveAutostart">
+               <arg type="s" direction="in"></arg>
+               <arg type="b" direction="out"></arg>
+          </method>
+          <signal name="AutostartChanged">
+               <arg type="s"></arg>
+               <arg type="s"></arg>
+          </signal>
+     </interface>

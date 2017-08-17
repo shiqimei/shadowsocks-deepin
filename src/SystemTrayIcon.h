@@ -30,7 +30,7 @@
 #include "EditShortcutsWidget.h"
 #include "UpdateChecker.h"
 #include "daos.h"
-#include "dbustartmanager.h"
+#include "dbusinterface/DBusStartManager.h"
 using QSS::Controller;
 using QSS::Profile;
 using NetworkInter = com::deepin::daemon::Network;
@@ -231,8 +231,6 @@ private:
     GuiConfigDao guiConfigDao;
     QFileSystemWatcher fileSystemWatcher;
     DBusStartManager* m_startManagerInterface;
-    static QSettings APP_AUTOSTART_CACHE;
-    bool appIsAutoStart();
 };
 
 
