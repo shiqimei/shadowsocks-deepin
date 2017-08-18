@@ -5,76 +5,15 @@
 #ifndef SS_SYSTEMTRAYICON_H
 #define SS_SYSTEMTRAYICON_H
 
-#include <DDesktopServices>
-#include <QApplication>
-#include <QSystemTrayIcon>
-#include <QIcon>
-#include <QAction>
-#include <QActionGroup>
-#include <QMenu>
-#include <QDebug>
-#include <com_deepin_daemon_network.h>
-#include <profile.h>
-#include <controller.h>
-#include "widget/EditServerDialog.h"
-#include "util/ConfigUtil.h"
-#include "widget/ShareServerConfigWidget.h"
-#include <QScreen>
-#include <QDesktopServices>
-#include <QDesktopWidget>
-#include <QClipboard>
-#include <QDesktopServices>
-#include <dwidget_global.h>
-#include "util/UriHelper.h"
-#include "widget/ShowLogWidget.h"
-#include "widget/EditShortcutsWidget.h"
-#include "UpdateChecker.h"
+#include <util/ConfigUtil.h>
+#include "service/impl/ServiceImpl.h"
 #include "dao/GuiConfigDao.h"
-#include "dbusinterface/DBusStartManager.h"
-using QSS::Controller;
-using QSS::Profile;
-using NetworkInter = com::deepin::daemon::Network;
-DWIDGET_USE_NAMESPACE
-class ServerAction:public QAction{
-public:
-    ServerAction(const QString &text, QObject *parent);
-    Profile profile;
-};
 class SystemTrayIcon: public QSystemTrayIcon {
     Q_OBJECT
 public:
-    SystemTrayIcon(QObject *parent);
+    explicit SystemTrayIcon(QObject *parent);
 
-private:
-    PacConfig pacConfig;
-    QList<Config> configs;
-    /**
-     * deepin提供的辅助类
-     */
-    NetworkInter networkInter;
-    /**
-     * 更改代理方法
-     * @param proxyMethod
-     * 可用参数
-     * none
-     * manual
-     * auto
-     */
-    void setProxyMethod(QString proxyMethod);
-    void setNoneProxy();
-    void setManualProxy();
-    void setAutoProxy();
-    void initConfig();
-    void downloadPac();
-private slots:
-    void updateServerMenu();
-    void onServerActionTriggered(QAction* action);
-    void onEditServerActionTriggered(bool isNew= false);
-    void onScanThe2DCodeOnTheScreenActionTriggered();
-public:
-    ShareServerConfigWidget* shareServerConfigWidget;
     Controller* controller;
-    EditServerDialog* editServerDialog;
     QMenu* menu;
     QActionGroup* serverGroup;
     /**
@@ -217,20 +156,35 @@ public:
      * 退出
      */
     QAction* exitAction;
-    QString localAddress;
-    QString localPort;
     QVector<int > inBytes;
     QList<int > outBytes;
     int inByte = 0;
     int outByte = 0;
     int maxLenth = 12;
 private:
-    QFile logFile;
+    PacConfig pacConfig;
+    QList<Config> configs;
     GuiConfig guiConfig;
     UpdateChecker updateChecker;
     GuiConfigDao *guiConfigDao;
-    QFileSystemWatcher fileSystemWatcher;
-    DBusStartManager* m_startManagerInterface;
+    ProxyService *proxyService;
+    ServerSerivce *serverSerivce;
+    PacService *pacService;
+    BootService *bootService;
+    UpdateService *updateService;
+    HotkeyService *hotkeyService;
+    LogService *logService;
+    AboutService *aboutService;
+
+    void initConfig();
+
+    void downloadPac();
+
+private slots:
+
+    void updateServerMenu();
+
+    void onServerActionTriggered(QAction *action);
 };
 
 

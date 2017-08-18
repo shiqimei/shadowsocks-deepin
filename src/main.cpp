@@ -1,20 +1,5 @@
-#include <iostream>
-#include <QtCore/QFile>
-#include <QtCore/QCoreApplication>
-#include <QSystemTrayIcon>
-#include <QMenu>
-#include <common.h>
-#include "controller.h"
+#include "common/common.h"
 #include "SystemTrayIcon.h"
-#include <DApplication>
-#include <dlabel.h>
-#include <DPlatformWindowHandle>
-#include <DLog>
-#include <dutility.h>
-
-using QSS::Controller;
-using QSS::Profile;
-DWIDGET_USE_NAMESPACE
 
 int main(int argc, char *argv[]) {
 
