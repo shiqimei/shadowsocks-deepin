@@ -23,11 +23,6 @@ public:
     virtual void editLocalPacFile()= 0;
 
     /**
-     * 从GFWList更新本地pac文件
-     */
-    virtual void updateLocalPacFromGFWList()= 0;
-
-    /**
      * 编辑用户规则
      */
     virtual void editUserRuleForGFWList()= 0;
@@ -42,7 +37,7 @@ public:
      * 复制本地pac文件地址
      * @return
      */
-    virtual QString copyLocalPacURL()= 0;
+    virtual void copyLocalPacURL()= 0;
 
     /**
      * 编辑在线pac文件地址

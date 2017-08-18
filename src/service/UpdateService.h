@@ -25,5 +25,11 @@ public:
      * @param b
      */
     virtual void setCheckPrereleaseVersion(bool b)= 0;
+
+    /**
+     * 从GFWList更新本地pac文件
+     */
+    virtual void updateLocalPacFromGFWList()= 0;
+
 };
 #endif //SHADOWSOCKS_CLIENT_UPDATESERVICE_H

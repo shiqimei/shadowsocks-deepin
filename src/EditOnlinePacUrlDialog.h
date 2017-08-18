@@ -12,7 +12,7 @@ class EditOnlinePacUrlDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit EditOnlinePacUrlDialog(QString url, QWidget *parent= nullptr);
+    explicit EditOnlinePacUrlDialog(QString url = QString(), QWidget *parent = nullptr);
     ~EditOnlinePacUrlDialog();
     QString getOnlinePacUrl();
 private:

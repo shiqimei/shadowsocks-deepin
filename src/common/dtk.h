@@ -10,4 +10,5 @@
 #include <DAboutDialog>
 #include <DLog>
 DWIDGET_USE_NAMESPACE
+DUTIL_USE_NAMESPACE
 #endif //SS_CLIENT_DTK_H
