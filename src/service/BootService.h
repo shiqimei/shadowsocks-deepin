@@ -4,10 +4,14 @@
 
 #ifndef SHADOWSOCKS_CLIENT_BOOTSERVICE_H
 #define SHADOWSOCKS_CLIENT_BOOTSERVICE_H
+
+#include "common/common.h"
+
 /**
  * 处理开机自启动相关的事情
  */
-class BootService{
+class BootService : QObject {
+Q_OBJECT
 public:
     /**
      * 是否开机自启动

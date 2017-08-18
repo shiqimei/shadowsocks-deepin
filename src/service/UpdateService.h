@@ -4,10 +4,13 @@
 
 #ifndef SHADOWSOCKS_CLIENT_UPDATESERVICE_H
 #define SHADOWSOCKS_CLIENT_UPDATESERVICE_H
+
+#include "common/common.h"
 /**
  * 负责处理更新方面的事情
  */
-class UpdateService{
+class UpdateService : public QObject {
+Q_OBJECT
 public:
     /**
      * 检查更新

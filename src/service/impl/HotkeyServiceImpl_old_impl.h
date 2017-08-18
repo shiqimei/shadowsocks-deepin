@@ -12,8 +12,7 @@
 #include "common/dtk.h"
 
 
-class HotkeyServiceImpl_old_impl : public HotkeyService, public QObject {
-Q_OBJECT
+class HotkeyServiceImpl_old_impl : public HotkeyService {
 public:
     void editHotkey() override;
 };

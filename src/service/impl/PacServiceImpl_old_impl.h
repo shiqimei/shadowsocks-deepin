@@ -12,8 +12,7 @@
 #include "common/QWidgets.h"
 #include "common/dtk.h"
 
-class PacServiceImpl_old_impl : public PacService, public QObject {
-Q_OBJECT
+class PacServiceImpl_old_impl : public PacService {
 public:
     void setUseLocalPac(bool isLocal) override;
 

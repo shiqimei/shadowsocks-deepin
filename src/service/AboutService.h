@@ -4,10 +4,14 @@
 
 #ifndef SHADOWSOCKS_CLIENT_ABOUTSERVICE_H
 #define SHADOWSOCKS_CLIENT_ABOUTSERVICE_H
+
+#include "common/common.h"
 /**
  * 处理关于
  */
-class AboutService{
+class AboutService : public QObject {
+Q_OBJECT
+public:
     /**
      * 显示关于信息
      */

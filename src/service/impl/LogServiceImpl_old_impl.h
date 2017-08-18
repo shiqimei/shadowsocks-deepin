@@ -13,8 +13,7 @@
 
 #include <widget/ShowLogWidget.h>
 
-class LogServiceImpl_old_impl : public LogService, public QObject {
-Q_OBJECT
+class LogServiceImpl_old_impl : public LogService {
 public:
 
     void showLog() override;

@@ -10,8 +10,8 @@
 
 using NetworkInter = com::deepin::daemon::Network;
 
-class ProxyServiceImpl_with_dde_api : public ProxyService, public QObject {
-Q_OBJECT
+class ProxyServiceImpl_with_dde_api : public ProxyService {
+
 public:
     explicit ProxyServiceImpl_with_dde_api(QObject *parent = nullptr);
 

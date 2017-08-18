@@ -4,10 +4,13 @@
 
 #ifndef SHADOWSOCKS_CLIENT_PROXYSERVICE_H
 #define SHADOWSOCKS_CLIENT_PROXYSERVICE_H
+
+#include "common/common.h"
 /**
  * 负责系统代理方法之间的切换
  */
-class ProxyService{
+class ProxyService : public QObject {
+Q_OBJECT
 public:
     /**
      * 代理方法

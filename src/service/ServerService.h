@@ -5,12 +5,12 @@
 #ifndef SHADOWSOCKS_CLIENT_SERVERSERVICE_H
 #define SHADOWSOCKS_CLIENT_SERVERSERVICE_H
 
-#include <QtCore/QString>
-
+#include "common/common.h"
 /**
  * 处理与服务器配置相关的事情
  */
-class ServerSerivce{
+class ServerSerivce : public QObject {
+Q_OBJECT
 public:
     /**
      * 配置服务器

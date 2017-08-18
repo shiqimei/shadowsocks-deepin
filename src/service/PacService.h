@@ -5,11 +5,12 @@
 #ifndef SHADOWSOCKS_CLIENT_PACSERVICE_H
 #define SHADOWSOCKS_CLIENT_PACSERVICE_H
 
-#include <QtCore/QString>
+#include "common/common.h"
 /**
  * 处理与pac相关的事情
  */
-class PacService{
+class PacService : public QObject {
+Q_OBJECT
 public:
     /**
      * 是否使用本地pac文件

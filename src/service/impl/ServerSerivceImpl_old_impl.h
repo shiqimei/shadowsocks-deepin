@@ -8,8 +8,8 @@
 #include "service/ServerService.h"
 #include "common/QCore.h"
 
-class ServerSerivceImpl_old_impl : public ServerSerivce, public QObject {
-Q_OBJECT
+class ServerSerivceImpl_old_impl : public ServerSerivce {
+
 public:
     explicit ServerSerivceImpl_old_impl(QObject *parent = nullptr);
 

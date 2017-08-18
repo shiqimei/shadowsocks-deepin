@@ -12,8 +12,8 @@
 #include "common/QWidgets.h"
 #include "common/dtk.h"
 
-class UpdateServiceImpl_old_impl : public UpdateService, public QObject {
-Q_OBJECT
+class UpdateServiceImpl_old_impl : public UpdateService {
+
 public:
     void checkUpdate() override;
 

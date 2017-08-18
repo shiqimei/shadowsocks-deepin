@@ -6,8 +6,6 @@
 #include "ServerSerivceImpl_old_impl.h"
 #include "widget/EditServerDialog.h"
 #include "widget/ShareServerConfigWidget.h"
-#include "common/QGui.h"
-#include "common/QWidgets.h"
 #include "util/UriHelper.h"
 
 void ServerSerivceImpl_old_impl::editServers() {
@@ -80,5 +78,5 @@ QString ServerSerivceImpl_old_impl::importURLfromClipboard() {
     }
 }
 
-ServerSerivceImpl_old_impl::ServerSerivceImpl_old_impl(QObject *parent) : QObject(parent) {
+ServerSerivceImpl_old_impl::ServerSerivceImpl_old_impl(QObject *parent) {
 }

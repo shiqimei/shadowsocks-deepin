@@ -12,7 +12,7 @@ void ProxyServiceImpl_with_dde_api::setProxyMethod(ProxyService::ProxyMethod pro
             method = "none";
             setProxyMethod(method);
             break;
-        case Manual:
+        case Manual: {
             method = "manual";
             QString type = "socks";
             QString addr = "127.0.0.1";
@@ -25,7 +25,9 @@ void ProxyServiceImpl_with_dde_api::setProxyMethod(ProxyService::ProxyMethod pro
             });
             connect(w, &QDBusPendingCallWatcher::finished, w, &QDBusPendingCallWatcher::deleteLater);
             break;
-        case Auto:
+
+        }
+        case ProxyMethod::Auto: {
             method = "auto";
             //　TODO　如果是本地pac且文件不存在，去下载
             QString proxy = QString("file:///%1/.ss/autoproxy.pac").arg(QDir::homePath());
@@ -34,6 +36,10 @@ void ProxyServiceImpl_with_dde_api::setProxyMethod(ProxyService::ProxyMethod pro
                 qDebug() << "set auto proxy finished" << proxy;
                 setProxyMethod(method);
             });
+            break;
+
+        }
+        default:
             break;
     }
 }
@@ -58,8 +64,7 @@ void ProxyServiceImpl_with_dde_api::setAllowClientsFromLAN(bool b) {
 }
 
 ProxyServiceImpl_with_dde_api::ProxyServiceImpl_with_dde_api(QObject *parent)
-        : QObject(parent),
-          networkInter("com.deepin.daemon.Network", "/com/deepin/daemon/Network", QDBusConnection::sessionBus(), this) {
+        : networkInter("com.deepin.daemon.Network", "/com/deepin/daemon/Network", QDBusConnection::sessionBus(), this) {
 }
 
 void ProxyServiceImpl_with_dde_api::setProxyMethod(QString proxyMethod) {

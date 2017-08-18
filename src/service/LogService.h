@@ -4,10 +4,13 @@
 
 #ifndef SHADOWSOCKS_CLIENT_LOGSERVICE_H
 #define SHADOWSOCKS_CLIENT_LOGSERVICE_H
+
+#include "common/common.h"
 /**
  * 负责处理日志方面的事情
  */
-class LogService{
+class LogService : public QObject {
+Q_OBJECT
 public:
     /**
      * 显示日志

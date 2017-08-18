@@ -14,8 +14,7 @@
 
 using StartManagerInter = com::deepin::StartManager;
 
-class BootServiceImpl_with_dde_api : public BootService, public QObject {
-Q_OBJECT
+class BootServiceImpl_with_dde_api : public BootService {
 public:
     bool isAutoBoot() override;
 
