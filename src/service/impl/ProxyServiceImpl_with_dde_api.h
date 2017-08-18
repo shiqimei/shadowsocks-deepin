@@ -1,0 +1,14 @@
+//
+// Created by pikachu on 17-8-18.
+//
+
+#ifndef SHADOWSOCKS_CLIENT_PROXYSERVICEIMPL_WITH_DDE_API_H
+#define SHADOWSOCKS_CLIENT_PROXYSERVICEIMPL_WITH_DDE_API_H
+
+
+class ProxyServiceImpl_with_dde_api {
+
+};
+
+
+#endif //SHADOWSOCKS_CLIENT_PROXYSERVICEIMPL_WITH_DDE_API_H

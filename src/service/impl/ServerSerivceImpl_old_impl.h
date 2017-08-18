@@ -1,0 +1,14 @@
+//
+// Created by pikachu on 17-8-18.
+//
+
+#ifndef SHADOWSOCKS_CLIENT_SERVERSERIVCEIMPL_OLD_IMPL_H
+#define SHADOWSOCKS_CLIENT_SERVERSERIVCEIMPL_OLD_IMPL_H
+
+
+class ServerSerivceImpl_old_impl {
+
+};
+
+
+#endif //SHADOWSOCKS_CLIENT_SERVERSERIVCEIMPL_OLD_IMPL_H
