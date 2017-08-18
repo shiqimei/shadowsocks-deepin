@@ -4,9 +4,12 @@
 
 #ifndef SS_CLIENT_COMMON_H
 #define SS_CLIENT_COMMON_H
-#define NEW_ACTION(actionName,actionText,menu) \
-QAction* actionName = new QAction(QStringLiteral(actionText),menu); \
-actionName->setObjectName(#actionName); \
-menu->addAction(actionName);
 #include <QDebug>
+#include "QCore.h"
+#include "QGui.h"
+#include "QWidgets.h"
+#include "QDus.h"
+#include "QNetwork.h"
+#include "Qss.h"
+#include "dtk.h"
 #endif //SS_CLIENT_COMMON_H
