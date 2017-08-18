@@ -15,6 +15,8 @@
 class UpdateServiceImpl_old_impl : public UpdateService {
 
 public:
+    UpdateServiceImpl_old_impl(QObject *parent);
+
     void checkUpdate() override;
 
     void setCheckForUpdatesAtStartup(bool b) override;

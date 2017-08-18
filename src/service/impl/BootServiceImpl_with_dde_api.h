@@ -7,15 +7,13 @@
 
 #include <service/BootService.h>
 #include <dbusinterface/DBusStartManager.h>
-#include "common/QCore.h"
-#include "common/QGui.h"
-#include "common/QWidgets.h"
-#include "common/dtk.h"
 
 using StartManagerInter = com::deepin::StartManager;
 
 class BootServiceImpl_with_dde_api : public BootService {
 public:
+    BootServiceImpl_with_dde_api(QObject *parent = nullptr);
+
     bool isAutoBoot() override;
 
     void setAutoBoot(bool b) override;

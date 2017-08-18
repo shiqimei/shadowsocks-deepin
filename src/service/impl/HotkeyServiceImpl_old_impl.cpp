@@ -7,3 +7,5 @@
 void HotkeyServiceImpl_old_impl::editHotkey() {
 
 }
+
+HotkeyServiceImpl_old_impl::HotkeyServiceImpl_old_impl(QObject *parent) : HotkeyService(parent) {}

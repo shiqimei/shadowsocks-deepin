@@ -64,7 +64,8 @@ void ProxyServiceImpl_with_dde_api::setAllowClientsFromLAN(bool b) {
 }
 
 ProxyServiceImpl_with_dde_api::ProxyServiceImpl_with_dde_api(QObject *parent)
-        : networkInter("com.deepin.daemon.Network", "/com/deepin/daemon/Network", QDBusConnection::sessionBus(), this) {
+        : ProxyService(parent),
+          networkInter("com.deepin.daemon.Network", "/com/deepin/daemon/Network", QDBusConnection::sessionBus(), this) {
 }
 
 void ProxyServiceImpl_with_dde_api::setProxyMethod(QString proxyMethod) {

@@ -11,3 +11,5 @@ void LogServiceImpl_old_impl::showLog() {
 void LogServiceImpl_old_impl::setVerboseLogging(bool b) {
 
 }
+
+LogServiceImpl_old_impl::LogServiceImpl_old_impl(QObject *parent) : LogService(parent) {}

@@ -11,7 +11,7 @@
 class ServerSerivceImpl_old_impl : public ServerSerivce {
 
 public:
-    explicit ServerSerivceImpl_old_impl(QObject *parent = nullptr);
+    explicit ServerSerivceImpl_old_impl(QObject *parent);
 
     void editServers() override;
 

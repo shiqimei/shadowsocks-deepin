@@ -16,6 +16,8 @@
 class LogServiceImpl_old_impl : public LogService {
 public:
 
+    LogServiceImpl_old_impl(QObject *parent);
+
     void showLog() override;
 
     void setVerboseLogging(bool b) override;

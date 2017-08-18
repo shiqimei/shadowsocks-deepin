@@ -12,6 +12,8 @@
 class HotkeyService : public QObject {
 Q_OBJECT
 public:
+    explicit HotkeyService(QObject *parent) : QObject(parent) {}
+
     /**
      * 编辑热键
      */

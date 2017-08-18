@@ -78,5 +78,5 @@ QString ServerSerivceImpl_old_impl::importURLfromClipboard() {
     }
 }
 
-ServerSerivceImpl_old_impl::ServerSerivceImpl_old_impl(QObject *parent) {
+ServerSerivceImpl_old_impl::ServerSerivceImpl_old_impl(QObject *parent) : ServerSerivce(parent) {
 }

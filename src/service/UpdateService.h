@@ -6,12 +6,15 @@
 #define SHADOWSOCKS_CLIENT_UPDATESERVICE_H
 
 #include "common/common.h"
+
 /**
  * 负责处理更新方面的事情
  */
 class UpdateService : public QObject {
 Q_OBJECT
 public:
+    explicit UpdateService(QObject *parent) : QObject(parent) {}
+
     /**
      * 检查更新
      */
@@ -35,4 +38,5 @@ public:
     virtual void updateLocalPacFromGFWList()= 0;
 
 };
+
 #endif //SHADOWSOCKS_CLIENT_UPDATESERVICE_H

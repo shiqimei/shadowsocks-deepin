@@ -38,3 +38,5 @@ void BootServiceImpl_with_dde_api::setAutoBoot(bool isAutoBoot) {
     }
 
 }
+
+BootServiceImpl_with_dde_api::BootServiceImpl_with_dde_api(QObject *parent) : BootService(parent) {}

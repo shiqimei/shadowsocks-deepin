@@ -12,6 +12,8 @@
 class ServerSerivce : public QObject {
 Q_OBJECT
 public:
+    explicit ServerSerivce(QObject *parent) : QObject(parent) {}
+
     /**
      * 配置服务器
      */

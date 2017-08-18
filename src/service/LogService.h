@@ -12,6 +12,8 @@
 class LogService : public QObject {
 Q_OBJECT
 public:
+    LogService(QObject *parent) : QObject(parent) {}
+
     /**
      * 显示日志
      */

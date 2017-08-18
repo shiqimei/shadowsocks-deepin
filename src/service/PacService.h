@@ -12,6 +12,8 @@
 class PacService : public QObject {
 Q_OBJECT
 public:
+    PacService(QObject *parent) : QObject(parent) {}
+
     /**
      * 是否使用本地pac文件
      * @param isLocal

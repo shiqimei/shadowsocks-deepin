@@ -6,14 +6,11 @@
 #define SHADOWSOCKS_CLIENT_HOTKEYSERVICEIMPL_OLD_IMPL_H
 
 #include <service/HotkeyService.h>
-#include "common/QCore.h"
-#include "common/QGui.h"
-#include "common/QWidgets.h"
-#include "common/dtk.h"
-
 
 class HotkeyServiceImpl_old_impl : public HotkeyService {
 public:
+    explicit HotkeyServiceImpl_old_impl(QObject *parent);
+
     void editHotkey() override;
 };
 

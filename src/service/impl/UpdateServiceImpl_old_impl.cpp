@@ -18,3 +18,5 @@ void UpdateServiceImpl_old_impl::setCheckPrereleaseVersion(bool b) {
 void UpdateServiceImpl_old_impl::updateLocalPacFromGFWList() {
 
 }
+
+UpdateServiceImpl_old_impl::UpdateServiceImpl_old_impl(QObject *parent) : UpdateService(parent) {}

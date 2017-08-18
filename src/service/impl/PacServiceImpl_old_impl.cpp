@@ -35,3 +35,5 @@ void PacServiceImpl_old_impl::editOnlinePacUrl() {
     dialog->exec();
     dialog->deleteLater();
 }
+
+PacServiceImpl_old_impl::PacServiceImpl_old_impl(QObject *parent) : PacService(parent) {}

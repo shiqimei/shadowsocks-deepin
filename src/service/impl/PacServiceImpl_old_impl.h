@@ -14,6 +14,9 @@
 
 class PacServiceImpl_old_impl : public PacService {
 public:
+
+    explicit PacServiceImpl_old_impl(QObject *parent = nullptr);
+
     void setUseLocalPac(bool isLocal) override;
 
     void editLocalPacFile() override;

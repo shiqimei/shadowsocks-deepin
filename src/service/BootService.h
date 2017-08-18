@@ -10,9 +10,11 @@
 /**
  * 处理开机自启动相关的事情
  */
-class BootService : QObject {
+class BootService : public QObject {
 Q_OBJECT
 public:
+    BootService(QObject *parent) : QObject(parent) {}
+
     /**
      * 是否开机自启动
      * @return

@@ -12,6 +12,8 @@
 class AboutService : public QObject {
 Q_OBJECT
 public:
+    AboutService(QObject *parent) : QObject(parent) {}
+
     /**
      * 显示关于信息
      */

@@ -12,6 +12,8 @@
 class ProxyService : public QObject {
 Q_OBJECT
 public:
+    ProxyService(QObject *parent) : QObject(parent) {}
+
     /**
      * 代理方法
      * 无
