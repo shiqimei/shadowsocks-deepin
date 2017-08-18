@@ -5,7 +5,7 @@
 #ifndef SHADOWSOCKS_CLIENT_PROXYSERVICEIMPL_WITH_DDE_API_H
 #define SHADOWSOCKS_CLIENT_PROXYSERVICEIMPL_WITH_DDE_API_H
 
-#include "../ProxyService.h"
+#include "service/ProxyService.h"
 #include <com_deepin_daemon_network.h>
 
 using NetworkInter = com::deepin::daemon::Network;

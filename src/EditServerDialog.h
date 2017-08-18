@@ -21,6 +21,8 @@ class EditServerDialog : public QDialog
 {
     Q_OBJECT
 
+    EditServerDialog(QWidget *parent);
+
 public:
     explicit EditServerDialog(bool isNew= false, QWidget *parent= nullptr);
     ~EditServerDialog();

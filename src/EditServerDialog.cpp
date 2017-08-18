@@ -1,16 +1,11 @@
 #include "EditServerDialog.h"
 #include "ui_EditServerDialog.h"
 #include "ConfigUtil.h"
-#include <QDebug>
-#include <QtCore/QFile>
-#include <QtCore/QDir>
-#include <QtCore/QJsonDocument>
-#include <QtCore/QJsonObject>
-#include <QtCore/QJsonArray>
 #include <cipher.h>
 
 //#define QT_DEBUG 0
 //#undef QT_DEBUG
+EditServerDialog::EditServerDialog(QWidget *parent) : EditServerDialog(false, parent) {}
 EditServerDialog::EditServerDialog(bool isNew, QWidget *parent) :
         QDialog(parent),
         ui(new Ui::EditServerDialog){

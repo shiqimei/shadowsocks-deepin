@@ -9,5 +9,7 @@
 #include <QtGui/QMouseEvent>
 #include <QtGui/QPainter>
 #include <QtGui/QIcon>
-
+#include <QtGui/QScreen>
+#include <QtGui/QDesktopServices>
+#include <QtGui/QClipboard>
 #endif //STUDY_QT_QGUI_H

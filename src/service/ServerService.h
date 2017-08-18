@@ -15,7 +15,7 @@ public:
     /**
      * 配置服务器
      */
-    virtual void editSrvers()= 0;
+    virtual void editServers()= 0;
 
     /**
      * 数据统计配置

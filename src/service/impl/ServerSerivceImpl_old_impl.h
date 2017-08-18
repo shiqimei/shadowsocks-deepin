@@ -5,9 +5,25 @@
 #ifndef SHADOWSOCKS_CLIENT_SERVERSERIVCEIMPL_OLD_IMPL_H
 #define SHADOWSOCKS_CLIENT_SERVERSERIVCEIMPL_OLD_IMPL_H
 
+#include "service/ServerService.h"
+#include "common/QCore.h"
 
-class ServerSerivceImpl_old_impl {
+class ServerSerivceImpl_old_impl : public ServerSerivce, public QObject {
+Q_OBJECT
+public:
+    explicit ServerSerivceImpl_old_impl(QObject *parent = nullptr);
 
+    void editServers() override;
+
+    void statiscsConfig() override;
+
+    void shareServerConfig() override;
+
+    QString scanQRCodeFromScreen() override;
+
+    QString importURLfromClipboard() override;
+
+private:
 };
 
 
