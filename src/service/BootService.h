@@ -8,6 +8,7 @@
  * 处理开机自启动相关的事情
  */
 class BootService{
+public:
     /**
      * 是否开机自启动
      * @return
