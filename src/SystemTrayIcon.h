@@ -29,7 +29,7 @@
 #include "widget/ShowLogWidget.h"
 #include "widget/EditShortcutsWidget.h"
 #include "UpdateChecker.h"
-#include "daos.h"
+#include "dao/GuiConfigDao.h"
 #include "dbusinterface/DBusStartManager.h"
 using QSS::Controller;
 using QSS::Profile;
@@ -228,7 +228,7 @@ private:
     QFile logFile;
     GuiConfig guiConfig;
     UpdateChecker updateChecker;
-    GuiConfigDao guiConfigDao;
+    GuiConfigDao *guiConfigDao;
     QFileSystemWatcher fileSystemWatcher;
     DBusStartManager* m_startManagerInterface;
 };

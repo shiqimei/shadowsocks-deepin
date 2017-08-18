@@ -12,8 +12,7 @@
 #include "util/DownloadUtil.h"
 #include "util/Util.h"
 #include "models.h"
-#include "daos.h"
-
+#include "dao/GuiConfigDao.h"
 DWIDGET_USE_NAMESPACE
 DUTIL_USE_NAMESPACE
 
@@ -104,10 +103,10 @@ void UpdateChecker::checkUpdate() {
 //        for(const auto&it:assets){
 //            qDebug()<<it.version;
 //        }
-        GuiConfigDao dao;
+        GuiConfigDao *dao = GuiConfigDao::instance();
 
         Asset &latestRelease = assets.first();
-        if (latestRelease.isNewVersion(version, dao.get().checkPreRelease)) {
+        if (latestRelease.isNewVersion(version, dao->get().checkPreRelease)) {
             qDebug() << "有新版本" << latestRelease.version;
             updateSS(&latestRelease);
         } else {

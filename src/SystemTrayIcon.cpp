@@ -24,11 +24,10 @@ void output(Profile &profile) {
 
 SystemTrayIcon::SystemTrayIcon(QObject *parent)
         : QSystemTrayIcon(parent),
-          networkInter("com.deepin.daemon.Network", "/com/deepin/daemon/Network", QDBusConnection::sessionBus(), this),
-          logFile(tr("%1/.ss/log").arg(QDir::homePath())){
+          networkInter("com.deepin.daemon.Network", "/com/deepin/daemon/Network", QDBusConnection::sessionBus(), this) {
     setIcon(QPixmap::fromImage(Util::noProxyIconImage()));
-#if 1
-    guiConfig=guiConfigDao.get();
+    guiConfigDao = GuiConfigDao::instance();
+    guiConfig = guiConfigDao->get();
     menu = new QMenu("menu");
     connect(menu,&QMenu::triggered,[](){
        qDebug()<<"menu tri";
@@ -166,10 +165,6 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
 
     detailedLogAction->setCheckable(true);
     detailedLogAction->setChecked(true);
-    if (!logFile.open(QIODevice::Append | QIODevice::Text)) {
-        qDebug() << "打开日志文件失败";
-        exit(0);
-    }
     controller = new Controller(true);
     QObject::connect(controller, &QSS::Controller::debug, [=](QString log) {
         qDebug() << "[QSS::Controller::debug]" << log;
@@ -364,11 +359,11 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     checkTheBetaUpdateAction->setChecked(guiConfig.checkPreRelease);
     connect(checkForUpdatesAtStartupAction,&QAction::triggered,[=](bool checked){
         guiConfig.autoCheckUpdate=checked;
-        guiConfigDao.save(guiConfig);
+        guiConfigDao->save(guiConfig);
     });
     connect(checkTheBetaUpdateAction,&QAction::triggered,[=](bool checked){
         guiConfig.checkPreRelease=checked;
-        guiConfigDao.save(guiConfig);
+        guiConfigDao->save(guiConfig);
     });
     connect(aboutAction, &QAction::triggered, []() {
         QDesktopServices::openUrl(tr("https://github.com/PikachuHy/shadowsocks-client"));
@@ -388,7 +383,6 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     if(guiConfig.autoCheckUpdate){
         checkForUpdateAction->triggered();
     }
-#endif
 }
 
 void SystemTrayIcon::setProxyMethod(QString proxyMethod) {

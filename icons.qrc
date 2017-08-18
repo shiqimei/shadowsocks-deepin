@@ -11,6 +11,5 @@
     </qresource>
     <qresource>
         <file>proxy.pac</file>
-        <file>abp.js</file>
     </qresource>
 </RCC>
