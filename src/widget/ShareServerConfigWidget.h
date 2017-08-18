@@ -8,7 +8,7 @@
 #include <QDialog>
 #include <QLineEdit>
 #include <QtWidgets/QListWidget>
-#include "ConfigUtil.h"
+#include "util/ConfigUtil.h"
 #include "QRencodeWidget.h"
 
 class ShareServerConfigWidget : public QDialog {

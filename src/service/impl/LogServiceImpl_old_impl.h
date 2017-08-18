@@ -11,7 +11,7 @@
 #include "common/QWidgets.h"
 #include "common/dtk.h"
 
-#include <ShowLogWidget.h>
+#include <widget/ShowLogWidget.h>
 
 class LogServiceImpl_old_impl : public LogService, public QObject {
 Q_OBJECT

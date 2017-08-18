@@ -5,7 +5,7 @@
 #include <QtCore/QFileInfo>
 #include <QtCore/QDir>
 #include "daos.h"
-#include <QDebug>
+
 GuiConfigDao::GuiConfigDao() {
     configFile.setFileName(QObject::tr("%1/.ss/gui-config.json").arg(QDir::homePath()));
     if (!configFile.exists()) {

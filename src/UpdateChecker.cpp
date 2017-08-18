@@ -9,8 +9,8 @@
 #include <dutil_global.h>
 #include <DDesktopServices>
 #include "UpdateChecker.h"
-#include "DownloadUtil.h"
-#include "Util.h"
+#include "util/DownloadUtil.h"
+#include "util/Util.h"
 #include "models.h"
 #include "daos.h"
 

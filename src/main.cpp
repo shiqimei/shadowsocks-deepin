@@ -1,11 +1,8 @@
 #include <iostream>
 #include <QtCore/QFile>
-#include <QtCore/QJsonDocument>
-#include <QtCore/QJsonObject>
 #include <QtCore/QCoreApplication>
 #include <QSystemTrayIcon>
 #include <QMenu>
-#include <QAction>
 #include <common.h>
 #include "controller.h"
 #include "SystemTrayIcon.h"
@@ -14,15 +11,6 @@
 #include <DPlatformWindowHandle>
 #include <DLog>
 #include <dutility.h>
-#include <QScreen>
-#include <QDesktopServices>
-#include <QDesktopWidget>
-#include <QClipboard>
-#include <dbusinterface/DBusStartManager.h>
-#include "UriHelper.h"
-#include "Util.h"
-#include "daos.h"
-#include "UpdateChecker.h"
 
 using QSS::Controller;
 using QSS::Profile;

@@ -2,13 +2,13 @@
 // Created by pikachu on 17-8-18.
 //
 
-#include <SsValidator.h>
+#include <util/SsValidator.h>
 #include "ServerSerivceImpl_old_impl.h"
-#include "EditServerDialog.h"
-#include "ShareServerConfigWidget.h"
+#include "widget/EditServerDialog.h"
+#include "widget/ShareServerConfigWidget.h"
 #include "common/QGui.h"
 #include "common/QWidgets.h"
-#include "UriHelper.h"
+#include "util/UriHelper.h"
 
 void ServerSerivceImpl_old_impl::editServers() {
     auto dialog = new EditServerDialog();

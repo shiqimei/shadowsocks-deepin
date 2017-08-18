@@ -4,12 +4,10 @@
 
 #include <QtCore/QString>
 #include "GfwlistToPacUtil.h"
-#include <QObject>
 #include <QFile>
 #include <QDebug>
 #include <QtCore/QDir>
 #include <QtNetwork/QNetworkAccessManager>
-#include <QtCore/QIODevice>
 #include <QtNetwork/QNetworkReply>
 #include <QtWidgets/QApplication>
 #include <QtCore/QJsonObject>

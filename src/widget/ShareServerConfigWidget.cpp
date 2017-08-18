@@ -4,7 +4,7 @@
 
 #include <QtWidgets/QGridLayout>
 #include "ShareServerConfigWidget.h"
-#include <QDebug>
+
 ShareServerConfigWidget::ShareServerConfigWidget(QWidget *parent) : QDialog(parent) {
     setWindowTitle("二维码与URL");
     listWidget=new QListWidget(this);

@@ -3,7 +3,7 @@
 //
 
 #include "PacServiceImpl_old_impl.h"
-#include "EditOnlinePacUrlDialog.h"
+#include "widget/EditOnlinePacUrlDialog.h"
 
 void PacServiceImpl_old_impl::setUseLocalPac(bool isLocal) {
 

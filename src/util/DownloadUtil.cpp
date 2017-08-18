@@ -8,7 +8,7 @@
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkReply>
 #include "DownloadUtil.h"
-#include <QDebug>
+
 void DownloadUtil::download(QString url, QString filename) {
     QFile *file;
     QNetworkReply *networkReply;

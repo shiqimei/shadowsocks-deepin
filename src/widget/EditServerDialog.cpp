@@ -1,6 +1,6 @@
 #include "EditServerDialog.h"
 #include "ui_EditServerDialog.h"
-#include "ConfigUtil.h"
+#include "util/ConfigUtil.h"
 #include <cipher.h>
 
 //#define QT_DEBUG 0

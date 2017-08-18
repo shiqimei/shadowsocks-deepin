@@ -7,13 +7,10 @@
 #include <QtWidgets/QFileDialog>
 #include <dbusinterface/DBusStartManager.h>
 #include "SystemTrayIcon.h"
-#include "EditOnlinePacUrlDialog.h"
-#include "SsValidator.h"
-#include "GfwlistToPacUtil.h"
-#include "Util.h"
-#include "PositiveAgentWidget.h"
-#include "UpdateChecker.h"
-#include "DownloadUtil.h"
+#include "widget/EditOnlinePacUrlDialog.h"
+#include "util/SsValidator.h"
+#include "util/GfwlistToPacUtil.h"
+#include "widget/PositiveAgentWidget.h"
 
 DWIDGET_USE_NAMESPACE
 DUTIL_USE_NAMESPACE

@@ -8,7 +8,6 @@
 #include <QtCore/QJsonObject>
 #include <QtCore/QJsonArray>
 #include "ConfigUtil.h"
-#include <QDebug>
 #include <QtNetwork/QNetworkReply>
 
 void ConfigUtil::printProfile(Profile &profile) {

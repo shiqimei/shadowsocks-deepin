@@ -4,8 +4,6 @@
 
 #include "QRencodeWidget.h"
 
-#include <utility>
-
 
 QRencodeWidget::QRencodeWidget(QString string,QWidget *parent) : QWidget(parent) {
     setMinimumWidth(400);

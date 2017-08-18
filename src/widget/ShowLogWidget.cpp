@@ -5,7 +5,6 @@
 #include <QtCore/QDir>
 #include <QtWidgets/QVBoxLayout>
 #include "ShowLogWidget.h"
-#include <QScrollBar>
 #include <dutility.h>
 
 ShowLogWidget::ShowLogWidget(QWidget *parent) : QWidget(parent) {
