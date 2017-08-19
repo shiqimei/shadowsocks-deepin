@@ -178,6 +178,8 @@ void SystemTrayIcon::reloadMenu() {
         for (int i = 0; i < Util::guiConfig.configs.size(); ++i) {
             auto action = new QAction(Util::guiConfig.configs[i].getRemarks(), this);
             action->setData(i);
+            action->setCheckable(true);
+            action->setChecked(Util::guiConfig.index == i);
             actionGroup->addAction(action);
             serverMenu->addAction(action);
 //            qDebug()<<i<<(Util::guiConfig.configs.value(i).getRemarks());
