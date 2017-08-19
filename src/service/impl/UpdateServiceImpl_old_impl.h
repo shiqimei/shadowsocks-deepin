@@ -6,7 +6,7 @@
 #define SHADOWSOCKS_CLIENT_UPDATESERVICEIMPL_OLD_IMPL_H
 
 #include <service/UpdateService.h>
-#include <UpdateChecker.h>
+#include <util/UpdateChecker.h>
 #include "common/QCore.h"
 #include "common/QGui.h"
 #include "common/QWidgets.h"

@@ -152,6 +152,9 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     connect(proxyService, &ProxyService::newController, logService, &LogService::newController);
     connect(logService, &LogService::requestUpdateIcon, this, &SystemTrayIcon::setIcon);
     reloadMenu();
+    if (startSystemAgentAction->isEnabled()) {
+        startSystemAgentAction->triggered(true);
+    }
 }
 
 void SystemTrayIcon::reloadMenu() {
