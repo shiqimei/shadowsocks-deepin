@@ -10,8 +10,10 @@ branches:
 
 before_install:
   - sudo add-apt-repository ppa:hzwhuang/ss-qt5 -y
+  - sudo add-apt-repository ppa:leaeasy/dde -y
   - sudo apt-get -qq update
-  - sudo apt-get -qq install -y qt5-default qtbase5-dev libbotan1.10-dev gcc-4.8 libqrencode-dev libzbar-dev libappindicator-dev libqtshadowsocks-dev cmake3 libdtkbase-dev libdtkwidget-dev libdframeworkdbus-dev
+  - sudo apt-get -qq install -y qt5-default qtbase5-dev libbotan1.10-dev gcc-4.8 libqrencode-dev libzbar-dev libappindicator-dev libqtshadowsocks-dev cmake3
+  - sudo apt-get -qq install -y dde libdtkbase-dev libdtkwidget-dev libdframeworkdbus-dev
 
 script:
   - mkdir build && cd build
