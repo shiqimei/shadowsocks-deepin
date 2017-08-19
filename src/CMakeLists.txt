@@ -11,7 +11,7 @@ file(GLOB_RECURSE FORMS "*.ui")
 file(GLOB_RECURSE RESOURCES "*.qrc")
 set(RESOURCES ${RESOURCES} "../icons.qrc")
 find_package(PkgConfig REQUIRED)
-set(QT Core Gui Widgets Network DBus LinguistTools)
+set(QT Core Gui Widgets Network DBus)
 find_package(Qt5 REQUIRED ${QT})
 pkg_check_modules(3rd_lib REQUIRED
         QtShadowsocks
