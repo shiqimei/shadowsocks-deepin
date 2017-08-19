@@ -188,6 +188,7 @@ void SystemTrayIcon::reloadMenu() {
             int index = action->data().toInt();
             Util::guiConfig.index = index;
             proxyService->setProxyEnabled(true);
+            showMessage(tr("change server"), tr("use server -> %1").arg(Util::guiConfig.getCurrentProfile().server));
         });
         serverMenu->addSeparator();
     } else {
