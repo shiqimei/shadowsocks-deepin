@@ -22,7 +22,7 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     startSystemAgentAction->setCheckable(true);
     menu->addAction(startSystemAgentAction);
     systemAgentModeMenu = new QMenu("系统代理模式", menu);
-    QActionGroup *systemAgentModeActionGroup = new QActionGroup(this);
+    auto *systemAgentModeActionGroup = new QActionGroup(this);
     pacModeAction = new QAction("PAC模式", this);
     globelModeAction = new QAction("全局模式", this);
     systemAgentModeActionGroup->addAction(pacModeAction);
@@ -50,7 +50,7 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     useOnlinePacAction = new QAction("使用在线PAC", this);
     useLocalPacAction->setCheckable(true);
     useOnlinePacAction->setCheckable(true);
-    QActionGroup *pacGroup = new QActionGroup(this);
+    auto *pacGroup = new QActionGroup(this);
     pacGroup->addAction(useLocalPacAction);
     pacGroup->addAction(useOnlinePacAction);
     editLocalPacFileAction = new QAction("编辑本地PAC文件...", this);
@@ -113,37 +113,6 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     menu->addAction(exitAction);
 
     setContextMenu(menu);
-
-/*
-
-        bool checked = startSystemAgentAction->isChecked();
-        if (!checked) {
-            qDebug() << "取消系统代理";
-            systemAgentModeMenu->setEnabled(false);
-            setProxyMethod("none");
-            controller->stop();
-            setIcon(QPixmap::fromImage(Util::noProxyIconImage()));
-
-        } else {
-            qDebug() << "启动系统代理";
-            systemAgentModeMenu->setEnabled(true);
-            if (pacModeAction->isChecked()) {
-                setAutoProxy();
-                setIcon(QPixmap::fromImage(Util::proxyIconImage(Util::Type::Pac)));
-            } else if (globelModeAction->isChecked()) {
-                setManualProxy();
-                setIcon(QPixmap::fromImage(Util::proxyIconImage(Util::Type::Global)));
-            } else {
-                pacModeAction->trigger();
-            }
-
-            for (auto &it:serverGroup->actions()) {
-                ServerAction *action = dynamic_cast<ServerAction *>(it);
-                controller->setup(action->profile);
-                controller->start();
-            }
-        }
-*/
 
     connect(startSystemAgentAction, &QAction::triggered, proxyService, &ProxyService::setProxyEnabled);
     connect(systemAgentModeActionGroup, &QActionGroup::triggered, [this](QAction *action) {

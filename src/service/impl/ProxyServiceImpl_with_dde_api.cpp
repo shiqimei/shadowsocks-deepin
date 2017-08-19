@@ -30,7 +30,8 @@ void ProxyServiceImpl_with_dde_api::setProxyMethod(ProxyService::ProxyMethod pro
         case ProxyMethod::Auto: {
             method = "auto";
             //　TODO　如果是本地pac且文件不存在，去下载
-            QString proxy = QString("file:///%1/.ss/autoproxy.pac").arg(QDir::homePath());
+//            QString proxy = QString("file:///%1/.ss/autoproxy.pac").arg(QDir::homePath());
+            QString proxy = Util::ONLINE_PAC_URL;
             w = new QDBusPendingCallWatcher(networkInter.SetAutoProxy(proxy), this);
             QObject::connect(w, &QDBusPendingCallWatcher::finished, [=]() {
                 qDebug() << "set auto proxy finished" << proxy;
@@ -58,9 +59,6 @@ void ProxyServiceImpl_with_dde_api::setProxyEnabled(bool enabled) {
         auto proxyMethod = isPacMode() ? ProxyMethod::Auto : ProxyMethod::Manual;
         setProxyMethod(proxyMethod);
         controller->setup(Util::guiConfig.getCurrentProfile());
-        qDebug() << "连接信息";
-        auto t = Util::guiConfig.getCurrentProfile();
-        qDebug() << t.server << t.local_address << t.method << t.password;
         controller->start();
     }
     emit requestReloadMenu();

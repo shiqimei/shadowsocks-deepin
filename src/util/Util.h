@@ -31,9 +31,8 @@ public:
      */
     static int compareVersion(QString l, QString r);
     static QString getFullpath(QString filename);
-
     static GuiConfig guiConfig;
-    static QString PAC_URL;
+    static QString ONLINE_PAC_URL;
 };
 
 

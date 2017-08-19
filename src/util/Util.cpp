@@ -9,7 +9,7 @@
 #include <dao/GuiConfigDao.h>
 
 GuiConfig Util::guiConfig = GuiConfigDao::instance()->get();
-QString Util::PAC_URL = QString("https://raw.githubusercontent.com/PikachuHy/ss/master/autoproxy.pac");
+QString Util::ONLINE_PAC_URL = QString("https://raw.githubusercontent.com/PikachuHy/ss/master/autoproxy.pac");
 QImage Util::mix(QStringList list) {
     if(list.isEmpty()){
         return QImage();
