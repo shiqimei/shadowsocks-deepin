@@ -12,6 +12,12 @@ class GfwlistToPacUtil : public QObject {
 Q_OBJECT
 public:
     void gfwlist2pac();
+signals:
+
+    void finished();
+
+private:
+    QSet<QString> set;
 
     QSet<QString> parseGfwlist(QByteArray byteArray);
 
@@ -21,12 +27,6 @@ public:
 
     QString generatePac(QString domains, QString proxy);
 
-signals:
-
-    void finished();
-
-private:
-    QSet<QString> set;
 };
 
 

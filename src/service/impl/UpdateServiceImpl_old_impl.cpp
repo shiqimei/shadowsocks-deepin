@@ -3,6 +3,7 @@
 //
 
 #include <util/Util.h>
+#include <util/GfwlistToPacUtil.h>
 #include "UpdateServiceImpl_old_impl.h"
 
 void UpdateServiceImpl_old_impl::checkUpdate() {
@@ -18,7 +19,12 @@ void UpdateServiceImpl_old_impl::setCheckPrereleaseVersion(bool b) {
 }
 
 void UpdateServiceImpl_old_impl::updateLocalPacFromGFWList() {
-
+    auto *gfwlistToPacUtil = new GfwlistToPacUtil();
+    connect(gfwlistToPacUtil, &GfwlistToPacUtil::finished, [=]() {
+        gfwlistToPacUtil->deleteLater();
+        emit finishUpdate(tr("update pac file"), tr("update pac file from gfwlist done!"));
+    });
+    gfwlistToPacUtil->gfwlist2pac();
 }
 
 UpdateServiceImpl_old_impl::UpdateServiceImpl_old_impl(QObject *parent) : UpdateService(parent) {}

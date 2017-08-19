@@ -39,6 +39,10 @@ public:
      */
     virtual void updateLocalPacFromGFWList()= 0;
 
+signals:
+
+    void finishUpdate(const QString &title, const QString &msg,
+                      QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int msecs = 10000);
 };
 
 #endif //SHADOWSOCKS_CLIENT_UPDATESERVICE_H

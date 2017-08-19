@@ -124,8 +124,10 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
         pacService->setUseLocalPac(action == useLocalPacAction);
     });
     connect(editLocalPacFileAction, &QAction::triggered, pacService, &PacService::editLocalPacFile);
-    connect(updateLocalPacFromGFWListAction, &QAction::triggered, updateService,
-            &UpdateService::updateLocalPacFromGFWList);
+    connect(updateLocalPacFromGFWListAction, &QAction::triggered, [=]() {
+        showMessage(tr("update pac file"), tr("update pac file from gfwlist"));
+        updateService->updateLocalPacFromGFWList();
+    });
     connect(editUserRulesForGFWListAction, &QAction::triggered, pacService, &PacService::editUserRuleForGFWList);
     connect(copyLocalPacUrlAction, &QAction::triggered, pacService, &PacService::copyLocalPacURL);
     connect(editOnlinePacUrlAction, &QAction::triggered, pacService, &PacService::editOnlinePacUrl);
@@ -151,6 +153,7 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     connect(proxyService, &ProxyService::requestReloadMenu, this, &SystemTrayIcon::reloadMenu);
     connect(proxyService, &ProxyService::newController, logService, &LogService::newController);
     connect(logService, &LogService::requestUpdateIcon, this, &SystemTrayIcon::setIcon);
+    connect(updateService, &UpdateService::finishUpdate, this, &SystemTrayIcon::showMessage);
     reloadMenu();
     if (startSystemAgentAction->isEnabled()) {
         startSystemAgentAction->triggered(true);
