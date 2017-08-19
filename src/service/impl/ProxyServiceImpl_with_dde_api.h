@@ -15,6 +15,8 @@ class ProxyServiceImpl_with_dde_api : public ProxyService {
 public:
     explicit ProxyServiceImpl_with_dde_api(QObject *parent);
 
+    virtual ~ProxyServiceImpl_with_dde_api();
+
     void setProxyMethod(ProxyMethod proxyMethod) override;
 
     bool isGlobelMode() override;

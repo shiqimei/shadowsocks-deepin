@@ -144,9 +144,7 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
             &UpdateService::setCheckForUpdatesAtStartup);
     connect(checkTheBetaUpdateAction, &QAction::triggered, updateService, &UpdateService::setCheckPrereleaseVersion);
     connect(aboutAction, &QAction::triggered, aboutService, &AboutService::showAbout);
-    connect(exitAction, &QAction::triggered, [=]() {
-        proxyService->setProxyEnabled(false);
-        qDebug() << "退出并取消代理";
+    connect(exitAction, &QAction::triggered, []() {
         qApp->exit();
     });
 

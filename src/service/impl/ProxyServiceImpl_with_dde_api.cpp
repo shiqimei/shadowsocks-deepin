@@ -108,7 +108,11 @@ void ProxyServiceImpl_with_dde_api::setAutoProxy(const QString &proxy) {
     auto w = new QDBusPendingCallWatcher(networkInter.SetAutoProxy(proxy), this);
     QObject::connect(w, &QDBusPendingCallWatcher::finished, [=]() {
         qDebug() << "set auto proxy finished" << proxy;
-        setProxyMethod("none");
+        setProxyMethod("auto");
     });
 
+}
+
+ProxyServiceImpl_with_dde_api::~ProxyServiceImpl_with_dde_api() {
+    setProxyMethod(ProxyMethod::None);
 }
