@@ -7,7 +7,7 @@
 
 
 #include <QtGui/QImage>
-
+#include "model/GuiConfig.h"
 class Util {
 public:
 
@@ -31,6 +31,8 @@ public:
      */
     static int compareVersion(QString l, QString r);
     static QString getFullpath(QString filename);
+
+    static GuiConfig *guiConfig;
 };
 
 

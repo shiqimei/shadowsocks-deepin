@@ -9,8 +9,7 @@
 #include <QtCore/QJsonDocument>
 #include <QtCore/QList>
 #include <QDir>
-#include "models.h"
-
+#include "model/Config.h"
 using QSS::Profile;
 class PacConfig{
 public:

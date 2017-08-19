@@ -3,9 +3,6 @@
 //
 
 #include "SystemTrayIcon.h"
-DWIDGET_USE_NAMESPACE
-DUTIL_USE_NAMESPACE
-
 SystemTrayIcon::SystemTrayIcon(QObject *parent)
         : QSystemTrayIcon(parent) {
     proxyService = new ProxyServiceImpl(this);
@@ -364,4 +361,7 @@ void SystemTrayIcon::downloadPac() {
             useLocalPacAction->trigger();
         }
     });//请求完成
+}
+
+void SystemTrayIcon::reloadMenu() {
 }

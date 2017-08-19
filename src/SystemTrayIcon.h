@@ -180,6 +180,7 @@ private:
 
     void downloadPac();
 
+    void reloadMenu();
 private slots:
 
     void updateServerMenu();

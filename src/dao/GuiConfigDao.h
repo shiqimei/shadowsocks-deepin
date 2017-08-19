@@ -5,9 +5,8 @@
 #ifndef SHADOWSOCKS_CLIENT_GUICONFIGDAO_H
 #define SHADOWSOCKS_CLIENT_GUICONFIGDAO_H
 
-#include <models.h>
 #include "common/common.h"
-
+#include "model/GuiConfig.h"
 class GuiConfigDao {
 public:
     static GuiConfigDao *instance();

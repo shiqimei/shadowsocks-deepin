@@ -75,3 +75,7 @@ void ProxyServiceImpl_with_dde_api::setProxyMethod(QString proxyMethod) {
     });
     connect(w, &QDBusPendingCallWatcher::finished, w, &QDBusPendingCallWatcher::deleteLater);
 }
+
+bool ProxyServiceImpl_with_dde_api::isProxyEnaled() {
+    return false;
+}

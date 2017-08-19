@@ -19,6 +19,8 @@ public:
 
     void setProxyEnabled(bool enabled) override;
 
+    bool isProxyEnaled() override;
+
     void editForwardProxy() override;
 
     void setAllowClientsFromLAN(bool b) override;

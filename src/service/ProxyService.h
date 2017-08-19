@@ -38,6 +38,8 @@ public:
      */
     virtual void setProxyEnabled(bool enabled)= 0;
 
+    virtual bool isProxyEnaled()=0;
+
     /**
      * 编辑正向代理配置
      */
