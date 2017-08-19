@@ -9,8 +9,9 @@ branches:
     - 'dev'
 
 before_install:
-  - sudo apt-get update
-  - sudo apt-get install -y qt5-default qtbase5-dev libbotan1.10-dev gcc-4.8 libqrencode-dev libzbar-dev libappindicator-dev libqtshadowsocks-dev cmake3
+  - sudo add-apt-repository ppa:hzwhuang/ss-qt5 -y
+  - sudo apt-get -qq update
+  - sudo apt-get -qq install -y qt5-default qtbase5-dev libbotan1.10-dev gcc-4.8 libqrencode-dev libzbar-dev libappindicator-dev libqtshadowsocks-dev cmake3
 
 script:
   - mkdir build && cd build
