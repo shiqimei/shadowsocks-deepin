@@ -48,7 +48,7 @@ QString ServerSerivceImpl_old_impl::scanQRCodeFromScreen() {
         Profile profile = QSS::Profile(uri.toUtf8());
         Config config;
         config.profile = profile;
-        config.remarks = profile.server;
+        config.setRemarks(profile.server);
         // TODO 保存二维码信息并更新菜单栏
 //        configs.append(config);
 //        ConfigUtil::saveConfig(configs);
@@ -72,7 +72,7 @@ QString ServerSerivceImpl_old_impl::importURLfromClipboard() {
         Profile profile = QSS::Profile(uri.toUtf8());
         Config config;
         config.profile = profile;
-        config.remarks = profile.server;
+        config.setRemarks(profile.server);
         // TODO 保存二维码信息并更新菜单栏
         return uri;
     }

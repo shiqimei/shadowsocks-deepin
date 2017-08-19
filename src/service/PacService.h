@@ -20,6 +20,9 @@ public:
      */
     virtual void setUseLocalPac(bool isLocal)= 0;
 
+    virtual bool isUseLocalPac()= 0;
+
+    virtual bool isUseOnlinePac()= 0;
     /**
      * 编辑本地pac文件
      */
@@ -36,6 +39,7 @@ public:
      */
     virtual void setSecureLocalPac(bool b)= 0;
 
+    virtual bool isSecureLocalPac()= 0;
     /**
      * 复制本地pac文件地址
      * @return

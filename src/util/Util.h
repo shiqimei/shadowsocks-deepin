@@ -32,7 +32,8 @@ public:
     static int compareVersion(QString l, QString r);
     static QString getFullpath(QString filename);
 
-    static GuiConfig *guiConfig;
+    static GuiConfig guiConfig;
+    static QString PAC_URL;
 };
 
 

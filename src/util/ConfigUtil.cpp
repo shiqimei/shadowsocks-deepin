@@ -8,7 +8,6 @@
 #include <QtCore/QJsonObject>
 #include <QtCore/QJsonArray>
 #include "ConfigUtil.h"
-#include <QtNetwork/QNetworkReply>
 
 void ConfigUtil::printProfile(Profile &profile) {
     qDebug() << "profile";
@@ -80,7 +79,7 @@ QList<Config> ConfigUtil::readConfig() {
 #endif
         Config config;
         config.profile = profile;
-        config.remarks = remarks;
+        config.setRemarks(remarks);
         list.append(config);
     }
     return list;
@@ -102,7 +101,7 @@ void ConfigUtil::saveConfig(QList<Config> configList) {
         config.insert("server", profile.server);
         config.insert("server_port", profile.server_port);
         config.insert("timeout", profile.timeout);
-        config.insert("remarks", it.remarks);
+        config.insert("remarks", it.getRemarks());
         jsonArray.append(config);
     }
     jsonObject.insert("configs", jsonArray);

@@ -14,7 +14,7 @@ ShareServerConfigWidget::ShareServerConfigWidget(QWidget *parent) : QDialog(pare
     qDebug()<<"发生了什么"<<configs.size();
 #endif
     for(auto&config:configs){
-        listWidget->addItem(config.remarks);
+        listWidget->addItem(config.getRemarks());
     }
     if(!configs.isEmpty()){
         ssUri=configs.first().getSsUri();

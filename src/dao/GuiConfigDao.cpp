@@ -38,12 +38,16 @@ GuiConfig GuiConfigDao::get() {
     }
     QJsonDocument jsonDocument;
     auto json = configFile.readAll();
-//    qDebug()<<"json"<<json;
+    qDebug().noquote() << "json" << json;
     jsonDocument = jsonDocument.fromJson(json);
 //    qDebug()<<"json doc"<<jsonDocument.toJson();
     GuiConfig guiConfig;
     guiConfig.fromJsonObject(jsonDocument.object());
     configFile.close();
+    qDebug() << "服务器";
+    for (auto &it:guiConfig.configs) {
+        qDebug() << it.getRemarks();
+    }
     return guiConfig;
 }
 

@@ -24,5 +24,13 @@ public:
      * @param b
      */
     virtual void setVerboseLogging(bool b)= 0;
+
+    virtual bool isVerboseLogging()= 0;
+
+    virtual void newController(Controller *controller)= 0;
+
+signals:
+
+    void requestUpdateIcon(const QIcon &icon);
 };
 #endif //SHADOWSOCKS_CLIENT_LOGSERVICE_H

@@ -3,7 +3,7 @@
 //
 
 #include "ProxyServiceImpl_with_dde_api.h"
-
+#include "util/Util.h"
 void ProxyServiceImpl_with_dde_api::setProxyMethod(ProxyService::ProxyMethod proxyMethod) {
     QString method;
     QDBusPendingCallWatcher *w = nullptr;
@@ -45,14 +45,25 @@ void ProxyServiceImpl_with_dde_api::setProxyMethod(ProxyService::ProxyMethod pro
 }
 
 void ProxyServiceImpl_with_dde_api::setProxyEnabled(bool enabled) {
-    if (!enabled) {
-        setProxyMethod(ProxyMethod::None);
-    } else {
-        // TODO 判断当前的代理模式
-        auto proxyMethod = ProxyMethod::Auto;
-        setProxyMethod(proxyMethod);
+    if (controller == nullptr) {
+        controller = new Controller(true, false, this);
+        emit newController(controller);
     }
-
+    if (!enabled) {
+        Util::guiConfig.enabled = false;
+        setProxyMethod(ProxyMethod::None);
+        controller->stop();
+    } else {
+        Util::guiConfig.enabled = true;
+        auto proxyMethod = isPacMode() ? ProxyMethod::Auto : ProxyMethod::Manual;
+        setProxyMethod(proxyMethod);
+        controller->setup(Util::guiConfig.getCurrentProfile());
+        qDebug() << "连接信息";
+        auto t = Util::guiConfig.getCurrentProfile();
+        qDebug() << t.server << t.local_address << t.method << t.password;
+        controller->start();
+    }
+    emit requestReloadMenu();
 }
 
 void ProxyServiceImpl_with_dde_api::editForwardProxy() {
@@ -77,5 +88,17 @@ void ProxyServiceImpl_with_dde_api::setProxyMethod(QString proxyMethod) {
 }
 
 bool ProxyServiceImpl_with_dde_api::isProxyEnaled() {
-    return false;
+    return Util::guiConfig.enabled;
+}
+
+bool ProxyServiceImpl_with_dde_api::isPacMode() {
+    return !Util::guiConfig.global;
+}
+
+bool ProxyServiceImpl_with_dde_api::isGlobelMode() {
+    return Util::guiConfig.global;
+}
+
+bool ProxyServiceImpl_with_dde_api::isAllowClientsFromLAN() {
+    return Util::guiConfig.shareOverLan;
 }

@@ -22,8 +22,17 @@ public:
 
     void setVerboseLogging(bool b) override;
 
+    bool isVerboseLogging() override;
+
+    void newController(Controller *controller) override;
+
 private:
     ShowLogWidget showLogWidget;
+    QVector<int> inBytes;
+    QList<int> outBytes;
+    int inByte = 0;
+    int outByte = 0;
+    int maxLenth = 12;
 };
 
 

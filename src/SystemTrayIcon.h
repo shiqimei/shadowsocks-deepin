@@ -13,7 +13,6 @@ class SystemTrayIcon: public QSystemTrayIcon {
 public:
     explicit SystemTrayIcon(QObject *parent);
 
-    Controller* controller;
     QMenu* menu;
     QActionGroup* serverGroup;
     /**
@@ -156,17 +155,7 @@ public:
      * 退出
      */
     QAction* exitAction;
-    QVector<int > inBytes;
-    QList<int > outBytes;
-    int inByte = 0;
-    int outByte = 0;
-    int maxLenth = 12;
 private:
-    PacConfig pacConfig;
-    QList<Config> configs;
-    GuiConfig guiConfig;
-    UpdateChecker updateChecker;
-    GuiConfigDao *guiConfigDao;
     ProxyService *proxyService;
     ServerSerivce *serverSerivce;
     PacService *pacService;
@@ -176,16 +165,7 @@ private:
     LogService *logService;
     AboutService *aboutService;
 
-    void initConfig();
-
-    void downloadPac();
-
     void reloadMenu();
-private slots:
-
-    void updateServerMenu();
-
-    void onServerActionTriggered(QAction *action);
 };
 
 

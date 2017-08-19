@@ -6,6 +6,7 @@
 #define SHADOWSOCKS_CLIENT_PROXYSERVICE_H
 
 #include "common/common.h"
+
 /**
  * 负责系统代理方法之间的切换
  */
@@ -20,7 +21,7 @@ public:
      * 手动
      * 自动
      */
-    enum ProxyMethod{
+    enum ProxyMethod {
         None,
         Manual,
         Auto
@@ -31,6 +32,10 @@ public:
      * @param proxyMethod
      */
     virtual void setProxyMethod(ProxyMethod proxyMethod)= 0;
+
+    virtual bool isPacMode()= 0;
+
+    virtual bool isGlobelMode()=0;
 
     /**
      * 是否启动代理
@@ -50,6 +55,14 @@ public:
      * @param b
      */
     virtual void setAllowClientsFromLAN(bool b)= 0;
+
+    virtual bool isAllowClientsFromLAN()= 0;
+
+signals:
+
+    void requestReloadMenu();
+
+    void newController(Controller *controller);
 };
 
 

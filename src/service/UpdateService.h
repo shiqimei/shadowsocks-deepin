@@ -26,12 +26,14 @@ public:
      */
     virtual void setCheckForUpdatesAtStartup(bool b)= 0;
 
+    virtual bool isCheckForUpdatesAtStartup()= 0;
     /**
      * 是否检查测试版更新
      * @param b
      */
     virtual void setCheckPrereleaseVersion(bool b)= 0;
 
+    virtual bool isCheckPrereleaseVersion()= 0;
     /**
      * 从GFWList更新本地pac文件
      */

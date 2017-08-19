@@ -17,6 +17,10 @@ public:
 
     void setProxyMethod(ProxyMethod proxyMethod) override;
 
+    bool isGlobelMode() override;
+
+    bool isPacMode() override;
+
     void setProxyEnabled(bool enabled) override;
 
     bool isProxyEnaled() override;
@@ -25,10 +29,14 @@ public:
 
     void setAllowClientsFromLAN(bool b) override;
 
+    bool isAllowClientsFromLAN() override;
+
 private:
     NetworkInter networkInter;
 
     void setProxyMethod(QString proxyMethod);
+
+    Controller *controller = nullptr;
 };
 
 

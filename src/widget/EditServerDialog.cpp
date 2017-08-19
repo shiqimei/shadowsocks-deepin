@@ -1,7 +1,6 @@
 #include "EditServerDialog.h"
 #include "ui_EditServerDialog.h"
 #include "util/ConfigUtil.h"
-#include <cipher.h>
 
 //#define QT_DEBUG 0
 //#undef QT_DEBUG
@@ -87,7 +86,7 @@ EditServerDialog::EditServerDialog(bool isNew, QWidget *parent) :
 #endif
             Config config;
             config.profile=item->profile;
-            config.remarks=item->text();
+            config.setRemarks(item->text());
             list.append(config);
         }
         ConfigUtil::saveConfig(list);
@@ -173,7 +172,7 @@ void EditServerDialog::on_downPushButton_clicked() {
 void EditServerDialog::initConfig() {
     auto configs=ConfigUtil::readConfig();
     for(auto&it:configs){
-        serverItemList.append(new ServerItem(it.profile,it.remarks));
+        serverItemList.append(new ServerItem(it.profile, it.getRemarks()));
     }
     updateListWidget();
     if(ui->listWidget->count()>0){

@@ -19,11 +19,17 @@ public:
 
     void setUseLocalPac(bool isLocal) override;
 
+    bool isUseLocalPac() override;
+
+    bool isUseOnlinePac() override;
+
     void editLocalPacFile() override;
 
     void editUserRuleForGFWList() override;
 
     void setSecureLocalPac(bool b) override;
+
+    bool isSecureLocalPac() override;
 
     void copyLocalPacURL() override;
 

@@ -23,6 +23,10 @@ public:
 
     void setCheckPrereleaseVersion(bool b) override;
 
+    bool isCheckForUpdatesAtStartup() override;
+
+    bool isCheckPrereleaseVersion() override;
+
     void updateLocalPacFromGFWList() override;
 
 private:

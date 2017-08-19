@@ -2,7 +2,9 @@
 // Created by pikachu on 17-7-20.
 //
 
+#include <util/Util.h>
 #include "SystemTrayIcon.h"
+
 SystemTrayIcon::SystemTrayIcon(QObject *parent)
         : QSystemTrayIcon(parent) {
     proxyService = new ProxyServiceImpl(this);
@@ -14,8 +16,7 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     hotkeyService = new HotkeyServiceImpl(this);
     aboutService = new AboutServiceImpl(this);
     setIcon(QPixmap::fromImage(Util::noProxyIconImage()));
-    guiConfigDao = GuiConfigDao::instance();
-    guiConfig = guiConfigDao->get();
+
     menu = new QMenu("menu");
     startSystemAgentAction = new QAction("启动系统代理", this);
     startSystemAgentAction->setCheckable(true);
@@ -75,6 +76,7 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     menu->addSeparator();
 
     bootAction = new QAction("开机启动", this);
+    bootAction->setCheckable(true);
     menu->addAction(bootAction);
 
     allowConnectionsFromTheLANAction = new QAction("允许来自局域网的连接", this);
@@ -88,12 +90,15 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     helpMenu = new QMenu("帮助", menu);
     showLogAction = new QAction("显示日志", this);
     detailedLogAction = new QAction("详细记录日志", this);
+    detailedLogAction->setCheckable(true);
     updateMenu = new QMenu("更新", helpMenu);
     checkForUpdateAction = new QAction("检查更新", this);
     updateMenu->addAction(checkForUpdateAction);
     updateMenu->addSeparator();
     checkForUpdatesAtStartupAction = new QAction("启动时检查更新", this);
     checkTheBetaUpdateAction = new QAction("检查测试版更新", this);
+    checkForUpdatesAtStartupAction->setCheckable(true);
+    checkTheBetaUpdateAction->setCheckable(true);
     updateMenu->addAction(checkForUpdatesAtStartupAction);
     updateMenu->addAction(checkTheBetaUpdateAction);
     helpMenu->addAction(showLogAction);
@@ -108,67 +113,6 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     menu->addAction(exitAction);
 
     setContextMenu(menu);
-
-
-    for (int i = 0; i < maxLenth; ++i) {
-        inBytes.append(0);
-        outBytes.append(0);
-    }
-    auto timer = new QTimer();
-    connect(timer,&QTimer::timeout,[=](){
-        int type = 0;
-        if(pacModeAction->isChecked()){
-            type = type | Util::Type ::Pac;
-        } else{
-            type = type | Util::Type ::Global;
-        }
-        if(inByte>0){
-            type=type | Util::Type ::In;
-        }
-        inBytes.append(inByte);
-        inByte=0;
-        if(inBytes.size()>maxLenth){
-            inBytes.pop_front();
-        }
-
-        if(outByte>0){
-            type=type|Util::Type ::Out;
-        }
-        outBytes.append(outByte);
-        outByte=0;
-       if(outBytes.size()>maxLenth){
-           outBytes.pop_front();
-       }
-        setIcon(QPixmap::fromImage(Util::proxyIconImage(type)));
-        // 如果显示流量监控窗口 触发重绘
-    });
-    timer->start(300);
-    startSystemAgentAction->setChecked(false);
-    systemAgentModeMenu->setEnabled(false);
-
-
-    detailedLogAction->setCheckable(true);
-    detailedLogAction->setChecked(true);
-    controller = new Controller(true);
-    QObject::connect(controller, &QSS::Controller::debug, [=](QString log) {
-        qDebug() << "[QSS::Controller::debug]" << log;
-    });
-    QObject::connect(controller, &QSS::Controller::info, [=](QString log) {
-        qDebug() << "[QSS::Controller::info]" << log;
-    });
-    connect(controller, &QSS::Controller::runningStateChanged, [=](bool flag) {
-        qDebug() << "QSS::Controller::runningStateChanged" << flag;
-    });
-    connect(controller, &QSS::Controller::newBytesReceived, [=](const qint64 bytes) {
-//        qDebug() << "QSS::Controller::newBytesReceived" << bytes;
-        inByte+=bytes;
-    });
-    connect(controller, &QSS::Controller::newBytesSent, [=](const qint64 bytes) {
-//        qDebug() << "QSS::Controller::newBytesSent" << bytes;
-        outByte+=bytes;
-    });
-//    editServerDialog=new EditServerDialog(profiles);
-    initConfig();
 
 /*
 
@@ -206,7 +150,6 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
         auto proxyMethod = action == pacModeAction ? ProxyService::Auto : ProxyService::Manual;
         proxyService->setProxyMethod(proxyMethod);
     });
-    connect(serverGroup, &QActionGroup::triggered, this, &SystemTrayIcon::onServerActionTriggered);
     connect(editServerAction, &QAction::triggered, serverSerivce, &ServerSerivce::editServers);
     connect(pacGroup, &QActionGroup::triggered, [=](QAction *action) {
         pacService->setUseLocalPac(action == useLocalPacAction);
@@ -221,17 +164,11 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     connect(scanThe2DCodeOnTheScreenAction, &QAction::triggered, serverSerivce, &ServerSerivce::scanQRCodeFromScreen);
     connect(importTheURLFromTheClipboardAction, &QAction::triggered, serverSerivce,
             &ServerSerivce::importURLfromClipboard);
-    bootAction->setCheckable(true);
-    bootAction->setChecked(bootService->isAutoBoot());
     connect(bootAction, &QAction::triggered, bootService, &BootService::setAutoBoot);
     connect(positiveAgentAction, &QAction::triggered, proxyService, &ProxyService::editForwardProxy);
     connect(editShortcutsAction, &QAction::triggered, hotkeyService, &HotkeyService::editHotkey);
     connect(showLogAction, &QAction::triggered, logService, &LogService::showLog);
-    connect(checkForUpdateAction,&QAction::triggered,&updateChecker,&UpdateChecker::checkUpdate);
-    checkForUpdatesAtStartupAction->setCheckable(true);
-    checkTheBetaUpdateAction->setCheckable(true);
-    checkForUpdatesAtStartupAction->setChecked(guiConfig.autoCheckUpdate);
-    checkTheBetaUpdateAction->setChecked(guiConfig.checkPreRelease);
+    connect(checkForUpdateAction, &QAction::triggered, updateService, &UpdateService::checkUpdate);
     connect(checkForUpdatesAtStartupAction, &QAction::triggered, updateService,
             &UpdateService::setCheckForUpdatesAtStartup);
     connect(checkTheBetaUpdateAction, &QAction::triggered, updateService, &UpdateService::setCheckPrereleaseVersion);
@@ -242,52 +179,46 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
         qApp->exit();
     });
 
-
-    updateServerMenu();
-    if (!configs.isEmpty()) {
-        startSystemAgentAction->trigger();
-        pacModeAction->trigger();
-    }
-    if(guiConfig.autoCheckUpdate){
-        checkForUpdateAction->triggered();
-    }
+    connect(proxyService, &ProxyService::requestReloadMenu, this, &SystemTrayIcon::reloadMenu);
+    connect(proxyService, &ProxyService::newController, logService, &LogService::newController);
+    connect(logService, &LogService::requestUpdateIcon, this, &SystemTrayIcon::setIcon);
+    reloadMenu();
 }
 
-void SystemTrayIcon::updateServerMenu() {
-#ifdef QT_DEBUG
-    qDebug() << "刷新服务器列表";
-#endif
+void SystemTrayIcon::reloadMenu() {
+    startSystemAgentAction->setChecked(proxyService->isProxyEnaled());
+    systemAgentModeMenu->setEnabled(proxyService->isProxyEnaled());
+    pacModeAction->setChecked(proxyService->isPacMode());
+    globelModeAction->setChecked(proxyService->isGlobelMode());
+    useLocalPacAction->setChecked(pacService->isUseLocalPac());
+    useOnlinePacAction->setChecked(pacService->isUseOnlinePac());
+    protectLocalPacAction->setChecked(pacService->isSecureLocalPac());
+    bootAction->setChecked(bootService->isAutoBoot());
+    allowConnectionsFromTheLANAction->setChecked(proxyService->isAllowClientsFromLAN());
+    detailedLogAction->setChecked(logService->isVerboseLogging());
+    checkForUpdatesAtStartupAction->setChecked(updateService->isCheckForUpdatesAtStartup());
+    checkTheBetaUpdateAction->setChecked(updateService->isCheckPrereleaseVersion());
+
     serverMenu->clear();
     serverMenu->addAction(loadBalancingAction);
     serverMenu->addAction(highAvailabilityAction);
     serverMenu->addAction(accordingToStatisticsAction);
     serverMenu->addSeparator();
-    if (!configs.isEmpty()) {
-/*        delete serverGroup;
-        QAction *t = nullptr;
-        serverGroup = new QActionGroup(this);
-        connect(serverGroup, &QActionGroup::triggered, this, &SystemTrayIcon::onServerActionTriggered);
-        for (int i = 0; i < configs.size(); ++i) {
-            auto it = configs[i];
-#ifdef QT_DEBUG
-            qDebug() << it.remarks;
-#endif
-            ServerAction *action = new ServerAction(it.remarks, this);
-            action->profile = it.profile;
-            action->setCheckable(true);
-            serverGroup->addAction(action);
+    if (!Util::guiConfig.configs.isEmpty()) {
+        auto actionGroup = new QActionGroup(this);
+        for (int i = 0; i < Util::guiConfig.configs.size(); ++i) {
+            auto action = new QAction(Util::guiConfig.configs[i].getRemarks(), this);
+            action->setData(i);
+            actionGroup->addAction(action);
             serverMenu->addAction(action);
-            if (i == 0) {
-                t = action;
-            }
-#ifdef QT_DEBUG
-            output(action->profile);
-#endif
+//            qDebug()<<i<<(Util::guiConfig.configs.value(i).getRemarks());
         }
+        connect(actionGroup, &QActionGroup::triggered, [=](QAction *action) {
+            int index = action->data().toInt();
+            Util::guiConfig.index = index;
+            proxyService->setProxyEnabled(true);
+        });
         serverMenu->addSeparator();
-        if (t != nullptr) {
-            t->trigger();
-        }*/
     } else {
         startSystemAgentAction->setEnabled(false);
     }
@@ -298,70 +229,4 @@ void SystemTrayIcon::updateServerMenu() {
     serverMenu->addAction(scanThe2DCodeOnTheScreenAction);
     serverMenu->addAction(importTheURLFromTheClipboardAction);
 
-}
-
-void SystemTrayIcon::initConfig() {
-    configs = ConfigUtil::readConfig();
-    downloadPac();
-}
-
-void SystemTrayIcon::onServerActionTriggered(QAction *action) {
-//    ServerAction *serverAction = dynamic_cast<ServerAction *>(action);
-//    controller->setup(serverAction->profile);
-//    localAddress = serverAction->profile.local_address;
-//    localPort = QString::number(serverAction->profile.local_port);
-//    if (startSystemAgentAction->isChecked()) {
-//        controller->stop();
-//        controller->setup(serverAction->profile);
-//        controller->start();
-//    }
-}
-
-void SystemTrayIcon::downloadPac() {
-    pacConfig.onlineUrl = "https://raw.githubusercontent.com/PikachuHy/ss/master/autoproxy.pac";
-    QFile *pacFile;//文件指针
-    QNetworkReply *pacReply;
-    QNetworkAccessManager *pacManager;
-    //下载文件之前先在本地创建一个文件
-    QDir file;//文件夹
-    QString fileStr = QObject::tr("%1/.ss/").arg(QDir::homePath());
-    QString fileName = fileStr + "/autoproxy.pac";
-    //判断文件夹是否存在 不存在创建
-    if (!file.exists(fileStr)) {
-        file.mkpath(fileStr);
-    }
-    pacFile = new QFile(fileName);
-    //判断文件是否可写入 不可写删除 指针赋值0
-    if (!pacFile->open(QIODevice::WriteOnly)) {
-        delete pacFile;
-        pacFile = nullptr;
-        return;
-    }
-    //开始请求 下载文件
-    QUrl serviceUrl = QUrl("https://raw.githubusercontent.com/PikachuHy/ss/master/autoproxy.pac");
-    pacManager = new QNetworkAccessManager();
-//get方式请求 如需加密用post
-    pacReply = pacManager->get(QNetworkRequest(serviceUrl));
-    QObject::connect(pacReply, &QNetworkReply::readyRead, [=]() {
-        if (pacFile != nullptr) {
-            pacFile->write(pacReply->readAll());
-        }
-
-    });//数据写入
-    QObject::connect(pacReply, &QNetworkReply::finished, [=]() {
-        //刷新文件
-        pacFile->flush();
-        pacFile->close();
-        pacFile->deleteLater();
-        pacReply->deleteLater();
-        pacManager->deleteLater();
-        pacConfig.localFilePath = fileName;
-        pacConfig.is_local = true;
-        if (!configs.isEmpty()) {
-            useLocalPacAction->trigger();
-        }
-    });//请求完成
-}
-
-void SystemTrayIcon::reloadMenu() {
 }

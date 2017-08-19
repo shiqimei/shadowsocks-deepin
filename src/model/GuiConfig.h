@@ -51,8 +51,7 @@ public:
             for (auto it:jsonArray) {
                 Config config;
                 config.fromJsonObject(it.toObject());
-                qDebug() << config.profile.server;
-//                configs.append(config);
+                configs.append(config);
             }
         }
 
@@ -144,6 +143,10 @@ public:
      * 热键配置
      */
     Hotkey hotkey;
+
+    Profile getCurrentProfile();
+
+private:
 };
 
 
