@@ -10,6 +10,7 @@
 
 GuiConfig Util::guiConfig = GuiConfigDao::instance()->get();
 QString Util::ONLINE_PAC_URL = QString("https://raw.githubusercontent.com/PikachuHy/ss/master/autoproxy.pac");
+QString Util::LOCAL_PAC_URL = QString("%1/.ss/autoproxy.pac").arg(QDir::homePath());
 QImage Util::mix(QStringList list) {
     if(list.isEmpty()){
         return QImage();

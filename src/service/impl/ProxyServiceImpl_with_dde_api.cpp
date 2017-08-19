@@ -2,6 +2,7 @@
 // Created by pikachu on 17-8-18.
 //
 
+#include <util/GfwlistToPacUtil.h>
 #include "ProxyServiceImpl_with_dde_api.h"
 #include "util/Util.h"
 void ProxyServiceImpl_with_dde_api::setProxyMethod(ProxyService::ProxyMethod proxyMethod) {
@@ -14,10 +15,10 @@ void ProxyServiceImpl_with_dde_api::setProxyMethod(ProxyService::ProxyMethod pro
             break;
         case Manual: {
             method = "manual";
+            auto profile = Util::guiConfig.getCurrentProfile();
             QString type = "socks";
-            QString addr = "127.0.0.1";
-            QString port = "1080";
-            // TODO 需要一个东西获取配置
+            QString addr = profile.local_address;
+            QString port = QString::number(profile.local_port);
             w = new QDBusPendingCallWatcher(networkInter.SetProxy(type, addr, port), this);
             QObject::connect(w, &QDBusPendingCallWatcher::finished, [=] {
                 qDebug() << "set proxy" << type << addr << port;
@@ -29,14 +30,16 @@ void ProxyServiceImpl_with_dde_api::setProxyMethod(ProxyService::ProxyMethod pro
         }
         case ProxyMethod::Auto: {
             method = "auto";
-            //　TODO　如果是本地pac且文件不存在，去下载
-//            QString proxy = QString("file:///%1/.ss/autoproxy.pac").arg(QDir::homePath());
-            QString proxy = Util::ONLINE_PAC_URL;
-            w = new QDBusPendingCallWatcher(networkInter.SetAutoProxy(proxy), this);
-            QObject::connect(w, &QDBusPendingCallWatcher::finished, [=]() {
-                qDebug() << "set auto proxy finished" << proxy;
-                setProxyMethod(method);
-            });
+            if (!Util::guiConfig.useOnlinePac) {
+                GfwlistToPacUtil *gfwlistToPacUtil = new GfwlistToPacUtil();
+                connect(gfwlistToPacUtil, &GfwlistToPacUtil::finished, [=] {
+                    gfwlistToPacUtil->deleteLater();
+                    setAutoProxy(Util::LOCAL_PAC_URL);
+                });
+                gfwlistToPacUtil->gfwlist2pac();
+            } else {
+                setAutoProxy(Util::ONLINE_PAC_URL);
+            }
             break;
 
         }
@@ -99,4 +102,13 @@ bool ProxyServiceImpl_with_dde_api::isGlobelMode() {
 
 bool ProxyServiceImpl_with_dde_api::isAllowClientsFromLAN() {
     return Util::guiConfig.shareOverLan;
+}
+
+void ProxyServiceImpl_with_dde_api::setAutoProxy(const QString &proxy) {
+    auto w = new QDBusPendingCallWatcher(networkInter.SetAutoProxy(proxy), this);
+    QObject::connect(w, &QDBusPendingCallWatcher::finished, [=]() {
+        qDebug() << "set auto proxy finished" << proxy;
+        setProxyMethod("none");
+    });
+
 }

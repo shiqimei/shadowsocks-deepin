@@ -33,10 +33,12 @@ public:
 
 private:
     NetworkInter networkInter;
+    Controller *controller = nullptr;
 
     void setProxyMethod(QString proxyMethod);
 
-    Controller *controller = nullptr;
+
+    void setAutoProxy(const QString &proxy);
 };
 
 

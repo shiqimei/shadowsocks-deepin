@@ -33,6 +33,7 @@ public:
     static QString getFullpath(QString filename);
     static GuiConfig guiConfig;
     static QString ONLINE_PAC_URL;
+    static QString LOCAL_PAC_URL;
 };
 
 
