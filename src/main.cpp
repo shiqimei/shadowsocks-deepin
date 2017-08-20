@@ -1,5 +1,4 @@
 #include <util/Util.h>
-#include "SystemTrayIcon.h"
 #include "MainWindow.h"
 
 int main(int argc, char *argv[]) {
@@ -19,16 +18,11 @@ int main(int argc, char *argv[]) {
 
         app.setTheme("light");
         app.loadTranslator();
-        QApplication::setWindowIcon(QIcon(":/icons/shadowsocks.ico"));
         app.setQuitOnLastWindowClosed(false);
         Dtk::Util::DLogManager::registerConsoleAppender();
         Dtk::Util::DLogManager::registerFileAppender();
 
-//        SystemTrayIcon systemTrayIcon(&app);
-//        systemTrayIcon.show();
         MainWindow mainWindow;
-
-//        mainWindow.show();
         return QApplication::exec();
 
     }

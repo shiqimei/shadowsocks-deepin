@@ -4,7 +4,6 @@
 
 #ifndef SS_CLIENT_QSS_H
 #define SS_CLIENT_QSS_H
-
 #include <controller.h>
 #include <profile.h>
 using namespace QSS;

@@ -17,9 +17,9 @@ class Toolbar : public QWidget {
 Q_OBJECT
 
 public:
-    Toolbar(QWidget *parent = 0);
+    explicit Toolbar(QWidget *parent = 0);
 
-    ~Toolbar();
+    ~Toolbar() override;
 
     bool eventFilter(QObject *, QEvent *event);
 

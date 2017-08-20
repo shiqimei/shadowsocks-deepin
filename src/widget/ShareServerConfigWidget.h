@@ -13,11 +13,10 @@
 
 class ShareServerConfigWidget : public QDialog {
 public:
-    ShareServerConfigWidget(QWidget *parent= nullptr);
+    explicit ShareServerConfigWidget(QWidget *parent = nullptr);
 
 private:
     QRencodeWidget* qRencodeWidget;
-    QList<Config> configs;
     QListView *listView;
     QLineEdit* lineEdit;
     QString ssUri;

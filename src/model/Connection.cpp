@@ -95,14 +95,14 @@ void Connection::start() {
 
 void Connection::stop() {
     if (running) {
-        if (controller) {
+        if (controller != nullptr) {
             controller->stop();
         }
     }
 }
 
 void Connection::testAddressLatency(const QHostAddress &addr) {
-    QSS::AddressTester *addrTester = new QSS::AddressTester(addr, profile.serverPort, this);
+    auto *addrTester = new QSS::AddressTester(addr, profile.serverPort, this);
     connect(addrTester, &QSS::AddressTester::connectivityTestFinished, this, &Connection::onConnectivityTestFinished,
             Qt::QueuedConnection);
     connect(addrTester, &QSS::AddressTester::lagTestFinished, this, &Connection::onLatencyAvailable,
@@ -139,7 +139,7 @@ void Connection::onLatencyAvailable(const int latency) {
 }
 
 void Connection::onConnectivityTestFinished(bool con) {
-    QSS::AddressTester *tester = qobject_cast<QSS::AddressTester *>(sender());
+    auto tester = dynamic_cast<AddressTester *>(sender());
     if (!con) {
         disconnect(tester, &QSS::AddressTester::lagTestFinished, this, &Connection::onLatencyAvailable);
         this->onLatencyAvailable(SQProfile::LATENCY_ERROR);

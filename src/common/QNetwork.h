@@ -4,7 +4,6 @@
 
 #ifndef STUDY_QT_QNETWORK_H
 #define STUDY_QT_QNETWORK_H
-
 #include <QtNetwork/QTcpSocket>
 #include <QtNetwork/QUdpSocket>
 #include <QtNetwork/QNetworkReply>
