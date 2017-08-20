@@ -6,4 +6,5 @@
 #define SS_CLIENT_QDUS_H
 
 #include <QtDBus/QDBusConnection>
+#include <QtDBus/QDBusMessage>
 #endif //SS_CLIENT_QDUS_H

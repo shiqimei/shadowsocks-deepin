@@ -41,4 +41,7 @@ public:
 
 Q_DECLARE_METATYPE(SQProfile)
 
+QDataStream &operator<<(QDataStream &out, const SQProfile &p);
+
+QDataStream &operator>>(QDataStream &in, SQProfile &p);
 #endif //SHADOWSOCKS_CLIENT_SQPROFILE_H

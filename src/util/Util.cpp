@@ -10,6 +10,8 @@
 GuiConfig Util::guiConfig = GuiConfigDao::instance()->get();
 QString Util::ONLINE_PAC_URL = QString("https://raw.githubusercontent.com/PikachuHy/ss/master/autoproxy.pac");
 QString Util::LOCAL_PAC_URL = QString("%1/.ss/autoproxy.pac").arg(QDir::homePath());
+ConnectionTableModel *Util::model = nullptr;
+ConfigHelper *Util::configHelper = nullptr;
 
 QImage *Util::mix(QStringList list) {
     if(list.isEmpty()){
@@ -83,7 +85,7 @@ QImage *const Util::proxyIconImage(int type) {
 }
 
 QIcon Util::getIcon(int type) {
-    qDebug() << "get icon" << type;
+//    qDebug() << "get icon" << type;
     return QIcon(QString(":/icons/Resources/%1.png").arg(type));
 }
 
@@ -184,9 +186,25 @@ QString Util::formatMillisecond(int millisecond) {
     }
 }
 
-void Util::readModel(ConnectionTableModel *model) {
+void Util::readConfig(QString string, QObject *parent) {
+    configHelper = new ConfigHelper(string, parent);
+    model = new ConnectionTableModel(parent);
+    configHelper->read(model);
 }
 
 void Util::saveConfig() {
     GuiConfigDao::instance()->save(guiConfig);
+    configHelper->save(*model);
+}
+
+void Util::showNotification(const QString &msg) {
+    //Using DBus to send message.
+    QDBusMessage method = QDBusMessage::createMethodCall("org.freedesktop.Notifications",
+                                                         "/org/freedesktop/Notifications",
+                                                         "org.freedesktop.Notifications", "Notify");
+    QVariantList args;
+    args << QCoreApplication::applicationName() << quint32(0) << "shadowsocks-qt5" << "Shadowsocks-Qt5" << msg
+         << QStringList() << QVariantMap() << qint32(-1);
+    method.setArguments(args);
+    QDBusConnection::sessionBus().asyncCall(method);
 }

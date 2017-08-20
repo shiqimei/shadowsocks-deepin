@@ -37,6 +37,7 @@ QVariant ConnectionItem::data(int column, int role) const {
             case 0://name
                 return QVariant(con->profile.name);
             case 1://server
+                qDebug() << "server" << QVariant(con->profile.serverAddress);
                 return QVariant(con->profile.serverAddress);
             case 2://status
                 return con->isRunning() ? QVariant(tr("Connected"))
@@ -48,6 +49,7 @@ QVariant ConnectionItem::data(int column, int role) const {
                     return QVariant(con->profile.latency);
                 }
             case 4://local port
+                qDebug() << "local port " << QVariant(con->profile.localPort);
                 return QVariant(con->profile.localPort);
             case 5://data usage (term)
                 if (role == Qt::DisplayRole) {
@@ -72,6 +74,26 @@ QVariant ConnectionItem::data(int column, int role) const {
                     return QVariant(con->profile.lastTime.toString(Qt::SystemLocaleShortDate));
                 } else {
                     return QVariant(con->profile.lastTime);
+                }
+            case 9:// server port
+                qDebug() << "server port" << QVariant(con->profile.serverPort);
+                if (role == Qt::DisplayRole) {
+                    return QVariant(con->profile.serverPort);
+                }
+            case 10:
+                qDebug() << "method" << QVariant(con->profile.method);
+                if (role == Qt::DisplayRole) {
+                    return QVariant(con->profile.method);
+                }
+            case 11:
+                qDebug() << "password" << QVariant(con->profile.password);
+                if (role == Qt::DisplayRole) {
+                    return QVariant(con->profile.password);
+                }
+            case 12:
+                qDebug() << "timeout" << QVariant(con->profile.timeout);
+                if (role == Qt::DisplayRole) {
+                    return QVariant(con->profile.timeout);
                 }
             default:
                 return QVariant();

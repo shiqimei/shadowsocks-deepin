@@ -230,6 +230,7 @@ void ConfigHelper::read(ConnectionTableModel *model) {
             profile.onetimeAuth = false;
         }
         Connection *con = new Connection(profile, this);
+        qDebug() << "server " << con->getProfile().serverAddress;
         model->appendConnection(con);
     }
     settings->endArray();

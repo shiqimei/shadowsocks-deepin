@@ -46,8 +46,6 @@ LogServiceImpl_old_impl::LogServiceImpl_old_impl(QObject *parent) : LogService(p
             if (outBytes.size() > maxLenth) {
                 outBytes.pop_front();
             }
-        } else {
-            qDebug() << "none";
         }
         emit requestUpdateIcon(Util::getIcon(type));
         // 如果显示流量监控窗口 触发重绘

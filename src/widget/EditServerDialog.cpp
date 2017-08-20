@@ -1,6 +1,7 @@
+#include <util/Util.h>
+#include <QtWidgets/QDataWidgetMapper>
 #include "EditServerDialog.h"
 #include "ui_EditServerDialog.h"
-#include "util/ConfigUtil.h"
 
 //#define QT_DEBUG 0
 //#undef QT_DEBUG
@@ -9,13 +10,40 @@ EditServerDialog::EditServerDialog(bool isNew, QWidget *parent) :
         QDialog(parent),
         ui(new Ui::EditServerDialog){
     ui->setupUi(this);
-//    ui->groupBox->setLayout(ui->formLayout);
+    ui->listView->setModel(Util::model);
+    QDataWidgetMapper *mapper = new QDataWidgetMapper(this);
+    mapper->setModel(Util::model);
+    mapper->addMapping(ui->remarkLineEdit, 9);
+    mapper->addMapping(ui->serverAddressLineEdit, 1);
+    for (int i = 0; i < 4; ++i) {
+        mapper->addMapping(new QLineEdit(), i);
+    }
+    mapper->addMapping(ui->proxyPortSpinBox, 9);
+    for (int j = 0; j < 9; ++j) {
+        mapper->addMapping(new QLineEdit(), j);
+    }
+    mapper->addMapping(ui->serverPortSpinBox, 4);
+    mapper->addMapping(ui->encryptComboBox, 10);
+    mapper->addMapping(ui->passwordLineEdit, 11);
+    mapper->addMapping(ui->timeoutSpinBox, 12);
+    mapper->setSubmitPolicy(QDataWidgetMapper::SubmitPolicy::AutoSubmit);
     QList<QByteArray> methodBA = QSS::Cipher::getSupportedMethodList();
     QStringList methodList;
     for (const QByteArray &method : methodBA) {
         methodList.push_back(QString(method));
     }
     ui->encryptComboBox->addItems(methodList);
+    connect(ui->listView, &QListView::clicked, [=](const QModelIndex &index) {
+        qDebug() << index;
+//        mapper->submit();
+        mapper->setCurrentModelIndex(index);
+    });
+
+
+//    mapper->addMapping(ui.)
+
+    /*
+//    ui->groupBox->setLayout(ui->formLayout);
     connect(ui->listWidget, &QListWidget::currentRowChanged, [=](int currentRow) {
 #ifdef QT_DEBUG
         qDebug() <<"currentRow"<< currentRow;
@@ -98,7 +126,7 @@ EditServerDialog::EditServerDialog(bool isNew, QWidget *parent) :
     initConfig();
     if(isNew){
         ui->listWidget->setCurrentRow(ui->listWidget->count()-1);
-    }
+    }*/
 }
 
 EditServerDialog::~EditServerDialog() {
@@ -106,47 +134,47 @@ EditServerDialog::~EditServerDialog() {
 }
 
 void EditServerDialog::on_addPushButton_clicked() {
-#ifdef QT_DEBUG
+/*#ifdef QT_DEBUG
     qDebug() << "on_addPushButton_clicked()";
 #endif
     Profile profile;
     ServerItem *newItem = new ServerItem(profile, "new server");
     ui->listWidget->addItem(newItem);
     ui->listWidget->setCurrentItem(newItem);
-    onListWidgetChange();
+    onListWidgetChange();*/
 }
 
 void EditServerDialog::onListWidgetChange() {
-    int count = ui->listWidget->count();
+/*    int count = ui->listWidget->count();
     int curRow = ui->listWidget->currentRow();
     ui->removePushButton->setEnabled(count > 0);
     ui->copyPushButton->setEnabled(count > 0);
     ui->upPushButton->setEnabled(curRow > 0);
     ui->downPushButton->setEnabled(curRow != count - 1);
-    setFormEnabled(count>0);
+    setFormEnabled(count>0);*/
 }
 
 void EditServerDialog::on_removePushButton_clicked() {
-    ServerItem *item = dynamic_cast<ServerItem *>(ui->listWidget->currentItem());
+/*    ServerItem *item = dynamic_cast<ServerItem *>(ui->listWidget->currentItem());
     serverItemList.removeOne(item);
     ui->listWidget->takeItem(ui->listWidget->currentRow());
     delete item;
-    onListWidgetChange();
+    onListWidgetChange();*/
 }
 
 void EditServerDialog::on_copyPushButton_clicked() {
-//    int row=ui->listWidget->currentRow();
+/*//    int row=ui->listWidget->currentRow();
     ServerItem* item= dynamic_cast<ServerItem *>(ui->listWidget->currentItem());
     Profile profile=item->profile;
     ServerItem* newItem=new ServerItem(profile,item->text());
     serverItemList.append(newItem);
     ui->listWidget->addItem(newItem);
     ui->listWidget->setCurrentRow(ui->listWidget->count()-1);
-//    serverItemList.swap()
+//    serverItemList.swap()*/
 }
 
 void EditServerDialog::on_upPushButton_clicked() {
-    int row=ui->listWidget->currentRow();
+/*    int row=ui->listWidget->currentRow();
 #ifdef QT_DEBUG
     qDebug()<<"swap"<<row<<row-1;
     qDebug()<<"swap"<<serverItemList[row]->text()<<serverItemList[row-1]->text();
@@ -158,18 +186,19 @@ void EditServerDialog::on_upPushButton_clicked() {
     serverItemList.swap(row-1,row);
     updateListWidget();
     ui->listWidget->setCurrentRow(row-1);
-    onListWidgetChange();
+    onListWidgetChange();*/
 }
 
 void EditServerDialog::on_downPushButton_clicked() {
-    int row=ui->listWidget->currentRow();
+/*    int row=ui->listWidget->currentRow();
     serverItemList.swap(row+1,row);
     updateListWidget();
     ui->listWidget->setCurrentRow(row+1);
-    onListWidgetChange();
+    onListWidgetChange();*/
 }
 
 void EditServerDialog::initConfig() {
+/*
     auto configs=ConfigUtil::readConfig();
     for(auto&it:configs){
         serverItemList.append(new ServerItem(it.profile, it.getRemarks()));
@@ -180,11 +209,12 @@ void EditServerDialog::initConfig() {
     } else{
 
     }
+*/
 
 }
 
 void EditServerDialog::updateListWidget() {
-#ifdef QT_DEBUG
+/*#ifdef QT_DEBUG
     qDebug()<<"";
 #endif
     while (ui->listWidget->count()>0) {
@@ -200,17 +230,17 @@ void EditServerDialog::updateListWidget() {
         ui->listWidget->addItem(serverItemList[0]);
     } else{
         setFormEnabled(false);
-    }
+    }*/
 }
 
 void EditServerDialog::setFormEnabled(bool flag) {
-    ui->serverAddressLineEdit->setEnabled(flag);
+/*    ui->serverAddressLineEdit->setEnabled(flag);
     ui->serverPortSpinBox->setEnabled(flag);
     ui->passwordLineEdit->setEnabled(flag);
     ui->encryptComboBox->setEnabled(flag);
     ui->remarkLineEdit->setEnabled(flag);
     ui->timeoutSpinBox->setEnabled(flag);
-    ui->proxyPortSpinBox->setEnabled(flag);
+    ui->proxyPortSpinBox->setEnabled(flag);*/
 }
 
 ServerItem::ServerItem(const Profile &profile, QString remarks, QListWidget *view, int type)

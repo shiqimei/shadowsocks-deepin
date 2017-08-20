@@ -7,6 +7,7 @@ int main(int argc, char *argv[]) {
     DApplication::loadDXcbPlugin();
     DApplication app(argc, argv);
     if(app.setSingleInstance("shadowsocks-client")){
+        qRegisterMetaTypeStreamOperators<SQProfile>("SQProfile");
         app.setOrganizationName("pikachu");
         app.setApplicationName("shadowsocks-client");
         app.setApplicationVersion("0.4.0");
@@ -17,10 +18,11 @@ int main(int argc, char *argv[]) {
         app.setApplicationAcknowledgementPage("https://github.com/PikachuHy/shadowsocks-client");
 
         app.setTheme("light");
-        QApplication::setWindowIcon(QIcon(":/icons/shadowsocks.ico"));
+//        QApplication::setWindowIcon(QIcon(":/icons/shadowsocks.ico"));
         app.setQuitOnLastWindowClosed(false);
         Dtk::Util::DLogManager::registerConsoleAppender();
         Dtk::Util::DLogManager::registerFileAppender();
+
 //        SystemTrayIcon systemTrayIcon(&app);
 //        systemTrayIcon.show();
         MainWindow mainWindow;

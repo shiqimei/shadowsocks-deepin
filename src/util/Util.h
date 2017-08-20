@@ -10,6 +10,8 @@
 #include <model/ConnectionTableModel.h>
 #include <dao/GuiConfigDao.h>
 #include "model/GuiConfig.h"
+#include "ConfigHelper.h"
+
 class Util {
 public:
 
@@ -42,6 +44,9 @@ public:
 
     static QString getQrcPath(QString imageName);
     static GuiConfig guiConfig;
+    static ConnectionTableModel *model;
+    static ConfigHelper *configHelper;
+    static QSettings *settings;
     static QString ONLINE_PAC_URL;
     static QString LOCAL_PAC_URL;
 
@@ -65,10 +70,11 @@ public:
 
     static QString formatUnitSize(double v, const char **orders, int nb_orders);
 
-    static void readModel(ConnectionTableModel *model);
+    static void readConfig(QString string, QObject *parent);
 
     static void saveConfig();
-};
 
+    static void showNotification(const QString &msg);
+};
 
 #endif //SHADOWSOCKS_CLIENT_UTIL_H
