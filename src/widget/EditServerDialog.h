@@ -16,7 +16,8 @@ class EditServerDialog : public QDialog
 
 public:
     explicit EditServerDialog(bool isNew= false, QWidget *parent= nullptr);
-    ~EditServerDialog();
+
+    ~EditServerDialog() override;
 
 private slots:
     void on_addPushButton_clicked();

@@ -3,6 +3,8 @@
 //
 
 #include <util/SsValidator.h>
+#include <model/Connection.h>
+#include <util/Util.h>
 #include "ServerSerivceImpl_old_impl.h"
 #include "widget/EditServerDialog.h"
 #include "widget/ShareServerConfigWidget.h"
@@ -22,7 +24,6 @@ void ServerSerivceImpl_old_impl::shareServerConfig() {
     auto dialog = new ShareServerConfigWidget();
     dialog->exec();
     dialog->deleteLater();
-
 }
 
 QString ServerSerivceImpl_old_impl::scanQRCodeFromScreen() {
@@ -45,18 +46,20 @@ QString ServerSerivceImpl_old_impl::scanQRCodeFromScreen() {
                 tr("没有找到包含有效ss uri的二维码"));
         return QString();
     } else {
-        Profile profile = QSS::Profile(uri.toUtf8());
-        Config config;
-        config.profile = profile;
-        config.setRemarks(profile.server);
-        // TODO 保存二维码信息并更新菜单栏
-//        configs.append(config);
-//        ConfigUtil::saveConfig(configs);
-//            editServerAction->trigger();
-//        onEditServerActionTriggered(true);
+        newCon(uri);
         return uri;
     }
 
+}
+
+void ServerSerivceImpl_old_impl::newCon(const QString &uri) {
+    auto con = new Connection(uri);
+    Util::model->appendConnection(con);
+    auto dialog = new EditServerDialog();
+    qDebug() << "exe";
+    dialog->exec();
+    emit requestReloadMenu();
+    dialog->deleteLater();
 }
 
 QString ServerSerivceImpl_old_impl::importURLfromClipboard() {
@@ -69,11 +72,7 @@ QString ServerSerivceImpl_old_impl::importURLfromClipboard() {
                 tr("没有找到包含有效ss uri的字符串"));
         return QString();
     } else {
-        Profile profile = QSS::Profile(uri.toUtf8());
-        Config config;
-        config.profile = profile;
-        config.setRemarks(profile.server);
-        // TODO 保存二维码信息并更新菜单栏
+        newCon(uri);
         return uri;
     }
 }

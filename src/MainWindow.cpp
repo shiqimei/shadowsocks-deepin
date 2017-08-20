@@ -34,7 +34,6 @@ MainWindow::MainWindow(QWidget *parent) :
     if (Util::guiConfig.enabled) {
         proxyService->setProxyEnabled(true);
     }
-    serverSerivce->editServers();
 }
 
 void MainWindow::initCentralWidget() {

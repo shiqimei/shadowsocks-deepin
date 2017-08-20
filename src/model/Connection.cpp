@@ -134,7 +134,7 @@ void Connection::onServerAddressLookedUp(const QHostInfo &host) {
 
 void Connection::onLatencyAvailable(const int latency) {
     profile.latency = latency;
-    qDebug() << latency;
+//    qDebug() << latency;
     emit latencyAvailable(latency);
 }
 

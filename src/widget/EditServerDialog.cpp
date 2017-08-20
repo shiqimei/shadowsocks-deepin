@@ -38,6 +38,7 @@ EditServerDialog::EditServerDialog(bool isNew, QWidget *parent) :
 }
 
 EditServerDialog::~EditServerDialog() {
+    Util::configHelper->save(*Util::model);
     delete ui;
 }
 

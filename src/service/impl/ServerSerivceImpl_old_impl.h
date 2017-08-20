@@ -24,6 +24,7 @@ public:
     QString importURLfromClipboard() override;
 
 private:
+    void newCon(const QString &uri);
 };
 
 

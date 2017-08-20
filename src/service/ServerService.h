@@ -40,5 +40,9 @@ public:
      * @return
      */
     virtual QString importURLfromClipboard()= 0;
+
+signals:
+
+    void requestReloadMenu();
 };
 #endif //SHADOWSOCKS_CLIENT_SERVERSERVICE_H
