@@ -37,7 +37,7 @@ QVariant ConnectionItem::data(int column, int role) const {
             case 0://name
                 return QVariant(con->profile.name);
             case 1://server
-                qDebug() << "server" << QVariant(con->profile.serverAddress);
+//                qDebug() << "server" << QVariant(con->profile.serverAddress);
                 return QVariant(con->profile.serverAddress);
             case 2://status
                 return con->isRunning() ? QVariant(tr("Connected"))
@@ -46,11 +46,11 @@ QVariant ConnectionItem::data(int column, int role) const {
                 if (role == Qt::DisplayRole) {
                     return QVariant(convertLatencyToString(con->profile.latency));
                 } else {
-                    return QVariant(con->profile.latency);
+                    return QVariant(QString::number(con->profile.latency));
                 }
             case 4://local port
-                qDebug() << "local port " << QVariant(con->profile.localPort);
-                return QVariant(con->profile.localPort);
+//                qDebug() << "local port " << QVariant(con->profile.localPort);
+                return QVariant(QString::number(con->profile.localPort));
             case 5://data usage (term)
                 if (role == Qt::DisplayRole) {
                     return QVariant(convertBytesToHumanReadable(con->profile.currentUsage));
@@ -76,25 +76,21 @@ QVariant ConnectionItem::data(int column, int role) const {
                     return QVariant(con->profile.lastTime);
                 }
             case 9:// server port
-                qDebug() << "server port" << QVariant(con->profile.serverPort);
-                if (role == Qt::DisplayRole) {
-                    return QVariant(con->profile.serverPort);
-                }
+//                qDebug() << "server port" << QVariant(con->profile.serverPort);
+                return QVariant(con->profile.serverPort);
+
             case 10:
-                qDebug() << "method" << QVariant(con->profile.method);
-                if (role == Qt::DisplayRole) {
-                    return QVariant(con->profile.method);
-                }
+//                qDebug() << "method" << QVariant(con->profile.method);
+                return QVariant(con->profile.method.toLower());
+
             case 11:
-                qDebug() << "password" << QVariant(con->profile.password);
-                if (role == Qt::DisplayRole) {
-                    return QVariant(con->profile.password);
-                }
+//                qDebug() << "password" << QVariant(con->profile.password);
+                return QVariant(con->profile.password);
+
             case 12:
-                qDebug() << "timeout" << QVariant(con->profile.timeout);
-                if (role == Qt::DisplayRole) {
-                    return QVariant(con->profile.timeout);
-                }
+//                qDebug() << "timeout" << QVariant(con->profile.timeout);
+                return QVariant(con->profile.timeout);
+
             default:
                 return QVariant();
         }
@@ -304,4 +300,37 @@ void ConnectionItem::initTheme() {
         textLeftOpacity = 0.6;
         textRightOpacity = 0.5;
     }
+}
+
+bool ConnectionItem::setData(const QModelIndex &index, const QVariant &value, int role) {
+    if (role == Qt::DisplayRole || role == Qt::EditRole) {
+//        qDebug()<<index;
+        switch (index.column()) {
+            case 0:
+                con->profile.name = value.toString();
+                break;
+            case 1:
+                con->profile.serverAddress = value.toString();
+                break;
+            case 4:
+                con->profile.localPort = value.toInt();
+                break;
+            case 9:
+                con->profile.serverPort = value.toInt();
+                break;
+            case 10:
+                qDebug() << value;
+                con->profile.method = value.toString();
+                break;
+            case 11:
+                con->profile.password = value.toString();
+                break;
+            case 12:
+                con->profile.timeout = value.toInt();
+                break;
+            default:
+                break;
+        }
+    }
+    return false;
 }

@@ -7,6 +7,7 @@
 
 #include "service/ProxyService.h"
 #include <com_deepin_daemon_network.h>
+#include <model/Connection.h>
 
 using NetworkInter = com::deepin::daemon::Network;
 
@@ -36,11 +37,17 @@ public:
 private:
     NetworkInter networkInter;
     Controller *controller = nullptr;
+    Connection *connection = nullptr;
+    QList<Connection *> list;
 
     void setProxyMethod(QString proxyMethod);
 
 
     void setAutoProxy(const QString &proxy);
+
+    void onConnectSuccess(const int latency);
+
+    void onConnectFailed();
 };
 
 

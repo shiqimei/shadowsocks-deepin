@@ -19,6 +19,7 @@ public:
 
     QVariant data(int column, int role = Qt::DisplayRole) const;
 
+    bool setData(const QModelIndex &index, const QVariant &value, int role);
     Connection *getConnection();
 
     void testLatency();
@@ -45,8 +46,12 @@ signals:
 
 private:
     Connection *con;
+public:
 
     static QString convertLatencyToString(const int latency);
+
+private:
+
 
     static QString convertBytesToHumanReadable(quint64 bytes);
 
@@ -84,6 +89,5 @@ private slots:
 
     void drawCell(const QRect &rect, QPainter *painter, bool isSelect, QString text) const;
 };
-
 
 #endif //SHADOWSOCKS_CLIENT_CONNECTIONITEM_H

@@ -7,4 +7,5 @@
 
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusMessage>
+#include <QtDBus/QDBusPendingCall>
 #endif //SS_CLIENT_QDUS_H

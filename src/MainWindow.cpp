@@ -26,6 +26,9 @@ MainWindow::MainWindow(QWidget *parent) :
     initService();
     initCentralWidget();
     reloadMenu();
+    connect(model, &ConnectionTableModel::message, [](const QString &msg) {
+        Util::showNotification(msg);
+    });
     systemTrayIcon.setIcon(Util::getIcon(Util::Type::None));
     systemTrayIcon.show();
     if (Util::guiConfig.enabled) {
@@ -275,10 +278,12 @@ void MainWindow::reloadMenu() {
     serversMenu->addAction(ui->actionChoosse_by_statistics);
     serversMenu->addSeparator();
     serversMenu->addSeparator();
-    if (!Util::guiConfig.configs.isEmpty()) {
+    if (!Util::model->getItems().isEmpty()) {
         auto actionGroup = new QActionGroup(this);
-        for (int i = 0; i < Util::guiConfig.configs.size(); ++i) {
-            auto action = new QAction(Util::guiConfig.configs[i].getRemarks(), this);
+//        qDebug()<<Util::model->getItems().size()<<" total items";
+        for (int i = 0; i < Util::model->getItems().size(); ++i) {
+            auto action = new QAction(Util::model->getItem(i)->getConnection()->getName(), this);
+//            qDebug()<<action->text();
             action->setData(i);
             action->setCheckable(true);
             action->setChecked(Util::guiConfig.index == i);
@@ -289,9 +294,10 @@ void MainWindow::reloadMenu() {
         connect(actionGroup, &QActionGroup::triggered, [=](QAction *action) {
             int index = action->data().toInt();
             Util::guiConfig.index = index;
+//            qDebug()<<"trigger "<<index<<model->getItems().size();
             proxyService->setProxyEnabled(true);
             systemTrayIcon.showMessage(tr("change server"),
-                                       tr("use server -> %1").arg(Util::guiConfig.getCurrentProfile().server));
+                                       tr("use server -> %1").arg(action->text()));
         });
         serversMenu->addSeparator();
     } else {

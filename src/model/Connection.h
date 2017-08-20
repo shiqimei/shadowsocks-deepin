@@ -21,6 +21,8 @@ public:
 
     ~Connection();
 
+    Controller *getController() const;
+
     const SQProfile &getProfile() const;
 
     const QString &getName() const;

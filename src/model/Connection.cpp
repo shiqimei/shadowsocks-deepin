@@ -134,6 +134,7 @@ void Connection::onServerAddressLookedUp(const QHostInfo &host) {
 
 void Connection::onLatencyAvailable(const int latency) {
     profile.latency = latency;
+    qDebug() << latency;
     emit latencyAvailable(latency);
 }
 
@@ -146,4 +147,9 @@ void Connection::onConnectivityTestFinished(bool con) {
                          "Internet connectivity test failed. Please check the connection's profile and your firewall settings."));
     }
     tester->deleteLater();
+}
+
+
+Controller *Connection::getController() const {
+    return controller;
 }

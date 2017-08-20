@@ -74,7 +74,7 @@
       <item>
        <widget class="QLabel" name="label_7">
         <property name="text">
-         <string>代理端口</string>
+            <string>Local Port</string>
         </property>
        </widget>
       </item>
@@ -111,7 +111,7 @@ padding:0 1px;
 }</string>
       </property>
       <property name="title">
-       <string>服务器</string>
+          <string>Server Config</string>
       </property>
       <widget class="QWidget" name="formLayoutWidget">
        <property name="geometry">
@@ -144,7 +144,7 @@ padding:0 1px;
         <item row="0" column="0">
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>服务器地址</string>
+              <string>Server Addr</string>
           </property>
          </widget>
         </item>
@@ -154,21 +154,21 @@ padding:0 1px;
         <item row="1" column="0">
          <widget class="QLabel" name="label_2">
           <property name="text">
-           <string>服务器端口</string>
+              <string>Server Port</string>
           </property>
          </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="label_3">
           <property name="text">
-           <string>密码</string>
+              <string>Password</string>
           </property>
          </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="label_4">
           <property name="text">
-           <string>加密</string>
+              <string>Method</string>
           </property>
          </widget>
         </item>
@@ -178,7 +178,7 @@ padding:0 1px;
         <item row="4" column="0">
          <widget class="QLabel" name="label_5">
           <property name="text">
-           <string>备注</string>
+              <string>Remark</string>
           </property>
          </widget>
         </item>
@@ -188,7 +188,7 @@ padding:0 1px;
         <item row="5" column="0">
          <widget class="QLabel" name="label_6">
           <property name="text">
-           <string>超时（秒）</string>
+              <string>Timeout</string>
           </property>
          </widget>
         </item>
@@ -228,35 +228,35 @@ padding:0 1px;
       <item row="0" column="0">
        <widget class="QPushButton" name="addPushButton">
         <property name="text">
-         <string>添加</string>
+            <string>Add</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
        <widget class="QPushButton" name="removePushButton">
         <property name="text">
-         <string>删除</string>
+            <string>Remove</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
        <widget class="QPushButton" name="copyPushButton">
         <property name="text">
-         <string>复制</string>
+            <string>Duplicate</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0">
        <widget class="QPushButton" name="upPushButton">
         <property name="text">
-         <string>上移</string>
+            <string>Move Up</string>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
        <widget class="QPushButton" name="downPushButton">
         <property name="text">
-         <string>下移</string>
+            <string>Move Down</string>
         </property>
        </widget>
       </item>
@@ -265,7 +265,7 @@ padding:0 1px;
     <item row="0" column="0">
      <widget class="QLabel" name="label_8">
       <property name="text">
-       <string>服务器列表</string>
+          <string>Server List</string>
       </property>
      </widget>
     </item>
@@ -288,23 +288,16 @@ padding:0 1px;
        </spacer>
       </item>
       <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="pushButtonTestLatency">
               <property name="text">
-                  <string>test</string>
+                  <string>Test Latency</string>
               </property>
           </widget>
       </item>
-         <item>
-             <widget class="QPushButton" name="savePushButton">
-                 <property name="text">
-                     <string>保存</string>
-                 </property>
-             </widget>
-         </item>
       <item>
        <widget class="QPushButton" name="cancelPushButton">
         <property name="text">
-         <string>取消</string>
+            <string>Close</string>
         </property>
        </widget>
       </item>

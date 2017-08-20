@@ -9,7 +9,7 @@
 
 GuiConfig Util::guiConfig = GuiConfigDao::instance()->get();
 QString Util::ONLINE_PAC_URL = QString("https://raw.githubusercontent.com/PikachuHy/ss/master/autoproxy.pac");
-QString Util::LOCAL_PAC_URL = QString("%1/.ss/autoproxy.pac").arg(QDir::homePath());
+QString Util::LOCAL_PAC_URL = QString("file://%1/.ss/autoproxy.pac").arg(QDir::homePath());
 ConnectionTableModel *Util::model = nullptr;
 ConfigHelper *Util::configHelper = nullptr;
 
@@ -207,4 +207,14 @@ void Util::showNotification(const QString &msg) {
          << QStringList() << QVariantMap() << qint32(-1);
     method.setArguments(args);
     QDBusConnection::sessionBus().asyncCall(method);
+}
+
+Connection *Util::getCurrentConnection() {
+    int index = guiConfig.index;
+    return model->getItem(index)->getConnection();
+}
+
+bool Util::hasPacFile() {
+    QFile file(Util::LOCAL_PAC_URL.right(Util::LOCAL_PAC_URL.length() - 7));
+    return file.exists();
 }

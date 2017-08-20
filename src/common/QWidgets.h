@@ -35,4 +35,7 @@
 #include <QtWidgets/QDesktopWidget>
 #include <QtWidgets/QStyleFactory>
 #include <QtWidgets/QToolButton>
+#include <QtWidgets/QListWidget>
+#include <QtWidgets/QListWidgetItem>
+#include <QtWidgets/QDataWidgetMapper>
 #endif //STUDY_QT_QWIDGETS_H

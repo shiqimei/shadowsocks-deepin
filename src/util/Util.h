@@ -75,6 +75,10 @@ public:
     static void saveConfig();
 
     static void showNotification(const QString &msg);
+
+    static Connection *getCurrentConnection();
+
+    static bool hasPacFile();
 };
 
 #endif //SHADOWSOCKS_CLIENT_UTIL_H

@@ -32,18 +32,21 @@ void ProxyServiceImpl_with_dde_api::setProxyMethod(ProxyService::ProxyMethod pro
         }
         case ProxyMethod::Auto: {
             method = "auto";
-            if (!Util::guiConfig.useOnlinePac) {
-                GfwlistToPacUtil *gfwlistToPacUtil = new GfwlistToPacUtil();
-                connect(gfwlistToPacUtil, &GfwlistToPacUtil::finished, [=] {
-                    gfwlistToPacUtil->deleteLater();
-                    setAutoProxy(Util::LOCAL_PAC_URL);
-                });
-                gfwlistToPacUtil->gfwlist2pac();
-            } else {
-                setAutoProxy(Util::ONLINE_PAC_URL);
-            }
             Util::guiConfig.global = false;
             Util::saveConfig();
+            if (Util::guiConfig.useOnlinePac) {
+                setAutoProxy(Util::ONLINE_PAC_URL);
+                break;
+            }
+            if (Util::hasPacFile()) {
+                setAutoProxy(Util::LOCAL_PAC_URL);
+                break;
+            }
+            GfwlistToPacUtil *gfwlistToPacUtil = new GfwlistToPacUtil();
+            connect(gfwlistToPacUtil, &GfwlistToPacUtil::finished, [=] {
+                gfwlistToPacUtil->deleteLater();
+                setAutoProxy(Util::LOCAL_PAC_URL);
+            });
             break;
 
         }
@@ -53,23 +56,48 @@ void ProxyServiceImpl_with_dde_api::setProxyMethod(ProxyService::ProxyMethod pro
 }
 
 void ProxyServiceImpl_with_dde_api::setProxyEnabled(bool enabled) {
-    if (controller == nullptr) {
-        controller = new Controller(true, false, this);
-        emit newController(controller);
-    }
+    auto con = Util::getCurrentConnection();
     if (!enabled) {
         Util::guiConfig.enabled = false;
         setProxyMethod(ProxyMethod::None);
-        controller->stop();
+//        controller->stop();
+        connection->stop();
     } else {
+        if (connection != nullptr) {
+            connection->stop();
+        }
+        connection = con;
+        connect(connection, &Connection::latencyAvailable, this, &ProxyServiceImpl_with_dde_api::onConnectSuccess);
+        connect(connection, &Connection::startFailed, this, &ProxyServiceImpl_with_dde_api::onConnectFailed);
+//        controller->setup(Util::guiConfig.getCurrentProfile());
+//        controller->start();
+        connection->start();
         Util::guiConfig.enabled = true;
-        auto proxyMethod = isPacMode() ? ProxyMethod::Auto : ProxyMethod::Manual;
+        auto proxyMethod = this->isPacMode() ? Auto : Manual;
         setProxyMethod(proxyMethod);
-        controller->setup(Util::guiConfig.getCurrentProfile());
-        controller->start();
     }
     Util::saveConfig();
     emit requestReloadMenu();
+    if (!list.contains(connection)) {
+        list.append(connection);
+        emit newController(connection->getController());
+    }
+}
+
+void ProxyServiceImpl_with_dde_api::onConnectFailed() {
+    Util::guiConfig.enabled = false;
+    disconnect(Util::getCurrentConnection(), &Connection::startFailed, this,
+               &ProxyServiceImpl_with_dde_api::onConnectFailed);
+    qDebug() << "connect fail";
+}
+
+void ProxyServiceImpl_with_dde_api::onConnectSuccess(const int latency) {
+    qDebug() << "latency" << latency;
+    Util::guiConfig.enabled = true;
+    auto proxyMethod = this->isPacMode() ? Auto : Manual;
+    setProxyMethod(proxyMethod);
+    disconnect(Util::getCurrentConnection(), &Connection::latencyAvailable, this,
+               &ProxyServiceImpl_with_dde_api::onConnectSuccess);
 }
 
 void ProxyServiceImpl_with_dde_api::editForwardProxy() {

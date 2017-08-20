@@ -143,3 +143,11 @@ const QList<ConnectionItem *> &ConnectionTableModel::getItems() const {
     return items;
 }
 
+bool ConnectionTableModel::setData(const QModelIndex &index, const QVariant &value, int role) {
+    if (role == Qt::DisplayRole || role == Qt::EditRole) {
+        items[index.row()]->setData(index, value, role);
+//        emit dataChanged(index,index,roles);
+    }
+    return QAbstractItemModel::setData(index, value, role);
+}
+

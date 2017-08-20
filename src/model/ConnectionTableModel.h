@@ -38,6 +38,8 @@ public:
 
     void disconnectConnectionsAt(const QString &addr, quint16 port);
 
+    bool setData(const QModelIndex &index, const QVariant &value, int role) override;
+
 public slots:
 
     void testAllLatency();
