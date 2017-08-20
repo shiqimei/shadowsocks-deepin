@@ -118,7 +118,7 @@ int Util::compareVersion(QString l, QString r) {
 }
 
 QString Util::getFullpath(QString filename) {
-    return QObject::tr("%1/.ss/%2").arg(QDir::homePath()).arg(filename);
+    return QString("%1/.ss/%2").arg(QDir::homePath()).arg(filename);
 }
 
 QString Util::getQrcPath(QString imageName) {

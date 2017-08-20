@@ -3,39 +3,27 @@
 //
 
 #include <QtWidgets/QGridLayout>
+#include <util/Util.h>
 #include "ShareServerConfigWidget.h"
 
 ShareServerConfigWidget::ShareServerConfigWidget(QWidget *parent) : QDialog(parent) {
     setWindowTitle("二维码与URL");
-    listWidget=new QListWidget(this);
-    configs = ConfigUtil::readConfig();
+    listView = new QListView(this);
+    listView->setModel(Util::model);
     lineEdit=new QLineEdit();
-#ifdef QT_DEBUG
-    qDebug()<<"发生了什么"<<configs.size();
-#endif
-    for(auto&config:configs){
-        listWidget->addItem(config.getRemarks());
-    }
-    if(!configs.isEmpty()){
-        ssUri=configs.first().getSsUri();
-        qRencodeWidget=new QRencodeWidget(ssUri);
-        lineEdit->setText(ssUri);
-        listWidget->setCurrentRow(0);
-#ifdef QT_DEBUG
-        qDebug()<<"使用 ss: "<<ssUri;
-#endif
-    } else{
-        qRencodeWidget=new QRencodeWidget("");
-    }
+    qRencodeWidget = new QRencodeWidget("");
     QGridLayout* mainLayout = new QGridLayout();
     mainLayout->addWidget(qRencodeWidget,0,0);
-    mainLayout->addWidget(listWidget,0,1);
+    mainLayout->addWidget(listView, 0, 1);
     mainLayout->addWidget(lineEdit,1,0,1,2);
     setLayout(mainLayout);
 
-    connect(listWidget,&QListWidget::currentRowChanged,[=](int row){
-        ssUri=configs[row].getSsUri();
+    connect(listView, &QListView::clicked, [=](const QModelIndex &index) {
+        int row = index.row();
+//        qDebug()<<"row"<<row;
+        ssUri = Util::model->getItem(row)->getConnection()->getURI();
         qRencodeWidget->setString(ssUri);
         lineEdit->setText(ssUri);
     });
+    listView->clicked(Util::model->index(0, 0));
 }

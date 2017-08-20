@@ -13,7 +13,7 @@
 #include "common/dtk.h"
 
 class UpdateServiceImpl_old_impl : public UpdateService {
-
+Q_OBJECT
 public:
     UpdateServiceImpl_old_impl(QObject *parent);
 

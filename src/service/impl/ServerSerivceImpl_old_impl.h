@@ -9,7 +9,7 @@
 #include "common/QCore.h"
 
 class ServerSerivceImpl_old_impl : public ServerSerivce {
-
+Q_OBJECT
 public:
     explicit ServerSerivceImpl_old_impl(QObject *parent);
 

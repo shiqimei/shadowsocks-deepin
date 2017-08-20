@@ -19,7 +19,7 @@ void ConfigUtil::printProfile(Profile &profile) {
 }
 
 QList<Config> ConfigUtil::readConfig() {
-    QFile configFile(QObject::tr("%1/.ss/gui-config.json").arg(QDir::homePath()));
+    QFile configFile(QString("%1/.ss/gui-config.json").arg(QDir::homePath()));
     if (!configFile.exists()) {
         qDebug() << "配置文件不存在,写入新的配置文件";
         QDir dir;
@@ -110,7 +110,7 @@ void ConfigUtil::saveConfig(QList<Config> configList) {
     }
     jsonObject.insert("local_port", localPort);
     jsonDocument.setObject(jsonObject);
-    QFile configFile(QObject::tr("%1/.ss/gui-config.json").arg(QDir::homePath()));
+    QFile configFile(QString("%1/.ss/gui-config.json").arg(QDir::homePath()));
     if (!configFile.exists()) {
         qDebug() << "配置文件不存在,写入新的配置文件";
         QDir dir;

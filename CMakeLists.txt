@@ -12,27 +12,10 @@ set(CMAKE_BUILD_TYPE Release CACHE STRING "set build type to Release")
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 if (NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))
     set(CMAKE_CXX_FLAGS -O3)
+
+    # generate qm files
+    execute_process(COMMAND bash "translate_generation.sh"
+            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 endif ()
 
-#file(GLOB SRCS "src/*.h" "src/*.cpp" "*.qrc" "src/*.ui" "src/service/*" "src/common/*.h")
-#find_package(PkgConfig REQUIRED)
-#find_package(Qt5 REQUIRED Core Gui Widgets Network DBus)
-#pkg_check_modules(3rd_lib REQUIRED
-#        QtShadowsocks
-#        botan-1.10
-#        dtkbase dtkwidget dframeworkdbus
-#        libqrencode zbar
-#        )
-#add_executable(${PROJECT_NAME} ${SRCS})
-#target_include_directories(${PROJECT_NAME} PUBLIC ${3rd_lib_INCLUDE_DIRS})
-#target_link_libraries(${PROJECT_NAME} ${3rd_lib_LIBRARIES})
-#qt5_use_modules(${PROJECT_NAME} Core Gui Widgets Network DBus)
-## Install settings
-#if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-#    set(CMAKE_INSTALL_PREFIX /usr)
-#endif ()
-#
-#install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-#install(FILES ${PROJECT_NAME}.desktop DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications)
-#install(FILES Resources/shadowsocks-client.png DESTINATION /usr/share/icons/hicolor/128x128/apps)
 add_subdirectory(src)

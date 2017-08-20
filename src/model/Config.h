@@ -15,10 +15,10 @@ public:
 
     QString getSsUri() {
         // ss://method:password@hostname:port
-        QString plaintext = QObject::tr("%1:%2@%3:%4")
+        QString plaintext = QString("%1:%2@%3:%4")
                 .arg(profile.method).arg(profile.password)
                 .arg(profile.server).arg(profile.server_port);
-        QString ciphertext = QObject::tr("ss://%1#%2").arg(QString(plaintext.toLocal8Bit().toBase64())).arg(remarks);
+        QString ciphertext = QString("ss://%1#%2").arg(QString(plaintext.toLocal8Bit().toBase64())).arg(remarks);
         return ciphertext;
     }
 

@@ -12,7 +12,7 @@
 #include "UpdateChecker.h"
 #include "util/DownloadUtil.h"
 #include "util/Util.h"
-#include "dao/GuiConfigDao.h"
+
 DWIDGET_USE_NAMESPACE
 DUTIL_USE_NAMESPACE
 
@@ -119,7 +119,7 @@ void UpdateChecker::checkUpdate() {
 
 void UpdateChecker::updateSS(Asset* asset) {
     DownloadUtil *downloadUtil = new DownloadUtil();
-    QString filename = Util::getFullpath(QObject::tr("ss_deepin_temp/%1").arg(asset->name));
+    QString filename = Util::getFullpath(QString("ss_deepin_temp/%1").arg(asset->name));
     downloadUtil->download(asset->downloadUrl, filename);
     QObject::connect(downloadUtil, &DownloadUtil::finished, [=]() {
         auto ret = QMessageBox::information(nullptr, "检查更新结果", "有新版本");

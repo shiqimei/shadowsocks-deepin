@@ -67,8 +67,8 @@ void ProxyServiceImpl_with_dde_api::setProxyEnabled(bool enabled) {
             connection->stop();
         }
         connection = con;
-        connect(connection, &Connection::latencyAvailable, this, &ProxyServiceImpl_with_dde_api::onConnectSuccess);
-        connect(connection, &Connection::startFailed, this, &ProxyServiceImpl_with_dde_api::onConnectFailed);
+//        connect(connection, &Connection::latencyAvailable, this, &ProxyServiceImpl_with_dde_api::onConnectSuccess);
+//        connect(connection, &Connection::startFailed, this, &ProxyServiceImpl_with_dde_api::onConnectFailed);
 //        controller->setup(Util::guiConfig.getCurrentProfile());
 //        controller->start();
         connection->start();

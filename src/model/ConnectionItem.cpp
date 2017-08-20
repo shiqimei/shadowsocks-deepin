@@ -40,7 +40,7 @@ QVariant ConnectionItem::data(int column, int role) const {
 //                qDebug() << "server" << QVariant(con->profile.serverAddress);
                 return QVariant(con->profile.serverAddress);
             case 2://status
-                return con->isRunning() ? QVariant(tr("Connected"))
+                return con->isRunning() ? QVariant(QObject::tr("Connected"))
                                         : QVariant(tr("Disconnected"));
             case 3://latency
                 if (role == Qt::DisplayRole) {

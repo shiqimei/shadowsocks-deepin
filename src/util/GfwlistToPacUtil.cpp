@@ -21,7 +21,7 @@ void GfwlistToPacUtil::gfwlist2pac() {
     downloadUtil->download(GFWLIST_URL,Util::getFullpath("gfwlist.txt"));
     QObject::connect(downloadUtil,&DownloadUtil::finished,[=](){
 
-        QString gfwlistPath=QObject::tr("%1/.ss/gfwlist.txt").arg(QDir::homePath());
+        QString gfwlistPath = QString("%1/.ss/gfwlist.txt").arg(QDir::homePath());
         QFile gfwlistFile(gfwlistPath);
         if(!gfwlistFile.open(QIODevice::ReadOnly)){
             qDebug()<<"打开失败";
@@ -29,7 +29,7 @@ void GfwlistToPacUtil::gfwlist2pac() {
         }
         auto content = QByteArray::fromBase64(gfwlistFile.readAll());
         auto domains=parseGfwlist(content);
-        QFile userRulesFile(tr("%1/.ss/user-rule.txt").arg(QDir::homePath()));
+        QFile userRulesFile(QString("%1/.ss/user-rule.txt").arg(QDir::homePath()));
         if(userRulesFile.exists()){
             if(!userRulesFile.open(QIODevice::ReadOnly|QIODevice::Text)){
                 qDebug()<<"文件打开失败";
@@ -46,7 +46,7 @@ void GfwlistToPacUtil::gfwlist2pac() {
         jsonDocument.setObject(jsonObject);
 //        qDebug()<<jsonDocument.toJson();
         QString pacContent=generatePac(jsonDocument.toJson(),"SOCKS5 127.0.0.1:1080");
-        QFile file(QObject::tr("%1/.ss/autoproxy.pac").arg(QDir::homePath()));
+        QFile file(QString("%1/.ss/autoproxy.pac").arg(QDir::homePath()));
         file.open(QIODevice::WriteOnly|QIODevice::Text);
         file.write(pacContent.toLocal8Bit());
         file.close();

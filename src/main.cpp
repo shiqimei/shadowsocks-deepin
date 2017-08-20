@@ -18,7 +18,8 @@ int main(int argc, char *argv[]) {
         app.setApplicationAcknowledgementPage("https://github.com/PikachuHy/shadowsocks-client");
 
         app.setTheme("light");
-//        QApplication::setWindowIcon(QIcon(":/icons/shadowsocks.ico"));
+        app.loadTranslator();
+        QApplication::setWindowIcon(QIcon(":/icons/shadowsocks.ico"));
         app.setQuitOnLastWindowClosed(false);
         Dtk::Util::DLogManager::registerConsoleAppender();
         Dtk::Util::DLogManager::registerFileAppender();

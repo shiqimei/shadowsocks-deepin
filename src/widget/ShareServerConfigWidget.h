@@ -18,7 +18,7 @@ public:
 private:
     QRencodeWidget* qRencodeWidget;
     QList<Config> configs;
-    QListWidget* listWidget;
+    QListView *listView;
     QLineEdit* lineEdit;
     QString ssUri;
 };

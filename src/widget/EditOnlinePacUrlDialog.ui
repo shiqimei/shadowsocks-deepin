@@ -11,9 +11,9 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>编辑在线PAC网址</string>
+      <string>Edit Online PAC URL</string>
   </property>
-  <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>60</x>
@@ -38,7 +38,7 @@
     <item row="1" column="0">
      <widget class="QLabel" name="label">
       <property name="text">
-       <string>请输入PAC网址</string>
+          <string>Please input pac url</string>
       </property>
      </widget>
     </item>

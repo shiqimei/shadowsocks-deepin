@@ -42,8 +42,8 @@ QString ServerSerivceImpl_old_impl::scanQRCodeFromScreen() {
     if (!SSValidator::validate(uri)) {
         QMessageBox::critical(
                 nullptr,
-                tr("未找到二维码"),
-                tr("没有找到包含有效ss uri的二维码"));
+                tr("QR Code Not Found"),
+                tr("Can't find any QR code image that contains valid URI on your screen(s)."));
         return QString();
     } else {
         newCon(uri);
@@ -68,8 +68,8 @@ QString ServerSerivceImpl_old_impl::importURLfromClipboard() {
     if (!SSValidator::validate(uri)) {
         QMessageBox::critical(
                 nullptr,
-                tr("从剪贴板导入URL错误"),
-                tr("没有找到包含有效ss uri的字符串"));
+                tr("Import URL From Clipboard Error"),
+                tr("Can't find valid URI"));
         return QString();
     } else {
         newCon(uri);
