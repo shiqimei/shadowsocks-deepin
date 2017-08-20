@@ -8,6 +8,8 @@
 
 void PacServiceImpl_old_impl::setUseLocalPac(bool isLocal) {
     Util::guiConfig.useOnlinePac = !isLocal;
+    Util::saveConfig();
+    emit requestRestartProxy();
 }
 
 void PacServiceImpl_old_impl::editLocalPacFile() {

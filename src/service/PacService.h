@@ -50,5 +50,9 @@ public:
      * 编辑在线pac文件地址
      */
     virtual void editOnlinePacUrl()= 0;
+
+signals:
+
+    void requestRestartProxy();
 };
 #endif //SHADOWSOCKS_CLIENT_PACSERVICE_H

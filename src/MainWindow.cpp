@@ -120,6 +120,9 @@ void MainWindow::initService() {
         systemTrayIcon.setIcon(icon);
     });
     connect(updateService, &UpdateService::finishUpdate, &systemTrayIcon, &QSystemTrayIcon::showMessage);
+    connect(pacService, &PacService::requestRestartProxy, [=]() {
+        proxyService->setProxyEnabled(true);
+    });
 }
 
 void MainWindow::changeTheme(QString theme) {
