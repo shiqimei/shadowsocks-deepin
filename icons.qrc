@@ -9,7 +9,7 @@
         <file>Resources/6.png</file>
         <file>Resources/7.png</file>
         <file>Resources/8.png</file>
-        <file>shadowsocks.ico</file>
+        <file>Resources/shadowsocks.ico</file>
         <file>Resources/shadowsocks-client.png</file>
         <file>Resources/ss24.png</file>
         <file>Resources/ssProxy24.png</file>
@@ -30,6 +30,6 @@
         <file>Resources/arrow_up_light_normal.png</file>
     </qresource>
     <qresource>
-        <file>proxy.pac</file>
+        <file>Resources/proxy.pac</file>
     </qresource>
 </RCC>

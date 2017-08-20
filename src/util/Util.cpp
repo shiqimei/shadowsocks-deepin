@@ -9,7 +9,19 @@
 
 GuiConfig Util::guiConfig = GuiConfigDao::instance()->get();
 QString Util::ONLINE_PAC_URL = QString("https://raw.githubusercontent.com/PikachuHy/ss/master/autoproxy.pac");
-QString Util::LOCAL_PAC_URL = QString("file://%1/.ss/autoproxy.pac").arg(QDir::homePath());
+QString Util::LOCAL_PAC_PATH = Util::getFullpath("autoproxy.pac");
+QString Util::LOCAL_PAC_URL = QString("file://%1").arg(Util::LOCAL_PAC_PATH);
+QString Util::DESKTOP_URL = QString("/usr/share/applications/shadowsocks-client.desktop");
+QString Util::ONLINE_GFWLIST_URL = QString("https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt");
+QString Util::LOCAL_GFWLIST_PATH = Util::getFullpath("gfwlist.txt");
+QString Util::USER_RULE_PATH = Util::getFullpath("user-rule.txt");
+QString Util::UPDATE_URL = QString("https://api.github.com/repos/PikachuHy/shadowsocks-client/releases");
+QString Util::VERSION = QString("0.6.1");
+QString Util::ORGANIZATION_NAME = QString("pikachu");
+QString Util::APPLICATION_NAME = QString("shadowsocks-client");
+QString Util::LOG_PATH = QString("%1/.cache/%2/%3/%3.log").arg(QDir::homePath()).arg(Util::ORGANIZATION_NAME).arg(
+        Util::APPLICATION_NAME);
+QString Util::CONFIG_PATH = QString("%1/.config/%2/config.ini").arg(QDir::homePath()).arg(Util::APPLICATION_NAME);
 ConnectionTableModel *Util::model = nullptr;
 ConfigHelper *Util::configHelper = nullptr;
 
@@ -187,6 +199,11 @@ QString Util::formatMillisecond(int millisecond) {
 }
 
 void Util::readConfig(QString string, QObject *parent) {
+    QFileInfo file(string);
+    QDir dir = file.absoluteDir();
+    if (!dir.exists()) {
+        dir.mkpath(dir.absolutePath());
+    }
     configHelper = new ConfigHelper(string, parent);
     model = new ConnectionTableModel(parent);
     configHelper->read(model);
@@ -203,7 +220,7 @@ void Util::showNotification(const QString &msg) {
                                                          "/org/freedesktop/Notifications",
                                                          "org.freedesktop.Notifications", "Notify");
     QVariantList args;
-    args << QCoreApplication::applicationName() << quint32(0) << "shadowsocks-qt5" << "Shadowsocks-Qt5" << msg
+    args << QCoreApplication::applicationName() << quint32(0) << "shadowsocks-client" << "Shadowsocks-Client" << msg
          << QStringList() << QVariantMap() << qint32(-1);
     method.setArguments(args);
     QDBusConnection::sessionBus().asyncCall(method);
@@ -215,6 +232,5 @@ Connection *Util::getCurrentConnection() {
 }
 
 bool Util::hasPacFile() {
-    QFile file(Util::LOCAL_PAC_URL.right(Util::LOCAL_PAC_URL.length() - 7));
-    return file.exists();
+    return QFile(Util::LOCAL_PAC_PATH).exists();
 }

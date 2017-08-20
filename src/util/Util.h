@@ -49,6 +49,17 @@ public:
     static QSettings *settings;
     static QString ONLINE_PAC_URL;
     static QString LOCAL_PAC_URL;
+    static QString LOCAL_PAC_PATH;
+    static QString DESKTOP_URL;
+    static QString ONLINE_GFWLIST_URL;
+    static QString LOCAL_GFWLIST_PATH;
+    static QString USER_RULE_PATH;
+    static QString UPDATE_URL;
+    static QString VERSION;
+    static QString LOG_PATH;
+    static QString ORGANIZATION_NAME;
+    static QString APPLICATION_NAME;
+    static QString CONFIG_PATH;
 
     static qreal easeInOut(qreal x);
 

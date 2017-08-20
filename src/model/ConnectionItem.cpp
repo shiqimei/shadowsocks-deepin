@@ -313,10 +313,10 @@ bool ConnectionItem::setData(const QModelIndex &index, const QVariant &value, in
                 con->profile.serverAddress = value.toString();
                 break;
             case 4:
-                con->profile.localPort = value.toInt();
+                con->profile.localPort = static_cast<quint16>(value.toInt());
                 break;
             case 9:
-                con->profile.serverPort = value.toInt();
+                con->profile.serverPort = static_cast<quint16>(value.toInt());
                 break;
             case 10:
                 qDebug() << value;

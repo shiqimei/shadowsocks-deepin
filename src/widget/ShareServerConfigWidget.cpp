@@ -7,12 +7,12 @@
 #include "ShareServerConfigWidget.h"
 
 ShareServerConfigWidget::ShareServerConfigWidget(QWidget *parent) : QDialog(parent) {
-    setWindowTitle("二维码与URL");
+    setWindowTitle(tr("QR Code and URL"));
     listView = new QListView(this);
     listView->setModel(Util::model);
     lineEdit=new QLineEdit();
     qRencodeWidget = new QRencodeWidget("");
-    QGridLayout* mainLayout = new QGridLayout();
+    auto *mainLayout = new QGridLayout();
     mainLayout->addWidget(qRencodeWidget,0,0);
     mainLayout->addWidget(listView, 0, 1);
     mainLayout->addWidget(lineEdit,1,0,1,2);

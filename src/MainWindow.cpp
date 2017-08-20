@@ -13,13 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
         DMainWindow(parent),
         ui(new Ui::MainWindow) {
     ui->setupUi(this);
-
-    QDir configDir = QString("%1/.config/shadowsocks-client").arg(QDir::homePath());
-    QString configFile = QString("%1/config.ini").arg(configDir.absolutePath());
-    if (!configDir.exists()) {
-        configDir.mkpath(configDir.absolutePath());
-    }
-    Util::readConfig(configFile, this);
+    Util::readConfig(Util::CONFIG_PATH, this);
     installEventFilter(this);   // add event filter
     initTheme();
     initMenu();

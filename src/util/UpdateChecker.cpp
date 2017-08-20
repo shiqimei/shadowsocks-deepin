@@ -81,9 +81,9 @@ public:
 };
 
 void UpdateChecker::checkUpdate() {
-    DownloadUtil *downloadUtil = new DownloadUtil();
+    auto *downloadUtil = new DownloadUtil();
     QString filename = Util::getFullpath("releases.json");
-    downloadUtil->download(updateUrl, filename);
+    downloadUtil->download(Util::UPDATE_URL, filename);
     QObject::connect(downloadUtil, &DownloadUtil::finished, [=]() {
         auto json = Util::readAllFile(filename);
         auto jsonDocument = QJsonDocument::fromJson(json);
@@ -103,26 +103,28 @@ void UpdateChecker::checkUpdate() {
 //        for(const auto&it:assets){
 //            qDebug()<<it.version;
 //        }
-        GuiConfigDao *dao = GuiConfigDao::instance();
+        auto dao = GuiConfigDao::instance();
 
-        Asset &latestRelease = assets.first();
-        if (latestRelease.isNewVersion(version, dao->get().checkPreRelease)) {
+        auto &latestRelease = assets.first();
+        if (latestRelease.isNewVersion(Util::VERSION, dao->get().checkPreRelease)) {
             qDebug() << "有新版本" << latestRelease.version;
+            Util::showNotification(tr("new version"));
             updateSS(&latestRelease);
         } else {
             qDebug() << "没有新版本";
-            QMessageBox::information(nullptr, "检查更新结果", "没有新版本\n当前版本式最新的");
+            QMessageBox::information(nullptr, tr("check update"), tr("current version is latest"));
+            Util::showNotification(tr("no new version"));
         }
         downloadUtil->deleteLater();
     });
 }
 
 void UpdateChecker::updateSS(Asset* asset) {
-    DownloadUtil *downloadUtil = new DownloadUtil();
+    auto *downloadUtil = new DownloadUtil();
     QString filename = Util::getFullpath(QString("ss_deepin_temp/%1").arg(asset->name));
     downloadUtil->download(asset->downloadUrl, filename);
     QObject::connect(downloadUtil, &DownloadUtil::finished, [=]() {
-        auto ret = QMessageBox::information(nullptr, "检查更新结果", "有新版本");
+        auto ret = QMessageBox::information(nullptr, tr("check update"), tr("new version"));
         if (ret == QMessageBox::Ok) {
             DDesktopServices::showFileItem(filename);
         }

@@ -16,23 +16,22 @@
 #include "Util.h"
 
 void GfwlistToPacUtil::gfwlist2pac() {
-    QString GFWLIST_URL = "https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt";
     DownloadUtil* downloadUtil =new DownloadUtil();
-    downloadUtil->download(GFWLIST_URL,Util::getFullpath("gfwlist.txt"));
+    downloadUtil->download(Util::ONLINE_GFWLIST_URL, Util::LOCAL_GFWLIST_PATH);
     QObject::connect(downloadUtil,&DownloadUtil::finished,[=](){
-
-        QString gfwlistPath = QString("%1/.ss/gfwlist.txt").arg(QDir::homePath());
-        QFile gfwlistFile(gfwlistPath);
+        QFile gfwlistFile(Util::LOCAL_GFWLIST_PATH);
         if(!gfwlistFile.open(QIODevice::ReadOnly)){
             qDebug()<<"打开失败";
+            Util::showNotification(tr("open local gfwlist fail"));
             exit(0);
         }
         auto content = QByteArray::fromBase64(gfwlistFile.readAll());
         auto domains=parseGfwlist(content);
-        QFile userRulesFile(QString("%1/.ss/user-rule.txt").arg(QDir::homePath()));
+        QFile userRulesFile(Util::USER_RULE_PATH);
         if(userRulesFile.exists()){
             if(!userRulesFile.open(QIODevice::ReadOnly|QIODevice::Text)){
                 qDebug()<<"文件打开失败";
+                Util::showNotification(tr("open local user-rule file fail"));
                 exit(0);
             }
             domains=parseGfwlist(userRulesFile.readAll());
@@ -46,7 +45,7 @@ void GfwlistToPacUtil::gfwlist2pac() {
         jsonDocument.setObject(jsonObject);
 //        qDebug()<<jsonDocument.toJson();
         QString pacContent=generatePac(jsonDocument.toJson(),"SOCKS5 127.0.0.1:1080");
-        QFile file(QString("%1/.ss/autoproxy.pac").arg(QDir::homePath()));
+        QFile file(Util::LOCAL_PAC_PATH);
         file.open(QIODevice::WriteOnly|QIODevice::Text);
         file.write(pacContent.toLocal8Bit());
         file.close();
@@ -117,7 +116,7 @@ void GfwlistToPacUtil::addDomainToSet(QSet<QString>& set, QString something) {
 
 QString GfwlistToPacUtil::generatePac(QString domains, QString proxy) {
 
-    QFile file(":/proxy.pac");
+    QFile file(":/Resources/proxy.pac");
     if(!file.exists()){
         qDebug()<<"文件不存在"<<file.fileName();
         exit(0);

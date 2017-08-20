@@ -53,7 +53,6 @@ signals:
 private:
     QList<ConnectionItem *> items;
 
-    static QString convertLatencyToString(const int latency);
 
 private slots:
 

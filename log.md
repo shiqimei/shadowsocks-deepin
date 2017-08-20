@@ -58,9 +58,9 @@ ui界面
 
 ```shell
 sudo apt install dh-make fakeroot cmake
-tar -cvzf shadowsocks-client-0.6.0.tar.gz shadowsocks-client-0.6.0
-cd shadowsocks-client-0.6.0
-dh_make -f ../shadowsocks-client-0.6.0.tar.gz -c gpl3 -s
+tar -cvzf shadowsocks-client-0.6.1.tar.gz shadowsocks-client-0.6.1
+cd shadowsocks-client-0.6.1
+dh_make -f ../shadowsocks-client-0.6.1.tar.gz -c gpl3 -s
 dpkg-buildpackage -us -uc -b
 sudo apt purge shadowsocks-client
 ```

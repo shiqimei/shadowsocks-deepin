@@ -15,10 +15,10 @@ void ProxyServiceImpl_with_dde_api::setProxyMethod(ProxyService::ProxyMethod pro
             break;
         case Manual: {
             method = "manual";
-            auto profile = Util::guiConfig.getCurrentProfile();
+            auto profile = Util::getCurrentConnection()->getProfile();
             QString type = "socks";
-            QString addr = profile.local_address;
-            QString port = QString::number(profile.local_port);
+            QString addr = profile.localAddress;
+            QString port = QString::number(profile.localPort);
             w = new QDBusPendingCallWatcher(networkInter.SetProxy(type, addr, port), this);
             QObject::connect(w, &QDBusPendingCallWatcher::finished, [=] {
                 qDebug() << "set proxy" << type << addr << port;

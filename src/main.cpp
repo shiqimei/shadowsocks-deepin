@@ -2,14 +2,13 @@
 #include "MainWindow.h"
 
 int main(int argc, char *argv[]) {
-
     DApplication::loadDXcbPlugin();
     DApplication app(argc, argv);
-    if(app.setSingleInstance("shadowsocks-client")){
+    if (app.setSingleInstance(Util::APPLICATION_NAME)) {
         qRegisterMetaTypeStreamOperators<SQProfile>("SQProfile");
-        app.setOrganizationName("pikachu");
-        app.setApplicationName("shadowsocks-client");
-        app.setApplicationVersion("0.4.0");
+        app.setOrganizationName(Util::ORGANIZATION_NAME);
+        app.setApplicationName(Util::APPLICATION_NAME);
+        app.setApplicationVersion(Util::VERSION);
 
         app.setProductIcon(QPixmap::fromImage(QImage(":/icons/Resources/shadowsocks-client.png")));
         app.setProductName("Shadowsocks Client");
@@ -24,7 +23,6 @@ int main(int argc, char *argv[]) {
 
         MainWindow mainWindow;
         return QApplication::exec();
-
     }
     return 0;
 }

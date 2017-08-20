@@ -4,8 +4,7 @@
 
 //#define QT_DEBUG 0
 //#undef QT_DEBUG
-EditServerDialog::EditServerDialog(QWidget *parent) : EditServerDialog(false, parent) {}
-EditServerDialog::EditServerDialog(bool isNew, QWidget *parent) :
+EditServerDialog::EditServerDialog(QWidget *parent) :
         QDialog(parent),
         ui(new Ui::EditServerDialog){
     ui->setupUi(this);

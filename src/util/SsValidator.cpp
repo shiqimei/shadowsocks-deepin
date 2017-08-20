@@ -40,16 +40,13 @@ bool SSValidator::validate(QString input)
 
         //Validate whether server and password exist
         QStringList pwdServer = decList.at(1).split('@');
-        if (pwdServer.size() < 2) {
-            return false;
-        }
+        return pwdServer.size() >= 2;
 
         //it seems acceptable now
-        return true;
     }
-    else {
-        return false;
-    }
+
+    return false;
+
 }
 
 bool SSValidator::validatePort(const QString &port)

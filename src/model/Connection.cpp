@@ -41,12 +41,8 @@ QByteArray Connection::getURI() const {
 }
 
 bool Connection::isValid() const {
-    if (profile.serverAddress.isEmpty() || profile.localAddress.isEmpty() || profile.timeout < 1 ||
-        !SSValidator::validateMethod(profile.method)) {
-        return false;
-    } else {
-        return true;
-    }
+    return !(profile.serverAddress.isEmpty() || profile.localAddress.isEmpty() || profile.timeout < 1 ||
+             !SSValidator::validateMethod(profile.method));
 }
 
 const bool &Connection::isRunning() const {
@@ -71,7 +67,7 @@ void Connection::start() {
 
     QSS::Profile qssprofile = profile.toProfile();
 
-    if (controller) {
+    if (controller != nullptr) {
         controller->deleteLater();
     }
     controller = new QSS::Controller(true, false, this);

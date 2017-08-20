@@ -1,10 +1,3 @@
-
-#message(${CMAKE_CURRENT_SOURCE_DIR})
-#file(GLOB_RECURSE SRCS "*.h" "*.cpp" "*.qrc" "*.ui")
-#aux_source_directory(. SRCS)
-#foreach(it ${SRCS})
-#    message(${it})
-#endforeach()
 file(GLOB_RECURSE SOURCES "*.cpp")
 file(GLOB_RECURSE HEADERS "*.h")
 file(GLOB_RECURSE FORMS "*.ui")
@@ -37,5 +30,5 @@ file(GLOB QM_FILES "../translations/*.qm")
 install(FILES ${QM_FILES}
         DESTINATION share/${PROJECT_NAME}/translations)
 install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-install(FILES ../${PROJECT_NAME}.desktop DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications)
+install(FILES ../Resources/${PROJECT_NAME}.desktop DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications)
 install(FILES ../Resources/shadowsocks-client.png DESTINATION /usr/share/icons/hicolor/128x128/apps)
