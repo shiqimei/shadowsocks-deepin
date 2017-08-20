@@ -25,6 +25,7 @@ void PacServiceImpl_old_impl::editUserRuleForGFWList() {
 
 void PacServiceImpl_old_impl::setSecureLocalPac(bool b) {
     Util::guiConfig.secureLocalPac = b;
+    Util::saveConfig();
 }
 
 void PacServiceImpl_old_impl::copyLocalPacURL() {

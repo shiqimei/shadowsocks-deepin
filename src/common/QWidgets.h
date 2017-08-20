@@ -33,4 +33,6 @@
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QSystemTrayIcon>
 #include <QtWidgets/QDesktopWidget>
+#include <QtWidgets/QStyleFactory>
+#include <QtWidgets/QToolButton>
 #endif //STUDY_QT_QWIDGETS_H

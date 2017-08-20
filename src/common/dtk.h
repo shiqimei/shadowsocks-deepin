@@ -9,6 +9,10 @@
 #include <DDesktopServices>
 #include <DAboutDialog>
 #include <DLog>
+#include <DMainWindow>
+#include <DTitlebar>
+#include <dthememanager.h>
+#include <DWindowManagerHelper>
 DWIDGET_USE_NAMESPACE
 DUTIL_USE_NAMESPACE
 #endif //SS_CLIENT_DTK_H

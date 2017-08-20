@@ -1,5 +1,14 @@
 <RCC>
     <qresource prefix="/icons">
+        <file>Resources/0.png</file>
+        <file>Resources/1.png</file>
+        <file>Resources/2.png</file>
+        <file>Resources/3.png</file>
+        <file>Resources/4.png</file>
+        <file>Resources/5.png</file>
+        <file>Resources/6.png</file>
+        <file>Resources/7.png</file>
+        <file>Resources/8.png</file>
         <file>shadowsocks.ico</file>
         <file>Resources/shadowsocks-client.png</file>
         <file>Resources/ss24.png</file>
@@ -8,6 +17,17 @@
         <file>Resources/ss16.png</file>
         <file>Resources/ssIn24.png</file>
         <file>Resources/ssOut24.png</file>
+        <file>Resources/arrow_down_dark_hover.png</file>
+        <file>Resources/arrow_down_dark_normal.png</file>
+        <file>Resources/arrow_down_dark_press.png</file>
+        <file>Resources/arrow_down_light_hover.png</file>
+        <file>Resources/arrow_down_light_normal.png</file>
+        <file>Resources/arrow_down_light_press.png</file>
+        <file>Resources/arrow_up_dark_hover.png</file>
+        <file>Resources/arrow_up_dark_normal.png</file>
+        <file>Resources/arrow_up_dark_press.png</file>
+        <file>Resources/arrow_up_light_hover.png</file>
+        <file>Resources/arrow_up_light_normal.png</file>
     </qresource>
     <qresource>
         <file>proxy.pac</file>

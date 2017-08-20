@@ -15,7 +15,7 @@ SystemTrayIcon::SystemTrayIcon(QObject *parent)
     updateService = new UpdateServiceImpl(this);
     hotkeyService = new HotkeyServiceImpl(this);
     aboutService = new AboutServiceImpl(this);
-    setIcon(QPixmap::fromImage(Util::noProxyIconImage()));
+    setIcon(Util::getIcon(Util::Type::None));
 
     menu = new QMenu("menu");
     startSystemAgentAction = new QAction("启动系统代理", this);

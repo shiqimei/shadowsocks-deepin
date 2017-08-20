@@ -1,5 +1,6 @@
-#include "common/common.h"
+#include <util/Util.h>
 #include "SystemTrayIcon.h"
+#include "MainWindow.h"
 
 int main(int argc, char *argv[]) {
 
@@ -20,8 +21,11 @@ int main(int argc, char *argv[]) {
         app.setQuitOnLastWindowClosed(false);
         Dtk::Util::DLogManager::registerConsoleAppender();
         Dtk::Util::DLogManager::registerFileAppender();
-        SystemTrayIcon systemTrayIcon(&app);
-        systemTrayIcon.show();
+//        SystemTrayIcon systemTrayIcon(&app);
+//        systemTrayIcon.show();
+        MainWindow mainWindow;
+
+//        mainWindow.show();
         return QApplication::exec();
 
     }

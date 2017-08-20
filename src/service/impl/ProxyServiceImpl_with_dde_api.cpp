@@ -25,6 +25,8 @@ void ProxyServiceImpl_with_dde_api::setProxyMethod(ProxyService::ProxyMethod pro
                 setProxyMethod(method);
             });
             connect(w, &QDBusPendingCallWatcher::finished, w, &QDBusPendingCallWatcher::deleteLater);
+            Util::guiConfig.global = true;
+            Util::saveConfig();
             break;
 
         }
@@ -40,6 +42,8 @@ void ProxyServiceImpl_with_dde_api::setProxyMethod(ProxyService::ProxyMethod pro
             } else {
                 setAutoProxy(Util::ONLINE_PAC_URL);
             }
+            Util::guiConfig.global = false;
+            Util::saveConfig();
             break;
 
         }
@@ -64,6 +68,7 @@ void ProxyServiceImpl_with_dde_api::setProxyEnabled(bool enabled) {
         controller->setup(Util::guiConfig.getCurrentProfile());
         controller->start();
     }
+    Util::saveConfig();
     emit requestReloadMenu();
 }
 

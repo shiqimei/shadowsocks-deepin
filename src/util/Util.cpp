@@ -6,18 +6,18 @@
 #include <QtCore/QMap>
 #include <QtCore/QFile>
 #include "Util.h"
-#include <dao/GuiConfigDao.h>
 
 GuiConfig Util::guiConfig = GuiConfigDao::instance()->get();
 QString Util::ONLINE_PAC_URL = QString("https://raw.githubusercontent.com/PikachuHy/ss/master/autoproxy.pac");
 QString Util::LOCAL_PAC_URL = QString("%1/.ss/autoproxy.pac").arg(QDir::homePath());
-QImage Util::mix(QStringList list) {
+
+QImage *Util::mix(QStringList list) {
     if(list.isEmpty()){
-        return QImage();
+        return new QImage();
     }
-    QImage image(list[0]);
+    QImage *image = new QImage(list[0]);
 //    image=image.scaled(24,24,Qt::KeepAspectRatio);
-    QPainter painter(&image);
+    QPainter painter(image);
 //    painter.setCompositionMode(QPainter::CompositionMode_Source);
 //    painter.fillRect(image.rect(),Qt::transparent);
     for (int i = 1; i < list.size(); ++i) {
@@ -42,23 +42,30 @@ QImage Util::gray(QImage image) {
     return grayImage;
 }
 
-QImage Util::noProxyIconImage() {
+QImage *Util::noProxyIconImage() {
     static QImage* image = nullptr;
     if(image!= nullptr){
-        return *image;
+        return image;
     } else{
         image = new QImage();
         *image = gray(QImage(":/icons/Resources/ssProxy24"));
-        return *image;
+        return image;
     }
 }
 
-QImage Util::proxyIconImage(int type) {
-    static QMap<int,QImage> map;
+QImage *const Util::proxyIconImage(int type) {
+    static QMap<int, QImage *> map;
     if(map.contains(type)){
+        qDebug() << "has " << type;
         return map.value(type);
     }
     QStringList list;
+    if (type & Util::Type::None) {
+        auto image = noProxyIconImage();
+        map.insert(type, image);
+        qDebug() << "noproxy";
+        return image;
+    }
     if(type & Util::Type::Global){
         list<<":/icons/Resources/ssProxy24";
     } else{
@@ -70,10 +77,16 @@ QImage Util::proxyIconImage(int type) {
     if(Util::Type::Out & type){
         list<<":/icons/Resources/ssOut24.png";
     }
-    QImage image = mix(list);
+    auto image = mix(list);
     map.insert(type,image);
     return image;
 }
+
+QIcon Util::getIcon(int type) {
+    qDebug() << "get icon" << type;
+    return QIcon(QString(":/icons/Resources/%1.png").arg(type));
+}
+
 
 QByteArray Util::readAllFile(QString filename) {
     QFile file(filename);
@@ -104,4 +117,76 @@ int Util::compareVersion(QString l, QString r) {
 
 QString Util::getFullpath(QString filename) {
     return QObject::tr("%1/.ss/%2").arg(QDir::homePath()).arg(filename);
+}
+
+QString Util::getQrcPath(QString imageName) {
+    return QString(":/icons/Resources/%1").arg(imageName);
+}
+
+qreal Util::easeInOut(qreal x) {
+    return (1 - qCos(M_PI * x)) / 2;
+}
+
+qreal Util::easeInQuad(qreal x) {
+    return qPow(x, 2);
+}
+
+qreal Util::easeOutQuad(qreal x) {
+    return -1 * qPow(x - 1, 2) + 1;
+}
+
+qreal Util::easeInQuint(qreal x) {
+    return qPow(x, 5);
+}
+
+qreal Util::easeOutQuint(qreal x) {
+    return qPow(x - 1, 5) + 1;
+}
+
+void Util::setFontSize(QPainter &painter, int textSize) {
+    QFont font = painter.font();
+    font.setPointSize(textSize);
+    painter.setFont(font);
+
+}
+
+
+QString Util::formatBandwidth(double v) {
+    static const char *orders[] = {"KB/s", "MB/s", "GB/s", "TB/s"};
+
+    return formatUnitSize(v, orders, sizeof(orders) / sizeof(orders[0]));
+}
+
+QString Util::formatByteCount(double v) {
+    static const char *orders[] = {"B", "KB", "MB", "GB", "TB"};
+
+    return formatUnitSize(v, orders, sizeof(orders) / sizeof(orders[0]));
+}
+
+QString Util::formatUnitSize(double v, const char **orders, int nb_orders) {
+    int order = 0;
+    while (v >= 1024 && order + 1 < nb_orders) {
+        order++;
+        v = v / 1024;
+    }
+    char buffer1[30];
+    snprintf(buffer1, sizeof(buffer1), "%.1lf %s", v, orders[order]);
+
+    return QString(buffer1);
+}
+
+QString Util::formatMillisecond(int millisecond) {
+    if (millisecond / 1000 < 3600) {
+        // At least need return 1 seconds.
+        return QDateTime::fromTime_t(std::max(1, millisecond / 1000)).toUTC().toString("mm:ss");
+    } else {
+        return QDateTime::fromTime_t(millisecond / 1000).toUTC().toString("hh:mm:ss");
+    }
+}
+
+void Util::readModel(ConnectionTableModel *model) {
+}
+
+void Util::saveConfig() {
+    GuiConfigDao::instance()->save(guiConfig);
 }

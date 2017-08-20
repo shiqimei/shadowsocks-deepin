@@ -21,30 +21,35 @@ LogServiceImpl_old_impl::LogServiceImpl_old_impl(QObject *parent) : LogService(p
     }
     auto timer = new QTimer();
     connect(timer, &QTimer::timeout, [=]() {
-        int type = 0;
-        if (!Util::guiConfig.global) {
-            type = type | Util::Type::Pac;
-        } else {
-            type = type | Util::Type::Global;
-        }
-        if (inByte > 0) {
-            type = type | Util::Type::In;
-        }
-        inBytes.append(inByte);
-        inByte = 0;
-        if (inBytes.size() > maxLenth) {
-            inBytes.pop_front();
-        }
+        int type = Util::Type::None;
+        if (Util::guiConfig.enabled) {
+            type = 0;
+            if (!Util::guiConfig.global) {
+                type = type | Util::Type::Pac;
+            } else {
+                type = type | Util::Type::Global;
+            }
+            if (inByte > 0) {
+                type = type | Util::Type::In;
+            }
+            inBytes.append(inByte);
+            inByte = 0;
+            if (inBytes.size() > maxLenth) {
+                inBytes.pop_front();
+            }
 
-        if (outByte > 0) {
-            type = type | Util::Type::Out;
+            if (outByte > 0) {
+                type = type | Util::Type::Out;
+            }
+            outBytes.append(outByte);
+            outByte = 0;
+            if (outBytes.size() > maxLenth) {
+                outBytes.pop_front();
+            }
+        } else {
+            qDebug() << "none";
         }
-        outBytes.append(outByte);
-        outByte = 0;
-        if (outBytes.size() > maxLenth) {
-            outBytes.pop_front();
-        }
-        emit requestUpdateIcon(QPixmap::fromImage(Util::proxyIconImage(type)));
+        emit requestUpdateIcon(Util::getIcon(type));
         // 如果显示流量监控窗口 触发重绘
     });
     timer->start(300);
