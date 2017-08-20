@@ -112,3 +112,4 @@ void EditServerDialog::onConnectionItem_latencyChanged() {
     auto s = item->convertLatencyToString(latency);
     QMessageBox::information(nullptr, tr("test latency"), tr("test latency result: %1").arg(s));
 }
+

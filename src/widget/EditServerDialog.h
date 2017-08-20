@@ -37,6 +37,7 @@ private:
     void setFormEnabled(bool flag);
 
     QDataWidgetMapper *mapper;
+
 };
 
 #endif // EDITSERVERDIALOG_H

@@ -14,6 +14,7 @@ void ServerSerivceImpl_old_impl::editServers() {
     auto dialog = new EditServerDialog();
     dialog->exec();
     dialog->deleteLater();
+    emit requestReloadMenu();
 }
 
 void ServerSerivceImpl_old_impl::statiscsConfig() {

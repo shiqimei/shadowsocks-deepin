@@ -109,6 +109,7 @@ void MainWindow::initService() {
         qApp->exit();
     });
     connect(proxyService, &ProxyService::requestReloadMenu, this, &MainWindow::reloadMenu);
+    connect(serverSerivce, &ServerSerivce::requestReloadMenu, this, &MainWindow::reloadMenu);
     connect(proxyService, &ProxyService::newController, logService, &LogService::newController);
     connect(logService, &LogService::requestUpdateIcon, [=](const QIcon &icon) {
         systemTrayIcon.setIcon(icon);

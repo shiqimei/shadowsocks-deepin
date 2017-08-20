@@ -315,7 +315,7 @@ padding:0 1px;
    <sender>cancelPushButton</sender>
    <signal>clicked()</signal>
    <receiver>EditServerDialog</receiver>
-   <slot>reject()</slot>
+      <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>587</x>
