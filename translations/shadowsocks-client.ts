@@ -174,6 +174,59 @@
     </message>
 </context>
 <context>
+    <name>EditHotkeysDialog</name>
+    <message>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="14"/>
+        <source>Edit Hotkeys</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="55"/>
+        <source>Switch system proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="65"/>
+        <source>Switch system proxy mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="75"/>
+        <source>Switch share over LAN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="85"/>
+        <source>Show Logs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="95"/>
+        <source>Switch to prev server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="105"/>
+        <source>Switch to next server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="132"/>
+        <source>Reg All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="139"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="146"/>
+        <source>Confirm</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EditOnlinePacUrlDialog</name>
     <message>
         <location filename="../src/widget/EditOnlinePacUrlDialog.ui" line="14"/>

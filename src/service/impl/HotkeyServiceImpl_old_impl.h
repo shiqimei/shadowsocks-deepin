@@ -8,6 +8,7 @@
 #include <service/HotkeyService.h>
 
 class HotkeyServiceImpl_old_impl : public HotkeyService {
+    Q_OBJECT
 public:
     explicit HotkeyServiceImpl_old_impl(QObject *parent);
 

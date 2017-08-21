@@ -142,6 +142,49 @@
     </message>
 </context>
 <context>
+    <name>EditHotkeysDialog</name>
+    <message>
+        <source>Edit Hotkeys</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch system proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch system proxy mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch share over LAN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Logs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch to prev server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch to next server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reg All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Confirm</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EditOnlinePacUrlDialog</name>
     <message>
         <source>Edit Online PAC URL</source>

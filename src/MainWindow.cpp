@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
         ui(new Ui::MainWindow) {
     ui->setupUi(this);
     Util::readConfig(Util::CONFIG_PATH, this);
-    installEventFilter(this);   // add event filter
+//    installEventFilter(this);   // add event filter
     initTheme();
     initMenu();
     initService();
@@ -38,7 +38,7 @@ void MainWindow::initCentralWidget() {
         layoutWidget = new QWidget();
         layout = new QHBoxLayout(layoutWidget);
         ConnectionView *connectionView = new ConnectionView(getColumnHideFlags());
-        connectionView->installEventFilter(this);
+//        connectionView->installEventFilter(this);
 
         model = new ConnectionTableModel(this);
         for (const auto &it:Util::guiConfig.configs) {
@@ -108,6 +108,30 @@ void MainWindow::initService() {
     connect(ui->actionQuit, &QAction::triggered, []() {
         qApp->exit();
     });
+    connect(ui->actionSwitch_system_proxy_mode,&QAction::triggered,[=](){
+        if(Util::guiConfig.enabled){
+            Util::guiConfig.global=!Util::guiConfig.global;
+            proxyService->setProxyEnabled(true);
+        }
+    });
+    connect(ui->actionSwitch_to_next_server,&QAction::triggered,[=](){
+       int max = Util::model->rowCount();
+        int& curIndex = Util::guiConfig.index;
+        if(curIndex<max-1){
+            curIndex++;
+            proxyService->setProxyEnabled(true);
+        }
+
+    });
+    connect(ui->actionSwitch_to_prev_server,&QAction::triggered,[=](){
+        int& curIndex = Util::guiConfig.index;
+        if(curIndex>0){
+            curIndex--;
+            proxyService->setProxyEnabled(true);
+        }
+
+    });
+
     connect(proxyService, &ProxyService::requestReloadMenu, this, &MainWindow::reloadMenu);
     connect(serverSerivce, &ServerSerivce::requestReloadMenu, this, &MainWindow::reloadMenu);
     connect(proxyService, &ProxyService::newController, logService, &LogService::newController);
@@ -118,6 +142,7 @@ void MainWindow::initService() {
     connect(pacService, &PacService::requestRestartProxy, [=]() {
         proxyService->setProxyEnabled(true);
     });
+    connect(hotkeyService,&HotkeyService::requestReloadMenu,this,&MainWindow::reloadMenu);
 }
 
 void MainWindow::changeTheme(QString theme) {
@@ -158,6 +183,7 @@ void MainWindow::paintEvent(QPaintEvent *event) {
 }
 
 bool MainWindow::eventFilter(QObject *watched, QEvent *event) {
+    qDebug()<<watched<<event;
     if (event->type() == QEvent::WindowStateChange) {
 //        adjustStatusBarWidth();
     } else if (event->type() == QEvent::KeyPress) {
@@ -205,7 +231,7 @@ void MainWindow::popupMenu(QPoint pos, QList<ListItem *> items) {
 }
 
 void MainWindow::initMenu() {
-    menu = new QMenu();
+    menu = new QMenu(this);
     menu->addAction(ui->actionEnable_System_Proxy);
     modeMenu = new QMenu(tr("Mode"));
     modeMenu->addAction(ui->actionPAC);
@@ -253,6 +279,12 @@ void MainWindow::initMenu() {
     menu->addMenu(helpMenu);
     menu->addAction(ui->actionQuit);
     systemTrayIcon.setContextMenu(menu);
+    addAction(ui->actionEnable_System_Proxy);
+    addAction(ui->actionAllow_Clients_from_LAN);
+    addAction(ui->actionShow_Logs);
+    addAction(ui->actionSwitch_system_proxy_mode);
+    addAction(ui->actionSwitch_to_prev_server);
+    addAction(ui->actionSwitch_to_next_server);
 }
 
 void MainWindow::reloadMenu() {
@@ -308,4 +340,18 @@ void MainWindow::reloadMenu() {
     serversMenu->addAction(ui->actionImport_URL_from_Clipboard);
 
 
+    auto&hotkey=Util::guiConfig.hotkey;
+    ui->actionEnable_System_Proxy->setShortcut(QKeySequence(hotkey.switchSystemProxy));
+    ui->actionEnable_System_Proxy->setShortcutContext(Qt::ApplicationShortcut);
+    ui->actionShow_Logs->setShortcut(QKeySequence(hotkey.showLogs));
+    ui->actionShow_Logs->setShortcutContext(Qt::ApplicationShortcut);
+    ui->actionAllow_Clients_from_LAN->setShortcut(QKeySequence(hotkey.switchAllowLan));
+    ui->actionAllow_Clients_from_LAN->setShortcutContext(Qt::ApplicationShortcut);
+    ui->actionSwitch_system_proxy_mode->setShortcut(QKeySequence(hotkey.switchSystemProxyMode));
+    ui->actionSwitch_to_prev_server->setShortcut(QKeySequence(hotkey.serverMoveUp));
+    ui->actionSwitch_to_next_server->setShortcut(QKeySequence(hotkey.serverMoveDown));
+    ui->actionSwitch_to_next_server->setShortcutContext(Qt::ApplicationShortcut);
+    ui->actionSwitch_to_prev_server->setShortcutContext(Qt::ApplicationShortcut);
+    ui->actionSwitch_system_proxy_mode->setShortcutContext(Qt::ApplicationShortcut);
+    qDebug()<<hotkey.switchSystemProxy;
 }

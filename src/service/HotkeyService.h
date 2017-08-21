@@ -18,6 +18,9 @@ public:
      * 编辑热键
      */
     virtual void editHotkey()= 0;
+signals:
+
+    void requestReloadMenu();
 };
 
 #endif //SHADOWSOCKS_CLIENT_HOTKEYSERVICE_H
