@@ -45,4 +45,5 @@ signals:
 
     void requestReloadMenu();
 };
+
 #endif //SHADOWSOCKS_CLIENT_SERVERSERVICE_H

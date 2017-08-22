@@ -240,10 +240,10 @@ void MainWindow::initMenu() {
     serversMenu = new QMenu(tr("Servers"));
     serversMenu->addAction(ui->actionLoad_Balance);
     serversMenu->addAction(ui->actionHigh_Availability);
-    serversMenu->addAction(ui->actionChoosse_by_statistics);
+//    serversMenu->addAction(ui->actionChoosse_by_statistics);
     serversMenu->addSeparator();
     serversMenu->addAction(ui->actionEdit_Servers);
-    serversMenu->addAction(ui->actionStatistics_Config);
+//    serversMenu->addAction(ui->actionStatistics_Config);
     serversMenu->addSeparator();
     serversMenu->addAction(ui->actionShare_Server_Config);
     serversMenu->addAction(ui->actionScan_QRCode_from_Screen);
@@ -304,11 +304,16 @@ void MainWindow::reloadMenu() {
     serversMenu->clear();
     serversMenu->addAction(ui->actionLoad_Balance);
     serversMenu->addAction(ui->actionHigh_Availability);
-    serversMenu->addAction(ui->actionChoosse_by_statistics);
+//    serversMenu->addAction(ui->actionChoosse_by_statistics);
     serversMenu->addSeparator();
     serversMenu->addSeparator();
+    auto actionGroup = new QActionGroup(this);
+    actionGroup->addAction(ui->actionLoad_Balance);
+    actionGroup->addAction(ui->actionHigh_Availability);
+    ui->actionLoad_Balance->setChecked(Util::guiConfig.strategy=="com.shadowsocks.strategy.balancing");
+    ui->actionHigh_Availability->setChecked(Util::guiConfig.strategy=="com.shadowsocks.strategy.ha");
+//    actionGroup->addAction(ui->actionChoosse_by_statistics);
     if (!Util::model->getItems().isEmpty()) {
-        auto actionGroup = new QActionGroup(this);
 //        qDebug()<<Util::model->getItems().size()<<" total items";
         for (int i = 0; i < Util::model->getItems().size(); ++i) {
             auto action = new QAction(Util::model->getItem(i)->getConnection()->getName(), this);
@@ -320,20 +325,28 @@ void MainWindow::reloadMenu() {
             serversMenu->addAction(action);
 //            qDebug()<<i<<(Util::guiConfig.configs.value(i).getRemarks());
         }
-        connect(actionGroup, &QActionGroup::triggered, [=](QAction *action) {
-            int index = action->data().toInt();
-            Util::guiConfig.index = index;
-//            qDebug()<<"trigger "<<index<<model->getItems().size();
-            proxyService->setProxyEnabled(true);
-            systemTrayIcon.showMessage(tr("change server"),
-                                       tr("use server -> %1").arg(action->text()));
-        });
         serversMenu->addSeparator();
     } else {
         ui->actionEnable_System_Proxy->setEnabled(false);
     }
+    connect(actionGroup, &QActionGroup::triggered, [=](QAction *action) {
+        Util::guiConfig.index=-1;
+        if(action==ui->actionLoad_Balance){
+            Util::guiConfig.strategy="com.shadowsocks.strategy.balancing";
+        } else if(action==ui->actionHigh_Availability){
+            Util::guiConfig.strategy="com.shadowsocks.strategy.ha";
+        } else{
+            int index = action->data().toInt();
+            Util::guiConfig.index = index;
+            Util::guiConfig.strategy="";
+//            qDebug()<<"trigger "<<index<<model->getItems().size();
+            systemTrayIcon.showMessage(tr("change server"),
+                                       tr("use server -> %1").arg(action->text()));
+        }
+        proxyService->setProxyEnabled(true);
+    });
     serversMenu->addAction(ui->actionEdit_Servers);
-    serversMenu->addAction(ui->actionStatistics_Config);
+//    serversMenu->addAction(ui->actionStatistics_Config);
     serversMenu->addSeparator();
     serversMenu->addAction(ui->actionShare_Server_Config);
     serversMenu->addAction(ui->actionScan_QRCode_from_Screen);

@@ -5,6 +5,8 @@
 #include <QtGui/QPainter>
 #include <QtCore/QMap>
 #include <QtCore/QFile>
+#include <service/impl/HighAvailabilityStrategy.h>
+#include <service/impl/BalancingStrategy.h>
 #include "Util.h"
 
 GuiConfig Util::guiConfig = GuiConfigDao::instance()->get();
@@ -228,6 +230,13 @@ void Util::showNotification(const QString &msg) {
 
 Connection *Util::getCurrentConnection() {
     int index = guiConfig.index;
+    if(index<0){
+        if (guiConfig.strategy=="com.shadowsocks.strategy.ha"){
+            index = HighAvailabilityStrategy().getAServer();
+        } else if(guiConfig.strategy=="com.shadowsocks.strategy.balancing"){
+            index = BalancingStrategy().getAServer();
+        }
+    }
     return model->getItem(index)->getConnection();
 }
 
