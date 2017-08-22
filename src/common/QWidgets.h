@@ -38,4 +38,5 @@
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QListWidgetItem>
 #include <QtWidgets/QDataWidgetMapper>
+#include <QtWidgets/QKeySequenceEdit>
 #endif //STUDY_QT_QWIDGETS_H

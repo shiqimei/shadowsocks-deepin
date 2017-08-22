@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
         Dtk::Util::DLogManager::registerFileAppender();
 
         MainWindow mainWindow;
-        mainWindow.show();
+//        mainWindow.show();
         return QApplication::exec();
     }
     return 0;

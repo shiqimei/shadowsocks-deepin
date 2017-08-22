@@ -145,43 +145,55 @@
     <name>EditHotkeysDialog</name>
     <message>
         <source>Edit Hotkeys</source>
-        <translation type="unfinished"></translation>
+        <translation>编辑快捷键</translation>
     </message>
     <message>
         <source>Switch system proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>切换系统代理状态</translation>
     </message>
     <message>
         <source>Switch system proxy mode</source>
-        <translation type="unfinished"></translation>
+        <translation>切换系统代理模式</translation>
     </message>
     <message>
         <source>Switch share over LAN</source>
-        <translation type="unfinished"></translation>
+        <translation>切换局域网共享</translation>
     </message>
     <message>
         <source>Show Logs</source>
-        <translation type="unfinished"></translation>
+        <translation>显示日志</translation>
     </message>
     <message>
         <source>Switch to prev server</source>
-        <translation type="unfinished"></translation>
+        <translation>切换上个服务器</translation>
     </message>
     <message>
         <source>Switch to next server</source>
-        <translation type="unfinished"></translation>
+        <translation>切换下一个服务器</translation>
     </message>
     <message>
         <source>Reg All</source>
-        <translation type="unfinished"></translation>
+        <translation>注册全部热键</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <source>Confirm</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <source>...</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Register Hotkey Fail</source>
+        <translation>注册热键失败</translation>
+    </message>
+    <message>
+        <source>Hotkey Conflick</source>
+        <translation>热键冲突</translation>
     </message>
 </context>
 <context>
@@ -457,6 +469,18 @@
     <message>
         <source>use server -&gt; %1</source>
         <translation>使用服务器-&gt;%1</translation>
+    </message>
+    <message>
+        <source>Switch system proxy mode</source>
+        <translation type="unfinished">切换系统代理模式</translation>
+    </message>
+    <message>
+        <source>Switch to prev server</source>
+        <translation type="unfinished">切换上个服务器</translation>
+    </message>
+    <message>
+        <source>Switch to next server</source>
+        <translation type="unfinished">切换下一个服务器</translation>
     </message>
 </context>
 <context>

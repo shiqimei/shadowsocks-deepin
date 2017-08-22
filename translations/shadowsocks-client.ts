@@ -181,48 +181,69 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widget/EditHotkeysDialog.ui" line="55"/>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="199"/>
         <source>Switch system proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widget/EditHotkeysDialog.ui" line="65"/>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="115"/>
         <source>Switch system proxy mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widget/EditHotkeysDialog.ui" line="75"/>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="192"/>
         <source>Switch share over LAN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widget/EditHotkeysDialog.ui" line="85"/>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="139"/>
         <source>Show Logs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widget/EditHotkeysDialog.ui" line="95"/>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="44"/>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="61"/>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="78"/>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="98"/>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="122"/>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="149"/>
+        <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="166"/>
         <source>Switch to prev server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widget/EditHotkeysDialog.ui" line="105"/>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="173"/>
         <source>Switch to next server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widget/EditHotkeysDialog.ui" line="132"/>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="221"/>
         <source>Reg All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widget/EditHotkeysDialog.ui" line="139"/>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="228"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widget/EditHotkeysDialog.ui" line="146"/>
+        <location filename="../src/widget/EditHotkeysDialog.ui" line="235"/>
         <source>Confirm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widget/EditHotkeysDialog.cpp" line="33"/>
+        <source>Register Hotkey Fail</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widget/EditHotkeysDialog.cpp" line="33"/>
+        <location filename="../src/widget/EditHotkeysDialog.cpp" line="57"/>
+        <source>Hotkey Conflick</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -526,6 +547,21 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../src/MainWindow.ui" line="213"/>
+        <source>Switch system proxy mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/MainWindow.ui" line="218"/>
+        <source>Switch to prev server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/MainWindow.ui" line="223"/>
+        <source>Switch to next server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/MainWindow.cpp" line="87"/>
         <source>update pac file</source>
         <translation type="unfinished"></translation>
@@ -536,32 +572,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="210"/>
+        <location filename="../src/MainWindow.cpp" line="236"/>
         <source>Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="214"/>
+        <location filename="../src/MainWindow.cpp" line="240"/>
         <source>Servers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="243"/>
+        <location filename="../src/MainWindow.cpp" line="269"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="246"/>
+        <location filename="../src/MainWindow.cpp" line="272"/>
         <source>Update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="296"/>
+        <location filename="../src/MainWindow.cpp" line="328"/>
         <source>change server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="297"/>
+        <location filename="../src/MainWindow.cpp" line="329"/>
         <source>use server -&gt; %1</source>
         <translation type="unfinished"></translation>
     </message>
