@@ -5,7 +5,7 @@ Shadowsocks Client: If you want to keep a secret, you must also hide it from you
 Thanks a lot for [Shadowsocks for Windows](https://github.com/shadowsocks/shadowsocks-windows).
 
 [中文说明](https://github.com/PikachuHy/deepin-shadowsocks-client/wiki/%E6%B7%B1%E5%BA%A6%E5%BD%B1%E6%A2%AD%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
-
+[影梭客户端原理剖析](影梭客户端原理剖析.md)
 ### Features
 
 1. System proxy configuration

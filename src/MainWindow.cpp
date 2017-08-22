@@ -260,10 +260,10 @@ void MainWindow::initMenu() {
     pacMenu->addAction(ui->actionCopy_Local_PAC_URL);
     pacMenu->addAction(ui->actionEdit_Online_PAC_URL);
     menu->addMenu(pacMenu);
-    menu->addAction(ui->actionForward_Proxy);
+//    menu->addAction(ui->actionForward_Proxy);
     menu->addSeparator();
     menu->addAction(ui->actionStart_on_Boot);
-    menu->addAction(ui->actionAllow_Clients_from_LAN);
+//    menu->addAction(ui->actionAllow_Clients_from_LAN);
     menu->addSeparator();
     menu->addAction(ui->actionEdit_Hotkeys);
     auto helpMenu = new QMenu(tr("Help"));
