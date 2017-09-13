@@ -1,6 +1,13 @@
 #include <util/Util.h>
 #include "MainWindow.h"
-
+#include <DApplication>
+#include <DLog>
+DWIDGET_USE_NAMESPACE
+#ifdef DUTIL_USE_NAMESPACE
+DUTIL_USE_NAMESPACE
+#else
+DCORE_USE_NAMESPACE
+#endif
 int main(int argc, char *argv[]) {
     DApplication::loadDXcbPlugin();
     DApplication app(argc, argv);
@@ -18,8 +25,8 @@ int main(int argc, char *argv[]) {
         app.setTheme("light");
         app.loadTranslator();
         app.setQuitOnLastWindowClosed(false);
-        Dtk::Util::DLogManager::registerConsoleAppender();
-        Dtk::Util::DLogManager::registerFileAppender();
+        DLogManager::registerConsoleAppender();
+        DLogManager::registerFileAppender();
 
         MainWindow mainWindow;
 //        mainWindow.show();

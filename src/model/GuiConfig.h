@@ -11,7 +11,8 @@
 #include "Hotkey.h"
 #include "LogViewer.h"
 #include "Proxy.h"
-
+#include <QJsonObject>
+#include <QJsonArray>
 class GuiConfig : public JsonObjectSerializable {
 public:
     QJsonObject toJsonObject() override {

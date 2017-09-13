@@ -145,7 +145,16 @@ const QList<ConnectionItem *> &ConnectionTableModel::getItems() const {
 
 bool ConnectionTableModel::setData(const QModelIndex &index, const QVariant &value, int role) {
     if (role == Qt::DisplayRole || role == Qt::EditRole) {
-        items[index.row()]->setData(index, value, role);
+        // 本地端口要统一赋值
+//        qDebug()<<"修改："<<index.row()<<index.column();
+        if(index.column()==4){
+//            qDebug()<<"修改本地端口";
+            for(auto it:items){
+                it->setData(index,value,role);
+            }
+        } else{
+            items[index.row()]->setData(index, value, role);
+        }
 //        emit dataChanged(index,index,roles);
     }
     return QAbstractItemModel::setData(index, value, role);

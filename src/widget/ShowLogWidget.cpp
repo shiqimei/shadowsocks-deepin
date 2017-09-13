@@ -5,9 +5,7 @@
 #include <QtCore/QDir>
 #include <QtWidgets/QVBoxLayout>
 #include "ShowLogWidget.h"
-#include <dutility.h>
 #include <util/Util.h>
-
 ShowLogWidget::ShowLogWidget(QWidget *parent) : QWidget(parent) {
     setMinimumWidth(1200);
     plainTextEdit = new QPlainTextEdit();
@@ -22,5 +20,5 @@ ShowLogWidget::ShowLogWidget(QWidget *parent) : QWidget(parent) {
     auto *mainLayout = new QVBoxLayout();
     mainLayout->addWidget(plainTextEdit);
     setLayout(mainLayout);
-    DUtility::moveToCenter(this);
+//    DUtility::moveToCenter(this);
 }

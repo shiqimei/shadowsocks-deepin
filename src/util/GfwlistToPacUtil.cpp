@@ -44,7 +44,21 @@ void GfwlistToPacUtil::gfwlist2pac() {
         QJsonDocument jsonDocument;
         jsonDocument.setObject(jsonObject);
 //        qDebug()<<jsonDocument.toJson();
-        QString pacContent=generatePac(jsonDocument.toJson(),"SOCKS5 127.0.0.1:1080");
+
+        /**
+         * 2017年09月13日
+         * 没有考虑到用户会更换本地端口,默认是1080，
+         * https://github.com/PikachuHy/shadowsocks-client/issues/19
+         */
+//        QString pacContent=generatePac(jsonDocument.toJson(),"SOCKS5 127.0.0.1:1080");
+        // 获取用户设置的端口号
+        auto items = Util::model->getItems();
+        int port = 1080;
+        if(!items.isEmpty()){
+            port=items.first()->getConnection()->getProfile().localPort;
+        }
+        qDebug()<<"port"<<port;
+        QString pacContent=generatePac(jsonDocument.toJson(),QString("SOCKS5 127.0.0.1:%1").arg(port));
         QFile file(Util::LOCAL_PAC_PATH);
         file.open(QIODevice::WriteOnly|QIODevice::Text);
         file.write(pacContent.toLocal8Bit());

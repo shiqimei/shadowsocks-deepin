@@ -12,12 +12,19 @@
 #include <util/ConfigUtil.h>
 #include "service/impl/ServiceImpl.h"
 #include "dao/GuiConfigDao.h"
-
+#include <DMainWindow>
+#include <DApplication>
+#include <DLog>
 namespace Ui {
     class MainWindow;
 }
-
-class MainWindow : public DMainWindow {
+DWIDGET_USE_NAMESPACE
+//#ifdef DUTIL_USE_NAMESPACE
+//DUTIL_USE_NAMESPACE
+//#else
+//DCORE_USE_NAMESPACE
+//#endif
+class MainWindow : public Dtk::Widget::DMainWindow {
 Q_OBJECT
 protected:
     void paintEvent(QPaintEvent *event) override;

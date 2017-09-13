@@ -5,13 +5,7 @@
 #ifndef SHADOWSOCKS_CLIENT_POSITIVEAGENTWIDGET_H
 #define SHADOWSOCKS_CLIENT_POSITIVEAGENTWIDGET_H
 
-#include <QObject>
-#include <QDialog>
-#include <QPushButton>
-#include <QLineEdit>
-#include <QSpinBox>
-#include <QComboBox>
-#include <QCheckBox>
+#include "common/common.h"
 class PositiveAgentWidget : public QDialog{
 public:
     PositiveAgentWidget(QWidget *parent = nullptr);

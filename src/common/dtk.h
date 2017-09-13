@@ -13,6 +13,14 @@
 #include <DTitlebar>
 #include <dthememanager.h>
 #include <DWindowManagerHelper>
+#include <dsearchedit.h>
 DWIDGET_USE_NAMESPACE
-DUTIL_USE_NAMESPACE
+
+//#ifdef DUTIL_USE_NAMESPACE
+//DUTIL_USE_NAMESPACE
+//#else
+//DCORE_USE_NAMESPACE
+//#endif
+//using namespace Dtk::Core;
+//using namespace Dtk::Widget;
 #endif //SS_CLIENT_DTK_H

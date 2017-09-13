@@ -16,6 +16,8 @@ if (NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))
     # generate qm files
     execute_process(COMMAND bash "translate_generation.sh"
             WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+else ()
+    set(CMAKE_CXX_COMPILER "clang++")
 endif ()
 
 add_subdirectory(src)

@@ -5,17 +5,10 @@
 #ifndef SHADOWSOCKS_CLIENT_SHOWLOGWIDGET_H
 #define SHADOWSOCKS_CLIENT_SHOWLOGWIDGET_H
 
-
-#include <QtWidgets/QPlainTextEdit>
-#include <QDebug>
-#include <dwidget_global.h>
-#include <dutil_global.h>
-
-DWIDGET_USE_NAMESPACE
-        DUTIL_USE_NAMESPACE
+#include "common/common.h"
 class ShowLogWidget: public QWidget {
 public:
-    ShowLogWidget(QWidget *parent= nullptr);
+    explicit ShowLogWidget(QWidget *parent= nullptr);
 
 private:
     QPlainTextEdit* plainTextEdit;

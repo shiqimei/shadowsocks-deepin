@@ -256,7 +256,12 @@ void MainWindow::initMenu() {
     pacMenu->addAction(ui->actionEdit_Local_PAC_File);
     pacMenu->addAction(ui->actionUpdate_Local_PAC_from_GFWList);
     pacMenu->addAction(ui->actionEdit_User_Rule_for_GFWList);
-    pacMenu->addAction(ui->actionSecure_Local_PAC);
+    /**
+     * 2017年09月13日
+     * 不明Acton含义，给用户造成额外的困扰
+     *
+     */
+//    pacMenu->addAction(ui->actionSecure_Local_PAC);
     pacMenu->addAction(ui->actionCopy_Local_PAC_URL);
     pacMenu->addAction(ui->actionEdit_Online_PAC_URL);
     menu->addMenu(pacMenu);

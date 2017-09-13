@@ -6,13 +6,9 @@
 #define SHADOWSOCKS_CLIENT_TOOLBAR_H
 
 
-#include <QHBoxLayout>
-#include <QTimer>
-#include <QWidget>
+#include <common/common.h>
 #include <dsearchedit.h>
-
 DWIDGET_USE_NAMESPACE
-
 class Toolbar : public QWidget {
 Q_OBJECT
 
@@ -21,7 +17,7 @@ public:
 
     ~Toolbar() override;
 
-    bool eventFilter(QObject *, QEvent *event);
+    bool eventFilter(QObject *, QEvent *event) override;
 
 public slots:
 

@@ -11,7 +11,7 @@ find_package(Qt5 REQUIRED ${QT})
 pkg_check_modules(3rd_lib REQUIRED
         QtShadowsocks
         botan-1.10
-        dtkbase dtkwidget dframeworkdbus
+        dtkwidget dframeworkdbus
         libqrencode zbar
         )
 

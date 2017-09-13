@@ -6,6 +6,10 @@ Thanks a lot for [Shadowsocks for Windows](https://github.com/shadowsocks/shadow
 
 [中文说明](https://github.com/PikachuHy/deepin-shadowsocks-client/wiki/%E6%B7%B1%E5%BA%A6%E5%BD%B1%E6%A2%AD%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
 [影梭客户端原理剖析](影梭客户端原理剖析.md)
+如需自己编译，可以使用同目录下的release.sh脚本
+```
+./release.sh
+```
 ### Features
 
 1. System proxy configuration
@@ -40,13 +44,14 @@ Download the [latest release.](https://github.com/PikachuHy/deepin-shadowsocks-c
 
 ```shell
 sudo apt update 
-sudo apt install qt5-default -y
+sudo apt install qt5-default qttools5-dev-tools -y
 sudo apt install libqtshadowsocks-dev -y
 sudo apt install libssl-dev libbotan1.10-dev -y
 sudo apt install libdtkbase-dev libdtkwidget-dev -y
 sudo apt install libdframeworkdbus-dev -y
 sudo apt install libqrencode-dev libzbar-dev -y
-
+sudo apt install libdtkbase-dev libdtkcore-dev libdtksettings-dev libdtksettingsview-dev libdtkutil-dev libdtkwidget-dev libdtkwm-dev -y
+sudo apt install dh-make -y
 cd shadowsocks-client
 mkdir build && cd build
 cmake ..

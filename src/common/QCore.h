@@ -14,4 +14,8 @@
 #include <QtCore/QDataStream>
 #include <QtCore/QTextStream>
 #include <QtCore/QDataStream>
+#include <QtCore/QJsonArray>
+#include <QtCore/QJsonObject>
+#include <QtCore/QSettings>
+#include <QtCore/QJsonDocument>
 #endif //STUDY_QT_QCORE_H

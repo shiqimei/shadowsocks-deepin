@@ -558,7 +558,7 @@
     </message>
     <message>
         <source>update pac file from gfwlist done!</source>
-        <translation>从GFWList更新本地PAC文件！</translation>
+        <translation type="unfinished">从GFWList更新本地PAC文件完成！</translation>
     </message>
 </context>
 </TS>

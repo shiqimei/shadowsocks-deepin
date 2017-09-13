@@ -5,17 +5,11 @@
 #include <QtCore/QFile>
 #include <QtCore/QJsonDocument>
 #include <QtWidgets/QMessageBox>
-#include <dwidget_global.h>
-#include <dutil_global.h>
 #include <DDesktopServices>
 #include <model/JsonObjectSerializable.h>
 #include "UpdateChecker.h"
 #include "util/DownloadUtil.h"
 #include "util/Util.h"
-
-DWIDGET_USE_NAMESPACE
-DUTIL_USE_NAMESPACE
-
 /**
  * GitHub的附件信息
  */
