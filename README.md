@@ -51,7 +51,7 @@ sudo apt install libdtkbase-dev libdtkwidget-dev -y
 sudo apt install libdframeworkdbus-dev -y
 sudo apt install libqrencode-dev libzbar-dev -y
 sudo apt install libdtkbase-dev libdtkcore-dev libdtksettings-dev libdtksettingsview-dev libdtkutil-dev libdtkwidget-dev libdtkwm-dev -y
-sudo apt install dh-make -y
+sudo apt install dh-make fakeroot -y
 cd shadowsocks-client
 mkdir build && cd build
 cmake ..
