@@ -10,4 +10,4 @@ sudo apt install libqrencode-dev libzbar-dev -y
 sudo apt install libdtkbase-dev libdtkcore-dev libdtksettings-dev libdtksettingsview-dev libdtkutil-dev libdtkwidget-dev libdtkwm-dev -y
 sudo apt install dh-make fakeroot -y
 echo '开始构建deb包'
-./build.sh 1.0.2
+./build.sh 1.0.3

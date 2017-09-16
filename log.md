@@ -80,7 +80,10 @@ find -type f -name '*.cpp'|xargs grep 'APP_AUTOSTART_CACHE'
 ```
 
 updatedb
-
+ctrl+z 挂起
+jobs 显示暂停
+bg 1
+fg 1
 编辑本地PAC文件
 从GFWList更新本地PAC
 编辑GFWList的用户规则
