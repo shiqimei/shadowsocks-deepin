@@ -6,10 +6,44 @@ Thanks a lot for [Shadowsocks for Windows](https://github.com/shadowsocks/shadow
 
 [中文说明](https://github.com/PikachuHy/deepin-shadowsocks-client/wiki/%E6%B7%B1%E5%BA%A6%E5%BD%B1%E6%A2%AD%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
 [影梭客户端原理剖析](影梭客户端原理剖析.md)
+
 如需自己编译，可以使用同目录下的release.sh脚本
 ```
 ./release.sh
 ```
+
+几点说明：
+本项目的基本目标在deepin上
+1. 提供基本的sock5代理功能（抄ss-qt）
+2. 提供方便快捷的全局代理模式和pac代理模式之间的切换（抄深度控制中心），但是比较遗憾的是没有完成直接使用dropbox的目标
+3. 提供同ss-win的使用习惯（抄ss-win）
+
+几个基本问题
+1.
+Q:ubuntu能不能用这个
+A:我不知道
+2.
+Q:非debian系能不能用
+A:也许可以，也许不知道
+3.
+Q:能否适配其他的linux系统
+A:我只保证ss-client在deepin上稳定运行，其他的我没有时间去弄
+4.
+Q:这个项目会不会停
+A:只要deepin还在更新，只要我还在使用deepin,就不会停止更新。除非你懂的。
+5.
+Q:关于增加新的功能
+A:由于我的C++水平有限，很多C++在项目中的高级运用不是很懂，否则也不会抄这么多的项目了。
+除非是新功能对deepin用户体验有明显的提升，否则我只会在空闲的时间偶尔弄一下。
+因为需要学习的东西很多，我的精力有限，平时用的也不是C++。
+6.
+Q:关于ssr
+A:有计划，但目前缺少像ss-qt5这样可以直接抄的代码，没有办法很好的在deepin上集成
+7.
+Q:关于代码
+A:我这个代码除了辅助类写得比较烂以外，其他的东西还行
+
+暂时补充这么多。。。
 ### Features
 
 1. System proxy configuration
