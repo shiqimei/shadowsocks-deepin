@@ -80,7 +80,7 @@ void ProxyServiceImpl_with_dde_api::setProxyEnabled(bool enabled) {
     emit requestReloadMenu();
     if (!list.contains(connection)) {
         list.append(connection);
-        emit newController(connection->getController());
+//        emit newController(connection->getController());
     }
 }
 
@@ -148,4 +148,8 @@ void ProxyServiceImpl_with_dde_api::setAutoProxy(const QString &proxy) {
 
 ProxyServiceImpl_with_dde_api::~ProxyServiceImpl_with_dde_api() {
     setProxyMethod(ProxyMethod::None);
+}
+
+Controller *ProxyServiceImpl_with_dde_api::getController() const {
+    return controller;
 }

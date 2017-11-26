@@ -8,5 +8,9 @@ QSS::Profile GuiConfig::getCurrentProfile() {
     if (index == -1) {
         //TODO 策略选择
     }
-    return configs[index].profile;
+    return configs[index]->profile;
+}
+
+GuiConfig::~GuiConfig() {
+    clean();
 }

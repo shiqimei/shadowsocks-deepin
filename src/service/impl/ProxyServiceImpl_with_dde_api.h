@@ -34,6 +34,8 @@ public:
 
     bool isAllowClientsFromLAN() override;
 
+    Controller *getController() const;
+
 private:
     NetworkInter networkInter;
     Controller *controller = nullptr;

@@ -42,7 +42,7 @@ void MainWindow::initCentralWidget() {
 
         model = new ConnectionTableModel(this);
         for (const auto &it:Util::guiConfig.configs) {
-            auto *con = new Connection(SQProfile(it.profile), this);
+            auto *con = new Connection(SQProfile(it->profile), this);
             model->appendConnection(con);
         }
         auto items = model->getItems();

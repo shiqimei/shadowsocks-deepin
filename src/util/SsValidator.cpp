@@ -1,12 +1,15 @@
+#include <vector>
+#include <cipher.h>
 #include "SsValidator.h"
-#include <QtShadowsocks>
+//#include <QtShadowsocks>
 
 QStringList SSValidator::supportedMethodList()
 {
-    QList<QByteArray> methodBA = QSS::Cipher::getSupportedMethodList();
+    std::vector<std::string> methodBA = QSS::Cipher::supportedMethods();
+    std::sort(methodBA.begin(), methodBA.end());
     QStringList methodList;
-    for (const QByteArray &method : methodBA) {
-        methodList.push_back(QString(method).toUpper());
+    for (const std::string& method : methodBA) {
+        methodList.push_back(QString::fromStdString(method).toUpper());
     }
     return methodList;
 }
@@ -40,13 +43,16 @@ bool SSValidator::validate(QString input)
 
         //Validate whether server and password exist
         QStringList pwdServer = decList.at(1).split('@');
-        return pwdServer.size() >= 2;
+        if (pwdServer.size() < 2) {
+            return false;
+        }
 
         //it seems acceptable now
+        return true;
     }
-
-    return false;
-
+    else {
+        return false;
+    }
 }
 
 bool SSValidator::validatePort(const QString &port)

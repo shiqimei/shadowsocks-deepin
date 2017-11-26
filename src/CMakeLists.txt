@@ -9,15 +9,16 @@ find_package(PkgConfig REQUIRED)
 set(QT Core Gui Widgets Network DBus LinguistTools)
 find_package(Qt5 REQUIRED ${QT})
 pkg_check_modules(3rd_lib REQUIRED
-        QtShadowsocks
-        botan-1.10
+#        QtShadowsocks
+#        botan-1.10
         dtkwidget dframeworkdbus
         libqrencode zbar
         )
-
+include_directories(${PROJECT_SOURCE_DIR}/include/QtShadowsocks)
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${FORMS} ${RESOURCES})
-target_include_directories(${PROJECT_NAME} PUBLIC ${3rd_lib_INCLUDE_DIRS})
-target_link_libraries(${PROJECT_NAME} ${3rd_lib_LIBRARIES})
+target_include_directories(${PROJECT_NAME} PUBLIC ${3rd_lib_INCLUDE_DIRS} ${PROJECT_SOURCE_DIR}/include/QtShadowsocks)
+# 我也不知道为什么要这样 这样就能用了
+target_link_libraries(${PROJECT_NAME} ${3rd_lib_LIBRARIES} ${PROJECT_SOURCE_DIR}/lib/libQtShadowsocks.a ${PROJECT_SOURCE_DIR}/lib/libbotan-2.a)
 qt5_use_modules(${PROJECT_NAME} ${QT})
 qt5_create_translation(TRANSLATION_MESSAGES ${SRCS} ${TRANSLATIONS})
 add_custom_target(translations_update DEPENDS ${TRANSLATION_MESSAGES})

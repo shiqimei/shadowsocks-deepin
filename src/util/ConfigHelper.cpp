@@ -227,7 +227,7 @@ void ConfigHelper::read(ConnectionTableModel *model) {
         }
         if (configVer < 2.6) {
             qCritical() << "configVer" << configVer << " < 2.6";
-            profile.onetimeAuth = false;
+//            profile.onetimeAuth = false;
         }
         Connection *con = new Connection(profile, this);
         qDebug() << "server " << con->getProfile().serverAddress;

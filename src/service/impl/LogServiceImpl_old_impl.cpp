@@ -59,13 +59,13 @@ bool LogServiceImpl_old_impl::isVerboseLogging() {
 }
 
 void LogServiceImpl_old_impl::newController(Controller *controller) {
-
+/*
     QObject::connect(controller, &QSS::Controller::debug, [=](QString log) {
         qDebug() << "[QSS::Controller::debug]" << log;
     });
     QObject::connect(controller, &QSS::Controller::info, [=](QString log) {
         qDebug() << "[QSS::Controller::info]" << log;
-    });
+    });*/
     connect(controller, &QSS::Controller::runningStateChanged, [=](bool flag) {
         qDebug() << "QSS::Controller::runningStateChanged" << flag;
     });

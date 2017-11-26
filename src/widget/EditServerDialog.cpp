@@ -1,7 +1,8 @@
 #include <util/Util.h>
 #include "EditServerDialog.h"
 #include "ui_EditServerDialog.h"
-
+#include <vector>
+#include <cipher.h>
 //#define QT_DEBUG 0
 //#undef QT_DEBUG
 EditServerDialog::EditServerDialog(QWidget *parent) :
@@ -20,10 +21,10 @@ EditServerDialog::EditServerDialog(QWidget *parent) :
     mapper->addMapping(ui->passwordLineEdit, 11);
     mapper->addMapping(ui->timeoutSpinBox, 12);
     mapper->setSubmitPolicy(QDataWidgetMapper::SubmitPolicy::AutoSubmit);
-    auto methodBA = QSS::Cipher::getSupportedMethodList();
+    auto methodBA = QSS::Cipher::supportedMethods();
     QStringList methodList;
     for (const auto &method : methodBA) {
-        methodList.push_back(QString(method));
+        methodList.push_back(QString::fromStdString(method));
     }
     ui->encryptComboBox->addItems(methodList);
     connect(ui->listView, &QListView::clicked, [=](const QModelIndex &index) {

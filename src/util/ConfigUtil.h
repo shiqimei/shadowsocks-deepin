@@ -11,7 +11,7 @@
 
 class ConfigUtil {
 public:
-    static QList<Config> readConfig();
+    static QList<Config*> readConfig();
     static void printProfile(Profile&profile);
     static void saveConfig(QList<Config> configList);
 };

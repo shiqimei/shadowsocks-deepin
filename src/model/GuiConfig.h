@@ -15,13 +15,15 @@
 #include <QJsonArray>
 class GuiConfig : public JsonObjectSerializable {
 public:
+    virtual ~GuiConfig();
+
     QJsonObject toJsonObject() override {
         QJsonObject jsonObject;
         {
             QJsonArray jsonArray;
             for (auto &it:configs) {
 //                qDebug()<<it.toJsonObject();
-                jsonArray.append(it.toJsonObject());
+                jsonArray.append(it->toJsonObject());
 
             }
             jsonObject.insert("configs", jsonArray);
@@ -49,9 +51,11 @@ public:
     void fromJsonObject(QJsonObject jsonObject) override {
         {
             QJsonArray jsonArray = jsonObject.value("configs").toArray();
+            clean();
             for (auto it:jsonArray) {
-                Config config;
-                config.fromJsonObject(it.toObject());
+                // 老是出问题我用指针算了
+                Config* config = new Config();
+                config->fromJsonObject(it.toObject());
                 configs.append(config);
             }
         }
@@ -78,7 +82,7 @@ public:
     /**
      * ss账号
      */
-    QList<Config> configs;
+    QList<Config*> configs;
     /**
      * 服务器策略
      * 负载均衡
@@ -148,6 +152,13 @@ public:
     Profile getCurrentProfile();
 
 private:
+    void clean(){
+        while (!configs.isEmpty()){
+            auto config = configs.first();
+            configs.removeOne(config);
+            delete config;
+        }
+    }
 };
 
 

@@ -46,7 +46,7 @@ GuiConfig GuiConfigDao::get() {
     configFile.close();
     qDebug() << "服务器";
     for (auto &it:guiConfig.configs) {
-        qDebug() << it.getRemarks();
+        qDebug() << it->getRemarks();
     }
     return guiConfig;
 }

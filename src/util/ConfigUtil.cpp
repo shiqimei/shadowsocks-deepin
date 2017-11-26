@@ -10,15 +10,17 @@
 #include "ConfigUtil.h"
 
 void ConfigUtil::printProfile(Profile &profile) {
+/*
     qDebug() << "profile";
     qDebug() << "server" << profile.server << profile.server_port << profile.password;
     qDebug() << "local " << profile.local_address << profile.local_port;
     qDebug() << "method" << profile.method;
     qDebug() << "timeout" << profile.timeout;
+    */
 
 }
 
-QList<Config> ConfigUtil::readConfig() {
+QList<Config*> ConfigUtil::readConfig() {
     QFile configFile(QString("%1/.ss/gui-config.json").arg(QDir::homePath()));
     if (!configFile.exists()) {
         qDebug() << "配置文件不存在,写入新的配置文件";
@@ -47,7 +49,7 @@ QList<Config> ConfigUtil::readConfig() {
     if (localPort == 0) {
         localPort = 1080;
     }
-    QList<Config> list;
+    QList<Config*> list;
     for (auto o:configs) {
         auto confObj = o.toObject();
 #ifdef QT_DEBUG
@@ -59,7 +61,15 @@ QList<Config> ConfigUtil::readConfig() {
 //        if (profile.local_address.isSimpleText()){
 //            profile.local_address="127.0.0.1";
 //        }
-        profile.local_address = "127.0.0.1";
+        profile.setLocalAddress("127.0.0.1");
+        profile.setLocalPort(localPort);
+        profile.setMethod(confObj["method"].toString().toStdString());
+        profile.setPassword(confObj["password"].toString().toStdString());
+        profile.setServerAddress(confObj["server"].toString().toStdString());
+        profile.setServerPort(confObj["server_port"].toInt());
+        int timeout = confObj["timeout"].toInt();
+        profile.setTimeout(timeout>300?timeout:300);
+/*        profile.local_address = "127.0.0.1";
         profile.local_port = localPort;
         profile.method = confObj["method"].toString();
         profile.password = confObj["password"].toString();
@@ -71,15 +81,18 @@ QList<Config> ConfigUtil::readConfig() {
         }
         profile.http_proxy = confObj["http_proxy"].toBool();
         profile.auth = confObj["auth"].toBool();
+        */
         QString remarks = confObj["remarks"].toString();
+        profile.setName(remarks.toStdString());
 #ifdef QT_DEBUG
         qDebug() << "remarks" << remarks;
         qDebug() << "server port" << confObj["server_port"].toInt();
 //        ui->listWidget->addItem(new ServerItem(profile, remarks, nullptr, 0));
 #endif
-        Config config;
-        config.profile = profile;
-        config.setRemarks(remarks);
+        Config* config = new Config();
+//        config->profile=profile;
+//        config.setRemarks(remarks);
+        config->fromJsonObject(confObj);
         list.append(config);
     }
     return list;
@@ -93,14 +106,13 @@ void ConfigUtil::saveConfig(QList<Config> configList) {
     for (auto &it:configList) {
         QJsonObject config;
         Profile &profile = it.profile;
-        localPort = profile.local_port;
-        config.insert("local_address", profile.local_address);
-        config.insert("local_port", profile.local_port);
-        config.insert("method", profile.method);
-        config.insert("password", profile.password);
-        config.insert("server", profile.server);
-        config.insert("server_port", profile.server_port);
-        config.insert("timeout", profile.timeout);
+        config.insert("local_address", it.getLocalAddress());
+        config.insert("local_port", it.getLocalPort());
+        config.insert("method", it.getMethod());
+        config.insert("password", it.getPassword());
+        config.insert("server", it.getServer());
+        config.insert("server_port", it.getServerPort());
+        config.insert("timeout", it.getTimeout());
         config.insert("remarks", it.getRemarks());
         jsonArray.append(config);
     }
