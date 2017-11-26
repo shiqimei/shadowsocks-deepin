@@ -122,7 +122,7 @@ void ProxyServiceImpl_with_dde_api::setProxyMethod(QString proxyMethod) {
 }
 
 bool ProxyServiceImpl_with_dde_api::isProxyEnaled() {
-    return Util::guiConfig.enabled;
+    return Util::guiConfig.enabled && !Util::guiConfig.configs.isEmpty();
 }
 
 bool ProxyServiceImpl_with_dde_api::isPacMode() {

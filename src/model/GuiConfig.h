@@ -62,7 +62,7 @@ public:
 
         strategy = jsonObject.value("strategy").toString();
         index = jsonObject.value("index").toInt();
-        global = jsonObject.value("global").toBool();
+        global = jsonObject.value("global").toBool(true);
         enabled = jsonObject.value("enabled").toBool();
         shareOverLan = jsonObject.value("shareOverLan").toBool();
         localPort = jsonObject.value("localPort").toInt();

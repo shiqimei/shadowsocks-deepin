@@ -25,7 +25,13 @@ MainWindow::MainWindow(QWidget *parent) :
     });
     systemTrayIcon.setIcon(Util::getIcon(Util::Type::None));
     systemTrayIcon.show();
-    if (Util::guiConfig.enabled) {
+    // 如果当前没有任何服务器配置，跳出服务器配置界面
+    bool flags =  Util::model->getItems().isEmpty();
+    if(flags){
+        ui->actionEnable_System_Proxy->setChecked(false);
+        ui->actionEdit_Servers->trigger();
+    }
+    if (!flags && Util::guiConfig.enabled) {
         proxyService->setProxyEnabled(true);
     }
 }
@@ -233,6 +239,7 @@ void MainWindow::popupMenu(QPoint pos, QList<ListItem *> items) {
 void MainWindow::initMenu() {
     menu = new QMenu(this);
     menu->addAction(ui->actionEnable_System_Proxy);
+    ui->actionEnable_System_Proxy->setChecked(false);
     modeMenu = new QMenu(tr("Mode"));
     modeMenu->addAction(ui->actionPAC);
     modeMenu->addAction(ui->actionGlobal);

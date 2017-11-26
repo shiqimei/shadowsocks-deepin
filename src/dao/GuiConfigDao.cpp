@@ -25,23 +25,25 @@ void GuiConfigDao::save(GuiConfig guiConfig) {
     configFile.write(jsonDocument.toJson());
     configFile.close();
 }
-
+// 实际上这里是读不出什么东西的
 GuiConfig GuiConfigDao::get() {
+    GuiConfig guiConfig;
     if (!configFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "can't open config file " << configFile.fileName();
-        exit(0);
+//        exit(0);
+        return guiConfig;
     }
     if (!configFile.isReadable()) {
         qDebug() << "config file " << configFile.fileName()
                  << " is not readable!";
-        exit(0);
+//        exit(0);
+        return guiConfig;
     }
     QJsonDocument jsonDocument;
     auto json = configFile.readAll();
     qDebug().noquote() << "json" << json;
     jsonDocument = jsonDocument.fromJson(json);
 //    qDebug()<<"json doc"<<jsonDocument.toJson();
-    GuiConfig guiConfig;
     guiConfig.fromJsonObject(jsonDocument.object());
     configFile.close();
     qDebug() << "服务器";
