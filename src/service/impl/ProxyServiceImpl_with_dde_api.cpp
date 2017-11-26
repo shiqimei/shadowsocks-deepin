@@ -122,7 +122,10 @@ void ProxyServiceImpl_with_dde_api::setProxyMethod(QString proxyMethod) {
 }
 
 bool ProxyServiceImpl_with_dde_api::isProxyEnaled() {
-    return Util::guiConfig.enabled && !Util::guiConfig.configs.isEmpty();
+    /**
+     * 即便是用户设置了默认启动，如果没有配置服务器的话，也不能启动
+     */
+    return Util::guiConfig.enabled && !Util::model->getItems().isEmpty();
 }
 
 bool ProxyServiceImpl_with_dde_api::isPacMode() {

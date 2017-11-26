@@ -28,7 +28,6 @@ MainWindow::MainWindow(QWidget *parent) :
     // 如果当前没有任何服务器配置，跳出服务器配置界面
     bool flags =  Util::model->getItems().isEmpty();
     if(flags){
-        ui->actionEnable_System_Proxy->setChecked(false);
         ui->actionEdit_Servers->trigger();
     }
     if (!flags && Util::guiConfig.enabled) {

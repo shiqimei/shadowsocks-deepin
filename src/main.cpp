@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
         app.setApplicationName(Util::APPLICATION_NAME);
         app.setApplicationVersion(Util::VERSION);
 
-        app.setProductIcon(QPixmap::fromImage(QImage(":/icons/Resources/shadowsocks-client.png")));
+        app.setProductIcon(QIcon(":/icons/Resources/shadowsocks-client.png"));
         app.setProductName("Shadowsocks Client");
         app.setApplicationDescription("If you want to keep a secret, you must also hide it from yourself.");
         app.setApplicationAcknowledgementPage("https://github.com/PikachuHy/shadowsocks-client");
