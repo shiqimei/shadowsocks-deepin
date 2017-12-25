@@ -72,71 +72,12 @@ void MainWindow::initService() {
     updateService = new UpdateServiceImpl(this);
     hotkeyService = new HotkeyServiceImpl(this);
     aboutService = new AboutServiceImpl(this);
-    connect(ui->actionEnable_System_Proxy, &QAction::triggered, proxyService, &ProxyService::setProxyEnabled);
     auto modeGroup = new QActionGroup(this);
     modeGroup->addAction(ui->actionPAC);
     modeGroup->addAction(ui->actionGlobal);
-    connect(modeGroup, &QActionGroup::triggered, [=](QAction *action) {
-        auto proxyMethod = action == ui->actionPAC ? ProxyService::Auto : ProxyService::Manual;
-        proxyService->setProxyMethod(proxyMethod);
-    });
-    connect(ui->actionEdit_Servers, &QAction::triggered, serverSerivce, &ServerSerivce::editServers);
     auto pacGroup = new QActionGroup(this);
     pacGroup->addAction(ui->actionLocal_PAC);
     pacGroup->addAction(ui->actionOnline_PAC);
-    connect(pacGroup, &QActionGroup::triggered, [=](QAction *action) {
-        pacService->setUseLocalPac(action == ui->actionLocal_PAC);
-    });
-    connect(ui->actionEdit_Local_PAC_File, &QAction::triggered, pacService, &PacService::editLocalPacFile);
-    connect(ui->actionUpdate_Local_PAC_from_GFWList, &QAction::triggered, [=]() {
-        systemTrayIcon.showMessage(tr("update pac file"), tr("update pac file from gfwlist"));
-        updateService->updateLocalPacFromGFWList();
-    });
-    connect(ui->actionEdit_User_Rule_for_GFWList, &QAction::triggered, pacService, &PacService::editUserRuleForGFWList);
-    connect(ui->actionCopy_Local_PAC_URL, &QAction::triggered, pacService, &PacService::copyLocalPacURL);
-    connect(ui->actionEdit_Online_PAC_URL, &QAction::triggered, pacService, &PacService::editOnlinePacUrl);
-    connect(ui->actionShare_Server_Config, &QAction::triggered, serverSerivce, &ServerSerivce::shareServerConfig);
-    connect(ui->actionScan_QRCode_from_Screen, &QAction::triggered, serverSerivce,
-            &ServerSerivce::scanQRCodeFromScreen);
-    connect(ui->actionImport_URL_from_Clipboard, &QAction::triggered, serverSerivce,
-            &ServerSerivce::importURLfromClipboard);
-    connect(ui->actionStart_on_Boot, &QAction::triggered, bootService, &BootService::setAutoBoot);
-    connect(ui->actionForward_Proxy, &QAction::triggered, proxyService, &ProxyService::editForwardProxy);
-    connect(ui->actionEdit_Hotkeys, &QAction::triggered, hotkeyService, &HotkeyService::editHotkey);
-    connect(ui->actionShow_Logs, &QAction::triggered, logService, &LogService::showLog);
-    connect(ui->actionCheck_for_Updates, &QAction::triggered, updateService, &UpdateService::checkUpdate);
-    connect(ui->actionCheck_for_Update_at_Startup, &QAction::triggered, updateService,
-            &UpdateService::setCheckForUpdatesAtStartup);
-    connect(ui->actionCheck_Pre_release_Version, &QAction::triggered, updateService,
-            &UpdateService::setCheckPrereleaseVersion);
-    connect(ui->actionAbout, &QAction::triggered, aboutService, &AboutService::showAbout);
-    connect(ui->actionQuit, &QAction::triggered, []() {
-        qApp->exit();
-    });
-    connect(ui->actionSwitch_system_proxy_mode,&QAction::triggered,[=](){
-        if(Util::guiConfig.enabled){
-            Util::guiConfig.global=!Util::guiConfig.global;
-            proxyService->setProxyEnabled(true);
-        }
-    });
-    connect(ui->actionSwitch_to_next_server,&QAction::triggered,[=](){
-       int max = Util::model->rowCount();
-        int& curIndex = Util::guiConfig.index;
-        if(curIndex<max-1){
-            curIndex++;
-            proxyService->setProxyEnabled(true);
-        }
-
-    });
-    connect(ui->actionSwitch_to_prev_server,&QAction::triggered,[=](){
-        int& curIndex = Util::guiConfig.index;
-        if(curIndex>0){
-            curIndex--;
-            proxyService->setProxyEnabled(true);
-        }
-
-    });
-
     connect(proxyService, &ProxyService::requestReloadMenu, this, &MainWindow::reloadMenu);
     connect(serverSerivce, &ServerSerivce::requestReloadMenu, this, &MainWindow::reloadMenu);
     connect(proxyService, &ProxyService::newController, logService, &LogService::newController);
@@ -378,4 +319,123 @@ void MainWindow::reloadMenu() {
     ui->actionSwitch_to_prev_server->setShortcutContext(Qt::ApplicationShortcut);
     ui->actionSwitch_system_proxy_mode->setShortcutContext(Qt::ApplicationShortcut);
     qDebug()<<hotkey.switchSystemProxy;
+}
+
+void MainWindow::on_actionEnable_System_Proxy_triggered(bool checked) {
+    qDebug()<<"启动代理"<<checked;
+    // 检查是否能启动
+    proxyService->setProxyEnabled(checked);
+}
+
+void MainWindow::on_actionEdit_Servers_triggered(bool checked) {
+    serverSerivce->editServers();
+}
+
+void MainWindow::on_actionEdit_Local_PAC_File_triggered(bool checked) {
+    pacService->editLocalPacFile();
+}
+
+void MainWindow::on_actionEdit_User_Rule_for_GFWList_triggered(bool checked) {
+    pacService->editUserRuleForGFWList();
+}
+
+void MainWindow::on_actionCopy_Local_PAC_URL_triggered(bool checked) {
+    pacService->copyLocalPacURL();
+}
+
+void MainWindow::on_actionEdit_Online_PAC_URL_triggered(bool checked) {
+    pacService->editOnlinePacUrl();
+}
+
+void MainWindow::on_actionShare_Server_Config_triggered(bool checked) {
+    serverSerivce->shareServerConfig();
+}
+
+void MainWindow::on_actionScan_QRCode_from_Screen_triggered(bool checked) {
+    serverSerivce->scanQRCodeFromScreen();
+}
+
+void MainWindow::on_actionImport_URL_from_Clipboard_triggered(bool checked) {
+    serverSerivce->importURLfromClipboard();
+}
+
+void MainWindow::on_actionStart_on_Boot_triggered(bool checked) {
+    bootService->setAutoBoot(checked);
+}
+
+void MainWindow::on_actionForward_Proxy_triggered(bool checked) {
+    proxyService->editForwardProxy();
+}
+
+void MainWindow::on_actionEdit_Hotkeys_triggered(bool checked) {
+    hotkeyService->editHotkey();
+}
+
+void MainWindow::on_actionShow_Logs_triggered(bool checked) {
+    logService->showLog();
+}
+
+void MainWindow::on_actionCheck_for_Updates_triggered(bool checked) {
+    updateService->checkUpdate();
+}
+
+void MainWindow::on_actionCheck_for_Update_at_Startup_triggered(bool checked) {
+    updateService->setCheckForUpdatesAtStartup(checked);
+}
+
+void MainWindow::on_actionCheck_Pre_release_Version_triggered(bool checked) {
+    updateService->setCheckPrereleaseVersion(checked);
+}
+
+void MainWindow::on_actionAbout_triggered(bool checked) {
+    aboutService->showAbout();
+}
+
+void MainWindow::on_actionQuit_triggered(bool checked) {
+    qApp->exit();
+}
+
+void MainWindow::on_actionPAC_triggered(bool checked) {
+    proxyService->setProxyMethod(ProxyService::Auto);
+}
+
+void MainWindow::on_actionGlobal_triggered(bool checked) {
+    proxyService->setProxyMethod(ProxyService::Manual);
+}
+
+void MainWindow::on_actionLocal_PAC_triggered(bool checked) {
+    pacService->setUseLocalPac(true);
+}
+
+void MainWindow::on_actionOnline_PAC_triggered(bool checked) {
+    pacService->setUseLocalPac(false);
+}
+
+void MainWindow::on_actionUpdate_Local_PAC_from_GFWList_triggered(bool checked) {
+    systemTrayIcon.showMessage(tr("update pac file"), tr("update pac file from gfwlist"));
+    updateService->updateLocalPacFromGFWList();
+}
+
+void MainWindow::on_actionSwitch_system_proxy_mode_triggered(bool checked) {
+    if(Util::guiConfig.enabled){
+        Util::guiConfig.global=!Util::guiConfig.global;
+        proxyService->setProxyEnabled(true);
+    }
+}
+
+void MainWindow::on_actionSwitch_to_next_server_triggered(bool checked) {
+    int max = Util::model->rowCount();
+    auto& curIndex = Util::guiConfig.index;
+    if(curIndex<max-1){
+        curIndex++;
+        proxyService->setProxyEnabled(true);
+    }
+}
+
+void MainWindow::on_actionSwitch_to_prev_server_triggered(bool checked) {
+    int& curIndex = Util::guiConfig.index;
+    if(curIndex>0){
+        curIndex--;
+        proxyService->setProxyEnabled(true);
+    }
 }
