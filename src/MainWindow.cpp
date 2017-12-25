@@ -240,18 +240,18 @@ void MainWindow::initMenu() {
 }
 
 void MainWindow::reloadMenu() {
-    ui->actionEnable_System_Proxy->setChecked(proxyService->isProxyEnaled());
-    modeMenu->setEnabled(proxyService->isProxyEnaled());
-    ui->actionPAC->setChecked(proxyService->isPacMode());
-    ui->actionGlobal->setChecked(proxyService->isGlobelMode());
-    ui->actionLocal_PAC->setChecked(pacService->isUseLocalPac());
-    ui->actionOnline_PAC->setChecked(pacService->isUseOnlinePac());
-    ui->actionSecure_Local_PAC->setChecked(pacService->isSecureLocalPac());
+    ui->actionEnable_System_Proxy->setChecked(Util::guiConfig.enabled && !Util::model->getItems().isEmpty());
+    modeMenu->setEnabled(Util::guiConfig.enabled && !Util::model->getItems().isEmpty());
+    ui->actionPAC->setChecked(!Util::guiConfig.global);
+    ui->actionGlobal->setChecked(Util::guiConfig.global);
+    ui->actionLocal_PAC->setChecked(!Util::guiConfig.useOnlinePac);
+    ui->actionOnline_PAC->setChecked(Util::guiConfig.useOnlinePac);
+    ui->actionSecure_Local_PAC->setChecked(Util::guiConfig.secureLocalPac);
     ui->actionStart_on_Boot->setChecked(bootService->isAutoBoot());
-    ui->actionAllow_Clients_from_LAN->setChecked(proxyService->isAllowClientsFromLAN());
-    ui->actionVerbose_Logging->setChecked(logService->isVerboseLogging());
-    ui->actionCheck_for_Update_at_Startup->setChecked(updateService->isCheckForUpdatesAtStartup());
-    ui->actionCheck_Pre_release_Version->setChecked(updateService->isCheckPrereleaseVersion());
+    ui->actionAllow_Clients_from_LAN->setChecked(Util::guiConfig.shareOverLan);
+    ui->actionVerbose_Logging->setChecked(Util::guiConfig.isVerboseLogging);
+    ui->actionCheck_for_Update_at_Startup->setChecked(Util::guiConfig.autoCheckUpdate);
+    ui->actionCheck_Pre_release_Version->setChecked(Util::guiConfig.checkPreRelease);
 
     serversMenu->clear();
     serversMenu->addAction(ui->actionLoad_Balance);
