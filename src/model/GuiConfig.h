@@ -10,7 +10,6 @@
 #include "Config.h"
 #include "Hotkey.h"
 #include "LogViewer.h"
-#include "Proxy.h"
 #include <QJsonObject>
 #include <QJsonArray>
 class GuiConfig : public JsonObjectSerializable {
@@ -42,7 +41,6 @@ public:
         jsonObject.insert("autoCheckUpdate", autoCheckUpdate);
         jsonObject.insert("checkPreRelease", checkPreRelease);
         jsonObject.insert("isVerboseLogging", isVerboseLogging);
-        jsonObject.insert("proxy", proxy.toJsonObject());
         jsonObject.insert("logViewer", logViewer.toJsonObject());
         jsonObject.insert("hotkey", hotkey.toJsonObject());
         return jsonObject;
@@ -74,7 +72,6 @@ public:
         checkPreRelease = jsonObject.value("checkPreRelease").toBool();
         isVerboseLogging = jsonObject.value("isVerboseLogging").toBool();
 
-        proxy.fromJsonObject(jsonObject.value("proxy").toObject());
         logViewer.fromJsonObject(jsonObject.value("logViewer").toObject());
         hotkey.fromJsonObject(jsonObject.value("hotkey").toObject());
     }
@@ -136,10 +133,6 @@ public:
      * 是否详细记录日志
      */
     bool isVerboseLogging;
-    /**
-     * 正向代理配置
-     */
-    Proxy proxy;
     /**
      * 显示日志配置
      */

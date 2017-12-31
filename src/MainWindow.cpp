@@ -8,12 +8,16 @@
 #include "util/Util.h"
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
+#include "SSProxyManager.h"
+#include "DDEProxyModeManager.h"
 
 MainWindow::MainWindow(QWidget *parent) :
         DMainWindow(parent),
         ui(new Ui::MainWindow) {
     ui->setupUi(this);
     Util::readConfig(Util::CONFIG_PATH, this);
+    proxyManager = new SSProxyManager(this);
+    systemProxyModeManager = new DDEProxyModeManager(this);
 //    installEventFilter(this);   // add event filter
     initTheme();
     initMenu();
@@ -31,7 +35,7 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->actionEdit_Servers->trigger();
     }
     if (!flags && Util::guiConfig.enabled) {
-        proxyService->setProxyEnabled(true);
+//        proxyService->setProxyEnabled(true);
     }
 }
 
@@ -318,13 +322,56 @@ void MainWindow::reloadMenu() {
     ui->actionSwitch_to_next_server->setShortcutContext(Qt::ApplicationShortcut);
     ui->actionSwitch_to_prev_server->setShortcutContext(Qt::ApplicationShortcut);
     ui->actionSwitch_system_proxy_mode->setShortcutContext(Qt::ApplicationShortcut);
-    qDebug()<<hotkey.switchSystemProxy;
+//    qDebug()<<hotkey.switchSystemProxy;
 }
 
 void MainWindow::on_actionEnable_System_Proxy_triggered(bool checked) {
     qDebug()<<"启动代理"<<checked;
     // 检查是否能启动
-    proxyService->setProxyEnabled(checked);
+//    proxyService->setProxyEnabled(checked);
+    if(checked){
+
+        /**
+         * 1. 启动Shadowsocks
+         * 2. 根据配置文件将系统代理设置为Manual或者Auto
+         */
+        // 获取到当前的配置
+        ProxyConfig* config = new ProxyConfig();
+        config->setProperty("local_address","127.0.0.1");
+        config->setProperty("local_port","1080");
+        config->setProperty("method","chacha20-ietf-poly1305");
+        config->setProperty("password","7sapy6mrMkps");
+        config->setProperty("server","us2-sta11.3a281.site");
+        config->setProperty("server_port","20526");
+        config->setProperty("timeout","600");
+        // 启动会失败
+        proxyManager->startProxy(config);
+        if(Util::guiConfig.global){
+            switchToManual();
+        } else{
+            swtichToAuto();
+        }
+    } else{
+        proxyManager->stopProxy();
+        systemProxyModeManager->switchToNone();
+    }
+}
+
+void MainWindow::swtichToAuto() const {
+    QString pacURI = "";
+    if(Util::guiConfig.useOnlinePac){
+            if(Util::guiConfig.pacUrl.isNull()){
+                Util::guiConfig.pacUrl = QString("https://raw.githubusercontent.com/PikachuHy/ss/master/autoproxy.pac");
+            }
+            pacURI = Util::guiConfig.pacUrl;
+        } else{
+            pacURI = QString("%1/.ss/autoproxy.pac").arg(QDir::homePath());
+        }
+    systemProxyModeManager->switchToAuto(pacURI);
+}
+
+void MainWindow::switchToManual() const {
+    systemProxyModeManager->switchToManual("127.0.0.1", Util::guiConfig.localPort);
 }
 
 void MainWindow::on_actionEdit_Servers_triggered(bool checked) {
@@ -396,11 +443,13 @@ void MainWindow::on_actionQuit_triggered(bool checked) {
 }
 
 void MainWindow::on_actionPAC_triggered(bool checked) {
-    proxyService->setProxyMethod(ProxyService::Auto);
+//    proxyService->setProxyMethod(ProxyService::Auto);
+    swtichToAuto();
 }
 
 void MainWindow::on_actionGlobal_triggered(bool checked) {
-    proxyService->setProxyMethod(ProxyService::Manual);
+//    proxyService->setProxyMethod(ProxyService::Manual);
+    switchToManual();
 }
 
 void MainWindow::on_actionLocal_PAC_triggered(bool checked) {

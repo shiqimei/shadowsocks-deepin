@@ -15,6 +15,8 @@
 #include <DMainWindow>
 #include <DApplication>
 #include <DLog>
+#include <interface/ProxyManager.h>
+#include "interface/SystemProxyModeManager.h"
 namespace Ui {
     class MainWindow;
 }
@@ -78,7 +80,8 @@ private:
     QMenu *modeMenu;
     QMenu *serversMenu;
     QMenu *menu;
-
+    ProxyManager* proxyManager;
+    SystemProxyModeManager* systemProxyModeManager;
 private slots:
     void on_actionEnable_System_Proxy_triggered(bool checked);
     void on_actionEdit_Servers_triggered(bool checked);
@@ -108,6 +111,9 @@ private slots:
     void on_actionSwitch_to_prev_server_triggered(bool checked);
 
 
+    void switchToManual() const;
+
+    void swtichToAuto() const;
 };
 
 

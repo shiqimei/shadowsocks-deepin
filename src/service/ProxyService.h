@@ -13,7 +13,7 @@
 class ProxyService : public QObject {
 Q_OBJECT
 public:
-    ProxyService(QObject *parent) : QObject(parent) {}
+    explicit ProxyService(QObject *parent) : QObject(parent) {}
 
     /**
      * 代理方法
@@ -36,7 +36,6 @@ public:
     virtual bool isPacMode()= 0;
 
     virtual bool isGlobelMode()=0;
-
     /**
      * 是否启动代理
      * @param enabled

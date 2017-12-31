@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
         DLogManager::registerFileAppender();
 
         MainWindow mainWindow;
-//        mainWindow.show();
+        mainWindow.show();
         return QApplication::exec();
     }
     QMessageBox::critical(nullptr,QObject::tr("critical"),QObject::tr("application has started!!!"));
