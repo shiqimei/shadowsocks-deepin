@@ -6,7 +6,7 @@ file(GLOB_RECURSE TRANSLATIONS "../translations/*.ts")
 file(GLOB_RECURSE SRCS ${HEADERS} ${SOURCES} ${FORMS})
 set(RESOURCES ${RESOURCES} "../icons.qrc")
 find_package(PkgConfig REQUIRED)
-set(QT Core Gui Widgets Network DBus LinguistTools)
+set(QT Core Gui Widgets Network DBus Sql LinguistTools)
 find_package(Qt5 REQUIRED ${QT})
 pkg_check_modules(3rd_lib REQUIRED
 #        QtShadowsocks

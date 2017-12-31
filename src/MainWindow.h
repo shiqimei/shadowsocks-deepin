@@ -5,18 +5,16 @@
 #ifndef SHADOWSOCKS_CLIENT_MAINWINDOW_H
 #define SHADOWSOCKS_CLIENT_MAINWINDOW_H
 
-#include <model/ConnectionTableModel.h>
-#include "common/common.h"
+#include "stdafx.h"
 #include "widget/Toolbar.h"
-#include "widget/ListItem.h"
-#include <util/ConfigUtil.h>
-#include "service/impl/ServiceImpl.h"
-#include "dao/GuiConfigDao.h"
-#include <DMainWindow>
-#include <DApplication>
-#include <DLog>
 #include <interface/ProxyManager.h>
 #include "interface/SystemProxyModeManager.h"
+#include <dbusinterface/DBusStartManager.h>
+#include <util/UpdateChecker.h>
+#include <DSimpleListItem>
+#include <DMainWindow>
+
+using StartManagerInter = com::deepin::StartManager;
 namespace Ui {
     class MainWindow;
 }
@@ -45,23 +43,11 @@ private:
     Ui::MainWindow *ui;
     Toolbar *toolbar;
 
-    QHBoxLayout *layout;
     QWidget *layoutWidget;
 
-    QList<bool> getColumnHideFlags();
 
     QString backgroundColor;
-    QMenu *rightMenu;
-    ConnectionTableModel *model;
     QSystemTrayIcon systemTrayIcon;
-    ProxyService *proxyService;
-    ServerSerivce *serverSerivce;
-    PacService *pacService;
-    BootService *bootService;
-    UpdateService *updateService;
-    HotkeyService *hotkeyService;
-    LogService *logService;
-    AboutService *aboutService;
 
     void reloadMenu();
 
@@ -70,8 +56,6 @@ private:
     void initTheme();
 
     void initMenu();
-
-    void popupMenu(QPoint pos, QList<ListItem *> items);
 
     void initService();
 
@@ -82,6 +66,9 @@ private:
     QMenu *menu;
     ProxyManager* proxyManager;
     SystemProxyModeManager* systemProxyModeManager;
+    StartManagerInter startManagerInter;
+    UpdateChecker updateChecker;
+    QString GUI_CONFIG_PATH;
 private slots:
     void on_actionEnable_System_Proxy_triggered(bool checked);
     void on_actionEdit_Servers_triggered(bool checked);
@@ -111,9 +98,14 @@ private slots:
     void on_actionSwitch_to_prev_server_triggered(bool checked);
 
 
-    void switchToManual() const;
+    void switchToManual();
 
-    void swtichToAuto() const;
+    void swtichToAuto();
+
+    void readConfig();
+    void saveConfig();
+    // 声明 popupMenu slots 用于处理 rightClickItems 信号
+    void popupMenu(QPoint pos, QList<DSimpleListItem*> items);
 };
 
 

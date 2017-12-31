@@ -3,3 +3,12 @@
 //
 
 #include "ProxyConfig.h"
+ProxyConfig::ProxyConfig(QObject *parent):QObject(parent){
+    setProperty("id","");
+    setProperty("server","");
+    setProperty("server_port","");
+    setProperty("password","");
+    setProperty("method","");
+    setProperty("remarks","");
+    setProperty("timeout","");
+}

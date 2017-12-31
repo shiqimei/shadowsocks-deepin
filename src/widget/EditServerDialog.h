@@ -1,8 +1,9 @@
 #ifndef EDITSERVERDIALOG_H
 #define EDITSERVERDIALOG_H
 
-#include "common/common.h"
+#include "stdafx.h"
 #include <profile.h>
+#include <interface/ProxyConfig.h>
 
 using QSS::Profile;
 namespace Ui {
@@ -37,7 +38,7 @@ private:
     void setFormEnabled(bool flag);
 
     QDataWidgetMapper *mapper;
-
+    QList<ProxyConfig*> list;
 };
 
 #endif // EDITSERVERDIALOG_H

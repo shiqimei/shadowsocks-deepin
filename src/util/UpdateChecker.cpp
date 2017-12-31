@@ -1,25 +1,20 @@
 //
 // Created by pikachu on 17-8-6.
 //
-
-#include <QtCore/QFile>
-#include <QtCore/QJsonDocument>
-#include <QtWidgets/QMessageBox>
-#include <DDesktopServices>
-#include <model/JsonObjectSerializable.h>
+#include "stdafx.h"
 #include "UpdateChecker.h"
 #include "util/DownloadUtil.h"
 #include "util/Util.h"
 /**
  * GitHub的附件信息
  */
-class Asset : public JsonObjectSerializable {
+class Asset {
 public:
-    QJsonObject toJsonObject() override {
+    QJsonObject toJsonObject() {
         return QJsonObject();
     }
 
-    void fromJsonObject(QJsonObject jsonObject) override {
+    void fromJsonObject(QJsonObject jsonObject) {
         preRelease = jsonObject.value("").toBool();
         name = jsonObject.value("name").toString();
         downloadUrl = jsonObject.value("browser_download_url").toString();
@@ -75,52 +70,49 @@ public:
 };
 
 void UpdateChecker::checkUpdate() {
-    auto *downloadUtil = new DownloadUtil();
-    QString filename = Util::getFullpath("releases.json");
-    downloadUtil->download(Util::UPDATE_URL, filename);
-    QObject::connect(downloadUtil, &DownloadUtil::finished, [=]() {
-        auto json = Util::readAllFile(filename);
-        auto jsonDocument = QJsonDocument::fromJson(json);
-        QList<Asset> assets;
-        auto jsonArray = jsonDocument.array();
-        for (const auto &it:jsonArray) {
-            bool isPreRelease = it.toObject().value("prerelease").toBool();
-            auto assetArray = it.toObject().value("assets").toArray();
-            for (const auto &assetJson:assetArray) {
-                Asset asset;
-                asset.preRelease = isPreRelease;
-                asset.fromJsonObject(assetJson.toObject());
-                assets.append(asset);
-            }
-        }
-        qSort(assets);
+//    auto *downloadUtil = new DownloadUtil();
+//    QString filename = Util::getFullpath("releases.json");
+//    downloadUtil->download(Util::UPDATE_URL, filename);
+//    QObject::connect(downloadUtil, &DownloadUtil::finished, [=]() {
+//        auto json = Util::readAllFile(filename);
+//        auto jsonDocument = QJsonDocument::fromJson(json);
+//        QList<Asset> assets;
+//        auto jsonArray = jsonDocument.array();
+//        for (const auto &it:jsonArray) {
+//            bool isPreRelease = it.toObject().value("prerelease").toBool();
+//            auto assetArray = it.toObject().value("assets").toArray();
+//            for (const auto &assetJson:assetArray) {
+//                Asset asset;
+//                asset.preRelease = isPreRelease;
+//                asset.fromJsonObject(assetJson.toObject());
+//                assets.append(asset);
+//            }
+//        }
+//        qSort(assets);
 //        for(const auto&it:assets){
 //            qDebug()<<it.version;
 //        }
-        auto dao = GuiConfigDao::instance();
 
-        auto &latestRelease = assets.first();
-        if (latestRelease.isNewVersion(Util::VERSION, dao->get().checkPreRelease)) {
-            qDebug() << "有新版本" << latestRelease.version;
-            Util::showNotification(tr("new version"));
-            updateSS(&latestRelease);
-        } else {
-            qDebug() << "没有新版本";
-            QMessageBox::information(nullptr, tr("check update"), tr("current version is latest"));
-            Util::showNotification(tr("no new version"));
-        }
-        downloadUtil->deleteLater();
-    });
+//        auto &latestRelease = assets.first();
+//        if (latestRelease.isNewVersion(Util::VERSION, dao->get().checkPreRelease)) {
+//            qDebug() << "有新版本" << latestRelease.version;
+//            updateSS(&latestRelease);
+//        } else {
+//            qDebug() << "没有新版本";
+//            QMessageBox::information(nullptr, tr("check update"), tr("current version is latest"));
+//        }
+//        downloadUtil->deleteLater();
+//    });
 }
 
 void UpdateChecker::updateSS(Asset* asset) {
-    auto *downloadUtil = new DownloadUtil();
-    QString filename = Util::getFullpath(QString("ss_deepin_temp/%1").arg(asset->name));
-    downloadUtil->download(asset->downloadUrl, filename);
-    QObject::connect(downloadUtil, &DownloadUtil::finished, [=]() {
-        auto ret = QMessageBox::information(nullptr, tr("check update"), tr("new version"));
-        if (ret == QMessageBox::Ok) {
-            DDesktopServices::showFileItem(filename);
-        }
-    });
+//    auto *downloadUtil = new DownloadUtil();
+//    QString filename = Util::getFullpath(QString("ss_deepin_temp/%1").arg(asset->name));
+//    downloadUtil->download(asset->downloadUrl, filename);
+//    QObject::connect(downloadUtil, &DownloadUtil::finished, [=]() {
+//        auto ret = QMessageBox::information(nullptr, tr("check update"), tr("new version"));
+//        if (ret == QMessageBox::Ok) {
+////            DDesktopServices::showFileItem(filename);
+//        }
+//    });
 }

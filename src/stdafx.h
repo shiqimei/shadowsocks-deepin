@@ -10,4 +10,5 @@
 #include <QtWidgets>
 #include <QtNetwork>
 #include <QtShadowsocks>
+#include <QtSql>
 #endif //SHADOWSOCKS_CLIENT_STDAFX_H

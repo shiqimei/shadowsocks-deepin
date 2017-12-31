@@ -7,7 +7,7 @@ EditHotkeysDialog::EditHotkeysDialog(QWidget *parent) :
         ui(new Ui::EditHotkeysDialog) {
     ui->setupUi(this);
     setLayout(ui->gridLayout);
-    auto &hotkey = Util::guiConfig.hotkey;
+/*    auto &hotkey = Util::guiConfig.hotkey;
     ui->keySequenceEditSwitchSystemProxy->setKeySequence(QKeySequence(hotkey.switchSystemProxy));
     ui->keySequenceEditSwitchSystemProxyMode->setKeySequence(QKeySequence(hotkey.switchSystemProxyMode));
     ui->keySequenceEditShowLogs->setKeySequence(QKeySequence(hotkey.showLogs));
@@ -17,7 +17,7 @@ EditHotkeysDialog::EditHotkeysDialog(QWidget *parent) :
     list << ui->keySequenceEditSwitchSystemProxy << ui->keySequenceEditSwitchSystemProxyMode
          << ui->keySequenceEditShowLogs
          << ui->keySequenceEditSwitchShareOverLAN << ui->keySequenceEditSwitchToNextServer
-         << ui->keySequenceEditSwitchToPrevServer;
+         << ui->keySequenceEditSwitchToPrevServer;*/
     for (auto it:list) {
         connect(it, &QKeySequenceEdit::editingFinished, this, &EditHotkeysDialog::isValid);
     }
@@ -33,14 +33,14 @@ bool EditHotkeysDialog::on_pushButtonRegAll_clicked() {
         QMessageBox::critical(nullptr, tr("Register Hotkey Fail"), tr("Hotkey Conflick"));
         return false;
     }
-    auto &hotkey = Util::guiConfig.hotkey;
+/*    auto &hotkey = Util::guiConfig.hotkey;
     hotkey.switchSystemProxy = ui->keySequenceEditSwitchSystemProxy->keySequence().toString();
     hotkey.switchSystemProxyMode = ui->keySequenceEditSwitchSystemProxyMode->keySequence().toString();
     hotkey.showLogs = ui->keySequenceEditShowLogs->keySequence().toString();
     hotkey.switchAllowLan = ui->keySequenceEditSwitchShareOverLAN->keySequence().toString();
     hotkey.serverMoveDown = ui->keySequenceEditSwitchToNextServer->keySequence().toString();
     hotkey.serverMoveUp = ui->keySequenceEditSwitchToPrevServer->keySequence().toString();
-    Util::saveConfig();
+    Util::saveConfig();*/
     return true;
 }
 

@@ -5,7 +5,7 @@
 #ifndef SHADOWSOCKS_CLIENT_SHOWLOGWIDGET_H
 #define SHADOWSOCKS_CLIENT_SHOWLOGWIDGET_H
 
-#include "common/common.h"
+#include "stdafx.h"
 class ShowLogWidget: public QWidget {
 public:
     explicit ShowLogWidget(QWidget *parent= nullptr);

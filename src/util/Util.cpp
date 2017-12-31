@@ -1,31 +1,12 @@
 //
 // Created by pikachu on 17-8-5.
 //
-
-#include <QtGui/QPainter>
-#include <QtCore/QMap>
-#include <QtCore/QFile>
-#include <service/impl/HighAvailabilityStrategy.h>
-#include <service/impl/BalancingStrategy.h>
+#include "stdafx.h"
 #include "Util.h"
 
-GuiConfig Util::guiConfig = GuiConfigDao::instance()->get();
-QString Util::ONLINE_PAC_URL = QString("https://raw.githubusercontent.com/PikachuHy/ss/master/autoproxy.pac");
-QString Util::LOCAL_PAC_PATH = Util::getFullpath("autoproxy.pac");
-QString Util::LOCAL_PAC_URL = QString("file://%1").arg(Util::LOCAL_PAC_PATH);
 QString Util::DESKTOP_URL = QString("/usr/share/applications/shadowsocks-client.desktop");
 QString Util::ONLINE_GFWLIST_URL = QString("https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt");
-QString Util::LOCAL_GFWLIST_PATH = Util::getFullpath("gfwlist.txt");
-QString Util::USER_RULE_PATH = Util::getFullpath("user-rule.txt");
 QString Util::UPDATE_URL = QString("https://api.github.com/repos/PikachuHy/shadowsocks-client/releases");
-QString Util::VERSION = QString("1.0.3");
-QString Util::ORGANIZATION_NAME = QString("pikachu");
-QString Util::APPLICATION_NAME = QString("shadowsocks-client");
-QString Util::LOG_PATH = QString("%1/.cache/%2/%3/%3.log").arg(QDir::homePath()).arg(Util::ORGANIZATION_NAME).arg(
-        Util::APPLICATION_NAME);
-QString Util::CONFIG_PATH = QString("%1/.config/%2/config.ini").arg(QDir::homePath()).arg(Util::APPLICATION_NAME);
-ConnectionTableModel *Util::model = nullptr;
-ConfigHelper *Util::configHelper = nullptr;
 
 QImage *Util::mix(QStringList list) {
     if(list.isEmpty()){
@@ -131,115 +112,3 @@ int Util::compareVersion(QString l, QString r) {
     return 0;
 }
 
-QString Util::getFullpath(QString filename) {
-    return QString("%1/.ss/%2").arg(QDir::homePath()).arg(filename);
-}
-
-QString Util::getQrcPath(QString imageName) {
-    return QString(":/icons/Resources/%1").arg(imageName);
-}
-
-qreal Util::easeInOut(qreal x) {
-    return (1 - qCos(M_PI * x)) / 2;
-}
-
-qreal Util::easeInQuad(qreal x) {
-    return qPow(x, 2);
-}
-
-qreal Util::easeOutQuad(qreal x) {
-    return -1 * qPow(x - 1, 2) + 1;
-}
-
-qreal Util::easeInQuint(qreal x) {
-    return qPow(x, 5);
-}
-
-qreal Util::easeOutQuint(qreal x) {
-    return qPow(x - 1, 5) + 1;
-}
-
-void Util::setFontSize(QPainter &painter, int textSize) {
-    QFont font = painter.font();
-    font.setPointSize(textSize);
-    painter.setFont(font);
-
-}
-
-
-QString Util::formatBandwidth(double v) {
-    static const char *orders[] = {"KB/s", "MB/s", "GB/s", "TB/s"};
-
-    return formatUnitSize(v, orders, sizeof(orders) / sizeof(orders[0]));
-}
-
-QString Util::formatByteCount(double v) {
-    static const char *orders[] = {"B", "KB", "MB", "GB", "TB"};
-
-    return formatUnitSize(v, orders, sizeof(orders) / sizeof(orders[0]));
-}
-
-QString Util::formatUnitSize(double v, const char **orders, int nb_orders) {
-    int order = 0;
-    while (v >= 1024 && order + 1 < nb_orders) {
-        order++;
-        v = v / 1024;
-    }
-    char buffer1[30];
-    snprintf(buffer1, sizeof(buffer1), "%.1lf %s", v, orders[order]);
-
-    return QString(buffer1);
-}
-
-QString Util::formatMillisecond(int millisecond) {
-    if (millisecond / 1000 < 3600) {
-        // At least need return 1 seconds.
-        return QDateTime::fromTime_t(std::max(1, millisecond / 1000)).toUTC().toString("mm:ss");
-    } else {
-        return QDateTime::fromTime_t(millisecond / 1000).toUTC().toString("hh:mm:ss");
-    }
-}
-
-void Util::readConfig(QString string, QObject *parent) {
-    QFileInfo file(string);
-    QDir dir = file.absoluteDir();
-    if (!dir.exists()) {
-        dir.mkpath(dir.absolutePath());
-    }
-    configHelper = new ConfigHelper(string, parent);
-    model = new ConnectionTableModel(parent);
-    configHelper->read(model);
-}
-
-void Util::saveConfig() {
-    GuiConfigDao::instance()->save(guiConfig);
-    configHelper->save(*model);
-}
-
-void Util::showNotification(const QString &msg) {
-    //Using DBus to send message.
-    QDBusMessage method = QDBusMessage::createMethodCall("org.freedesktop.Notifications",
-                                                         "/org/freedesktop/Notifications",
-                                                         "org.freedesktop.Notifications", "Notify");
-    QVariantList args;
-    args << QCoreApplication::applicationName() << quint32(0) << "shadowsocks-client" << "Shadowsocks-Client" << msg
-         << QStringList() << QVariantMap() << qint32(-1);
-    method.setArguments(args);
-    QDBusConnection::sessionBus().asyncCall(method);
-}
-
-Connection *Util::getCurrentConnection() {
-    int index = guiConfig.index;
-    if(index<0){
-        if (guiConfig.strategy=="com.shadowsocks.strategy.ha"){
-            index = HighAvailabilityStrategy().getAServer();
-        } else if(guiConfig.strategy=="com.shadowsocks.strategy.balancing"){
-            index = BalancingStrategy().getAServer();
-        }
-    }
-    return model->getItem(index)->getConnection();
-}
-
-bool Util::hasPacFile() {
-    return QFile(Util::LOCAL_PAC_PATH).exists();
-}

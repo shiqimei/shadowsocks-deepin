@@ -3,6 +3,7 @@
 #include <DApplication>
 #include <DLog>
 #include <csignal>
+#include <dao/DBHelper.h>
 
 DWIDGET_USE_NAMESPACE
 #ifdef DUTIL_USE_NAMESPACE
@@ -22,13 +23,13 @@ static void onSignalRecv(int sig)
 int main(int argc, char *argv[]) {
     DApplication::loadDXcbPlugin();
     DApplication app(argc, argv);
-    if (app.setSingleInstance(Util::APPLICATION_NAME)) {
-        qRegisterMetaTypeStreamOperators<SQProfile>("SQProfile");
+    if (app.setSingleInstance("shadowsocks-client")) {
+//        qRegisterMetaTypeStreamOperators<SQProfile>("SQProfile");
         signal(SIGINT, onSignalRecv);
         signal(SIGTERM, onSignalRecv);
-        app.setOrganizationName(Util::ORGANIZATION_NAME);
-        app.setApplicationName(Util::APPLICATION_NAME);
-        app.setApplicationVersion(Util::VERSION);
+        app.setOrganizationName("pikachu");
+        app.setApplicationName("shadowsocks-client");
+        app.setApplicationVersion("1.1.1");
 
         app.setProductIcon(QIcon(":/icons/Resources/shadowsocks-client.png"));
         app.setProductName("Shadowsocks Client");

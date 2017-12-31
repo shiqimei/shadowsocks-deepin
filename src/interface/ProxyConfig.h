@@ -9,5 +9,6 @@
 class ProxyConfig:public QObject{
 Q_OBJECT
 public:
+    ProxyConfig(QObject *parent = nullptr);
 };
 #endif //SHADOWSOCKS_CLIENT_PROXYCONFIG_H

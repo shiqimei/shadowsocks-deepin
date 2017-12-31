@@ -6,7 +6,7 @@
 #define SHADOWSOCKS_CLIENT_TOOLBAR_H
 
 
-#include <common/common.h>
+#include "stdafx.h"
 #include <dsearchedit.h>
 DWIDGET_USE_NAMESPACE
 class Toolbar : public QWidget {

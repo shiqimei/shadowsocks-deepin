@@ -7,7 +7,7 @@
 #include "ShareServerConfigWidget.h"
 
 ShareServerConfigWidget::ShareServerConfigWidget(QWidget *parent) : QDialog(parent) {
-    setWindowTitle(tr("QR Code and URL"));
+/*    setWindowTitle(tr("QR Code and URL"));
     listView = new QListView(this);
     listView->setModel(Util::model);
     lineEdit=new QLineEdit();
@@ -25,5 +25,5 @@ ShareServerConfigWidget::ShareServerConfigWidget(QWidget *parent) : QDialog(pare
         qRencodeWidget->setString(ssUri);
         lineEdit->setText(ssUri);
     });
-    listView->clicked(Util::model->index(0, 0));
+    listView->clicked(Util::model->index(0, 0));*/
 }

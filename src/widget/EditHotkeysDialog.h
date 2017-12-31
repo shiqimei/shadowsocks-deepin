@@ -1,7 +1,7 @@
 #ifndef EDITHOTKEYSDIALOG_H
 #define EDITHOTKEYSDIALOG_H
 
-#include "common/common.h"
+#include "stdafx.h"
 namespace Ui {
 class EditHotkeysDialog;
 }

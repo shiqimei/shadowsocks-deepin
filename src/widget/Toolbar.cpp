@@ -14,9 +14,9 @@ Toolbar::Toolbar(QWidget *parent) : QWidget(parent) {
     QHBoxLayout *layout = new QHBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
 
-    QPixmap iconPixmap = QPixmap(Util::getQrcPath("ssProxy24.png"));
+//    QPixmap iconPixmap = QPixmap(Util::getQrcPath("ssProxy24.png"));
     QLabel *iconLabel = new QLabel();
-    iconLabel->setPixmap(iconPixmap);
+//    iconLabel->setPixmap(iconPixmap);
 
     searchEdit = new DSearchEdit();
     searchEdit->setFixedWidth(280);
