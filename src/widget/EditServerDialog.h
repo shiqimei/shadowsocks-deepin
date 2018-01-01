@@ -2,6 +2,7 @@
 #define EDITSERVERDIALOG_H
 
 #include "stdafx.h"
+#include "SingleListView.h"
 #include <profile.h>
 #include <interface/ProxyConfig.h>
 
@@ -37,8 +38,14 @@ private:
     Ui::EditServerDialog *ui;
     void setFormEnabled(bool flag);
 
+protected:
+    void wheelEvent(QWheelEvent *event) override;
+
+private:
     QDataWidgetMapper *mapper;
     QList<ProxyConfig*> list;
+    SingleListView *listView;
+    QList<DSimpleListItem*> items;
 };
 
 #endif // EDITSERVERDIALOG_H

@@ -12,6 +12,7 @@ class MultiListView : public DSimpleListView{
 Q_OBJECT
 public:
     MultiListView(QWidget* parent = nullptr);
+    QList<DSimpleListItem*> items;
 };
 
 

@@ -39,6 +39,8 @@ MainWindow::MainWindow(QWidget *parent) :
     systemTrayIcon.setIcon(Util::getIcon(Util::Type::None));
     systemTrayIcon.show();
     connect(&systemTrayIcon,&QSystemTrayIcon::activated,[=](){show();});
+//    auto dialog = new EditServerDialog();
+//    dialog->exec();
 }
 
 void MainWindow::initCentralWidget() {
@@ -48,11 +50,14 @@ void MainWindow::initCentralWidget() {
 
         layoutWidget = new QWidget();
         auto layout = new QHBoxLayout(layoutWidget);
-        MultiListView *multiListView = new MultiListView();
+        auto *multiListView = new MultiListView();
         layout->addWidget(multiListView);
         // 连接信号 rightClickItems 到 popupMenu 槽
         connect(multiListView, &MultiListView::rightClickItems, this, &MainWindow::popupMenu, Qt::QueuedConnection);
         setCentralWidget(layoutWidget);
+//        multiListView->refreshItems(multiListView->items);
+        multiListView->clearItems();
+        multiListView->addItems(multiListView->items);
     }
 }
 
@@ -202,10 +207,10 @@ void MainWindow::reloadMenu() {
 */
 
     serversMenu->clear();
-    serversMenu->addAction(ui->actionLoad_Balance);
-    serversMenu->addAction(ui->actionHigh_Availability);
-    serversMenu->addSeparator();
-    serversMenu->addSeparator();
+//    serversMenu->addAction(ui->actionLoad_Balance);
+//    serversMenu->addAction(ui->actionHigh_Availability);
+//    serversMenu->addSeparator();
+//    serversMenu->addSeparator();
     auto actionGroup = new QActionGroup(this);
     actionGroup->addAction(ui->actionLoad_Balance);
     actionGroup->addAction(ui->actionHigh_Availability);

@@ -24,7 +24,6 @@ int main(int argc, char *argv[]) {
     DApplication::loadDXcbPlugin();
     DApplication app(argc, argv);
     if (app.setSingleInstance("shadowsocks-client")) {
-//        qRegisterMetaTypeStreamOperators<SQProfile>("SQProfile");
         signal(SIGINT, onSignalRecv);
         signal(SIGTERM, onSignalRecv);
         app.setOrganizationName("pikachu");

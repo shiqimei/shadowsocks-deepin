@@ -12,7 +12,6 @@ MultiListView::MultiListView(QWidget *parent) : DSimpleListView(parent) {
     setFrame(true);
     // 设置边框的圆角是 8像素
     setClipRadius(8);
-    QList<DSimpleListItem*> items;
 //    MultiListItem *item1 = new MultiListItem("Bob Dylan", "Like A Rolling Stone", "5:56");
 //    MultiListItem *item2 = new MultiListItem("Neil Young", "Old Man", "4:08");
 //    MultiListItem *item3 = new MultiListItem("Eric Clapton", "Tears In Heaven", "4:34");
