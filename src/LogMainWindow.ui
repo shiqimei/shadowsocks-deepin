@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LogMainWindow</class>
+ <widget class="QMainWindow" name="LogMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="pushButtonCleanLogs">
+    <property name="geometry">
+     <rect>
+      <x>21</x>
+      <y>11</y>
+      <width>85</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&amp;Clean Logs</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonChangeFont">
+    <property name="geometry">
+     <rect>
+      <x>112</x>
+      <y>11</y>
+      <width>91</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Change &amp;Font</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBoxWrapText">
+    <property name="geometry">
+     <rect>
+      <x>209</x>
+      <y>14</y>
+      <width>85</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&amp;Wrap Text</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBoxTopMost">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>14</y>
+      <width>81</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&amp;Top Most</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>70</y>
+      <width>731</width>
+      <height>201</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_File">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="action_Open_Location"/>
+    <addaction name="actionE_xit"/>
+   </widget>
+   <widget class="QMenu" name="menu_View">
+    <property name="title">
+     <string>&amp;View</string>
+    </property>
+    <addaction name="action_Clean_Logs"/>
+    <addaction name="actionChange_Font"/>
+    <addaction name="action_Wrap_Text"/>
+    <addaction name="action_Top_Most"/>
+    <addaction name="separator"/>
+    <addaction name="action_Show_Toolbar"/>
+   </widget>
+   <addaction name="menu_File"/>
+   <addaction name="menu_View"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_Open_Location">
+   <property name="text">
+    <string>&amp;Open Location</string>
+   </property>
+  </action>
+  <action name="actionE_xit">
+   <property name="text">
+    <string>E&amp;xit</string>
+   </property>
+  </action>
+  <action name="action_Clean_Logs">
+   <property name="text">
+    <string>&amp;Clean Logs</string>
+   </property>
+  </action>
+  <action name="actionChange_Font">
+   <property name="text">
+    <string>Change &amp;Font</string>
+   </property>
+  </action>
+  <action name="action_Wrap_Text">
+   <property name="text">
+    <string>&amp;Wrap Text</string>
+   </property>
+  </action>
+  <action name="action_Top_Most">
+   <property name="text">
+    <string>&amp;Top Most</string>
+   </property>
+  </action>
+  <action name="action_Show_Toolbar">
+   <property name="text">
+    <string>&amp;Show Toolbar</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

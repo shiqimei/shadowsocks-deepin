@@ -1,16 +1,8 @@
-#include <util/Util.h>
+#include "stdafx.h"
+#include "utils.h"
 #include "MainWindow.h"
-#include <DApplication>
-#include <DLog>
-#include <csignal>
-#include <dao/DBHelper.h>
-
 DWIDGET_USE_NAMESPACE
-#ifdef DUTIL_USE_NAMESPACE
-DUTIL_USE_NAMESPACE
-#else
 DCORE_USE_NAMESPACE
-#endif
 static void onSignalRecv(int sig)
 {
     if (sig == SIGINT || sig == SIGTERM) {
@@ -19,32 +11,45 @@ static void onSignalRecv(int sig)
         qWarning("Unhandled signal %d", sig);
     }
 }
-
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     DApplication::loadDXcbPlugin();
     DApplication app(argc, argv);
-    if (app.setSingleInstance("shadowsocks-client")) {
+    app.setAttribute(Qt::AA_UseHighDpiPixmaps);
+    const QString socket_path(QString("shadowsocks-client_%1").arg(getuid()));
+    if (app.setSingleInstance(socket_path)) {
         signal(SIGINT, onSignalRecv);
         signal(SIGTERM, onSignalRecv);
-        app.setOrganizationName("pikachu");
-        app.setApplicationName("shadowsocks-client");
-        app.setApplicationVersion("1.1.1");
-
-        app.setProductIcon(QIcon(":/icons/Resources/shadowsocks-client.png"));
-        app.setProductName("Shadowsocks Client");
-        app.setApplicationDescription("If you want to keep a secret, you must also hide it from yourself.");
-        app.setApplicationAcknowledgementPage("https://github.com/PikachuHy/shadowsocks-client");
-
         app.setTheme("light");
         app.loadTranslator();
+
+        const QString descriptionText = QApplication::tr("If you want to keep a secret, you must also hide it from yourself.");
+
+        const QString acknowledgementLink = "https://github.com/PikachuHy/shadowsocks-client";
+
+        app.setOrganizationName("pikachu");
+        app.setApplicationName("shadowsocks-client");
+        app.setApplicationDisplayName(QObject::tr("Shadowsocks Client"));
+        app.setApplicationVersion("2.0.0");
+
+        app.setProductIcon(QIcon(Utils::getIconQrcPath("ssw128.svg")));
+        app.setProductName(QApplication::tr("Shadowsocks Client"));
+        app.setApplicationDescription(descriptionText);
+        app.setApplicationAcknowledgementPage(acknowledgementLink);
+
+        app.setWindowIcon(QIcon(Utils::getIconQrcPath("ssw128.png")));
         app.setQuitOnLastWindowClosed(false);
         DLogManager::registerConsoleAppender();
         DLogManager::registerFileAppender();
+        MainWindow window;
 
-        MainWindow mainWindow;
-        mainWindow.show();
-        return QApplication::exec();
+        // QObject::connect(&app, &DApplication::newInstanceStarted, &window, &MainWindow::activateWindow);
+
+//        Dtk::Widget::moveToCenter(&window);
+//        window.show();
+//        window.adjustStatusBarWidth();
+        return app.exec();
     }
-    QMessageBox::critical(nullptr,QObject::tr("critical"),QObject::tr("application has started!!!"));
+    qDebug()<<"app has started";
     return 0;
 }

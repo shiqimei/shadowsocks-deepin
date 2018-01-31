@@ -1,114 +1,446 @@
-//
-// Created by pikachu on 17-8-19.
-//
-
-#include <widget/Toolbar.h>
-#include <widget/EditHotkeysDialog.h>
-#include <widget/EditOnlinePacUrlDialog.h>
-#include <widget/ShowLogWidget.h>
-#include <util/GfwlistToPacUtil.h>
-#include <widget/EditServerDialog.h>
-#include <widget/ShareServerConfigWidget.h>
-#include <util/SsValidator.h>
-#include <util/UriHelper.h>
-#include <dao/DBHelper.h>
-#include <DWindowManagerHelper>
-#include <DDesktopServices>
-#include "util/Util.h"
+#include "stdafx.h"
+#include "utils.h"
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
-#include "SSProxyManager.h"
+#include "ConfigDialog.h"
+#include "PACUrlDialog.h"
+#include "ProxyDialog.h"
+#include "LogMainWindow.h"
+#include "Toolbar.h"
+#include "GuiConfig.h"
 #include "DDEProxyModeManager.h"
-#include "MultiListView.h"
-#include <DTitlebar>
+#include "process_view.h"
+#include "ConfigItem.h"
+
+void MainWindow::switchToPacMode() {
+    auto guiConfig = GuiConfig::instance();
+    QString online_pac_uri = "https://raw.githubusercontent.com/PikachuHy/shadowsocks-client/master/autoproxy.pac";
+    QString pacURI = "";
+    if (guiConfig->get("useOnlinePac").toBool(true)) {
+        pacURI = guiConfig->get("pacUrl").toString();
+        if (pacURI.isEmpty()) {
+            Utils::warning("online pac uri is empty. we will use default uri.");
+            pacURI = online_pac_uri;
+            guiConfig->set("pacUrl", pacURI);
+        }
+    } else {
+        QString pac_file = QDir(Utils::configPath()).filePath("autoproxy.pac");
+        QFile file(pac_file);
+        if (!file.exists()) {
+            Utils::warning("local pac is not exist. we will use on pac file. you can change it");
+            pacURI = online_pac_uri;
+            guiConfig->set("pacUrl", pacURI);
+            guiConfig->set("useOnlinePac", true);
+        } else {
+            pacURI = "file://" + pac_file;
+        }
+    }
+    systemProxyModeManager->switchToAuto(pacURI);
+}
+
+void MainWindow::switchToGlobal() {
+    auto guiConfig = GuiConfig::instance();
+    QString local_address = guiConfig->get("local_address").toString();
+    if (local_address.isEmpty()) {
+        local_address = "127.0.0.1";
+        guiConfig->set("local_address", local_address);
+    }
+    int local_port = guiConfig->get("local_port").toInt();
+    if (local_port == 0) {
+        local_port = 1080;
+        guiConfig->set("local_port", local_port);
+    }
+    systemProxyModeManager->switchToManual(local_address, local_port);
+}
+
+void MainWindow::updateTrayIcon() {
+    ins.append(in);
+    outs.append(out);
+    QString icon = "ssw";
+    if (in > 0) {
+        icon.append("_in");
+    }
+    if (out > 0) {
+        icon.append("_out");
+    }
+    in = 0;
+    out = 0;
+    if (!GuiConfig::instance()->get("enabled").toBool()) {
+        icon.append("_none");
+    } else if (GuiConfig::instance()->get("global").toBool()) {
+        icon.append("_manual");
+    } else {
+        icon.append("_auto");
+    }
+    icon.append("128.svg");
+    systemTrayIcon->setIcon(QIcon(Utils::getIconQrcPath(icon)));
+}
+
+void MainWindow::updateList() {
+    QList<DSimpleListItem *> items;
+    auto configs = GuiConfig::instance()->getConfigs();
+    for (int i = 0; i < configs.size(); i++) {
+        auto it = configs.at(i).toObject();
+        auto item = new ConfigItem(it);
+//        auto item = new ProcessItem(it,i);
+        items << static_cast<DSimpleListItem *>(item);
+    }
+    config_view->refreshItems(items);
+}
+
+void MainWindow::popupMenu(QPoint pos, QList<DSimpleListItem *> items) {
+    if (items.size() == 1) {
+        auto item = items.first();
+        auto t = static_cast<ConfigItem *>(item);
+        QList<QAction *> action_list;
+        action_list << ui->actionConnect << ui->actionDisconnect;
+        if (GuiConfig::instance()->get("enabled").toBool()) {
+            if (t->getId() == GuiConfig::instance()->getCurrentId()) {
+                ui->actionConnect->setEnabled(false);
+                ui->actionDisconnect->setEnabled(true);
+            } else {
+                ui->actionConnect->setEnabled(true);
+                ui->actionDisconnect->setEnabled(false);
+            }
+        } else {
+            ui->actionConnect->setEnabled(true);
+            ui->actionDisconnect->setEnabled(false);
+        }
+        auto index = GuiConfig::instance()->getIndexById(t->getId());
+        connect(ui->actionConnect,&QAction::triggered,[=](){
+            if(index<0){
+                qDebug()<<"no such config id";
+            } else{
+                GuiConfig::instance()->set("index",index);
+                on_actionEnable_System_Proxy_triggered(true);
+            }
+        });
+        rightMenu->clear();
+        rightMenu->addActions(action_list);
+        rightMenu->exec(pos);
+    }
+}
+
 MainWindow::MainWindow(QWidget *parent) :
         DMainWindow(parent),
         ui(new Ui::MainWindow) {
     ui->setupUi(this);
-    GUI_CONFIG_PATH = QString("%1/.ss/gui-config.json").arg(QDir::homePath());
-    DBHelper::instance();
-    readConfig();
-    proxyManager = new SSProxyManager(this);
-    systemProxyModeManager = new DDEProxyModeManager(this);
-//    installEventFilter(this);   // add event filter
-    initTheme();
-    initMenu();
-    initService();
-    initCentralWidget();
-    reloadMenu();
-    systemTrayIcon.setIcon(Util::getIcon(Util::Type::None));
-    systemTrayIcon.show();
-    connect(&systemTrayIcon,&QSystemTrayIcon::activated,[=](){show();});
-//    auto dialog = new EditServerDialog();
-//    dialog->exec();
-}
+    installEventFilter(this);   // add event filter
+    GuiConfig::instance()->readFromDisk();
+    w = new DMainWindow();
+    settings = new Settings(this);
+    settings->init();
 
-void MainWindow::initCentralWidget() {
-    if (titlebar() != nullptr) {
-        toolbar = new Toolbar();
-        titlebar()->setCustomWidget(toolbar, Qt::AlignVCenter, false);
+    // Init window size.
+    int width = Constant::WINDOW_MIN_WIDTH;
+    int height = Constant::WINDOW_MIN_HEIGHT;
 
-        layoutWidget = new QWidget();
-        auto layout = new QHBoxLayout(layoutWidget);
-        auto *multiListView = new MultiListView();
-        layout->addWidget(multiListView);
-        // 连接信号 rightClickItems 到 popupMenu 槽
-        connect(multiListView, &MultiListView::rightClickItems, this, &MainWindow::popupMenu, Qt::QueuedConnection);
-        setCentralWidget(layoutWidget);
-//        multiListView->refreshItems(multiListView->items);
-        multiListView->clearItems();
-        multiListView->addItems(multiListView->items);
+    if (!settings->getOption("window_width").isNull()) {
+        width = settings->getOption("window_width").toInt();
     }
-}
 
-void MainWindow::initService() {
-    auto modeGroup = new QActionGroup(this);
-    modeGroup->addAction(ui->actionPAC);
-    modeGroup->addAction(ui->actionGlobal);
-    auto pacGroup = new QActionGroup(this);
-    pacGroup->addAction(ui->actionLocal_PAC);
-    pacGroup->addAction(ui->actionOnline_PAC);
-}
+    if (!settings->getOption("window_height").isNull()) {
+        height = settings->getOption("window_height").toInt();
+    }
 
-void MainWindow::changeTheme(QString theme) {
-    if (theme == "light") {
-        backgroundColor = "#FFFFFF";
-
-        if (DWindowManagerHelper::instance()->hasComposite()) {
-            setBorderColor(QColor(0, 0, 0, 0.15 * 255));
+    w->resize(width, height);
+    rightMenu = new QMenu(this);
+    config_view = new ProcessView(getColumnHideFlags());
+    // Set sort algorithms.
+    QList<SortAlgorithm> *alorithms = new QList<SortAlgorithm>();
+    alorithms->append(&ConfigItem::sortByName);
+    alorithms->append(&ConfigItem::sortByServer);
+    alorithms->append(&ConfigItem::sortByTotalUsager);
+    config_view->setColumnSortingAlgorithms(alorithms, getSortingIndex(), getSortingOrder());
+    config_view->setSearchAlgorithm(&ConfigItem::search);
+    connect(config_view, &ProcessView::rightClickItems, this, &MainWindow::popupMenu);
+    w->setCentralWidget(config_view);
+    auto menu = new QMenu();
+    menu->addAction("a");
+    menu->addAction("b");
+    systemTrayIcon = new QSystemTrayIcon();
+    systemTrayIcon->setContextMenu(menu);
+    systemTrayIcon->setContextMenu(ui->menuTray);
+    systemTrayIcon->setIcon(QIcon(Utils::getIconQrcPath("ss16.png")));
+    systemTrayIcon->show();
+    const auto &titlebar = w->titlebar();
+    if (titlebar != nullptr) {
+        auto menu = new QMenu();
+        menu->setStyle(QStyleFactory::create("dlight"));
+        menu->addAction(ui->actionImport_from_gui_config_json);
+        menu->addAction(ui->actionExport_as_gui_config_json);
+        menu->addSeparator();
+        toolbar = new Toolbar();
+        titlebar->setCustomWidget(toolbar, Qt::AlignVCenter, false);
+        titlebar->setMenu(menu);
+        connect(toolbar, &Toolbar::search, config_view, &ProcessView::search, Qt::QueuedConnection);
+    }
+    proxyManager = new ProxyManager(this);
+    const auto &guiConfig = GuiConfig::instance();
+    systemProxyModeManager = new DDEProxyModeManager(this);
+    if (guiConfig->get("enabled").toBool()) {
+        on_actionEnable_System_Proxy_triggered(true);
+        if (guiConfig->get("global").toBool()) {
+            switchToGlobal();
         } else {
-            setBorderColor(QColor(217, 217, 217));
+            switchToPacMode();
+        }
+    }
+    in = 0;
+    out = 0;
+    ins.clear();
+    outs.clear();
+    auto timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &MainWindow::updateTrayIcon);
+    connect(timer, &QTimer::timeout, this, &MainWindow::updateList);
+    timer->start(100);
+    connect(proxyManager, &ProxyManager::bytesReceivedChanged, [=](quint64 n) {
+        qDebug() << "bytesReceivedChanged" << n;
+        term_usage_in = n;
+        GuiConfig::instance()->setCurrentTermUsage(term_usage_in + term_usage_out);
+    });
+    connect(proxyManager, &ProxyManager::bytesSentChanged, [=](quint64 n) {
+        qDebug() << "bytesSentChanged" << n;
+        term_usage_out = n;
+        GuiConfig::instance()->setCurrentTermUsage(term_usage_in + term_usage_out);
+    });
+    connect(proxyManager, &ProxyManager::newBytesReceived, [=](quint64 n) {
+        qDebug() << "newBytesReceived" << n;
+        in += n;
+        GuiConfig::instance()->addTotalUsage(n);
+    });
+    connect(proxyManager, &ProxyManager::newBytesSent, [=](quint64 n) {
+        qDebug() << "newBytesSent" << n;
+        out += n;
+        GuiConfig::instance()->addTotalUsage(n);
+    });
+    connect(proxyManager, &ProxyManager::runningStateChanged, [](bool flag) {
+        // this state change can not reflect the real connection
+        if (flag) {
+//            Utils::info("server connected");
+        } else {
+//            Utils::info("server disconnected");
+        }
+    });
+    updateTrayIcon();
+    on_actionStart_on_Boot_triggered(guiConfig->get("autostart").toBool(true));
+    updateList();
+    updateMenu();
+    Dtk::Widget::moveToCenter(w);
+    w->show();
+}
+
+MainWindow::~MainWindow() {
+    proxyManager->stop();
+    systemProxyModeManager->switchToNone();
+    delete ui;
+}
+
+void MainWindow::on_actionEdit_Servers_triggered() {
+    ConfigDialog *dialog = new ConfigDialog();
+
+    dialog->exec();
+
+}
+
+void MainWindow::on_actionEdit_Online_PAC_URL_triggered() {
+    PACUrlDialog *dialog = new PACUrlDialog(this);
+    dialog->show();
+}
+
+void MainWindow::on_actionForward_Proxy_triggered() {
+    ProxyDialog *dialog = new ProxyDialog(this);
+    dialog->show();
+}
+
+void MainWindow::on_actionShow_Logs_triggered() {
+    LogMainWindow *w = new LogMainWindow(this);
+    w->show();
+}
+
+void MainWindow::updateMenu() {
+    const auto &guiConfig = GuiConfig::instance();
+    qDebug() << guiConfig->getConfigs();
+    if (guiConfig->get("enabled").toBool()) {
+        ui->actionEnable_System_Proxy->setChecked(true);
+        ui->menuMode->setEnabled(true);
+    } else {
+        ui->actionEnable_System_Proxy->setChecked(false);
+        ui->menuMode->setEnabled(false);
+    }
+    if (guiConfig->get("global").toBool()) {
+        ui->actionGlobal->setChecked(true);
+        ui->actionPAC->setChecked(false);
+    } else {
+        ui->actionGlobal->setChecked(false);
+        ui->actionPAC->setChecked(true);
+    }
+    if (guiConfig->get("useOnlinePac").toBool()) {
+        ui->actionOnline_PAC->setChecked(true);
+        ui->actionLocal_PAC->setChecked(false);
+    } else {
+        ui->actionOnline_PAC->setChecked(false);
+        ui->actionLocal_PAC->setChecked(true);
+    }
+    if (guiConfig->get("secureLocalPac").toBool()) {
+        ui->actionSecure_Local_PAC->setChecked(true);
+    } else {
+        ui->actionSecure_Local_PAC->setChecked(false);
+    }
+    if (guiConfig->get("shareOverLan").toBool()) {
+        ui->actionAllow_Clients_from_LAN->setChecked(true);
+    } else {
+        ui->actionAllow_Clients_from_LAN->setChecked(false);
+    }
+    if (guiConfig->get("isVerboseLogging").toBool()) {
+        ui->actionVerbose_Logging->setChecked(true);
+    } else {
+        ui->actionVerbose_Logging->setChecked(false);
+    }
+    if (guiConfig->get("autoCheckUpdate").toBool()) {
+        ui->actionCheck_for_Updates_at_Startup->setChecked(true);
+    } else {
+        ui->actionCheck_for_Updates_at_Startup->setChecked(false);
+    }
+    if (guiConfig->get("checkPreRelease").toBool()) {
+        ui->actionCheck_Pre_release_Version->setChecked(true);
+    } else {
+        ui->actionCheck_Pre_release_Version->setChecked(false);
+    }
+    auto configs = guiConfig->getConfigs();
+    ui->menuServers->clear();
+    QList<QAction *> action_list;
+    action_list << ui->actionLoad_Balance << ui->actionHigh_Availability << ui->actionChoose_by_statistics;
+    ui->menuServers->addActions(action_list);
+    ui->menuServers->addSeparator();
+    action_list.clear();
+    for (int i = 0; i < configs.size(); i++) {
+        auto it = configs.at(i);
+        QString name = it.toObject().value("remarks").toString();
+        auto action = ui->menuServers->addAction(name, [=]() {
+            GuiConfig::instance()->set("index", i);
+            on_actionEnable_System_Proxy_triggered(true);
+        });
+        action->setCheckable(true);
+        if (guiConfig->get("enabled").toBool() && guiConfig->get("index").toInt() == i) {
+            action->setChecked(true);
+        }
+    }
+    ui->menuServers->addSeparator();
+    action_list << ui->actionEdit_Servers << ui->actionStatistics_Config;
+    ui->menuServers->addActions(action_list);
+    ui->menuServers->addSeparator();
+    ui->menuServers->addSeparator();
+    action_list << ui->actionShare_Server_Config << ui->actionScan_QRCode_from_Screen
+                << ui->actionImport_URL_from_Clipboard;
+    ui->menuServers->addActions(action_list);
+    ui->menuServers->addSeparator();
+
+    ui->menuHelp->menuAction()->setVisible(false);
+    ui->menuPAC->menuAction()->setVisible(false);
+}
+
+void MainWindow::on_actionImport_from_gui_config_json_triggered() {
+    QString filename = QFileDialog::getOpenFileName(this, "choose gui-config.json file", QDir::homePath(),
+                                                    "gui-config.json");
+    if (filename.isEmpty()) {
+        return;
+    }
+    GuiConfig::instance()->readFromDisk(filename);
+    updateMenu();
+}
+
+void MainWindow::on_actionEnable_System_Proxy_triggered(bool flag) {
+    auto guiConfig = GuiConfig::instance();
+    if (!flag) {
+        proxyManager->stop();
+    } else {
+        auto configs = guiConfig->getConfigs();
+        auto index = guiConfig->get("index").toInt();
+        if (configs.size() < index + 1) {
+            //TODO: choose a server to start
+            Utils::warning("choose server to start");
+        } else {
+            auto config = configs.at(index).toObject();
+            guiConfig->updateLastUsed();
+            proxyManager->setConfig(config);
+            proxyManager->start();
+        }
+    }
+    guiConfig->set("enabled", flag);
+    updateMenu();
+}
+
+void MainWindow::on_actionPAC_triggered(bool checked) {
+    qDebug() << "pac" << checked;
+    auto guiConfig = GuiConfig::instance();
+    if (guiConfig->get("global").toBool() == checked) {
+        guiConfig->set("global", !checked);
+        switchToPacMode();
+    }
+    updateMenu();
+}
+
+void MainWindow::on_actionGlobal_triggered(bool checked) {
+    qDebug() << "global" << checked;
+    auto guiConfig = GuiConfig::instance();
+    if (guiConfig->get("global").toBool() != checked) {
+        guiConfig->set("global", checked);
+        switchToGlobal();
+    }
+    updateMenu();
+}
+
+void MainWindow::on_actionStart_on_Boot_triggered(bool checked) {
+    QString url = "/usr/share/applications/shadowsocks-client.desktop";
+    if (!checked) {
+        QDBusPendingReply<bool> reply = startManagerInter.RemoveAutostart(url);
+        reply.waitForFinished();
+        if (!reply.isError()) {
+            bool ret = reply.argumentAt(0).toBool();
+            qDebug() << "remove from startup:" << ret;
+        } else {
+            qCritical() << reply.error().name() << reply.error().message();
+            Utils::critical("change auto boot error");
         }
     } else {
-        backgroundColor = "#0E0E0E";
-
-        if (DWindowManagerHelper::instance()->hasComposite()) {
-            setBorderColor(QColor(0, 0, 0, 0.15 * 255));
+        QDBusPendingReply<bool> reply = startManagerInter.AddAutostart(url);
+        reply.waitForFinished();
+        if (!reply.isError()) {
+            bool ret = reply.argumentAt(0).toBool();
+            qDebug() << "add to startup:" << ret;
         } else {
-            setBorderColor(QColor(16, 16, 16));
+            qCritical() << reply.error().name() << reply.error().message();
+            Utils::critical("change auto boot error");
         }
     }
+    GuiConfig::instance()->set("autostart", checked);
 
 }
 
-void MainWindow::initTheme() {
-    changeTheme("light");
+void MainWindow::on_actionQuit_triggered() {
+    qApp->exit();
 }
 
+QList<bool> MainWindow::getColumnHideFlags() {
+    QString processColumns = settings->getOption("config_columns").toString();
 
-void MainWindow::paintEvent(QPaintEvent *event) {
+    QList<bool> toggleHideFlags;
+    toggleHideFlags << processColumns.contains("name");
+    toggleHideFlags << processColumns.contains("server");
+    toggleHideFlags << processColumns.contains("status");
+    toggleHideFlags << processColumns.contains("latency");
+    toggleHideFlags << processColumns.contains("local_port");
+    toggleHideFlags << processColumns.contains("term_usage");
+    toggleHideFlags << processColumns.contains("total_usage");
+    toggleHideFlags << processColumns.contains("reset_date");
+    toggleHideFlags << processColumns.contains("last_used");
 
-    QPainter painter(this);
-
-    QPainterPath path;
-    path.addRect(QRectF(rect()));
-    painter.setOpacity(1);
-    painter.fillPath(path, QColor(backgroundColor));
-    QWidget::paintEvent(event);
+    return toggleHideFlags;
 }
 
-bool MainWindow::eventFilter(QObject *watched, QEvent *event) {
-    qDebug()<<watched<<event;
+bool MainWindow::eventFilter(QObject *, QEvent *event) {
+//    qDebug()<<event->type();
     if (event->type() == QEvent::WindowStateChange) {
 //        adjustStatusBarWidth();
     } else if (event->type() == QEvent::KeyPress) {
@@ -118,420 +450,34 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event) {
                 toolbar->focusInput();
             }
         }
-    } else if (event->type() == QEvent::Close) {/*
-        if (this->rect().width() > Constant::WINDOW_MIN_WIDTH) {
+    } else if (event->type() == QEvent::Close) {
+        if (w->rect().width() >= Constant::WINDOW_MIN_WIDTH) {
             settings->setOption("window_width", this->rect().width());
         }
 
-        if (this->rect().height() > Constant::WINDOW_MIN_HEIGHT) {
+        if (w->rect().height() >= Constant::WINDOW_MIN_HEIGHT) {
             settings->setOption("window_height", this->rect().height());
-        }*/
-    }
-
-    return QObject::eventFilter(watched, event);
-}
-
-MainWindow::~MainWindow() {
-    saveConfig();
-    delete DBHelper::instance();
-    delete ui;
-}
-
-void MainWindow::initMenu() {
-    menu = new QMenu(this);
-    menu->addAction(ui->actionEnable_System_Proxy);
-    ui->actionEnable_System_Proxy->setChecked(false);
-    modeMenu = new QMenu(tr("Mode"));
-    modeMenu->addAction(ui->actionPAC);
-    modeMenu->addAction(ui->actionGlobal);
-    menu->addMenu(modeMenu);
-    serversMenu = new QMenu(tr("Servers"));
-    serversMenu->addAction(ui->actionLoad_Balance);
-    serversMenu->addAction(ui->actionHigh_Availability);
-    serversMenu->addSeparator();
-    serversMenu->addAction(ui->actionEdit_Servers);
-    serversMenu->addSeparator();
-    serversMenu->addAction(ui->actionShare_Server_Config);
-    serversMenu->addAction(ui->actionScan_QRCode_from_Screen);
-    serversMenu->addAction(ui->actionImport_URL_from_Clipboard);
-    menu->addMenu(serversMenu);
-    auto pacMenu = new QMenu("PAC");
-    pacMenu->addAction(ui->actionLocal_PAC);
-    pacMenu->addAction(ui->actionOnline_PAC);
-    pacMenu->addSeparator();
-    pacMenu->addAction(ui->actionEdit_Local_PAC_File);
-    pacMenu->addAction(ui->actionUpdate_Local_PAC_from_GFWList);
-    pacMenu->addAction(ui->actionEdit_User_Rule_for_GFWList);
-    pacMenu->addAction(ui->actionCopy_Local_PAC_URL);
-    pacMenu->addAction(ui->actionEdit_Online_PAC_URL);
-    menu->addMenu(pacMenu);
-    menu->addSeparator();
-    menu->addAction(ui->actionStart_on_Boot);
-    menu->addSeparator();
-    menu->addAction(ui->actionEdit_Hotkeys);
-    auto helpMenu = new QMenu(tr("Help"));
-    helpMenu->addAction(ui->actionShow_Logs);
-    helpMenu->addAction(ui->actionVerbose_Logging);
-    auto updateMenu = new QMenu(tr("Update"));
-    updateMenu->addAction(ui->actionCheck_for_Updates);
-    updateMenu->addSeparator();
-    updateMenu->addAction(ui->actionCheck_for_Update_at_Startup);
-    updateMenu->addAction(ui->actionCheck_Pre_release_Version);
-    helpMenu->addMenu(updateMenu);
-    helpMenu->addAction(ui->actionAbout);
-    menu->addMenu(helpMenu);
-    menu->addAction(ui->actionQuit);
-    systemTrayIcon.setContextMenu(menu);
-    addAction(ui->actionEnable_System_Proxy);
-    addAction(ui->actionAllow_Clients_from_LAN);
-    addAction(ui->actionShow_Logs);
-    addAction(ui->actionSwitch_system_proxy_mode);
-    addAction(ui->actionSwitch_to_prev_server);
-    addAction(ui->actionSwitch_to_next_server);
-}
-
-void MainWindow::reloadMenu() {
-/*
-    ui->actionEnable_System_Proxy->setChecked(Util::guiConfig.enabled && !Util::model->getItems().isEmpty());
-    modeMenu->setEnabled(Util::guiConfig.enabled && !Util::model->getItems().isEmpty());
-    ui->actionPAC->setChecked(!Util::guiConfig.global);
-    ui->actionGlobal->setChecked(Util::guiConfig.global);
-    ui->actionLocal_PAC->setChecked(!Util::guiConfig.useOnlinePac);
-    ui->actionOnline_PAC->setChecked(Util::guiConfig.useOnlinePac);
-    ui->actionSecure_Local_PAC->setChecked(Util::guiConfig.secureLocalPac);
-    ui->actionStart_on_Boot->setChecked(bootService->isAutoBoot());
-    ui->actionAllow_Clients_from_LAN->setChecked(Util::guiConfig.shareOverLan);
-    ui->actionVerbose_Logging->setChecked(Util::guiConfig.isVerboseLogging);
-    ui->actionCheck_for_Update_at_Startup->setChecked(Util::guiConfig.autoCheckUpdate);
-    ui->actionCheck_Pre_release_Version->setChecked(Util::guiConfig.checkPreRelease);
-*/
-
-    serversMenu->clear();
-//    serversMenu->addAction(ui->actionLoad_Balance);
-//    serversMenu->addAction(ui->actionHigh_Availability);
-//    serversMenu->addSeparator();
-//    serversMenu->addSeparator();
-    auto actionGroup = new QActionGroup(this);
-    actionGroup->addAction(ui->actionLoad_Balance);
-    actionGroup->addAction(ui->actionHigh_Availability);
-
-    serversMenu->addAction(ui->actionEdit_Servers);
-    serversMenu->addSeparator();
-    serversMenu->addAction(ui->actionShare_Server_Config);
-    serversMenu->addAction(ui->actionScan_QRCode_from_Screen);
-    serversMenu->addAction(ui->actionImport_URL_from_Clipboard);
-
-}
-
-void MainWindow::on_actionEnable_System_Proxy_triggered(bool checked) {
-    qDebug()<<"启动代理"<<checked;
-    // 检查是否能启动
-    if(checked){
-        /**
-         * 1. 启动Shadowsocks
-         * 2. 根据配置文件将系统代理设置为Manual或者Auto
-         */
-        // 获取到当前的配置
-        ProxyConfig* config = new ProxyConfig();
-        config->setProperty("local_address","127.0.0.1");
-        config->setProperty("local_port","1080");
-        config->setProperty("method","chacha20-ietf-poly1305");
-        config->setProperty("password","7sapy6mrMkps");
-        config->setProperty("server","us2-sta11.3a281.site");
-        config->setProperty("server_port","20526");
-        config->setProperty("timeout","600");
-        // 启动会失败
-        proxyManager->startProxy(config);
-        if(property("global").toBool()){
-            switchToManual();
-        } else{
-            swtichToAuto();
-        }
-    } else{
-        proxyManager->stopProxy();
-        systemProxyModeManager->switchToNone();
-    }
-}
-
-void MainWindow::swtichToAuto() {
-    QString pacURI = "";
-    if(property("useOnlinePac").toBool()){
-            if(property("pacUrl").toString().isNull()){
-                setProperty("pacUrl","https://raw.githubusercontent.com/PikachuHy/ss/master/autoproxy.pac");
-            }
-            pacURI = property("pacUrl").toString();
-        } else{
-            pacURI = QString("%1/.ss/autoproxy.pac").arg(QDir::homePath());
-        }
-    systemProxyModeManager->switchToAuto(pacURI);
-}
-
-void MainWindow::switchToManual() {
-    systemProxyModeManager->switchToManual("127.0.0.1", property("localPort").toInt());
-}
-
-void MainWindow::on_actionEdit_Servers_triggered(bool checked) {
-    auto dialog = new EditServerDialog();
-    dialog->exec();
-    dialog->deleteLater();
-}
-
-void MainWindow::on_actionEdit_Local_PAC_File_triggered(bool checked) {
-    QString path = QString("%1/.ss/autoproxy.pac").arg(QDir::homePath());
-    qDebug() << "path" << path;
-    DDesktopServices::showFileItem(path);
-}
-
-void MainWindow::on_actionEdit_User_Rule_for_GFWList_triggered(bool checked) {
-    QString path = QString("%1/.ss/user-rule.txt").arg(QDir::homePath());
-    qDebug() << "path" << path;
-    DDesktopServices::showFileItem(path);
-}
-
-void MainWindow::on_actionCopy_Local_PAC_URL_triggered(bool checked) {
-    QApplication::clipboard()->setText(QString("file://%1/.ss/autoproxy.pac").arg(QDir::homePath()));
-
-}
-
-void MainWindow::on_actionEdit_Online_PAC_URL_triggered(bool checked) {
-    auto dialog = new EditOnlinePacUrlDialog();
-    dialog->exec();
-    dialog->deleteLater();
-}
-
-void MainWindow::on_actionShare_Server_Config_triggered(bool checked) {
-    auto dialog = new ShareServerConfigWidget();
-    dialog->exec();
-    dialog->deleteLater();
-}
-
-void MainWindow::on_actionScan_QRCode_from_Screen_triggered(bool checked) {
-    QString uri;
-    QList<QScreen *> screens = qApp->screens();
-    for (QList<QScreen *>::iterator sc = screens.begin();
-         sc != screens.end();
-         ++sc) {
-        QImage raw_sc = (*sc)->grabWindow(qApp->desktop()->winId()).toImage();
-        QString result = URIHelper::decodeImage(raw_sc);
-        if (!result.isNull()) {
-            uri = result;
         }
     }
-    qDebug() << "扫描到二维码" << uri;
-    if (!SSValidator::validate(uri)) {
-        QMessageBox::critical(
-                nullptr,
-                tr("QR Code Not Found"),
-                tr("Can't find any QR code image that contains valid URI on your screen(s)."));
-    }
+
+    return false;
 }
 
-void MainWindow::on_actionImport_URL_from_Clipboard_triggered(bool checked) {
-    QString uri = QApplication::clipboard()->text().trimmed();
-    qDebug() << "uri" << uri;
-    if (!SSValidator::validate(uri)) {
-        QMessageBox::critical(
-                nullptr,
-                tr("Import URL From Clipboard Error"),
-                tr("Can't find valid URI"));
-    }
+int MainWindow::getSortingIndex() {
+    QString sortingName = settings->getOption("config_sorting_column").toString();
+
+    QList<QString> columnNames = {
+            "name", "server", "status", "latency", "local_port", "term_usage", "total_usage", "reset_date", "last_used"
+    };
+    qDebug()<<"??";
+    return columnNames.indexOf(sortingName);
 }
 
-void MainWindow::on_actionStart_on_Boot_triggered(bool checked) {
-    if (!checked) {
-        QDBusPendingReply<bool> reply = startManagerInter.RemoveAutostart(Util::DESKTOP_URL);
-        reply.waitForFinished();
-        if (!reply.isError()) {
-            bool ret = reply.argumentAt(0).toBool();
-            qDebug() << "remove from startup:" << ret;
-            if (ret) {
-            }
-        } else {
-            qCritical() << reply.error().name() << reply.error().message();
-        }
-    } else {
-        QDBusPendingReply<bool> reply = startManagerInter.AddAutostart(Util::DESKTOP_URL);
-        reply.waitForFinished();
-        if (!reply.isError()) {
-            bool ret = reply.argumentAt(0).toBool();
-            qDebug() << "add to startup:" << ret;
-            if (ret) {
-            }
-        } else {
-            qCritical() << reply.error().name() << reply.error().message();
-        }
-    }
+bool MainWindow::getSortingOrder() {
+    return settings->getOption("config_sorting_order").toBool();
 }
 
-void MainWindow::on_actionForward_Proxy_triggered(bool checked) {
-//    proxyService->editForwardProxy();
-}
-
-void MainWindow::on_actionEdit_Hotkeys_triggered(bool checked) {
-
-    auto dialog = new EditHotkeysDialog();
-    dialog->exec();
-    dialog->deleteLater();
-}
-
-void MainWindow::on_actionShow_Logs_triggered(bool checked) {
-//    logService->showLog();
-}
-
-void MainWindow::on_actionCheck_for_Updates_triggered(bool checked) {
-    updateChecker.checkUpdate();
-}
-
-void MainWindow::on_actionCheck_for_Update_at_Startup_triggered(bool checked) {
-    setProperty("autoCheckUpdate",checked);
-}
-
-void MainWindow::on_actionCheck_Pre_release_Version_triggered(bool checked) {
-    setProperty("checkPreRelease",checked);
-}
-
-void MainWindow::on_actionAbout_triggered(bool checked) {
-//    showLogWidget->show();
-}
-
-void MainWindow::on_actionQuit_triggered(bool checked) {
-    qApp->exit();
-}
-
-void MainWindow::on_actionPAC_triggered(bool checked) {
-    swtichToAuto();
-}
-
-void MainWindow::on_actionGlobal_triggered(bool checked) {
-//    proxyService->setProxyMethod(ProxyService::Manual);
-    switchToManual();
-}
-
-void MainWindow::on_actionLocal_PAC_triggered(bool checked) {
-    setProperty("useOnlinePac", true);
-}
-
-void MainWindow::on_actionOnline_PAC_triggered(bool checked) {
-    setProperty("useOnlinePac", true);
-}
-
-void MainWindow::on_actionUpdate_Local_PAC_from_GFWList_triggered(bool checked) {
-    auto *gfwlistToPacUtil = new GfwlistToPacUtil();
-    connect(gfwlistToPacUtil, &GfwlistToPacUtil::finished, [=]() {
-        gfwlistToPacUtil->deleteLater();
-    });
-    gfwlistToPacUtil->gfwlist2pac();
-}
-
-void MainWindow::on_actionSwitch_system_proxy_mode_triggered(bool checked) {
-    bool b = property("enabled").toBool();
-    if(b){
-       setProperty("enabled",!b);
-    }
-}
-
-void MainWindow::on_actionSwitch_to_next_server_triggered(bool checked) {
-//    auto curIndex = property("index").toInt();
-}
-
-void MainWindow::on_actionSwitch_to_prev_server_triggered(bool checked) {
-    int curIndex = property("index").toInt();
-    if(curIndex>0){
-        curIndex--;
-    }
-}
-
-void MainWindow::readConfig() {
-    qDebug()<<"read gui config";
-    QFile file(GUI_CONFIG_PATH);
-    if(!file.exists()){
-        file.open(QIODevice::WriteOnly);
-        file.close();
-    }
-    if(file.open(QIODevice::ReadOnly|QIODevice::Text)){
-        QJsonDocument jsonDocument = QJsonDocument::fromJson(file.readAll());
-        QJsonObject jsonObject = jsonDocument.object();
-        QJsonObject::Iterator it;
-        for(it=jsonObject.begin();it!=jsonObject.end();it++){
-            if(it.key().isNull()){
-                qDebug()<<"null "<<it.key()<<it.value();
-            }
-            const char *key = it.key().toStdString().c_str();
-            switch (it.value().type()){
-                case QJsonValue::Null:break;
-                case QJsonValue::Bool:{
-                    setProperty(key, it.value().toBool());
-                    break;
-                }
-                case QJsonValue::Double:{
-                    setProperty(key,it.value().toDouble());
-                    break;
-                }
-                case QJsonValue::String:{
-                    setProperty(key,it.value().toString());
-                    break;
-                }
-                case QJsonValue::Array:break;
-                case QJsonValue::Object:break;
-                case QJsonValue::Undefined:break;
-            }
-        }
-
-    }
-}
-
-void MainWindow::saveConfig() {
-    QJsonDocument jsonDocument;
-    QJsonObject jsonObject;
-    auto t = dynamicPropertyNames();
-    for(auto& it : t){
-        qDebug()<<it;
-        const QVariant &value = property(it);
-        switch (value.type()){
-            case QVariant::Invalid:break;
-            case QVariant::Bool:{
-                jsonObject.insert(it,value.toBool());
-                break;
-            }
-            case QVariant::Int:
-            case QVariant::UInt:
-            case QVariant::LongLong:
-            case QVariant::ULongLong:
-            case QVariant::Double:{
-                jsonObject.insert(it,value.toDouble());
-                break;
-            }
-            case QVariant::String:{
-                jsonObject.insert(it,value.toString());
-                break;
-            }
-            default:
-                break;
-        }
-    }
-    jsonDocument.setObject(jsonObject);
-    QFile file(GUI_CONFIG_PATH);
-    file.open(QIODevice::WriteOnly);
-    file.write(jsonDocument.toJson());
-    file.flush();
-    file.close();
-}
-
-void MainWindow::popupMenu(QPoint pos, QList<DSimpleListItem *> items) {
-
-    QMenu *menu = new QMenu();
-    QAction *actionConnect = new QAction("connect",this);
-    QAction *actionEdit = new QAction("edit", this);
-    QAction *actionShare = new QAction("share",this);
-    QAction *actionRemove = new QAction("remove",this);
-    QAction *actionTestLatency = new QAction("test latency",this);
-
-    menu->addAction(actionConnect);
-    menu->addAction(actionEdit);
-    menu->addAction(actionShare);
-    menu->addAction(actionRemove);
-    menu->addAction(actionTestLatency);
-
-    // 在用户右键的坐标弹出菜单
-    menu->exec(pos);
+void MainWindow::on_actionDisconnect_triggered()
+{
+    on_actionEnable_System_Proxy_triggered(false);
 }
