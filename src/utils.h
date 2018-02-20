@@ -3,16 +3,13 @@
 //#include "stdafx.h"
 #include <QString>
 #include <QDateTime>
-#include <dwindowmanager.h>
 #include <QFileInfoList>
 #include <QLayout>
 #include <QObject>
 #include <QPainter>
 #include <QString>
-#include <proc/readproc.h>
 #include <unordered_set>
 
-DWM_USE_NAMESPACE
 namespace Utils {
 QString getIconQrcPath(QString imageName);
 qint64 getTimestamp();
