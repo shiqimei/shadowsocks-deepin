@@ -41,11 +41,10 @@ SOURCES += \
     DDEProxyModeManager.cpp \
     interface/SystemProxyModeManager.cpp \
     dbusinterface/DBusStartManager.cpp \
-    settings.cpp \
-    process_view.cpp \
-    chinese2pinyin.cpp \
     ConfigItem.cpp \
-    ProxyThread.cpp
+    ProxyThread.cpp \
+    ProxyView.cpp \
+    Settings.cpp
 
 HEADERS += \
         MainWindow.h \
@@ -62,12 +61,11 @@ HEADERS += \
     DDEProxyModeManager.h \
     interface/SystemProxyModeManager.h \
     dbusinterface/DBusStartManager.h \
-    settings.h \
     constant.h \
-    process_view.h \
-    chinese2pinyin.h \
     ConfigItem.h \
-    ProxyThread.h
+    ProxyThread.h \
+    ProxyView.h \
+    Settings.h
 
 FORMS += \
         MainWindow.ui \

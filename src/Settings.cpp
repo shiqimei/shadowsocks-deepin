@@ -22,7 +22,7 @@
  */ 
 
 #include "constant.h"
-#include "settings.h"
+#include "Settings.h"
 #include <QApplication>
 #include <QDir>
 #include <QStandardPaths>

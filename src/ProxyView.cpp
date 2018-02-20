@@ -23,7 +23,7 @@
 
 // copy from deepin-system-monitor
 #include "dthememanager.h"
-#include "process_view.h"
+#include "ProxyView.h"
 #include <QTimer>
 
 DWIDGET_USE_NAMESPACE

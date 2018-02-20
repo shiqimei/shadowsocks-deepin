@@ -9,7 +9,7 @@
 #include "Toolbar.h"
 #include "GuiConfig.h"
 #include "DDEProxyModeManager.h"
-#include "process_view.h"
+#include "ProxyView.h"
 #include "ConfigItem.h"
 
 void MainWindow::switchToPacMode() {
@@ -145,7 +145,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     w->resize(width, height);
     rightMenu = new QMenu(this);
-    config_view = new ProcessView(getColumnHideFlags());
+    config_view = new ProxyView(getColumnHideFlags());
     // Set sort algorithms.
     QList<SortAlgorithm> *alorithms = new QList<SortAlgorithm>();
     alorithms->append(&ConfigItem::sortByName);
@@ -153,7 +153,7 @@ MainWindow::MainWindow(QWidget *parent) :
     alorithms->append(&ConfigItem::sortByTotalUsager);
     config_view->setColumnSortingAlgorithms(alorithms, getSortingIndex(), getSortingOrder());
     config_view->setSearchAlgorithm(&ConfigItem::search);
-    connect(config_view, &ProcessView::rightClickItems, this, &MainWindow::popupMenu);
+    connect(config_view, &ProxyView::rightClickItems, this, &MainWindow::popupMenu);
     w->setCentralWidget(config_view);
     auto menu = new QMenu();
     menu->addAction("a");
@@ -173,7 +173,7 @@ MainWindow::MainWindow(QWidget *parent) :
         toolbar = new Toolbar();
         titlebar->setCustomWidget(toolbar, Qt::AlignVCenter, false);
         titlebar->setMenu(menu);
-        connect(toolbar, &Toolbar::search, config_view, &ProcessView::search, Qt::QueuedConnection);
+        connect(toolbar, &Toolbar::search, config_view, &ProxyView::search, Qt::QueuedConnection);
     }
     proxyManager = new ProxyManager(this);
     const auto &guiConfig = GuiConfig::instance();

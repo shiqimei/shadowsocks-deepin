@@ -4,9 +4,9 @@
 #include "ProxyManager.h"
 #include "interface/SystemProxyModeManager.h"
 #include "dbusinterface/DBusStartManager.h"
-#include "settings.h"
+#include "Settings.h"
 #include "Toolbar.h"
-#include "process_view.h"
+#include "ProxyView.h"
 DWIDGET_USE_NAMESPACE
 using StartManagerInter = com::deepin::StartManager;
 namespace Ui {
@@ -61,7 +61,7 @@ private:
     // I can't use both DSimpleView and QSystemTrayIcon.
     // So I create a container
     DMainWindow* w;
-    ProcessView* config_view;
+    ProxyView* config_view;
     QMenu* rightMenu;
     ProxyManager* proxyManager;
     SystemProxyModeManager* systemProxyModeManager;
