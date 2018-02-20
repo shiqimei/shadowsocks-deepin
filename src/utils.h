@@ -18,20 +18,6 @@ void critical(QString msg);
 void warning(QString msg);
 void info(QString msg);
 // copy from deepin-system-monitor
-typedef struct DiskStatus {
-    float readKbs;
-    float writeKbs;
-} DiskStatus;
-
-    typedef struct NetworkStatus {
-    long sentBytes;
-    long recvBytes;
-    float sentKbs;
-    float recvKbs;
-} NetworkStatus;
-
-    QMap<QString, QString> getProcessDescriptions();
-QMap<QString, QString> getDesktopfileMap();
 
     QSize getRenderSize(int fontSize, QString string);
 QString formatBandwidth(double v);

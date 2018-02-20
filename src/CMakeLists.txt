@@ -15,7 +15,7 @@ find_package(Qt5 REQUIRED ${QT})
 pkg_check_modules(3rd_lib REQUIRED
         QtShadowsocks
         dtkwidget dframeworkdbus
-        dtkcore dtkwm xcb xcb-util
+        dtkcore
         libqrencode zbar
         )
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${FORMS} ${RESOURCES})
