@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 
 // copy from deepin-system-monitor
 #ifndef PROCESSVIEW_H
@@ -29,15 +29,16 @@
 
 DWIDGET_USE_NAMESPACE
 
-class ProcessView : public DSimpleListView
-{
-    Q_OBJECT
-    
+class ProxyView : public DSimpleListView {
+Q_OBJECT
+
 public:
-    ProcessView(QList<bool> columnHideFlags);
+    ProxyView(QList<bool> columnHideFlags);
 
 public slots:
+
     void changeTheme(QString theme);
+
     void initTheme();
 };
 

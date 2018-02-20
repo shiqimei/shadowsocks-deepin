@@ -15,18 +15,20 @@
  * Implementation of interface class DBusStartManager
  */
 
-DBusStartManager::DBusStartManager(const QString &service, const QString &path, const QDBusConnection &connection, QObject *parent)
-    : QDBusAbstractInterface(service, path, staticInterfaceName(), connection, parent)
-{
+DBusStartManager::DBusStartManager(const QString &service, const QString &path, const QDBusConnection &connection,
+                                   QObject *parent)
+        : QDBusAbstractInterface(service, path, staticInterfaceName(), connection, parent) {
 }
 
 DBusStartManager::DBusStartManager(QObject *parent)
-        : QDBusAbstractInterface("com.deepin.SessionManager", "/com/deepin/StartManager", staticInterfaceName(), QDBusConnection::sessionBus(), parent)
-{
-    QDBusConnection::sessionBus().connect(this->service(), this->path(), "org.freedesktop.DBus.Properties",  "PropertiesChanged","sa{sv}as", this, SLOT(__propertyChanged__(QDBusMessage)));
+        : QDBusAbstractInterface("com.deepin.SessionManager", "/com/deepin/StartManager", staticInterfaceName(),
+                                 QDBusConnection::sessionBus(), parent) {
+    QDBusConnection::sessionBus().connect(this->service(), this->path(), "org.freedesktop.DBus.Properties",
+                                          "PropertiesChanged", "sa{sv}as", this,
+                                          SLOT(__propertyChanged__(QDBusMessage)));
 }
 
-DBusStartManager::~DBusStartManager()
-{
-    QDBusConnection::sessionBus().disconnect(service(), path(), "org.freedesktop.DBus.Properties",  "PropertiesChanged",  "sa{sv}as", this, SLOT(propertyChanged(QDBusMessage)));
+DBusStartManager::~DBusStartManager() {
+    QDBusConnection::sessionBus().disconnect(service(), path(), "org.freedesktop.DBus.Properties", "PropertiesChanged",
+                                             "sa{sv}as", this, SLOT(propertyChanged(QDBusMessage)));
 }

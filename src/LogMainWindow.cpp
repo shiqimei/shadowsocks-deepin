@@ -2,13 +2,11 @@
 #include "ui_LogMainWindow.h"
 
 LogMainWindow::LogMainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::LogMainWindow)
-{
+        QMainWindow(parent),
+        ui(new Ui::LogMainWindow) {
     ui->setupUi(this);
 }
 
-LogMainWindow::~LogMainWindow()
-{
+LogMainWindow::~LogMainWindow() {
     delete ui;
 }

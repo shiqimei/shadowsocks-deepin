@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 
 #include "constant.h"
 #include "Settings.h"
@@ -27,26 +27,23 @@
 #include <QDir>
 #include <QStandardPaths>
 
-Settings::Settings(QObject *parent) : QObject(parent)
-{
+Settings::Settings(QObject *parent) : QObject(parent) {
     settings = new QSettings(QDir(configPath()).filePath("config.conf"), QSettings::IniFormat);
-    
+
     groupName = "settings";
-    
+
 }
 
-Settings::~Settings()
-{
+Settings::~Settings() {
     delete settings;
 }
 
-QString Settings::configPath()
-{
-    return QDir(QDir(QStandardPaths::standardLocations(QStandardPaths::ConfigLocation).first()).filePath(qApp->organizationName())).filePath(qApp->applicationName());
+QString Settings::configPath() {
+    return QDir(QDir(QStandardPaths::standardLocations(QStandardPaths::ConfigLocation).first()).filePath(
+            qApp->organizationName())).filePath(qApp->applicationName());
 }
 
-QVariant Settings::getOption(const QString &key)
-{
+QVariant Settings::getOption(const QString &key) {
     settings->beginGroup(groupName);
     QVariant result;
     if (settings->contains(key)) {
@@ -59,28 +56,27 @@ QVariant Settings::getOption(const QString &key)
     return result;
 }
 
-void Settings::init()
-{
+void Settings::init() {
     if (getOption("config_tab_index").isNull()) {
         setOption("config_tab_index", 0);
     }
-    
+
     if (getOption("config_columns").isNull()) {
         setOption("config_columns", "name,server,status,latency,local_port,term_usage,total_usage,last_used");
     }
-    
+
     if (getOption("config_sorting_column").isNull()) {
         setOption("config_sorting_column", "name");
     }
-    
+
     if (getOption("config_sorting_order").isNull()) {
         setOption("config_sorting_order", true);
     }
-        
+
     if (getOption("theme_style").isNull()) {
         setOption("theme_style", "light");
     }
-    
+
     if (getOption("window_width").isNull()) {
         setOption("window_width", Constant::WINDOW_MIN_WIDTH);
     }

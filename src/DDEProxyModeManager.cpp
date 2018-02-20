@@ -28,9 +28,10 @@ void DDEProxyModeManager::switchToManual(QString localAddress, int _port) {
     connect(w, &QDBusPendingCallWatcher::finished, w, &QDBusPendingCallWatcher::deleteLater);
 }
 
-DDEProxyModeManager::DDEProxyModeManager(QObject* parent)
+DDEProxyModeManager::DDEProxyModeManager(QObject *parent)
         : SystemProxyModeManager(parent),
-          networkInter("com.deepin.daemon.Network", "/com/deepin/daemon/Network", QDBusConnection::sessionBus(), this){}
+          networkInter("com.deepin.daemon.Network", "/com/deepin/daemon/Network", QDBusConnection::sessionBus(),
+                       this) {}
 
 void DDEProxyModeManager::setProxyMethod(QString proxyMethod) {
     QDBusPendingCallWatcher *w = new QDBusPendingCallWatcher(networkInter.SetProxyMethod(proxyMethod), this);

@@ -107,11 +107,11 @@ void MainWindow::popupMenu(QPoint pos, QList<DSimpleListItem *> items) {
             ui->actionDisconnect->setEnabled(false);
         }
         auto index = GuiConfig::instance()->getIndexById(t->getId());
-        connect(ui->actionConnect,&QAction::triggered,[=](){
-            if(index<0){
-                qDebug()<<"no such config id";
-            } else{
-                GuiConfig::instance()->set("index",index);
+        connect(ui->actionConnect, &QAction::triggered, [=]() {
+            if (index < 0) {
+                qDebug() << "no such config id";
+            } else {
+                GuiConfig::instance()->set("index", index);
                 on_actionEnable_System_Proxy_triggered(true);
             }
         });
@@ -469,7 +469,7 @@ int MainWindow::getSortingIndex() {
     QList<QString> columnNames = {
             "name", "server", "status", "latency", "local_port", "term_usage", "total_usage", "reset_date", "last_used"
     };
-    qDebug()<<"??";
+    qDebug() << "??";
     return columnNames.indexOf(sortingName);
 }
 
@@ -477,7 +477,6 @@ bool MainWindow::getSortingOrder() {
     return settings->getOption("config_sorting_order").toBool();
 }
 
-void MainWindow::on_actionDisconnect_triggered()
-{
+void MainWindow::on_actionDisconnect_triggered() {
     on_actionEnable_System_Proxy_triggered(false);
 }

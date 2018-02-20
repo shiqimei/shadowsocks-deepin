@@ -26,8 +26,7 @@
 
 using namespace Utils;
 
-Toolbar::Toolbar(QWidget *parent) : QWidget(parent)
-{
+Toolbar::Toolbar(QWidget *parent) : QWidget(parent) {
     installEventFilter(this);   // add event filter
     setMouseTracking(true);    // make MouseMove can response
 
@@ -44,7 +43,7 @@ Toolbar::Toolbar(QWidget *parent) : QWidget(parent)
     searchEdit->setFixedWidth(280);
     searchEdit->setPlaceHolder(tr("Search"));
     searchEdit->getLineEdit()->installEventFilter(this);
-    
+
     layout->addWidget(iconLabel);
     layout->addSpacing(90);
     layout->addStretch();
@@ -58,40 +57,36 @@ Toolbar::Toolbar(QWidget *parent) : QWidget(parent)
     connect(searchEdit, &DSearchEdit::textChanged, this, &Toolbar::handleSearchTextChanged, Qt::QueuedConnection);
 }
 
-Toolbar::~Toolbar()
-{
+Toolbar::~Toolbar() {
 }
 
-bool Toolbar::eventFilter(QObject *obj, QEvent *event)
-{
+bool Toolbar::eventFilter(QObject *obj, QEvent *event) {
     if (event->type() == QEvent::KeyPress) {
         if (obj == this) {
             QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
             if (keyEvent->key() == Qt::Key_Escape) {
                 searchEdit->clear();
-            
+
                 pressEsc();
-            } 
+            }
         } else if (obj == searchEdit->getLineEdit()) {
             QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
             if (keyEvent->key() == Qt::Key_Tab) {
                 pressTab();
-            } 
+            }
         }
     }
 
     return QObject::eventFilter(obj, event);
 }
 
-void Toolbar::handleSearch()
-{
+void Toolbar::handleSearch() {
     if (searchEdit->text() == searchTextCache) {
         search(searchTextCache);
     }
 }
 
-void Toolbar::handleSearchTextChanged()
-{
+void Toolbar::handleSearchTextChanged() {
     searchTextCache = searchEdit->text();
 
     if (searchTimer->isActive()) {
@@ -100,8 +95,7 @@ void Toolbar::handleSearchTextChanged()
     searchTimer->start(300);
 }
 
-void Toolbar::focusInput()
-{
+void Toolbar::focusInput() {
     if (searchEdit->text() != "") {
         searchEdit->getLineEdit()->setFocus();
     } else {

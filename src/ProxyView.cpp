@@ -28,12 +28,11 @@
 
 DWIDGET_USE_NAMESPACE
 
-ProcessView::ProcessView(QList<bool> columnHideFlags)
-{
+ProxyView::ProxyView(QList<bool> columnHideFlags) {
     initTheme();
 
-    connect(DThemeManager::instance(), &DThemeManager::themeChanged, this, &ProcessView::changeTheme);
-    
+    connect(DThemeManager::instance(), &DThemeManager::themeChanged, this, &ProxyView::changeTheme);
+
     // Enable frame and radius.
     setFrame(true);
     setClipRadius(8);
@@ -43,7 +42,8 @@ ProcessView::ProcessView(QList<bool> columnHideFlags)
 
     // Set column widths.
     QList<QString> titles;
-    titles << tr("Name") << tr("Server") << tr("Status") << tr("Latency") << tr("Local Port") << tr("Term Usage") << tr("Total") << tr("Reset Date")<<tr("Last Used");
+    titles << tr("Name") << tr("Server") << tr("Status") << tr("Latency") << tr("Local Port") << tr("Term Usage")
+           << tr("Total") << tr("Reset Date") << tr("Last Used");
     QList<int> widths;
     widths << -1 << 200 << 70 << 80 << 80 << 70 << 70 << 70 << 150;
     setColumnTitleInfo(titles, widths, 36);
@@ -55,8 +55,7 @@ ProcessView::ProcessView(QList<bool> columnHideFlags)
     QTimer::singleShot(0, this, SLOT(setFocus()));
 }
 
-void ProcessView::initTheme()
-{
+void ProxyView::initTheme() {
     if (DThemeManager::instance()->theme() == "light") {
         titleColor = "#000000";
         titleLineColor = "#000000";
@@ -111,7 +110,7 @@ void ProcessView::initTheme()
         arrowDownPressImage = arrowDownDarkPressImage;
 
         scrollbarColor = "#ffffff";
-        
+
         scrollbarNormalOpacity = 0.2;
         scrollbarHoverOpacity = 0.4;
         scrollbarPressOpacity = 0.15;
@@ -122,7 +121,6 @@ void ProcessView::initTheme()
     }
 }
 
-void ProcessView::changeTheme(QString )
-{
+void ProxyView::changeTheme(QString) {
     initTheme();
 }

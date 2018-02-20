@@ -1,5 +1,6 @@
 #ifndef STDAFX_H
 #define STDAFX_H
+
 #include <QtCore>
 #include <QtGui>
 #include <QtWidgets>
@@ -24,6 +25,7 @@
 #include <csignal>
 
 #include <QtShadowsocks>
+
 namespace Constant {
     const int WINDOW_MIN_WIDTH = 900;
     const int WINDOW_MIN_HEIGHT = 620;

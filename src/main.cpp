@@ -1,18 +1,19 @@
 #include "stdafx.h"
 #include "utils.h"
 #include "MainWindow.h"
+
 DWIDGET_USE_NAMESPACE
 DCORE_USE_NAMESPACE
-static void onSignalRecv(int sig)
-{
+
+static void onSignalRecv(int sig) {
     if (sig == SIGINT || sig == SIGTERM) {
         qApp->quit();
     } else {
         qWarning("Unhandled signal %d", sig);
     }
 }
-int main(int argc, char *argv[])
-{
+
+int main(int argc, char *argv[]) {
     DApplication::loadDXcbPlugin();
     DApplication app(argc, argv);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps);
@@ -23,7 +24,8 @@ int main(int argc, char *argv[])
         app.setTheme("light");
         app.loadTranslator();
 
-        const QString descriptionText = QApplication::tr("If you want to keep a secret, you must also hide it from yourself.");
+        const QString descriptionText = QApplication::tr(
+                "If you want to keep a secret, you must also hide it from yourself.");
 
         const QString acknowledgementLink = "https://github.com/PikachuHy/shadowsocks-client";
 
@@ -50,6 +52,6 @@ int main(int argc, char *argv[])
 //        window.adjustStatusBarWidth();
         return app.exec();
     }
-    qDebug()<<"app has started";
+    qDebug() << "app has started";
     return 0;
 }

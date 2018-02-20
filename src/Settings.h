@@ -19,28 +19,31 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
 #include <QSettings>
 
-class Settings : public QObject 
-{
-    Q_OBJECT
-    
+class Settings : public QObject {
+Q_OBJECT
+
 public:
     Settings(QObject *parent = 0);
+
     ~Settings();
+
     QString configPath();
-    
+
     QVariant getOption(const QString &key);
+
     void init();
+
     void setOption(const QString &key, const QVariant &value);
-    
+
 private:
-    QSettings* settings;
+    QSettings *settings;
     QString groupName;
 };
 
