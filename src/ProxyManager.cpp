@@ -79,7 +79,7 @@ void ProxyManager::getProfile(const QJsonObject &config, QSS::Profile &profile) 
         Utils::warning("method is empty.");
     }
     profile.setMethod(method.toStdString());
-    int timeout = config.value("timeout").toInt();
+    int timeout = config.value("timeout").toInt() * 10;
     if (timeout == 0) {
         Utils::warning("timeout is 0. we will change the value to 6.");
         timeout = 6;

@@ -36,6 +36,7 @@ public:
 
     void updateLastUsed();
 
+    static void calId(QJsonObject &j);
 private:
     GuiConfig();
 
@@ -46,6 +47,7 @@ private:
     void addConfig(QJsonObject j);
 
     QJsonObject guiConfig;
+
 };
 
 #endif // GUICONFIG_H

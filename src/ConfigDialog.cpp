@@ -6,6 +6,7 @@
 void ConfigDialog::updateListWidget() {
     auto guiConfig = GuiConfig::instance();
     array = guiConfig->getConfigs();
+    // cause current row -1
     ui->listWidget->clear();
     qDebug() << "config array" << array.size();
     for (auto it:array) {
@@ -81,14 +82,14 @@ void ConfigDialog::checkModify() {
         if (ret == QMessageBox::Yes) {
             save();
             isModified = false;
-            updateListWidget();
+//            updateListWidget();
         }
     }
 }
 
 void ConfigDialog::on_listWidget_currentRowChanged(int currentRow) {
     if (currentRow < 0) {
-        qDebug() << "cur row" << currentRow << "???";
+        qDebug() << "cur row" << currentRow << " clear listwidget";
         return;
     }
     checkModify();
@@ -115,6 +116,7 @@ void ConfigDialog::on_pushButtonAdd_clicked() {
     o.insert("password", "");
     o.insert("server", "");
     o.insert("remarks", "unname");
+    GuiConfig::calId(o);
     array.append(o);
     save();
     updateListWidget();
@@ -148,6 +150,7 @@ void ConfigDialog::on_pushButtonDuplicate_clicked() {
     auto t = Utils::getTimestamp();
     o.insert("create_time", t);
     o.insert("update_time", t);
+    GuiConfig::calId(o);
     array.append(o);
     save();
     updateListWidget();
