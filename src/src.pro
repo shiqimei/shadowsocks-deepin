@@ -77,3 +77,5 @@ FORMS += \
 
 RESOURCES += \
     qrc.qrc
+TRANSLATIONS += translations/shadowsocks-client_zh.ts \
+               translations/shadowsocks-client_en.ts
