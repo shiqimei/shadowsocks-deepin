@@ -37,6 +37,7 @@ public:
     void updateLastUsed();
 
     static void calId(QJsonObject &j);
+    static QJsonObject getConfigFromURI(QString uri);
 private:
     GuiConfig();
 

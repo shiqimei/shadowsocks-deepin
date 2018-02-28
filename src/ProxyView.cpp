@@ -22,6 +22,7 @@
  */
 
 // copy from deepin-system-monitor
+#include "stdafx.h"
 #include "dthememanager.h"
 #include "ProxyView.h"
 #include <QTimer>
@@ -123,4 +124,10 @@ void ProxyView::initTheme() {
 
 void ProxyView::changeTheme(QString) {
     initTheme();
+}
+
+
+void ProxyView::contextMenuEvent(QContextMenuEvent *)
+{
+    emit rightClickBlank();
 }

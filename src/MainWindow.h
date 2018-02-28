@@ -59,8 +59,11 @@ private slots:
     void updateList();
 
     void popupMenu(QPoint pos, QList<DSimpleListItem *> items);
+    void popupMenuBlank();
 
     void on_actionDisconnect_triggered();
+
+    void on_actionScan_QRCode_from_Screen_triggered();
 
 private:
     Ui::MainWindow *ui;
@@ -71,6 +74,8 @@ private:
     DMainWindow *w;
     ProxyView *config_view;
     QMenu *rightMenu;
+    QMenu *rightMenuBlank;
+    QMenu *menuAdd;
     ProxyManager *proxyManager;
     SystemProxyModeManager *systemProxyModeManager;
     StartManagerInter startManagerInter;
@@ -87,6 +92,10 @@ private:
     void switchToPacMode();
 
     void switchToGlobal();
+
+    // QWidget interface
+protected:
+    void contextMenuEvent(QContextMenuEvent *event) override;
 };
 
 #endif // MAINWINDOW_H

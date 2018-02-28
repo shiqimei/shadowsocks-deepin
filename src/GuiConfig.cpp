@@ -240,6 +240,10 @@ void GuiConfig::calId(QJsonObject &j) {
     j.insert("id", QString(id));
 }
 
+QJsonObject GuiConfig::getConfigFromURI(QString ssUri)
+{
+}
+
 int GuiConfig::getIndexById(QString id) {
 
     auto array = guiConfig["configs"].toArray();

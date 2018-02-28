@@ -40,6 +40,12 @@ public slots:
     void changeTheme(QString theme);
 
     void initTheme();
+
+    // QWidget interface
+protected:
+    void contextMenuEvent(QContextMenuEvent *event) override;
+signals:
+    void rightClickBlank();
 };
 
 #endif

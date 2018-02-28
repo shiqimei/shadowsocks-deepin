@@ -200,7 +200,7 @@ Edit User Rule for GFWList...</string>
     <string>Share Server Config...</string>
    </property>
    <property name="visible">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
   </action>
   <action name="actionScan_QRCode_from_Screen">
@@ -208,7 +208,7 @@ Edit User Rule for GFWList...</string>
     <string>Scan QRCode from Screen...</string>
    </property>
    <property name="visible">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
   </action>
   <action name="actionImport_URL_from_Clipboard">
@@ -216,7 +216,7 @@ Edit User Rule for GFWList...</string>
     <string>Import URL from Clipboard...</string>
    </property>
    <property name="visible">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
   </action>
   <action name="actionAvailability_Statistics">

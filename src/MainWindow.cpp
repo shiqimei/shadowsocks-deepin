@@ -11,7 +11,8 @@
 #include "DDEProxyModeManager.h"
 #include "ProxyView.h"
 #include "ConfigItem.h"
-
+#include "qrcodecapturer.h"
+#include "ssvalidator.h"
 void MainWindow::switchToPacMode() {
     auto guiConfig = GuiConfig::instance();
     QString online_pac_uri = "https://raw.githubusercontent.com/PikachuHy/shadowsocks-client/master/autoproxy.pac";
@@ -51,6 +52,11 @@ void MainWindow::switchToGlobal() {
         guiConfig->set("local_port", local_port);
     }
     systemProxyModeManager->switchToManual(local_address, local_port);
+}
+
+void MainWindow::contextMenuEvent(QContextMenuEvent *)
+{
+    qDebug()<<"right click";
 }
 
 void MainWindow::updateTrayIcon() {
@@ -121,6 +127,20 @@ void MainWindow::popupMenu(QPoint pos, QList<DSimpleListItem *> items) {
     }
 }
 
+void MainWindow::popupMenuBlank()
+{
+    rightMenuBlank->clear();
+    QList<QAction*> action_list;
+    menuAdd->clear();
+    action_list<<ui->actionImport_from_gui_config_json<<ui->actionScan_QRCode_from_Screen<<ui->actionImport_URL_from_Clipboard;
+    menuAdd->addActions(action_list);
+    rightMenuBlank->addMenu(menuAdd);
+    action_list.clear();
+    action_list<<ui->actionEdit_Servers;
+    rightMenuBlank->addActions(action_list);
+    rightMenuBlank->exec(QCursor::pos());
+}
+
 MainWindow::MainWindow(QWidget *parent) :
         DMainWindow(parent),
         ui(new Ui::MainWindow) {
@@ -145,6 +165,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     w->resize(width, height);
     rightMenu = new QMenu(this);
+    rightMenuBlank = new QMenu(this);
+    menuAdd = new QMenu(tr("Add"),this);
     config_view = new ProxyView(getColumnHideFlags());
     // Set sort algorithms.
     QList<SortAlgorithm> *alorithms = new QList<SortAlgorithm>();
@@ -154,6 +176,7 @@ MainWindow::MainWindow(QWidget *parent) :
     config_view->setColumnSortingAlgorithms(alorithms, getSortingIndex(), getSortingOrder());
     config_view->setSearchAlgorithm(&ConfigItem::search);
     connect(config_view, &ProxyView::rightClickItems, this, &MainWindow::popupMenu);
+    connect(config_view, &ProxyView::rightClickBlank, this, &MainWindow::popupMenuBlank);
     w->setCentralWidget(config_view);
     auto menu = new QMenu();
     menu->addAction("a");
@@ -479,4 +502,40 @@ bool MainWindow::getSortingOrder() {
 
 void MainWindow::on_actionDisconnect_triggered() {
     on_actionEnable_System_Proxy_triggered(false);
+}
+
+void MainWindow::on_actionScan_QRCode_from_Screen_triggered()
+{
+
+//    QRCodeCapturer *capturer = new QRCodeCapturer(this);
+//    connect(capturer, &QRCodeCapturer::closed,
+//            capturer, &QRCodeCapturer::deleteLater);
+////    connect(capturer, &QRCodeCapturer::qrCodeFound,
+////            this, &MainWindow::onQRCodeCapturerResultFound,
+////            Qt::DirectConnection);
+//    connect(capturer,&QRCodeCapturer::qrCodeFound,[=](const QString &uri){
+//        qDebug()<<"qrcode found"<<uri;
+//    });
+//    capturer->show();
+    QString uri = QRCodeCapturer::scanEntireScreen();
+    if (uri.isNull()) {
+        QMessageBox::critical(
+                    nullptr,
+                    tr("QR Code Not Found"),
+                    tr("Can't find any QR code image that contains "
+                       "valid URI on your screen(s)."));
+    } else {
+//        Connection *newCon = new Connection(uri, this);
+//        newProfile(newCon);
+        qDebug()<<"scan uri"<<uri;
+        Utils::info(tr("found URI %1").arg(uri));
+        if(uri.startsWith("ss://")){
+            qDebug()<<"shadowsocks";
+            if(SSValidator::validate(uri)){
+                Utils::info("URI is valid");
+            }else{
+                Utils::info("URI is invalid");
+            }
+        }
+    }
 }
