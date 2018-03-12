@@ -46,7 +46,7 @@ private:
     bool existConfig(const QJsonObject &j);
 
     void addConfig(QJsonObject j);
-
+    static QJsonObject createConfig();
     QJsonObject guiConfig;
 
 };

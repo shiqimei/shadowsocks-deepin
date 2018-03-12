@@ -240,8 +240,9 @@ void GuiConfig::calId(QJsonObject &j) {
     j.insert("id", QString(id));
 }
 
-QJsonObject GuiConfig::getConfigFromURI(QString ssUri)
+QJsonObject GuiConfig::getConfigFromURI(QString )
 {
+    return createConfig();
 }
 
 int GuiConfig::getIndexById(QString id) {
@@ -254,4 +255,10 @@ int GuiConfig::getIndexById(QString id) {
         }
     }
     return -1;
+}
+
+QJsonObject GuiConfig::createConfig() {
+    QJsonObject o;
+    calId(o);
+    return o;
 }

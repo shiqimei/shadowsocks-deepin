@@ -1,7 +1,3 @@
-//
-// Created by pikachu on 17-12-30.
-//
-
 #include "DDEProxyModeManager.h"
 
 void DDEProxyModeManager::switchToNone() {

@@ -25,7 +25,7 @@ public:
 
     QList<bool> getColumnHideFlags();
 
-    bool eventFilter(QObject *, QEvent *);
+    bool eventFilter(QObject *, QEvent *) override ;
 
     bool getSortingOrder();
 

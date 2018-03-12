@@ -65,6 +65,16 @@ void ConfigItem::drawCell(bool isSelect, QRect rect, QPainter *painter, QString 
                       Qt::AlignRight | Qt::AlignVCenter, text);
 }
 
+void ConfigItem::drawBackground(QRect rect, QPainter *painter, int index, bool isSelect, bool)
+{
+    drawBackground(rect,painter,index,isSelect);
+}
+
+void ConfigItem::drawForeground(QRect rect, QPainter *painter, int column, int index, bool isSelect, bool)
+{
+    drawForeground(rect,painter,column,index,isSelect);
+}
+
 void ConfigItem::drawForeground(QRect rect, QPainter *painter, int column, int, bool isSelect) {
     // Init opacity and font size.
     painter->setOpacity(1);

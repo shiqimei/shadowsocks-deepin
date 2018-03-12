@@ -85,6 +85,11 @@ private:
     long memory;
 
     void drawCell(bool isSelect, QRect rect, QPainter *painter, QString text);
+
+    // DSimpleListItem interface
+public:
+    void drawBackground(QRect rect, QPainter *painter, int index, bool isSelect, bool isHover);
+    void drawForeground(QRect rect, QPainter *painter, int column, int index, bool isSelect, bool isHover);
 };
 
 #endif // CONFIGITEM_H
