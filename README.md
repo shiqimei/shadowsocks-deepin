@@ -11,6 +11,19 @@ Thanks a lot for [Deepin System Monitor](https://github.com/linuxdeepin/deepin-s
 
 关于这个软件的开发进展，可以去deepin论坛，看[这个帖子](https://bbs.deepin.org/forum.php?mod=viewthread&tid=142900)
 
+## 与其他客户端的比较
+
+|                    | [ss-win](https://github.com/shadowsocks/shadowsocks-csharp) | [ssx-ng](https://github.com/shadowsocks/ShadowsocksX-NG) | [ss-qt5](https://github.com/shadowsocks/shadowsocks-qt5) | [ss-android](https://github.com/shadowsocks/shadowsocks-android) | ss-client |
+| ------------------ | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | --------- |
+| System Proxy       | ✓                                        | ✓                                        | ✗                                        | ✓                                        | ✓         |
+| CHNRoutes          | ✓                                        | ✓                                        | ✗                                        | ✓                                        | ✗         |
+| PAC Configuration  | ✓                                        | ✓                                        | ✗                                        | ✗                                        | ✓         |
+| Profile Switching  | ✓                                        | ✓                                        | ✓                                        | ✓                                        | ✓         |
+| QR Code Scan       | ✓                                        | ✓                                        | ✓                                        | ✓                                        | ✗         |
+| QR Code Generation | ✓                                        | ✓                                        | ✓                                        | ✓                                        | ✗         |
+
+
+
 ## 使用
 建议直接下载我打包好的deb包 [最新发布](https://github.com/PikachuHy/shadowsocks-client/releases)
 
