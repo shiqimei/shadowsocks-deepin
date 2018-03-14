@@ -30,7 +30,7 @@ bool ConfigItem::sameAs(DSimpleListItem *item) {
     return id == other_id;
 }
 
-void ConfigItem::drawBackground(QRect rect, QPainter *painter, int index, bool isSelect) {
+void ConfigItem::drawBackground(QRect rect, QPainter *painter, int index, bool isSelect, bool) {
     // Init draw path.
     QPainterPath path;
     path.addRect(QRectF(rect));
@@ -65,17 +65,7 @@ void ConfigItem::drawCell(bool isSelect, QRect rect, QPainter *painter, QString 
                       Qt::AlignRight | Qt::AlignVCenter, text);
 }
 
-void ConfigItem::drawBackground(QRect rect, QPainter *painter, int index, bool isSelect, bool)
-{
-    drawBackground(rect,painter,index,isSelect);
-}
-
-void ConfigItem::drawForeground(QRect rect, QPainter *painter, int column, int index, bool isSelect, bool)
-{
-    drawForeground(rect,painter,column,index,isSelect);
-}
-
-void ConfigItem::drawForeground(QRect rect, QPainter *painter, int column, int, bool isSelect) {
+void ConfigItem::drawForeground(QRect rect, QPainter *painter, int column, int, bool isSelect, bool) {
     // Init opacity and font size.
     painter->setOpacity(1);
 
@@ -167,6 +157,15 @@ bool ConfigItem::sortByTotalUsager(const DSimpleListItem *item1, const DSimpleLi
 }
 
 QString ConfigItem::getId() {
+    auto ret = config.isEmpty();
+    if(ret){
+        config = GuiConfig::instance()->createConfig();
+    }
+    auto sid = config.value("id").toString();
+    ret = config.value("id").toString().isNull();
+    if(ret){
+        GuiConfig::instance()->calId(config);
+    }
     return config.value("id").toString();
 }
 

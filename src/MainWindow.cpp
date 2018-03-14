@@ -13,133 +13,6 @@
 #include "ConfigItem.h"
 #include "qrcodecapturer.h"
 #include "ssvalidator.h"
-void MainWindow::switchToPacMode() {
-    auto guiConfig = GuiConfig::instance();
-    QString online_pac_uri = "https://raw.githubusercontent.com/PikachuHy/shadowsocks-client/master/autoproxy.pac";
-    QString pacURI = "";
-    if (guiConfig->get("useOnlinePac").toBool(true)) {
-        pacURI = guiConfig->get("pacUrl").toString();
-        if (pacURI.isEmpty()) {
-            Utils::warning("online pac uri is empty. we will use default uri.");
-            pacURI = online_pac_uri;
-            guiConfig->set("pacUrl", pacURI);
-        }
-    } else {
-        QString pac_file = QDir(Utils::configPath()).filePath("autoproxy.pac");
-        QFile file(pac_file);
-        if (!file.exists()) {
-            Utils::warning("local pac is not exist. we will use on pac file. you can change it");
-            pacURI = online_pac_uri;
-            guiConfig->set("pacUrl", pacURI);
-            guiConfig->set("useOnlinePac", true);
-        } else {
-            pacURI = "file://" + pac_file;
-        }
-    }
-    systemProxyModeManager->switchToAuto(pacURI);
-}
-
-void MainWindow::switchToGlobal() {
-    auto guiConfig = GuiConfig::instance();
-    QString local_address = guiConfig->get("local_address").toString();
-    if (local_address.isEmpty()) {
-        local_address = "127.0.0.1";
-        guiConfig->set("local_address", local_address);
-    }
-    int local_port = guiConfig->get("local_port").toInt();
-    if (local_port == 0) {
-        local_port = 1080;
-        guiConfig->set("local_port", local_port);
-    }
-    systemProxyModeManager->switchToManual(local_address, local_port);
-}
-
-void MainWindow::contextMenuEvent(QContextMenuEvent *)
-{
-    qDebug()<<"right click";
-}
-
-void MainWindow::updateTrayIcon() {
-    ins.append(in);
-    outs.append(out);
-    QString icon = "ssw";
-    if (in > 0) {
-        icon.append("_in");
-    }
-    if (out > 0) {
-        icon.append("_out");
-    }
-    in = 0;
-    out = 0;
-    if (!GuiConfig::instance()->get("enabled").toBool()) {
-        icon.append("_none");
-    } else if (GuiConfig::instance()->get("global").toBool()) {
-        icon.append("_manual");
-    } else {
-        icon.append("_auto");
-    }
-    icon.append("128.svg");
-    systemTrayIcon->setIcon(QIcon(Utils::getIconQrcPath(icon)));
-}
-
-void MainWindow::updateList() {
-    QList<DSimpleListItem *> items;
-    auto configs = GuiConfig::instance()->getConfigs();
-    for (int i = 0; i < configs.size(); i++) {
-        auto it = configs.at(i).toObject();
-        auto item = new ConfigItem(it);
-//        auto item = new ProcessItem(it,i);
-        items << static_cast<DSimpleListItem *>(item);
-    }
-    config_view->refreshItems(items);
-}
-
-void MainWindow::popupMenu(QPoint pos, QList<DSimpleListItem *> items) {
-    if (items.size() == 1) {
-        auto item = items.first();
-        auto t = static_cast<ConfigItem *>(item);
-        QList<QAction *> action_list;
-        action_list << ui->actionConnect << ui->actionDisconnect;
-        if (GuiConfig::instance()->get("enabled").toBool()) {
-            if (t->getId() == GuiConfig::instance()->getCurrentId()) {
-                ui->actionConnect->setEnabled(false);
-                ui->actionDisconnect->setEnabled(true);
-            } else {
-                ui->actionConnect->setEnabled(true);
-                ui->actionDisconnect->setEnabled(false);
-            }
-        } else {
-            ui->actionConnect->setEnabled(true);
-            ui->actionDisconnect->setEnabled(false);
-        }
-        auto index = GuiConfig::instance()->getIndexById(t->getId());
-        connect(ui->actionConnect, &QAction::triggered, [=]() {
-            if (index < 0) {
-                qDebug() << "no such config id";
-            } else {
-                GuiConfig::instance()->set("index", index);
-                on_actionEnable_System_Proxy_triggered(true);
-            }
-        });
-        rightMenu->clear();
-        rightMenu->addActions(action_list);
-        rightMenu->exec(pos);
-    }
-}
-
-void MainWindow::popupMenuBlank()
-{
-    rightMenuBlank->clear();
-    QList<QAction*> action_list;
-    menuAdd->clear();
-    action_list<<ui->actionImport_from_gui_config_json<<ui->actionScan_QRCode_from_Screen<<ui->actionImport_URL_from_Clipboard;
-    menuAdd->addActions(action_list);
-    rightMenuBlank->addMenu(menuAdd);
-    action_list.clear();
-    action_list<<ui->actionEdit_Servers;
-    rightMenuBlank->addActions(action_list);
-    rightMenuBlank->exec(QCursor::pos());
-}
 
 MainWindow::MainWindow(QWidget *parent) :
         DMainWindow(parent),
@@ -178,6 +51,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(config_view, &ProxyView::rightClickItems, this, &MainWindow::popupMenu);
     connect(config_view, &ProxyView::rightClickBlank, this, &MainWindow::popupMenuBlank);
     w->setCentralWidget(config_view);
+//    config_view->show();
     auto menu = new QMenu();
     menu->addAction("a");
     menu->addAction("b");
@@ -259,6 +133,135 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
+void MainWindow::switchToPacMode() {
+    auto guiConfig = GuiConfig::instance();
+    QString online_pac_uri = "https://raw.githubusercontent.com/PikachuHy/shadowsocks-client/master/autoproxy.pac";
+    QString pacURI = "";
+    if (guiConfig->get("useOnlinePac").toBool(true)) {
+        pacURI = guiConfig->get("pacUrl").toString();
+        if (pacURI.isEmpty()) {
+            Utils::warning("online pac uri is empty. we will use default uri.");
+            pacURI = online_pac_uri;
+            guiConfig->set("pacUrl", pacURI);
+        }
+    } else {
+        QString pac_file = QDir(Utils::configPath()).filePath("autoproxy.pac");
+        QFile file(pac_file);
+        if (!file.exists()) {
+            Utils::warning("local pac is not exist. we will use on pac file. you can change it");
+            pacURI = online_pac_uri;
+            guiConfig->set("pacUrl", pacURI);
+            guiConfig->set("useOnlinePac", true);
+        } else {
+            pacURI = "file://" + pac_file;
+        }
+    }
+    systemProxyModeManager->switchToAuto(pacURI);
+}
+
+void MainWindow::switchToGlobal() {
+    auto guiConfig = GuiConfig::instance();
+    QString local_address = guiConfig->get("local_address").toString();
+    if (local_address.isEmpty()) {
+        local_address = "127.0.0.1";
+        guiConfig->set("local_address", local_address);
+    }
+    int local_port = guiConfig->get("local_port").toInt();
+    if (local_port == 0) {
+        local_port = 1080;
+        guiConfig->set("local_port", local_port);
+    }
+    systemProxyModeManager->switchToManual(local_address, local_port);
+}
+
+void MainWindow::contextMenuEvent(QContextMenuEvent *)
+{
+    qDebug()<<"right click";
+}
+
+void MainWindow::updateTrayIcon() {
+    ins.append(in);
+    outs.append(out);
+    QString icon = "ssw";
+    if (in > 0) {
+        icon.append("_in");
+    }
+    if (out > 0) {
+        icon.append("_out");
+    }
+    in = 0;
+    out = 0;
+    if (!GuiConfig::instance()->get("enabled").toBool()) {
+        icon.append("_none");
+    } else if (GuiConfig::instance()->get("global").toBool()) {
+        icon.append("_manual");
+    } else {
+        icon.append("_auto");
+    }
+    icon.append("128.svg");
+    systemTrayIcon->setIcon(QIcon(Utils::getIconQrcPath(icon)));
+}
+
+void MainWindow::updateList() {
+    QList<DSimpleListItem *> items;
+    auto configs = GuiConfig::instance()->getConfigs();
+    for (int i = 0; i < configs.size(); i++) {
+        auto it = configs.at(i).toObject();
+        auto item = new ConfigItem(it);
+//        auto item = new ProcessItem(it,i);
+        items << static_cast<DSimpleListItem *>(item);
+    }
+    // note: this function will delete items in view before  to avoid *MEMORY LEAK*
+    config_view->refreshItems(items);
+}
+
+void MainWindow::popupMenu(QPoint pos, QList<DSimpleListItem *> items) {
+    if (items.size() == 1) {
+        auto item = items.first();
+        auto t = static_cast<ConfigItem *>(item);
+        QList<QAction *> action_list;
+        action_list << ui->actionConnect << ui->actionDisconnect;
+        if (GuiConfig::instance()->get("enabled").toBool()) {
+            if (t->getId() == GuiConfig::instance()->getCurrentId()) {
+                ui->actionConnect->setEnabled(false);
+                ui->actionDisconnect->setEnabled(true);
+            } else {
+                ui->actionConnect->setEnabled(true);
+                ui->actionDisconnect->setEnabled(false);
+            }
+        } else {
+            ui->actionConnect->setEnabled(true);
+            ui->actionDisconnect->setEnabled(false);
+        }
+        auto index = GuiConfig::instance()->getIndexById(t->getId());
+        connect(ui->actionConnect, &QAction::triggered, [=]() {
+            if (index < 0) {
+                qDebug() << "no such config id";
+            } else {
+                GuiConfig::instance()->set("index", index);
+                on_actionEnable_System_Proxy_triggered(true);
+            }
+        });
+        rightMenu->clear();
+        rightMenu->addActions(action_list);
+        rightMenu->exec(pos);
+    }
+}
+
+void MainWindow::popupMenuBlank()
+{
+    rightMenuBlank->clear();
+    QList<QAction*> action_list;
+    menuAdd->clear();
+    action_list<<ui->actionImport_from_gui_config_json<<ui->actionScan_QRCode_from_Screen<<ui->actionImport_URL_from_Clipboard;
+    menuAdd->addActions(action_list);
+    rightMenuBlank->addMenu(menuAdd);
+    action_list.clear();
+    action_list<<ui->actionEdit_Servers;
+    rightMenuBlank->addActions(action_list);
+    rightMenuBlank->exec(QCursor::pos());
+}
+
 void MainWindow::on_actionEdit_Servers_triggered() {
     ConfigDialog *dialog = new ConfigDialog();
 
@@ -283,7 +286,7 @@ void MainWindow::on_actionShow_Logs_triggered() {
 
 void MainWindow::updateMenu() {
     const auto &guiConfig = GuiConfig::instance();
-    qDebug() << guiConfig->getConfigs();
+//    qDebug() << guiConfig->getConfigs();
     if (guiConfig->get("enabled").toBool()) {
         ui->actionEnable_System_Proxy->setChecked(true);
         ui->menuMode->setEnabled(true);

@@ -38,6 +38,7 @@ public:
 
     static void calId(QJsonObject &j);
     static QJsonObject getConfigFromURI(QString uri);
+    static QJsonObject createConfig();
 private:
     GuiConfig();
 
@@ -46,7 +47,6 @@ private:
     bool existConfig(const QJsonObject &j);
 
     void addConfig(QJsonObject j);
-    static QJsonObject createConfig();
     QJsonObject guiConfig;
 
 };

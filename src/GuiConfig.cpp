@@ -50,7 +50,8 @@ void GuiConfig::readFromDisk(QString path, bool isFirst) {
             addConfig(it.toObject());
         }
     }
-
+    qDebug()<<"that's ok";
+    saveToDisk();
 }
 
 void GuiConfig::saveToDisk() {

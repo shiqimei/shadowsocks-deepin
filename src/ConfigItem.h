@@ -11,10 +11,8 @@ public:
     ConfigItem(QJsonObject o);
 
     bool sameAs(DSimpleListItem *item);
-
-    void drawBackground(QRect rect, QPainter *painter, int index, bool isSelect);
-
-    void drawForeground(QRect rect, QPainter *painter, int column, int index, bool isSelect);
+    void drawBackground(QRect rect, QPainter *painter, int index, bool isSelect, bool isHover);
+    void drawForeground(QRect rect, QPainter *painter, int column, int index, bool isSelect, bool isHover);
 
     static bool search(const DSimpleListItem *item, QString searchContent);
 
@@ -85,11 +83,6 @@ private:
     long memory;
 
     void drawCell(bool isSelect, QRect rect, QPainter *painter, QString text);
-
-    // DSimpleListItem interface
-public:
-    void drawBackground(QRect rect, QPainter *painter, int index, bool isSelect, bool isHover);
-    void drawForeground(QRect rect, QPainter *painter, int column, int index, bool isSelect, bool isHover);
 };
 
 #endif // CONFIGITEM_H
