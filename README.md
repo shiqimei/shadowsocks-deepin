@@ -7,7 +7,7 @@ Thanks a lot for [Deepin System Monitor](https://github.com/linuxdeepin/deepin-s
 
 [English](./doc/README.en.md)
 
-开发这个软件用到的原理，技术请参考[影梭客户端原理剖析](影梭客户端原理剖析.md)
+开发这个软件用到的原理，技术请参考[影梭客户端原理剖析](doc/影梭客户端原理剖析.md)
 
 关于这个软件的开发进展，可以去deepin论坛，看[这个帖子](https://bbs.deepin.org/forum.php?mod=viewthread&tid=142900)
 
