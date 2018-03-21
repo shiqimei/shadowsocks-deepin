@@ -2,50 +2,48 @@
 #include "ui_ConfigDialog.h"
 #include "GuiConfig.h"
 #include "utils.h"
-void ConfigDialog::updateListWidget()
-{
+
+void ConfigDialog::updateListWidget() {
     auto guiConfig = GuiConfig::instance();
     array = guiConfig->getConfigs();
+    // cause current row -1
     ui->listWidget->clear();
-    qDebug()<<"config array"<<array.size();
-    for(auto it:array){
+    qDebug() << "config array" << array.size();
+    for (auto it:array) {
         ui->listWidget->addItem(it.toObject().value("remarks").toString());
     }
 }
 
-void ConfigDialog::connectChanged()
-{
-    connect(ui->lineEditPassword,&QLineEdit::textChanged,this,&ConfigDialog::modified);
-    connect(ui->lineEditRemarks,&QLineEdit::textChanged,this,&ConfigDialog::modified);
-    connect(ui->lineEditServerAddr,&QLineEdit::textChanged,this,&ConfigDialog::modified);
-    connect(ui->spinBoxProxyPort,SIGNAL(valueChanged(int)),this,SLOT(modified()));
-    connect(ui->spinBoxServerPort,SIGNAL(valueChanged(int)),this,SLOT(modified()));
-    connect(ui->spinBoxTimeout,SIGNAL(valueChanged(int)),this,SLOT(modified()));
-    connect(ui->comboBoxEncryption,&QComboBox::currentTextChanged,this,&ConfigDialog::modified);
+void ConfigDialog::connectChanged() {
+    connect(ui->lineEditPassword, &QLineEdit::textChanged, this, &ConfigDialog::modified);
+    connect(ui->lineEditRemarks, &QLineEdit::textChanged, this, &ConfigDialog::modified);
+    connect(ui->lineEditServerAddr, &QLineEdit::textChanged, this, &ConfigDialog::modified);
+    connect(ui->spinBoxProxyPort, SIGNAL(valueChanged(int)), this, SLOT(modified()));
+    connect(ui->spinBoxServerPort, SIGNAL(valueChanged(int)), this, SLOT(modified()));
+    connect(ui->spinBoxTimeout, SIGNAL(valueChanged(int)), this, SLOT(modified()));
+    connect(ui->comboBoxEncryption, &QComboBox::currentTextChanged, this, &ConfigDialog::modified);
 }
 
-void ConfigDialog::disconnectChanged()
-{
-    disconnect(ui->lineEditPassword,&QLineEdit::textChanged,this,&ConfigDialog::modified);
-    disconnect(ui->lineEditRemarks,&QLineEdit::textChanged,this,&ConfigDialog::modified);
-    disconnect(ui->lineEditServerAddr,&QLineEdit::textChanged,this,&ConfigDialog::modified);
-    disconnect(ui->spinBoxProxyPort,SIGNAL(valueChanged(int)),this,SLOT(modified()));
-    disconnect(ui->spinBoxServerPort,SIGNAL(valueChanged(int)),this,SLOT(modified()));
-    disconnect(ui->spinBoxTimeout,SIGNAL(valueChanged(int)),this,SLOT(modified()));
-    disconnect(ui->comboBoxEncryption,&QComboBox::currentTextChanged,this,&ConfigDialog::modified);
+void ConfigDialog::disconnectChanged() {
+    disconnect(ui->lineEditPassword, &QLineEdit::textChanged, this, &ConfigDialog::modified);
+    disconnect(ui->lineEditRemarks, &QLineEdit::textChanged, this, &ConfigDialog::modified);
+    disconnect(ui->lineEditServerAddr, &QLineEdit::textChanged, this, &ConfigDialog::modified);
+    disconnect(ui->spinBoxProxyPort, SIGNAL(valueChanged(int)), this, SLOT(modified()));
+    disconnect(ui->spinBoxServerPort, SIGNAL(valueChanged(int)), this, SLOT(modified()));
+    disconnect(ui->spinBoxTimeout, SIGNAL(valueChanged(int)), this, SLOT(modified()));
+    disconnect(ui->comboBoxEncryption, &QComboBox::currentTextChanged, this, &ConfigDialog::modified);
 }
 
 ConfigDialog::ConfigDialog(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::ConfigDialog)
-{
+        QDialog(parent),
+        ui(new Ui::ConfigDialog) {
     ui->setupUi(this);
     isModified = false;
     updateListWidget();
     std::vector<std::string> methodBA = QSS::Cipher::supportedMethods();
     std::sort(methodBA.begin(), methodBA.end());
     QStringList methodList;
-    for (const std::string& method : methodBA) {
+    for (const std::string &method : methodBA) {
         methodList.push_back(QString::fromStdString(method));
     }
     ui->comboBoxEncryption->addItems(methodList);
@@ -56,46 +54,42 @@ ConfigDialog::ConfigDialog(QWidget *parent) :
     Dtk::Widget::moveToCenter(this);
 }
 
-ConfigDialog::~ConfigDialog()
-{
+ConfigDialog::~ConfigDialog() {
     delete ui;
 }
 
-void ConfigDialog::save()
-{
-    lastConfig.insert("password",ui->lineEditPassword->text());
-    lastConfig.insert("remarks",ui->lineEditRemarks->text());
-    lastConfig.insert("server",ui->lineEditServerAddr->text());
-    lastConfig.insert("server_port",ui->spinBoxServerPort->value());
-    lastConfig.insert("local_port",ui->spinBoxProxyPort->value());
-    lastConfig.insert("timeout",ui->spinBoxTimeout->value());
-    lastConfig.insert("method",ui->comboBoxEncryption->currentText());
-    array.replace(lastPos,lastConfig);
+void ConfigDialog::save() {
+    lastConfig.insert("password", ui->lineEditPassword->text());
+    lastConfig.insert("remarks", ui->lineEditRemarks->text());
+    lastConfig.insert("server", ui->lineEditServerAddr->text());
+    lastConfig.insert("server_port", ui->spinBoxServerPort->value());
+    lastConfig.insert("local_port", ui->spinBoxProxyPort->value());
+    lastConfig.insert("timeout", ui->spinBoxTimeout->value());
+    lastConfig.insert("method", ui->comboBoxEncryption->currentText());
+    array.replace(lastPos, lastConfig);
     GuiConfig::instance()->setConfigs(array);
 }
 
-void ConfigDialog::modified()
-{
+void ConfigDialog::modified() {
     isModified = true;
-    lastConfig.insert("update_time",Utils::getTimestamp());
+    lastConfig.insert("update_time", Utils::getTimestamp());
 }
 
-void ConfigDialog::checkModify()
-{
-    if(isModified){
-        auto ret = QMessageBox::information(nullptr,"warning","Your config is modified. Do you want to save it?",QMessageBox::Yes|QMessageBox::No);
-        if(ret == QMessageBox::Yes){
+void ConfigDialog::checkModify() {
+    if (isModified) {
+        auto ret = QMessageBox::information(nullptr, "warning", "Your config is modified. Do you want to save it?",
+                                            QMessageBox::Yes | QMessageBox::No);
+        if (ret == QMessageBox::Yes) {
             save();
             isModified = false;
-            updateListWidget();
+//            updateListWidget();
         }
     }
 }
 
-void ConfigDialog::on_listWidget_currentRowChanged(int currentRow)
-{
-    if(currentRow<0){
-        qDebug()<<"cur row"<<currentRow<<"???";
+void ConfigDialog::on_listWidget_currentRowChanged(int currentRow) {
+    if (currentRow < 0) {
+        qDebug() << "cur row" << currentRow << " clear listwidget";
         return;
     }
     checkModify();
@@ -110,90 +104,86 @@ void ConfigDialog::on_listWidget_currentRowChanged(int currentRow)
     lastConfig = config;
     lastPos = currentRow;
     isModified = false;
-    qDebug()<<"cur pos"<<lastPos;
+    qDebug() << "cur pos" << lastPos;
 }
 
-void ConfigDialog::on_pushButtonAdd_clicked()
-{
+void ConfigDialog::on_pushButtonAdd_clicked() {
     checkModify();
     QJsonObject o = lastConfig;
     auto t = Utils::getTimestamp();
-    o.insert("create_time",t);
-    o.insert("update_time",t);
-    o.insert("password","");
-    o.insert("server","");
-    o.insert("remarks","unname");
+    o.insert("create_time", t);
+    o.insert("update_time", t);
+    o.insert("password", "");
+    o.insert("server", "");
+    o.insert("remarks", "unname");
+    GuiConfig::calId(o);
     array.append(o);
     save();
     updateListWidget();
-    ui->listWidget->setCurrentRow(array.size()-1);
+    ui->listWidget->setCurrentRow(array.size() - 1);
 }
 
-void ConfigDialog::on_pushButtonDelete_clicked()
-{
-    int ret = QMessageBox::warning(nullptr,"warning","Are you sure?",QMessageBox::Yes|QMessageBox::No);
-    if(ret==QMessageBox::No){
+void ConfigDialog::on_pushButtonDelete_clicked() {
+    int ret = QMessageBox::warning(nullptr, "warning", "Are you sure?", QMessageBox::Yes | QMessageBox::No);
+    if (ret == QMessageBox::No) {
         return;
     }
     array.removeAt(lastPos);
     save();
-    if(array.isEmpty()){
+    if (array.isEmpty()) {
         ui->lineEditPassword->clear();
         ui->lineEditRemarks->clear();
         ui->lineEditServerAddr->clear();
         updateListWidget();
-    }else if (array.size()>lastPos) {
+    } else if (array.size() > lastPos) {
         updateListWidget();
         ui->listWidget->setCurrentRow(lastPos);
-    }else{
+    } else {
         updateListWidget();
-        ui->listWidget->setCurrentRow(lastPos-1);
+        ui->listWidget->setCurrentRow(lastPos - 1);
     }
 }
 
-void ConfigDialog::on_pushButtonDuplicate_clicked()
-{
+void ConfigDialog::on_pushButtonDuplicate_clicked() {
     checkModify();
     QJsonObject o = lastConfig;
     auto t = Utils::getTimestamp();
-    o.insert("create_time",t);
-    o.insert("update_time",t);
+    o.insert("create_time", t);
+    o.insert("update_time", t);
+    GuiConfig::calId(o);
     array.append(o);
     save();
     updateListWidget();
-    ui->listWidget->setCurrentRow(array.size()-1);
+    ui->listWidget->setCurrentRow(array.size() - 1);
 }
 
-void ConfigDialog::on_pushButtonMoveUp_clicked()
-{
-    if(lastPos==0){
+void ConfigDialog::on_pushButtonMoveUp_clicked() {
+    if (lastPos == 0) {
         return;
     }
     auto o1 = array.at(lastPos).toObject();
-    auto o2=array.at(lastPos-1).toObject();
-    array.replace(lastPos,o2);
-    array.replace(lastPos-1,o1);
+    auto o2 = array.at(lastPos - 1).toObject();
+    array.replace(lastPos, o2);
+    array.replace(lastPos - 1, o1);
     GuiConfig::instance()->setConfigs(array);
     updateListWidget();
-    ui->listWidget->setCurrentRow(lastPos-1);
+    ui->listWidget->setCurrentRow(lastPos - 1);
 }
 
-void ConfigDialog::on_pushButtonMoveDown_clicked()
-{
-    if(lastPos==array.size()-1){
+void ConfigDialog::on_pushButtonMoveDown_clicked() {
+    if (lastPos == array.size() - 1) {
         return;
     }
     auto o1 = array.at(lastPos).toObject();
-    auto o2=array.at(lastPos+1).toObject();
-    array.replace(lastPos,o2);
-    array.replace(lastPos+1,o1);
+    auto o2 = array.at(lastPos + 1).toObject();
+    array.replace(lastPos, o2);
+    array.replace(lastPos + 1, o1);
     GuiConfig::instance()->setConfigs(array);
     updateListWidget();
-    ui->listWidget->setCurrentRow(lastPos+1);
+    ui->listWidget->setCurrentRow(lastPos + 1);
 }
 
-void ConfigDialog::on_pushButtonOK_clicked()
-{
+void ConfigDialog::on_pushButtonOK_clicked() {
     checkModify();
     GuiConfig::instance()->setConfigs(array);
     close();

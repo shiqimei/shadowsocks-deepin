@@ -2,14 +2,12 @@
 #include "ui_ProxyDialog.h"
 
 ProxyDialog::ProxyDialog(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::ProxyDialog)
-{
+        QDialog(parent),
+        ui(new Ui::ProxyDialog) {
     ui->setupUi(this);
 
 }
 
-ProxyDialog::~ProxyDialog()
-{
+ProxyDialog::~ProxyDialog() {
     delete ui;
 }

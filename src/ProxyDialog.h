@@ -4,15 +4,15 @@
 #include <QDialog>
 
 namespace Ui {
-class ProxyDialog;
+    class ProxyDialog;
 }
 
-class ProxyDialog : public QDialog
-{
-    Q_OBJECT
+class ProxyDialog : public QDialog {
+Q_OBJECT
 
 public:
     explicit ProxyDialog(QWidget *parent = 0);
+
     ~ProxyDialog();
 
 private:

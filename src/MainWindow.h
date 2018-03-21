@@ -1,32 +1,39 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+
 #include "stdafx.h"
 #include "ProxyManager.h"
 #include "interface/SystemProxyModeManager.h"
 #include "dbusinterface/DBusStartManager.h"
-#include "settings.h"
+#include "Settings.h"
 #include "Toolbar.h"
-#include "process_view.h"
+#include "ProxyView.h"
+
 DWIDGET_USE_NAMESPACE
 using StartManagerInter = com::deepin::StartManager;
 namespace Ui {
-class MainWindow;
+    class MainWindow;
 }
 
-class MainWindow : public DMainWindow
-{
-    Q_OBJECT
+class MainWindow : public DMainWindow {
+Q_OBJECT
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+
     ~MainWindow();
+
     QList<bool> getColumnHideFlags();
-    bool eventFilter(QObject *, QEvent *);
+
+    bool eventFilter(QObject *, QEvent *) override ;
+
     bool getSortingOrder();
+
     int getSortingIndex();
 
 
 private slots:
+
     void on_actionEdit_Servers_triggered();
 
     void on_actionEdit_Online_PAC_URL_triggered();
@@ -51,20 +58,26 @@ private slots:
 
     void updateList();
 
-    void popupMenu(QPoint pos, QList<DSimpleListItem*> items);
+    void popupMenu(QPoint pos, QList<DSimpleListItem *> items);
+    void popupMenuBlank();
+
     void on_actionDisconnect_triggered();
+
+    void on_actionScan_QRCode_from_Screen_triggered();
 
 private:
     Ui::MainWindow *ui;
-    QSystemTrayIcon* systemTrayIcon;
-    Toolbar* toolbar;
+    QSystemTrayIcon *systemTrayIcon;
+    Toolbar *toolbar;
     // I can't use both DSimpleView and QSystemTrayIcon.
     // So I create a container
-    DMainWindow* w;
-    ProcessView* config_view;
-    QMenu* rightMenu;
-    ProxyManager* proxyManager;
-    SystemProxyModeManager* systemProxyModeManager;
+    DMainWindow *w;
+    ProxyView *config_view;
+    QMenu *rightMenu;
+    QMenu *rightMenuBlank;
+    QMenu *menuAdd;
+    ProxyManager *proxyManager;
+    SystemProxyModeManager *systemProxyModeManager;
     StartManagerInter startManagerInter;
     Settings *settings;
     QList<quint64> ins;
@@ -73,10 +86,16 @@ private:
     quint64 out;
     quint64 term_usage_in;
     quint64 term_usage_out;
+
     void updateMenu();
+
     void switchToPacMode();
 
     void switchToGlobal();
+
+    // QWidget interface
+protected:
+    void contextMenuEvent(QContextMenuEvent *event) override;
 };
 
 #endif // MAINWINDOW_H

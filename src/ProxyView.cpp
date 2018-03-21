@@ -1,39 +1,15 @@
-/* -*- Mode: C++; indent-tabs-mode: nil; tab-width: 4 -*-
- * -*- coding: utf-8 -*-
- *
- * Copyright (C) 2011 ~ 2017 Deepin, Inc.
- *               2011 ~ 2017 Wang Yong
- *
- * Author:     Wang Yong <wangyong@deepin.com>
- * Maintainer: Wang Yong <wangyong@deepin.com>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
-// copy from deepin-system-monitor
+#include "stdafx.h"
 #include "dthememanager.h"
-#include "process_view.h"
+#include "ProxyView.h"
 #include <QTimer>
 
 DWIDGET_USE_NAMESPACE
 
-ProcessView::ProcessView(QList<bool> columnHideFlags)
-{
+ProxyView::ProxyView(QList<bool> columnHideFlags) {
     initTheme();
 
-    connect(DThemeManager::instance(), &DThemeManager::themeChanged, this, &ProcessView::changeTheme);
-    
+    connect(DThemeManager::instance(), &DThemeManager::themeChanged, this, &ProxyView::changeTheme);
+
     // Enable frame and radius.
     setFrame(true);
     setClipRadius(8);
@@ -43,7 +19,8 @@ ProcessView::ProcessView(QList<bool> columnHideFlags)
 
     // Set column widths.
     QList<QString> titles;
-    titles << tr("Name") << tr("Server") << tr("Status") << tr("Latency") << tr("Local Port") << tr("Term Usage") << tr("Total") << tr("Reset Date")<<tr("Last Used");
+    titles << tr("Name") << tr("Server") << tr("Status") << tr("Latency") << tr("Local Port") << tr("Term Usage")
+           << tr("Total") << tr("Reset Date") << tr("Last Used");
     QList<int> widths;
     widths << -1 << 200 << 70 << 80 << 80 << 70 << 70 << 70 << 150;
     setColumnTitleInfo(titles, widths, 36);
@@ -55,8 +32,7 @@ ProcessView::ProcessView(QList<bool> columnHideFlags)
     QTimer::singleShot(0, this, SLOT(setFocus()));
 }
 
-void ProcessView::initTheme()
-{
+void ProxyView::initTheme() {
     if (DThemeManager::instance()->theme() == "light") {
         titleColor = "#000000";
         titleLineColor = "#000000";
@@ -111,7 +87,7 @@ void ProcessView::initTheme()
         arrowDownPressImage = arrowDownDarkPressImage;
 
         scrollbarColor = "#ffffff";
-        
+
         scrollbarNormalOpacity = 0.2;
         scrollbarHoverOpacity = 0.4;
         scrollbarPressOpacity = 0.15;
@@ -122,7 +98,12 @@ void ProcessView::initTheme()
     }
 }
 
-void ProcessView::changeTheme(QString )
-{
+void ProxyView::changeTheme(QString) {
     initTheme();
+}
+
+
+void ProxyView::contextMenuEvent(QContextMenuEvent *)
+{
+    emit rightClickBlank();
 }
