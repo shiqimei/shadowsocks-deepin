@@ -18,7 +18,6 @@ PKGCONFIG += dtkwidget QtShadowsocks dframeworkdbus libqrencode zbar
 # depend on your compiler). Please consult the documentation of the
 # deprecated API in order to know how to port your code away from it.
 DEFINES += QT_DEPRECATED_WARNINGS
-
 # You can also make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
@@ -29,64 +28,68 @@ precompile_header:!isEmpty(PRECOMPILED_HEADER) {
 DEFINES += USING_PCH
 }
 SOURCES += \
-        main.cpp \
-        MainWindow.cpp \
-    stdafx.cpp \
-    utils.cpp \
     ConfigDialog.cpp \
-    ProxyDialog.cpp \
-    LogMainWindow.cpp \
-    PACUrlDialog.cpp \
-    HotkeySettingsDialog.cpp \
-    Toolbar.cpp \
-    GuiConfig.cpp \
-    ProxyManager.cpp \
-    DDEProxyModeManager.cpp \
-    interface/SystemProxyModeManager.cpp \
-    dbusinterface/DBusStartManager.cpp \
     ConfigItem.cpp \
+    DDEProxyModeManager.cpp \
+    GuiConfig.cpp \
+    HotkeySettingsDialog.cpp \
+    LogMainWindow.cpp \
+    main.cpp \
+    MainWindow.cpp \
+    PACUrlDialog.cpp \
+    ProxyDialog.cpp \
+    ProxyManager.cpp \
     ProxyThread.cpp \
     ProxyView.cpp \
-    Settings.cpp \
     qrcodecapturer.cpp \
     qrwidget.cpp \
+    Settings.cpp \
+    ssvalidator.cpp \
+    stdafx.cpp \
+    Toolbar.cpp \
     urihelper.cpp \
-    ssvalidator.cpp
+    utils.cpp \
+    dbusinterface/DBusStartManager.cpp \
+    interface/SystemProxyModeManager.cpp
 
 HEADERS += \
-        MainWindow.h \
-    stdafx.h \
-    utils.h \
     ConfigDialog.h \
-    ProxyDialog.h \
-    LogMainWindow.h \
-    PACUrlDialog.h \
-    HotkeySettingsDialog.h \
-    Toolbar.h \
-    GuiConfig.h \
-    ProxyManager.h \
-    DDEProxyModeManager.h \
-    interface/SystemProxyModeManager.h \
-    dbusinterface/DBusStartManager.h \
-    constant.h \
     ConfigItem.h \
+    constant.h \
+    DDEProxyModeManager.h \
+    GuiConfig.h \
+    HotkeySettingsDialog.h \
+    LogMainWindow.h \
+    MainWindow.h \
+    PACUrlDialog.h \
+    ProxyDialog.h \
+    ProxyManager.h \
     ProxyThread.h \
     ProxyView.h \
-    Settings.h \
     qrcodecapturer.h \
     qrwidget.h \
+    Settings.h \
+    ssvalidator.h \
+    stdafx.h \
+    Toolbar.h \
     urihelper.h \
-    ssvalidator.h
+    utils.h \
+    dbusinterface/DBusStartManager.h \
+    interface/SystemProxyModeManager.h
 
 FORMS += \
-        MainWindow.ui \
     ConfigDialog.ui \
-    ProxyDialog.ui \
+    HotkeySettingsDialog.ui \
     LogMainWindow.ui \
+    MainWindow.ui \
     PACUrlDialog.ui \
-    HotkeySettingsDialog.ui
-
+    ProxyDialog.ui
 RESOURCES += \
     qrc.qrc
 TRANSLATIONS += translations/shadowsocks-client_zh.ts \
                translations/shadowsocks-client_en.ts
+
+DISTFILES += \
+    translate_generation.sh \
+    dbusinterface/com.deepin.StartManager.xml
+

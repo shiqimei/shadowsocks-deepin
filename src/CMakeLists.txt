@@ -7,7 +7,6 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 if (NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))
     set(CMAKE_CXX_FLAGS -O3)
-
     # generate qm files
     execute_process(COMMAND bash "translate_generation.sh"
                     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src)
@@ -27,8 +26,9 @@ pkg_check_modules(3rd_lib REQUIRED
         dtkcore
         libqrencode zbar
         )
+#add_dependencies(../libQtShadowsocks)
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${FORMS} ${RESOURCES})
-target_include_directories(${PROJECT_NAME} PUBLIC ${3rd_lib_INCLUDE_DIRS})
+target_include_directories(${PROJECT_NAME} PUBLIC ${3rd_lib_INCLUDE_DIRS} )
 target_link_libraries(${PROJECT_NAME} ${3rd_lib_LIBRARIES} )
 qt5_use_modules(${PROJECT_NAME} ${QT})
 set(CMAKE_INSTALL_PREFIX /usr)

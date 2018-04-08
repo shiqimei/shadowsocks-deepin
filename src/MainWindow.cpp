@@ -124,7 +124,7 @@ MainWindow::MainWindow(QWidget *parent) :
     updateList();
     updateMenu();
     Dtk::Widget::moveToCenter(w);
-    w->show();
+//    w->show();
 }
 
 MainWindow::~MainWindow() {
@@ -380,6 +380,8 @@ void MainWindow::on_actionEnable_System_Proxy_triggered(bool flag) {
     auto guiConfig = GuiConfig::instance();
     if (!flag) {
         proxyManager->stop();
+        // 又混着了，
+        systemProxyModeManager->switchToNone();
     } else {
         auto configs = guiConfig->getConfigs();
         auto index = guiConfig->get("index").toInt();
@@ -391,6 +393,11 @@ void MainWindow::on_actionEnable_System_Proxy_triggered(bool flag) {
             guiConfig->updateLastUsed();
             proxyManager->setConfig(config);
             proxyManager->start();
+            if(guiConfig->get("global").toBool()){
+                switchToGlobal();
+            } else{
+                switchToPacMode();
+            }
         }
     }
     guiConfig->set("enabled", flag);

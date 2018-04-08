@@ -28,6 +28,21 @@ Thanks a lot for [Deepin System Monitor](https://github.com/linuxdeepin/deepin-s
 建议直接下载我打包好的deb包 [最新发布](https://github.com/PikachuHy/shadowsocks-client/releases)
 
 日志文字存储在`~/.cache/pikachu/shadowsocks-client/`
+
+###  PAC配置
+
+默认使用pac配置文件，`https://raw.githubusercontent.com/PikachuHy/shadowsocks-client/master/autoproxy.pac`
+
+如果需要自己配置pac文件，可以使用genpac
+
+使用命令
+
+```shell
+genpac --format pac --pac-proxy "SOCKS5 127.0.0.1:1080" > autoproxy.pac
+```
+
+即可以生成需要的pac文件
+
 ## Develop
 
 [CLion 2017.3](https://www.jetbrains.com/clion/) & [Qt 5.6](https://www.qt.io/) are required.
