@@ -1,4 +1,4 @@
-#include "urihelper.h"
+#include "URIHelper.h"
 #include <zbar.h>
 
 QImage URIHelper::convertToGrey(const QImage &input)

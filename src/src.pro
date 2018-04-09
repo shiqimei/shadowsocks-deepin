@@ -41,17 +41,17 @@ SOURCES += \
     ProxyManager.cpp \
     ProxyThread.cpp \
     ProxyView.cpp \
-    qrcodecapturer.cpp \
-    qrwidget.cpp \
     Settings.cpp \
-    ssvalidator.cpp \
     stdafx.cpp \
     Toolbar.cpp \
-    urihelper.cpp \
     utils.cpp \
     dbusinterface/DBusStartManager.cpp \
     interface/SystemProxyModeManager.cpp \
-    ShareDialog.cpp
+    ShareDialog.cpp \
+    QRCodeCapturer.cpp \
+    SSValidator.cpp \
+    URIHelper.cpp \
+    QRWidget.cpp
 
 HEADERS += \
     ConfigDialog.h \
@@ -67,17 +67,17 @@ HEADERS += \
     ProxyManager.h \
     ProxyThread.h \
     ProxyView.h \
-    qrcodecapturer.h \
-    qrwidget.h \
     Settings.h \
-    ssvalidator.h \
     stdafx.h \
     Toolbar.h \
-    urihelper.h \
     utils.h \
     dbusinterface/DBusStartManager.h \
     interface/SystemProxyModeManager.h \
-    ShareDialog.h
+    ShareDialog.h \
+    URIHelper.h \
+    SSValidator.h \
+    QRWidget.h \
+    QRCodeCapturer.h
 
 FORMS += \
     ConfigDialog.ui \

@@ -11,8 +11,8 @@
 #include "DDEProxyModeManager.h"
 #include "ProxyView.h"
 #include "ConfigItem.h"
-#include "qrcodecapturer.h"
-#include "ssvalidator.h"
+#include "QRCodeCapturer.h"
+#include "SSValidator.h"
 #include "ShareDialog.h"
 MainWindow::MainWindow(QWidget *parent) :
         DMainWindow(parent),

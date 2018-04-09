@@ -2,7 +2,7 @@
 #include <QStyleOption>
 #include <QDebug>
 #include <qrencode.h>
-#include "qrwidget.h"
+#include "QRWidget.h"
 
 QRWidget::QRWidget(QWidget *parent) :
     QWidget(parent)

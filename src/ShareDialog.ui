@@ -47,7 +47,7 @@
   <customwidget>
    <class>QRWidget</class>
    <extends>QWidget</extends>
-   <header location="global">qrwidget.h</header>
+   <header location="global">QRWidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

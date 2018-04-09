@@ -1,5 +1,5 @@
-#include "qrcodecapturer.h"
-#include "urihelper.h"
+#include "QRCodeCapturer.h"
+#include "URIHelper.h"
 #include <QApplication>
 #include <QMoveEvent>
 #include <QResizeEvent>
