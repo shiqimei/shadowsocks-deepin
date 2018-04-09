@@ -19,8 +19,8 @@ Thanks a lot for [Deepin System Monitor](https://github.com/linuxdeepin/deepin-s
 | CHNRoutes          | ✓                                        | ✓                                        | ✗                                        | ✓                                        | ✗         |
 | PAC Configuration  | ✓                                        | ✓                                        | ✗                                        | ✗                                        | ✓         |
 | Profile Switching  | ✓                                        | ✓                                        | ✓                                        | ✓                                        | ✓         |
-| QR Code Scan       | ✓                                        | ✓                                        | ✓                                        | ✓                                        | ✗         |
-| QR Code Generation | ✓                                        | ✓                                        | ✓                                        | ✓                                        | ✗         |
+| QR Code Scan       | ✓                                        | ✓                                        | ✓                                        | ✓                                        | ✓         |
+| QR Code Generation | ✓                                        | ✓                                        | ✓                                        | ✓                                        | ✓         |
 
 
 
