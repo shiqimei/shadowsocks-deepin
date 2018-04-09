@@ -546,9 +546,23 @@ void MainWindow::on_actionScan_QRCode_from_Screen_triggered()
                 Utils::info("URI is valid");
                 GuiConfig::instance()->addConfig(uri);
                 updateMenu();
+                on_actionEdit_Servers_triggered();
             }else{
                 Utils::info("URI is invalid");
             }
         }
+    }
+}
+
+void MainWindow::on_actionImport_URL_from_Clipboard_triggered()
+{
+    QString uri = QApplication::clipboard()->text();
+    if(SSValidator::validate(uri)){
+        Utils::info("URI is valid");
+        GuiConfig::instance()->addConfig(uri);
+        updateMenu();
+        on_actionEdit_Servers_triggered();
+    }else{
+        Utils::info("URI is invalid");
     }
 }

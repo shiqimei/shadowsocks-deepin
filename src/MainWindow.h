@@ -85,6 +85,8 @@ private slots:
 
     void on_actionScan_QRCode_from_Screen_triggered();
 
+    void on_actionImport_URL_from_Clipboard_triggered();
+
 private:
     Ui::MainWindow *ui;
     QSystemTrayIcon *systemTrayIcon;
