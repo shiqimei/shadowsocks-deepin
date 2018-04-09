@@ -266,7 +266,7 @@ void MainWindow::on_actionEdit_Servers_triggered() {
     ConfigDialog *dialog = new ConfigDialog();
 
     dialog->exec();
-
+    updateMenu();
 }
 
 void MainWindow::on_actionEdit_Online_PAC_URL_triggered() {
@@ -425,6 +425,7 @@ void MainWindow::on_actionGlobal_triggered(bool checked) {
 }
 
 void MainWindow::on_actionStart_on_Boot_triggered(bool checked) {
+    // 如果使用flatpak，这里可能有问题
     QString url = "/usr/share/applications/shadowsocks-client.desktop";
     if (!checked) {
         QDBusPendingReply<bool> reply = startManagerInter.RemoveAutostart(url);
@@ -543,6 +544,8 @@ void MainWindow::on_actionScan_QRCode_from_Screen_triggered()
             qDebug()<<"shadowsocks";
             if(SSValidator::validate(uri)){
                 Utils::info("URI is valid");
+                GuiConfig::instance()->addConfig(uri);
+                updateMenu();
             }else{
                 Utils::info("URI is invalid");
             }

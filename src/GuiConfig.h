@@ -59,6 +59,12 @@ public:
     static void calId(QJsonObject &j);
     static QJsonObject getConfigFromURI(QString uri);
     static QJsonObject createConfig();
+    /**
+     * @brief addConfig
+     * 在执行这个函数前，确保uri是合法的
+     * @param uri
+     */
+    void addConfig(QString uri);
 private:
     GuiConfig();
 

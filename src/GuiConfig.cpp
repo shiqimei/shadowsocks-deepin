@@ -263,3 +263,32 @@ QJsonObject GuiConfig::createConfig() {
     calId(o);
     return o;
 }
+
+void GuiConfig::addConfig(QString uri)
+{
+    QJsonObject o = createConfig();
+    uri.remove(0,5);
+    QStringList l = uri.split('#');
+    QString name = "";
+    if (l.size()==2){
+        name = l.at(1);
+        o.insert("remarks",name);
+    }
+    QString decode(QByteArray::fromBase64(l.first().toUtf8()));
+    auto ll = decode.split(':');
+    QString method = ll.first().toLower();
+    o.insert("method",method);
+    int server_port = ll.last().toInt();
+    o.insert("server_port",server_port);
+    auto l3_ = ll.at(1);
+    auto l3 = l3_.split('@');
+    QString server = l3.first();
+    QString password = l3.last();
+    o.insert("server",server);
+    o.insert("password",password);
+    if(name.isEmpty()){
+        o.insert("remarks",server);
+    }
+    addConfig(o);
+    qDebug()<<"add config"<<o;
+}
