@@ -65,6 +65,7 @@ public:
      * @param uri
      */
     void addConfig(QString uri);
+    QString getConfigURI(int index);
 private:
     GuiConfig();
 

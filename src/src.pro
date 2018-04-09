@@ -50,7 +50,8 @@ SOURCES += \
     urihelper.cpp \
     utils.cpp \
     dbusinterface/DBusStartManager.cpp \
-    interface/SystemProxyModeManager.cpp
+    interface/SystemProxyModeManager.cpp \
+    ShareDialog.cpp
 
 HEADERS += \
     ConfigDialog.h \
@@ -75,7 +76,8 @@ HEADERS += \
     urihelper.h \
     utils.h \
     dbusinterface/DBusStartManager.h \
-    interface/SystemProxyModeManager.h
+    interface/SystemProxyModeManager.h \
+    ShareDialog.h
 
 FORMS += \
     ConfigDialog.ui \
@@ -83,7 +85,8 @@ FORMS += \
     LogMainWindow.ui \
     MainWindow.ui \
     PACUrlDialog.ui \
-    ProxyDialog.ui
+    ProxyDialog.ui \
+    ShareDialog.ui
 RESOURCES += \
     qrc.qrc
 TRANSLATIONS += translations/shadowsocks-client_zh.ts \

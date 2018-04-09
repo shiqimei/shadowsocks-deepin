@@ -87,6 +87,8 @@ private slots:
 
     void on_actionImport_URL_from_Clipboard_triggered();
 
+    void on_actionShare_Server_Config_triggered();
+
 private:
     Ui::MainWindow *ui;
     QSystemTrayIcon *systemTrayIcon;

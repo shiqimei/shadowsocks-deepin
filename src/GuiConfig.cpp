@@ -292,3 +292,18 @@ void GuiConfig::addConfig(QString uri)
     addConfig(o);
     qDebug()<<"add config"<<o;
 }
+
+QString GuiConfig::getConfigURI(int index)
+{
+    // ss://BASE64-ENCODED-STRING-WITHOUT-PADDING#TAG
+    // ss://method:password@hostname:port
+    QJsonObject o = getConfigs().at(index).toObject();
+    QString method = o.value("method").toString();
+    QString password = o.value("password").toString();
+    QString server = o.value("server").toString();
+    int server_port = o.value("server_port").toInt();
+    QString name = o.value("remarks").toString();
+    QString s = QString("%1:%2@%3:%4").arg(method).arg(password).arg(server).arg(server_port);
+    QString uri = QString("ss://%1#%2").arg(QString(s.toLocal8Bit().toBase64())).arg(name);
+    return uri;
+}

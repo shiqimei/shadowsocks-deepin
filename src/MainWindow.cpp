@@ -13,7 +13,7 @@
 #include "ConfigItem.h"
 #include "qrcodecapturer.h"
 #include "ssvalidator.h"
-
+#include "ShareDialog.h"
 MainWindow::MainWindow(QWidget *parent) :
         DMainWindow(parent),
         ui(new Ui::MainWindow) {
@@ -565,4 +565,11 @@ void MainWindow::on_actionImport_URL_from_Clipboard_triggered()
     }else{
         Utils::info("URI is invalid");
     }
+}
+
+void MainWindow::on_actionShare_Server_Config_triggered()
+{
+    // 生成分享的二维码
+    ShareDialog d;
+    d.exec();
 }
