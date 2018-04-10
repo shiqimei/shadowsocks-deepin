@@ -73,7 +73,7 @@ void GuiConfig::saveToDisk(QString path) {
         QJsonDocument d;
         d.setObject(guiConfig);
         file.write(d.toJson());
-        qDebug() << d.toJson();
+        qDebug().noquote().nospace() << d.toJson();
         file.flush();
         file.close();
     }
@@ -100,7 +100,9 @@ void GuiConfig::setConfigs(QJsonArray array) {
 }
 
 QJsonValue GuiConfig::get(QString key) {
-    return guiConfig.value(key);
+    auto v = guiConfig.value(key);
+    guiConfig.insert(key,v);
+    return v;
 }
 
 void GuiConfig::set(QString key, QJsonValue value) {
@@ -307,3 +309,4 @@ QString GuiConfig::getConfigURI(int index)
     QString uri = QString("ss://%1#%2").arg(QString(s.toLocal8Bit().toBase64())).arg(name);
     return uri;
 }
+

@@ -334,6 +334,11 @@ void MainWindow::updateMenu() {
     } else {
         ui->actionCheck_Pre_release_Version->setChecked(false);
     }
+    if(guiConfig->get("autostart").toBool()){
+        ui->actionStart_on_Boot->setChecked(true);
+    }else{
+        ui->actionStart_on_Boot->setChecked(false);
+    }
     auto configs = guiConfig->getConfigs();
     ui->menuServers->clear();
     QList<QAction *> action_list;
