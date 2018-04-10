@@ -42,13 +42,12 @@ MainWindow::MainWindow(QWidget *parent) :
     rightMenuBlank = new QMenu(this);
     menuAdd = new QMenu(tr("Add"),this);
     config_view = new ProfileView(getColumnHideFlags());
-    config_view->setColumnSortingAlgorithms(alorithms, getSortingIndex(), getSortingOrder());
+//    config_view->setColumnSortingAlgorithms(alorithms, getSortingIndex(), getSortingOrder());
     config_view->setSearchAlgorithm(&ProfileItem::search);
     connect(config_view, &ProfileView::rightClickItems, this, &MainWindow::popupMenu);
     connect(config_view, &ProfileView::rightClickBlank, this, &MainWindow::popupMenuBlank);
     w->setCentralWidget(config_view);
     systemTrayIcon = new QSystemTrayIcon();
-    systemTrayIcon->setContextMenu(menu);
     systemTrayIcon->setContextMenu(ui->menuTray);
     systemTrayIcon->setIcon(QIcon(Utils::getIconQrcPath("ss16.png")));
     systemTrayIcon->show();
