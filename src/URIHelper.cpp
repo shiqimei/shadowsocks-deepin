@@ -26,6 +26,7 @@ QString URIHelper::decodeImage(const QImage &img)
     QString uri;
     QImage gimg = convertToGrey(img);
 
+
     //use zbar to decode the QR code
     zbar::ImageScanner scanner;
     zbar::Image image(gimg.bytesPerLine(), gimg.height(), "Y800", gimg.bits(), gimg.byteCount());

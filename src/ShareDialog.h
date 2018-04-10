@@ -1,11 +1,8 @@
 #ifndef SHAREDIALOG_H
 #define SHAREDIALOG_H
-
-#include <QDialog>
-
-namespace Ui {
-class ShareDialog;
-}
+#include "stdafx.h"
+#include "QRWidget.h"
+#include "widget/SingleListView.h"
 
 class ShareDialog : public QDialog
 {
@@ -13,13 +10,21 @@ class ShareDialog : public QDialog
 
 public:
     explicit ShareDialog(QWidget *parent = 0);
-    ~ShareDialog();
-
+    virtual ~ShareDialog();
+    void closeEvent(QCloseEvent *);
 private slots:
-    void on_listWidget_currentRowChanged(int currentRow);
-
+    void onItemSelected();
+    void onSaveQRCodeImage();
 private:
-    Ui::ShareDialog *ui;
+    SingleListView* listView;
+    QRWidget* qrWidget;
+    QLabel* uriLabel;
+    QPlainTextEdit* uriText;
+    QPushButton* saveButton;
+
+    QString currentURI;
+
+    void setCurrentURI(QString uri);
 };
 
 #endif // SHAREDIALOG_H

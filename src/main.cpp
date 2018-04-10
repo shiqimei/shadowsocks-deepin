@@ -4,6 +4,7 @@
 #include "ProxyView.h"
 #include "GuiConfig.h"
 #include "ConfigItem.h"
+#include "ShareDialog.h"
 DWIDGET_USE_NAMESPACE
 DCORE_USE_NAMESPACE
 
@@ -47,7 +48,7 @@ int main(int argc, char *argv[]) {
         DLogManager::registerFileAppender();
         MainWindow window;
 
-         QObject::connect(&app, &DApplication::newInstanceStarted, &window, &MainWindow::activateWindow);
+        QObject::connect(&app, &DApplication::newInstanceStarted, &window, &MainWindow::activateWindow);
 
         Dtk::Widget::moveToCenter(&window);
 //        window.show();

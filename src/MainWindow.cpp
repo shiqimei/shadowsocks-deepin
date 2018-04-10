@@ -569,7 +569,8 @@ void MainWindow::on_actionImport_URL_from_Clipboard_triggered()
 
 void MainWindow::on_actionShare_Server_Config_triggered()
 {
+    // 这里肯定是有内存泄露的，但是我只要一析构，程序就崩溃了
     // 生成分享的二维码
-    ShareDialog d;
-    d.exec();
+    ShareDialog* d = new ShareDialog();
+    d->exec();
 }
