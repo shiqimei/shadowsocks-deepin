@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "dthememanager.h"
-#include "ProxyView.h"
+#include "ProfileView.h"
 #include <QTimer>
 
 DWIDGET_USE_NAMESPACE

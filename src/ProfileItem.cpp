@@ -1,4 +1,4 @@
-#include "ConfigItem.h"
+#include "ProfileItem.h"
 #include "GuiConfig.h"
 #include "utils.h"
 

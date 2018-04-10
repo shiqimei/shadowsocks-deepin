@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "utils.h"
 #include "MainWindow.h"
-#include "ProxyView.h"
+#include "ProfileView.h"
 #include "GuiConfig.h"
-#include "ConfigItem.h"
+#include "ProfileItem.h"
 #include "ShareDialog.h"
 DWIDGET_USE_NAMESPACE
 DCORE_USE_NAMESPACE

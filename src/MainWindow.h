@@ -27,7 +27,7 @@
 #include "dbusinterface/DBusStartManager.h"
 #include "Settings.h"
 #include "Toolbar.h"
-#include "ProxyView.h"
+#include "ProfileView.h"
 
 DWIDGET_USE_NAMESPACE
 using StartManagerInter = com::deepin::StartManager;

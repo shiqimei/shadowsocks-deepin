@@ -29,7 +29,6 @@ DEFINES += USING_PCH
 }
 SOURCES += \
     ConfigDialog.cpp \
-    ConfigItem.cpp \
     DDEProxyModeManager.cpp \
     GuiConfig.cpp \
     HotkeySettingsDialog.cpp \
@@ -39,8 +38,6 @@ SOURCES += \
     PACUrlDialog.cpp \
     ProxyDialog.cpp \
     ProxyManager.cpp \
-    ProxyThread.cpp \
-    ProxyView.cpp \
     Settings.cpp \
     stdafx.cpp \
     Toolbar.cpp \
@@ -53,11 +50,12 @@ SOURCES += \
     URIHelper.cpp \
     QRWidget.cpp \
     widget/SingleListItem.cpp \
-    widget/SingleListView.cpp
+    widget/SingleListView.cpp \
+    ProfileItem.cpp \
+    ProfileView.cpp
 
 HEADERS += \
     ConfigDialog.h \
-    ConfigItem.h \
     constant.h \
     DDEProxyModeManager.h \
     GuiConfig.h \
@@ -67,8 +65,6 @@ HEADERS += \
     PACUrlDialog.h \
     ProxyDialog.h \
     ProxyManager.h \
-    ProxyThread.h \
-    ProxyView.h \
     Settings.h \
     stdafx.h \
     Toolbar.h \
@@ -81,7 +77,9 @@ HEADERS += \
     QRWidget.h \
     QRCodeCapturer.h \
     widget/SingleListItem.h \
-    widget/SingleListView.h
+    widget/SingleListView.h \
+    ProfileItem.h \
+    ProfileView.h
 
 FORMS += \
     ConfigDialog.ui \

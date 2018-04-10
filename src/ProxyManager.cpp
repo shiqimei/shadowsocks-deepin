@@ -1,6 +1,5 @@
 #include "ProxyManager.h"
 #include "utils.h"
-#include "ProxyThread.h"
 
 ProxyManager::ProxyManager(QObject *parent) : QObject(parent) {
     isRunning = false;
