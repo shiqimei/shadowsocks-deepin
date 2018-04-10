@@ -28,7 +28,7 @@
 using NetworkInter = com::deepin::daemon::Network;
 
 class DDEProxyModeManager : public SystemProxyModeManager {
-Q_OBJECT
+    Q_OBJECT
 public:
     explicit DDEProxyModeManager(QObject *parent = nullptr);
 

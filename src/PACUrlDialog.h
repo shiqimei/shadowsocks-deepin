@@ -24,11 +24,11 @@
 #include <QDialog>
 
 namespace Ui {
-    class PACUrlDialog;
+class PACUrlDialog;
 }
 
 class PACUrlDialog : public QDialog {
-Q_OBJECT
+    Q_OBJECT
 
 public:
     explicit PACUrlDialog(QWidget *parent = 0);

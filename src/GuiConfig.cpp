@@ -223,21 +223,21 @@ void GuiConfig::calId(QJsonObject &j) {
     QString server = j["server"].toString();
     QString remarks = j["remarks"].toString();
     if (remarks.isEmpty()) {
-            remarks = server;
-            j.insert("remarks", remarks);
-        }
+        remarks = server;
+        j.insert("remarks", remarks);
+    }
     QString password = j["password"].toString();
     auto timestamp = getTimestamp();
     QString updateTime = j["update_time"].toString();
     if (updateTime.isEmpty()) {
-            updateTime = QString::number(timestamp);
-            j.insert("update_time", updateTime);
-        }
+        updateTime = QString::number(timestamp);
+        j.insert("update_time", updateTime);
+    }
     QString createTime = j["create_time"].toString();
     if (createTime.isEmpty()) {
-            createTime = QString::number(timestamp);
-            j.insert("create_time", createTime);
-        }
+        createTime = QString::number(timestamp);
+        j.insert("create_time", createTime);
+    }
     QString s = QString("%1%2%3%4").arg(server).arg(password).arg(updateTime).arg(createTime);
     QByteArray id = QCryptographicHash::hash(s.toLatin1(), QCryptographicHash::Sha256).toHex();
     j.insert("id", QString(id));

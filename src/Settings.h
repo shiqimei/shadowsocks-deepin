@@ -24,7 +24,7 @@
 #include <QSettings>
 
 class Settings : public QObject {
-Q_OBJECT
+    Q_OBJECT
 
 public:
     Settings(QObject *parent = 0);

@@ -24,11 +24,11 @@
 #include <QDialog>
 
 namespace Ui {
-    class HotkeySettingsDialog;
+class HotkeySettingsDialog;
 }
 
 class HotkeySettingsDialog : public QDialog {
-Q_OBJECT
+    Q_OBJECT
 
 public:
     explicit HotkeySettingsDialog(QWidget *parent = 0);

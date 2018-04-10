@@ -18,7 +18,7 @@ void ProxyManager::setConfig(const QJsonObject &config) {
     qDebug() << config;
     QSS::Profile profile;
     getProfile(config, profile);
-//    profile.enableDebug();
+    // profile.enableDebug();
     controller = new QSS::Controller(profile, true, true, this);
     connectController();
 }
@@ -31,10 +31,6 @@ bool ProxyManager::start() {
         isRunning = true;
     }
     return flag;
-//    auto t = new ProxyThread(controller);
-//    t->start();
-//    // async
-//    return true;
 }
 
 void ProxyManager::stop() {

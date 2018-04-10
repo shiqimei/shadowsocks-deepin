@@ -16,8 +16,8 @@
 #include "ShareDialog.h"
 #include <DDesktopServices>
 MainWindow::MainWindow(QWidget *parent) :
-        DMainWindow(parent),
-        ui(new Ui::MainWindow) {
+    DMainWindow(parent),
+    ui(new Ui::MainWindow) {
     ui->setupUi(this);
     installEventFilter(this);   // add event filter
     GuiConfig::instance()->readFromDisk();
@@ -42,20 +42,11 @@ MainWindow::MainWindow(QWidget *parent) :
     rightMenuBlank = new QMenu(this);
     menuAdd = new QMenu(tr("Add"),this);
     config_view = new ProfileView(getColumnHideFlags());
-    // Set sort algorithms.
-    QList<SortAlgorithm> *alorithms = new QList<SortAlgorithm>();
-    alorithms->append(&ProfileItem::sortByName);
-    alorithms->append(&ProfileItem::sortByServer);
-    alorithms->append(&ProfileItem::sortByTotalUsager);
     config_view->setColumnSortingAlgorithms(alorithms, getSortingIndex(), getSortingOrder());
     config_view->setSearchAlgorithm(&ProfileItem::search);
     connect(config_view, &ProfileView::rightClickItems, this, &MainWindow::popupMenu);
     connect(config_view, &ProfileView::rightClickBlank, this, &MainWindow::popupMenuBlank);
     w->setCentralWidget(config_view);
-//    config_view->show();
-    auto menu = new QMenu();
-    menu->addAction("a");
-    menu->addAction("b");
     systemTrayIcon = new QSystemTrayIcon();
     systemTrayIcon->setContextMenu(menu);
     systemTrayIcon->setContextMenu(ui->menuTray);
@@ -92,6 +83,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(timer, &QTimer::timeout, this, &MainWindow::updateTrayIcon);
     connect(timer, &QTimer::timeout, this, &MainWindow::updateList);
     timer->start(100);
+    // 流量监控
     connect(proxyManager, &ProxyManager::bytesReceivedChanged, [=](quint64 n) {
         qDebug() << "bytesReceivedChanged" << n;
         term_usage_in = n;
@@ -112,20 +104,10 @@ MainWindow::MainWindow(QWidget *parent) :
         out += n;
         GuiConfig::instance()->addTotalUsage(n);
     });
-    connect(proxyManager, &ProxyManager::runningStateChanged, [](bool flag) {
-        // this state change can not reflect the real connection
-        if (flag) {
-//            Utils::info("server connected");
-        } else {
-//            Utils::info("server disconnected");
-        }
-    });
     updateTrayIcon();
     on_actionStart_on_Boot_triggered(guiConfig->get("autostart").toBool(true));
     updateList();
     updateMenu();
-    Dtk::Widget::moveToCenter(w);
-//    w->show();
 }
 
 MainWindow::~MainWindow() {
@@ -209,7 +191,6 @@ void MainWindow::updateList() {
     for (int i = 0; i < configs.size(); i++) {
         auto it = configs.at(i).toObject();
         auto item = new ProfileItem(it);
-//        auto item = new ProcessItem(it,i);
         items << static_cast<DSimpleListItem *>(item);
     }
     // note: this function will delete items in view before  to avoid *MEMORY LEAK*
@@ -287,7 +268,7 @@ void MainWindow::on_actionShow_Logs_triggered() {
 
 void MainWindow::updateMenu() {
     const auto &guiConfig = GuiConfig::instance();
-//    qDebug() << guiConfig->getConfigs();
+    //    qDebug() << guiConfig->getConfigs();
     if (guiConfig->get("enabled").toBool()) {
         ui->actionEnable_System_Proxy->setChecked(true);
         ui->menuMode->setEnabled(true);
@@ -480,9 +461,9 @@ QList<bool> MainWindow::getColumnHideFlags() {
 }
 
 bool MainWindow::eventFilter(QObject *, QEvent *event) {
-//    qDebug()<<event->type();
+    //    qDebug()<<event->type();
     if (event->type() == QEvent::WindowStateChange) {
-//        adjustStatusBarWidth();
+        //        adjustStatusBarWidth();
     } else if (event->type() == QEvent::KeyPress) {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         if (keyEvent->key() == Qt::Key_F) {
@@ -507,7 +488,7 @@ int MainWindow::getSortingIndex() {
     QString sortingName = settings->getOption("config_sorting_column").toString();
 
     QList<QString> columnNames = {
-            "name", "server", "status", "latency", "local_port", "term_usage", "total_usage", "reset_date", "last_used"
+        "name", "server", "status", "latency", "local_port", "term_usage", "total_usage", "reset_date", "last_used"
     };
     qDebug() << "??";
     return columnNames.indexOf(sortingName);
@@ -523,17 +504,6 @@ void MainWindow::on_actionDisconnect_triggered() {
 
 void MainWindow::on_actionScan_QRCode_from_Screen_triggered()
 {
-
-//    QRCodeCapturer *capturer = new QRCodeCapturer(this);
-//    connect(capturer, &QRCodeCapturer::closed,
-//            capturer, &QRCodeCapturer::deleteLater);
-////    connect(capturer, &QRCodeCapturer::qrCodeFound,
-////            this, &MainWindow::onQRCodeCapturerResultFound,
-////            Qt::DirectConnection);
-//    connect(capturer,&QRCodeCapturer::qrCodeFound,[=](const QString &uri){
-//        qDebug()<<"qrcode found"<<uri;
-//    });
-//    capturer->show();
     QString uri = QRCodeCapturer::scanEntireScreen();
     if (uri.isNull()) {
         QMessageBox::critical(
@@ -542,8 +512,6 @@ void MainWindow::on_actionScan_QRCode_from_Screen_triggered()
                     tr("Can't find any QR code image that contains "
                        "valid URI on your screen(s)."));
     } else {
-//        Connection *newCon = new Connection(uri, this);
-//        newProfile(newCon);
         qDebug()<<"scan uri"<<uri;
         Utils::info(tr("found URI %1").arg(uri));
         if(uri.startsWith("ss://")){

@@ -26,7 +26,7 @@
 DWIDGET_USE_NAMESPACE
 
 class Toolbar : public QWidget {
-Q_OBJECT
+    Q_OBJECT
 
 public:
     Toolbar(QWidget *parent = 0);

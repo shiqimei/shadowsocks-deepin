@@ -26,7 +26,7 @@
 DWIDGET_USE_NAMESPACE
 
 class ProfileView : public DSimpleListView {
-Q_OBJECT
+    Q_OBJECT
 
 public:
     ProfileView(QList<bool> columnHideFlags);

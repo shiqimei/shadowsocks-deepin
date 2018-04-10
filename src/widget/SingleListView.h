@@ -10,7 +10,7 @@
 DWIDGET_USE_NAMESPACE  // 这句话主要强调使用 dtkwidget 的命名空间，以使用其控件
 class SingleListView : public DSimpleListView
 {
-Q_OBJECT
+    Q_OBJECT
 
 public:
     SingleListView(QWidget *parent=0);

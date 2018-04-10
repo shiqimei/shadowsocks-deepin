@@ -32,11 +32,11 @@
 DWIDGET_USE_NAMESPACE
 using StartManagerInter = com::deepin::StartManager;
 namespace Ui {
-    class MainWindow;
+class MainWindow;
 }
 
 class MainWindow : public DMainWindow {
-Q_OBJECT
+    Q_OBJECT
 
 public:
     explicit MainWindow(QWidget *parent = 0);

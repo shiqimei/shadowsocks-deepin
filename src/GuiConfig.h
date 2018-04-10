@@ -24,7 +24,7 @@
 #include "stdafx.h"
 
 class GuiConfig : public QObject {
-Q_OBJECT
+    Q_OBJECT
 public:
     static GuiConfig *instance();
 

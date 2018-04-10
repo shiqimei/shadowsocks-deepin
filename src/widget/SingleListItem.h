@@ -12,7 +12,7 @@ DWIDGET_USE_NAMESPACE
 
 class SingleListItem : public DSimpleListItem
 {
-Q_OBJECT
+    Q_OBJECT
 
 public:
     SingleListItem(QString data);

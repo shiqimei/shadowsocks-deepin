@@ -28,14 +28,14 @@ int main(int argc, char *argv[]) {
         app.loadTranslator();
 
         const QString descriptionText = QApplication::tr(
-                "If you want to keep a secret, you must also hide it from yourself.");
+                    "If you want to keep a secret, you must also hide it from yourself.");
 
         const QString acknowledgementLink = "https://github.com/PikachuHy/shadowsocks-client";
 
         app.setOrganizationName("pikachu");
         app.setApplicationName("shadowsocks-client");
         app.setApplicationDisplayName(QObject::tr("Shadowsocks Client"));
-        app.setApplicationVersion("2.0.0");
+        app.setApplicationVersion("1.1.0");
 
         app.setProductIcon(QIcon(Utils::getIconQrcPath("ssw128.svg")));
         app.setProductName(QApplication::tr("Shadowsocks Client"));
@@ -51,8 +51,6 @@ int main(int argc, char *argv[]) {
         QObject::connect(&app, &DApplication::newInstanceStarted, &window, &MainWindow::activateWindow);
 
         Dtk::Widget::moveToCenter(&window);
-//        window.show();
-//        window.adjustStatusBarWidth();
         return app.exec();
     }
     qDebug() << "app has started";

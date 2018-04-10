@@ -24,11 +24,11 @@
 #include <QDialog>
 
 namespace Ui {
-    class ProxyDialog;
+class ProxyDialog;
 }
 
 class ProxyDialog : public QDialog {
-Q_OBJECT
+    Q_OBJECT
 
 public:
     explicit ProxyDialog(QWidget *parent = 0);

@@ -24,7 +24,7 @@
  * Proxy class for interface com.deepin.StartManager
  */
 class DBusStartManager : public QDBusAbstractInterface {
-Q_OBJECT
+    Q_OBJECT
 public:
     DBusStartManager(QObject *parent = nullptr);
 
@@ -78,8 +78,8 @@ Q_SIGNALS: // SIGNALS
 };
 
 namespace com {
-    namespace deepin {
-        typedef ::DBusStartManager StartManager;
-    }
+namespace deepin {
+typedef ::DBusStartManager StartManager;
+}
 }
 #endif

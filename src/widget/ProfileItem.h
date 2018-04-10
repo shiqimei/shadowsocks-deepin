@@ -26,7 +26,7 @@
 DWIDGET_USE_NAMESPACE
 
 class ProfileItem : public DSimpleListItem {
-Q_OBJECT
+    Q_OBJECT
 public:
     ProfileItem(QJsonObject o);
 

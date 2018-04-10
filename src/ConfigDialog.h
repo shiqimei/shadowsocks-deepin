@@ -24,11 +24,11 @@
 #include "stdafx.h"
 
 namespace Ui {
-    class ConfigDialog;
+class ConfigDialog;
 }
 
 class ConfigDialog : public QDialog {
-Q_OBJECT
+    Q_OBJECT
 
 public:
     explicit ConfigDialog(QWidget *parent = 0);

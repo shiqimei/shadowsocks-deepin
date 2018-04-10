@@ -35,8 +35,8 @@ void ConfigDialog::disconnectChanged() {
 }
 
 ConfigDialog::ConfigDialog(QWidget *parent) :
-        QDialog(parent),
-        ui(new Ui::ConfigDialog) {
+    QDialog(parent),
+    ui(new Ui::ConfigDialog) {
     ui->setupUi(this);
     isModified = false;
     updateListWidget();
@@ -49,7 +49,7 @@ ConfigDialog::ConfigDialog(QWidget *parent) :
     ui->comboBoxEncryption->addItems(methodList);
     connectChanged();
 
-//    disconnectChanged();
+    //    disconnectChanged();
     ui->listWidget->setCurrentRow(0);
     Dtk::Widget::moveToCenter(this);
 }
@@ -82,7 +82,7 @@ void ConfigDialog::checkModify() {
         if (ret == QMessageBox::Yes) {
             save();
             isModified = false;
-//            updateListWidget();
+            // updateListWidget();
         }
     }
 }

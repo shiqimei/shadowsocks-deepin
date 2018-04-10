@@ -24,11 +24,11 @@
 #include <QMainWindow>
 
 namespace Ui {
-    class LogMainWindow;
+class LogMainWindow;
 }
 
 class LogMainWindow : public QMainWindow {
-Q_OBJECT
+    Q_OBJECT
 
 public:
     explicit LogMainWindow(QWidget *parent = 0);

@@ -17,7 +17,7 @@ Settings::~Settings() {
 
 QString Settings::configPath() {
     return QDir(QDir(QStandardPaths::standardLocations(QStandardPaths::ConfigLocation).first()).filePath(
-            qApp->organizationName())).filePath(qApp->applicationName());
+                    qApp->organizationName())).filePath(qApp->applicationName());
 }
 
 QVariant Settings::getOption(const QString &key) {

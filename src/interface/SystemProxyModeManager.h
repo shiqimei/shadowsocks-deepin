@@ -24,7 +24,7 @@
 #include "stdafx.h"
 
 class SystemProxyModeManager : public QObject {
-Q_OBJECT
+    Q_OBJECT
 public:
     SystemProxyModeManager(QObject *parent) : QObject(parent) {}
 
