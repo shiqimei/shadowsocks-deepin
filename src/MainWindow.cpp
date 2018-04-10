@@ -14,6 +14,7 @@
 #include "QRCodeCapturer.h"
 #include "SSValidator.h"
 #include "ShareDialog.h"
+#include <DDesktopServices>
 MainWindow::MainWindow(QWidget *parent) :
         DMainWindow(parent),
         ui(new Ui::MainWindow) {
@@ -353,7 +354,7 @@ void MainWindow::updateMenu() {
         }
     }
     ui->menuServers->addSeparator();
-    action_list << ui->actionEdit_Servers << ui->actionStatistics_Config;
+    action_list << ui->actionEdit_Servers << ui->actionStatistics_Config<<ui->actionImport_from_gui_config_json<<ui->actionExport_as_gui_config_json;
     ui->menuServers->addActions(action_list);
     ui->menuServers->addSeparator();
     ui->menuServers->addSeparator();
@@ -573,4 +574,16 @@ void MainWindow::on_actionShare_Server_Config_triggered()
     // 生成分享的二维码
     ShareDialog* d = new ShareDialog();
     d->exec();
+}
+
+void MainWindow::on_actionExport_as_gui_config_json_triggered()
+{
+    QString filename = QFileDialog::getExistingDirectory(nullptr,tr("Save gui-config.json"),
+                                                         QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation).first());
+    if(filename.isEmpty()){
+        return;
+    }
+    filename=filename+"/gui-config.json";
+    GuiConfig::instance()->saveToDisk(filename);
+    DDesktopServices::showFileItem(filename);
 }

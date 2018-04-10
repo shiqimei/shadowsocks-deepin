@@ -89,6 +89,8 @@ private slots:
 
     void on_actionShare_Server_Config_triggered();
 
+    void on_actionExport_as_gui_config_json_triggered();
+
 private:
     Ui::MainWindow *ui;
     QSystemTrayIcon *systemTrayIcon;
