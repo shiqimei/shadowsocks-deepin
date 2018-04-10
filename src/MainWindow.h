@@ -27,7 +27,7 @@
 #include "dbusinterface/DBusStartManager.h"
 #include "Settings.h"
 #include "Toolbar.h"
-#include "ProfileView.h"
+#include "widget/ProfileView.h"
 
 DWIDGET_USE_NAMESPACE
 using StartManagerInter = com::deepin::StartManager;
@@ -96,7 +96,7 @@ private:
     // I can't use both DSimpleView and QSystemTrayIcon.
     // So I create a container
     DMainWindow *w;
-    ProxyView *config_view;
+    ProfileView *config_view;
     QMenu *rightMenu;
     QMenu *rightMenuBlank;
     QMenu *menuAdd;

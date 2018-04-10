@@ -5,10 +5,10 @@
 
 DWIDGET_USE_NAMESPACE
 
-ProxyView::ProxyView(QList<bool> columnHideFlags) {
+ProfileView::ProfileView(QList<bool> columnHideFlags) {
     initTheme();
 
-    connect(DThemeManager::instance(), &DThemeManager::themeChanged, this, &ProxyView::changeTheme);
+    connect(DThemeManager::instance(), &DThemeManager::themeChanged, this, &ProfileView::changeTheme);
 
     // Enable frame and radius.
     setFrame(true);
@@ -32,7 +32,7 @@ ProxyView::ProxyView(QList<bool> columnHideFlags) {
     QTimer::singleShot(0, this, SLOT(setFocus()));
 }
 
-void ProxyView::initTheme() {
+void ProfileView::initTheme() {
     if (DThemeManager::instance()->theme() == "light") {
         titleColor = "#000000";
         titleLineColor = "#000000";
@@ -98,12 +98,12 @@ void ProxyView::initTheme() {
     }
 }
 
-void ProxyView::changeTheme(QString) {
+void ProfileView::changeTheme(QString) {
     initTheme();
 }
 
 
-void ProxyView::contextMenuEvent(QContextMenuEvent *)
+void ProfileView::contextMenuEvent(QContextMenuEvent *)
 {
     emit rightClickBlank();
 }

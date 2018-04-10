@@ -25,11 +25,11 @@
 
 DWIDGET_USE_NAMESPACE
 
-class ProxyView : public DSimpleListView {
+class ProfileView : public DSimpleListView {
 Q_OBJECT
 
 public:
-    ProxyView(QList<bool> columnHideFlags);
+    ProfileView(QList<bool> columnHideFlags);
 
 public slots:
 

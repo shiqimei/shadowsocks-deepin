@@ -25,10 +25,10 @@
 
 DWIDGET_USE_NAMESPACE
 
-class ConfigItem : public DSimpleListItem {
+class ProfileItem : public DSimpleListItem {
 Q_OBJECT
 public:
-    ConfigItem(QJsonObject o);
+    ProfileItem(QJsonObject o);
 
     bool sameAs(DSimpleListItem *item);
     void drawBackground(QRect rect, QPainter *painter, int index, bool isSelect, bool isHover);

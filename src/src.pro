@@ -48,11 +48,11 @@ SOURCES += \
     QRCodeCapturer.cpp \
     SSValidator.cpp \
     URIHelper.cpp \
-    QRWidget.cpp \
     widget/SingleListItem.cpp \
     widget/SingleListView.cpp \
-    ProfileItem.cpp \
-    ProfileView.cpp
+    widget/QRWidget.cpp \
+    widget/ProfileItem.cpp \
+    widget/ProfileView.cpp
 
 HEADERS += \
     ConfigDialog.h \
@@ -74,12 +74,12 @@ HEADERS += \
     ShareDialog.h \
     URIHelper.h \
     SSValidator.h \
-    QRWidget.h \
     QRCodeCapturer.h \
     widget/SingleListItem.h \
     widget/SingleListView.h \
-    ProfileItem.h \
-    ProfileView.h
+    widget/QRWidget.h \
+    widget/ProfileItem.h \
+    widget/ProfileView.h
 
 FORMS += \
     ConfigDialog.ui \

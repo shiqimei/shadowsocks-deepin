@@ -6,11 +6,11 @@ DWIDGET_USE_NAMESPACE
 
 using namespace Utils;
 
-ConfigItem::ConfigItem(QJsonObject o) {
+ProfileItem::ProfileItem(QJsonObject o) {
 
     initTheme();
 
-    connect(DThemeManager::instance(), &DThemeManager::themeChanged, this, &ConfigItem::changeTheme);
+    connect(DThemeManager::instance(), &DThemeManager::themeChanged, this, &ProfileItem::changeTheme);
 
     config = o;
     iconSize = 24;
@@ -23,14 +23,14 @@ ConfigItem::ConfigItem(QJsonObject o) {
 //    qDebug()<<texts;
 }
 
-bool ConfigItem::sameAs(DSimpleListItem *item) {
+bool ProfileItem::sameAs(DSimpleListItem *item) {
     auto id = getId();
-    auto other_id = (static_cast<ConfigItem *>(item))->getId();
+    auto other_id = (static_cast<ProfileItem *>(item))->getId();
 //    qDebug()<<"compare id"<<id<<other_id;
     return id == other_id;
 }
 
-void ConfigItem::drawBackground(QRect rect, QPainter *painter, int index, bool isSelect, bool) {
+void ProfileItem::drawBackground(QRect rect, QPainter *painter, int index, bool isSelect, bool) {
     // Init draw path.
     QPainterPath path;
     path.addRect(QRectF(rect));
@@ -53,7 +53,7 @@ void ConfigItem::drawBackground(QRect rect, QPainter *painter, int index, bool i
     }
 }
 
-void ConfigItem::drawCell(bool isSelect, QRect rect, QPainter *painter, QString text) {
+void ProfileItem::drawCell(bool isSelect, QRect rect, QPainter *painter, QString text) {
     if (isSelect) {
         painter->setOpacity(1);
     } else {
@@ -65,7 +65,7 @@ void ConfigItem::drawCell(bool isSelect, QRect rect, QPainter *painter, QString 
                       Qt::AlignRight | Qt::AlignVCenter, text);
 }
 
-void ConfigItem::drawForeground(QRect rect, QPainter *painter, int column, int, bool isSelect, bool) {
+void ProfileItem::drawForeground(QRect rect, QPainter *painter, int column, int, bool isSelect, bool) {
     // Init opacity and font size.
     painter->setOpacity(1);
 
@@ -105,17 +105,17 @@ void ConfigItem::drawForeground(QRect rect, QPainter *painter, int column, int, 
 
 }
 
-bool ConfigItem::search(const DSimpleListItem *item, QString searchContent) {
-    const auto *t = static_cast<const ConfigItem *>(item);
+bool ProfileItem::search(const DSimpleListItem *item, QString searchContent) {
+    const auto *t = static_cast<const ProfileItem *>(item);
     QString content = searchContent.toLower();
 
     return t->getName().toLower().contains(content) || t->getServer().toLower().contains(content);
 }
 
-bool ConfigItem::sortByName(const DSimpleListItem *item1, const DSimpleListItem *item2, bool descendingSort) {
+bool ProfileItem::sortByName(const DSimpleListItem *item1, const DSimpleListItem *item2, bool descendingSort) {
     // Init.
-    QString name1 = (static_cast<const ConfigItem *>(item1))->getName();
-    QString name2 = (static_cast<const ConfigItem *>(item2))->getName();
+    QString name1 = (static_cast<const ProfileItem *>(item1))->getName();
+    QString name2 = (static_cast<const ProfileItem *>(item2))->getName();
     bool sortOrder;
 
     // Sort item with cpu if name is same.
@@ -133,9 +133,9 @@ bool ConfigItem::sortByName(const DSimpleListItem *item1, const DSimpleListItem 
     return descendingSort ? sortOrder : !sortOrder;
 }
 
-bool ConfigItem::sortByServer(const DSimpleListItem *item1, const DSimpleListItem *item2, bool descendingSort) {
-    QString server1 = (static_cast<const ConfigItem *>(item1))->getServer();
-    QString server2 = (static_cast<const ConfigItem *>(item2))->getServer();
+bool ProfileItem::sortByServer(const DSimpleListItem *item1, const DSimpleListItem *item2, bool descendingSort) {
+    QString server1 = (static_cast<const ProfileItem *>(item1))->getServer();
+    QString server2 = (static_cast<const ProfileItem *>(item2))->getServer();
     bool sortOrder;
     if (server1 == server2) {
         sortOrder = sortByTotalUsager(item1, item2, descendingSort);
@@ -148,15 +148,15 @@ bool ConfigItem::sortByServer(const DSimpleListItem *item1, const DSimpleListIte
     return descendingSort ? sortOrder : !sortOrder;
 }
 
-bool ConfigItem::sortByTotalUsager(const DSimpleListItem *item1, const DSimpleListItem *item2, bool descendingSort) {
-    int n1 = (static_cast<const ConfigItem *>(item1))->getTotalUsage().toInt();
-    int n2 = (static_cast<const ConfigItem *>(item2))->getTotalUsage().toInt();
+bool ProfileItem::sortByTotalUsager(const DSimpleListItem *item1, const DSimpleListItem *item2, bool descendingSort) {
+    int n1 = (static_cast<const ProfileItem *>(item1))->getTotalUsage().toInt();
+    int n2 = (static_cast<const ProfileItem *>(item2))->getTotalUsage().toInt();
     bool sortOrder;
     sortOrder = n1 < n2;
     return descendingSort ? sortOrder : !sortOrder;
 }
 
-QString ConfigItem::getId() {
+QString ProfileItem::getId() {
     auto ret = config.isEmpty();
     if(ret){
         config = GuiConfig::instance()->createConfig();
@@ -169,15 +169,15 @@ QString ConfigItem::getId() {
     return config.value("id").toString();
 }
 
-QString ConfigItem::getName() const {
+QString ProfileItem::getName() const {
     return config.value("remarks").toString();
 }
 
-QString ConfigItem::getServer() const {
+QString ProfileItem::getServer() const {
     return config.value("server").toString();
 }
 
-QString ConfigItem::getStatus() {
+QString ProfileItem::getStatus() {
     if (GuiConfig::instance()->get("enabled").toBool()) {
         auto id = config.value("id").toString();
         if (id == GuiConfig::instance()->getCurrentId()) {
@@ -187,35 +187,35 @@ QString ConfigItem::getStatus() {
     return tr("unconnect");
 }
 
-QString ConfigItem::getLatency() {
+QString ProfileItem::getLatency() {
     return tr("unsupport");
 }
 
-QString ConfigItem::getLocalPort() {
+QString ProfileItem::getLocalPort() {
     return QString::number(config.value("local_port").toInt());
 }
 
-QString ConfigItem::getTermUsage() {
+QString ProfileItem::getTermUsage() {
     return Utils::formatByteCount(config.value("term_usage").toInt());
 }
 
-QString ConfigItem::getTotalUsage() const {
+QString ProfileItem::getTotalUsage() const {
     return Utils::formatByteCount(config.value("total_usage").toInt());
 }
 
-QString ConfigItem::getResetDate() {
+QString ProfileItem::getResetDate() {
     return config.value("reset_date").toString();
 }
 
-QString ConfigItem::getLastUsed() {
+QString ProfileItem::getLastUsed() {
     return config.value("last_used").toString();
 }
 
-void ConfigItem::changeTheme(QString) {
+void ProfileItem::changeTheme(QString) {
     initTheme();
 }
 
-void ConfigItem::initTheme() {
+void ProfileItem::initTheme() {
     if (DThemeManager::instance()->theme() == "light") {
         evenLineColor = "#000000";
         evenLineOpacity = 0.02;

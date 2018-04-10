@@ -9,8 +9,8 @@
 #include "Toolbar.h"
 #include "GuiConfig.h"
 #include "DDEProxyModeManager.h"
-#include "ProfileView.h"
-#include "ProfileItem.h"
+#include "widget/ProfileView.h"
+#include "widget/ProfileItem.h"
 #include "QRCodeCapturer.h"
 #include "SSValidator.h"
 #include "ShareDialog.h"
@@ -40,16 +40,16 @@ MainWindow::MainWindow(QWidget *parent) :
     rightMenu = new QMenu(this);
     rightMenuBlank = new QMenu(this);
     menuAdd = new QMenu(tr("Add"),this);
-    config_view = new ProxyView(getColumnHideFlags());
+    config_view = new ProfileView(getColumnHideFlags());
     // Set sort algorithms.
     QList<SortAlgorithm> *alorithms = new QList<SortAlgorithm>();
-    alorithms->append(&ConfigItem::sortByName);
-    alorithms->append(&ConfigItem::sortByServer);
-    alorithms->append(&ConfigItem::sortByTotalUsager);
+    alorithms->append(&ProfileItem::sortByName);
+    alorithms->append(&ProfileItem::sortByServer);
+    alorithms->append(&ProfileItem::sortByTotalUsager);
     config_view->setColumnSortingAlgorithms(alorithms, getSortingIndex(), getSortingOrder());
-    config_view->setSearchAlgorithm(&ConfigItem::search);
-    connect(config_view, &ProxyView::rightClickItems, this, &MainWindow::popupMenu);
-    connect(config_view, &ProxyView::rightClickBlank, this, &MainWindow::popupMenuBlank);
+    config_view->setSearchAlgorithm(&ProfileItem::search);
+    connect(config_view, &ProfileView::rightClickItems, this, &MainWindow::popupMenu);
+    connect(config_view, &ProfileView::rightClickBlank, this, &MainWindow::popupMenuBlank);
     w->setCentralWidget(config_view);
 //    config_view->show();
     auto menu = new QMenu();
@@ -70,7 +70,7 @@ MainWindow::MainWindow(QWidget *parent) :
         toolbar = new Toolbar();
         titlebar->setCustomWidget(toolbar, Qt::AlignVCenter, false);
         titlebar->setMenu(menu);
-        connect(toolbar, &Toolbar::search, config_view, &ProxyView::search, Qt::QueuedConnection);
+        connect(toolbar, &Toolbar::search, config_view, &ProfileView::search, Qt::QueuedConnection);
     }
     proxyManager = new ProxyManager(this);
     const auto &guiConfig = GuiConfig::instance();
@@ -207,7 +207,7 @@ void MainWindow::updateList() {
     auto configs = GuiConfig::instance()->getConfigs();
     for (int i = 0; i < configs.size(); i++) {
         auto it = configs.at(i).toObject();
-        auto item = new ConfigItem(it);
+        auto item = new ProfileItem(it);
 //        auto item = new ProcessItem(it,i);
         items << static_cast<DSimpleListItem *>(item);
     }
@@ -218,7 +218,7 @@ void MainWindow::updateList() {
 void MainWindow::popupMenu(QPoint pos, QList<DSimpleListItem *> items) {
     if (items.size() == 1) {
         auto item = items.first();
-        auto t = static_cast<ConfigItem *>(item);
+        auto t = static_cast<ProfileItem *>(item);
         QList<QAction *> action_list;
         action_list << ui->actionConnect << ui->actionDisconnect;
         if (GuiConfig::instance()->get("enabled").toBool()) {
