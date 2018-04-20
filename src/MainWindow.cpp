@@ -185,15 +185,17 @@ void MainWindow::updateTrayIcon() {
 }
 
 void MainWindow::updateList() {
-    QList<DSimpleListItem *> items;
-    auto configs = GuiConfig::instance()->getConfigs();
-    for (int i = 0; i < configs.size(); i++) {
-        auto it = configs.at(i).toObject();
-        auto item = new ProfileItem(it);
-        items << static_cast<DSimpleListItem *>(item);
-    }
-    // note: this function will delete items in view before  to avoid *MEMORY LEAK*
-    config_view->refreshItems(items);
+
+//    QList<DSimpleListItem *> items;
+//    auto configs = GuiConfig::instance()->getConfigs();
+//    for (int i = 0; i < configs.size(); i++) {
+//        auto it = configs.at(i).toObject();
+//        auto item = new ProfileItem(it);
+//        items << static_cast<DSimpleListItem *>(item);
+//    }
+//    // note: this function will delete items in view before  to avoid *MEMORY LEAK*
+//    config_view->refreshItems(items);
+
 }
 
 void MainWindow::popupMenu(QPoint pos, QList<DSimpleListItem *> items) {
