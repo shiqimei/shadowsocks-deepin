@@ -24,6 +24,11 @@ bool SingleListItem::sameAs(DSimpleListItem *item)
     return data == (static_cast<SingleListItem*>(item))->data;
 }
 
+void SingleListItem::drawBackground(QRect rect, QPainter *painter, int index, bool isSelect)
+{
+    drawBackground(rect,painter,index,isSelect,false);
+}
+
 void SingleListItem::drawBackground(QRect rect, QPainter *painter, int index, bool isSelect, bool isHover)
 {
     Q_UNUSED(isHover)
@@ -47,6 +52,11 @@ void SingleListItem::drawBackground(QRect rect, QPainter *painter, int index, bo
             painter->fillPath(path, QColor(oddLineColor));
         }
     }
+}
+
+void SingleListItem::drawForeground(QRect rect, QPainter *painter, int column, int index, bool isSelect)
+{
+    drawForeground(rect,painter,column,index,isSelect,false);
 }
 
 void SingleListItem::drawForeground(QRect rect, QPainter *painter, int column, int index, bool isSelect, bool isHover)
