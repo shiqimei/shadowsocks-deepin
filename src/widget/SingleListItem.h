@@ -21,10 +21,10 @@ public:
     bool sameAs(DSimpleListItem *item);
 
     // 绘制Item背景的接口函数，参数依次为表格矩形、绘制QPainter对象、行索引、当前行是否选中？
-    void drawBackground(QRect rect, QPainter *painter, int index, bool isSelect, bool isHover);
+    void drawBackground(QRect rect, QPainter *painter, int index, bool isSelect, bool isHover) override;
 
     // 绘制Item前景的接口函数，参数依次为表格矩形、绘制QPainter对象、行索引、当前行是否选中？
-    void drawForeground(QRect rect, QPainter *painter, int column, int index, bool isSelect, bool isHover);
+    void drawForeground(QRect rect, QPainter *painter, int column, int index, bool isSelect, bool isHover) override;
 
     // 名字属性，这里用于绘制文本列的内容
     QString data;
