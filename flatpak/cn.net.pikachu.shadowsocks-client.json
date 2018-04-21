@@ -1,0 +1,137 @@
+{
+    "app-id":"cn.net.pikachu.shadowsocks-client",
+    "runtime":"com.deepin.Platform",
+    "runtime-version":"15.5.2",
+    "sdk":"com.deepin.Sdk",
+    "command":"shadowsocks-client",
+    "finish-args":[
+    "--share=ipc",
+    "--socket=x11",
+    "--socket=pulseaudio",
+    "--share=network",
+    "--device=all",
+    "--socket=system-bus",
+    "--socket=session-bus",
+    "--filesystem=home",
+    "--filesystem=xdg-run/dconf",
+    "--own-name=n.net.pikachu.ShadowsocksClient",
+    "--own-name=cn.net.pikachu.SingleInstance.shadowsocks-client"
+    ],
+    "modules":[
+        {
+            "name":"ImageMagick",
+            "config-opts":[
+                "--prefix=/app"
+            ],
+            "sources":[
+                {
+                    "type":"archive",
+                    "url":"https://www.imagemagick.org/download/ImageMagick.tar.gz",
+                    "sha256":"1bc5fb4db818581576624e7b2514706ff4f67f4311b8b2d4c90eaa4b5e0cca3b"
+                }
+            ]
+        },
+        {
+            "name":"zbar",
+            "config-opts":[
+                "--disable-video",
+                "--enable-shared",
+                "--without-gtk",
+                "--without-qt",
+                "--without-python",
+                "CPPFLAGS=-I/app/include/ImageMagick-7"
+            ],
+            "sources":[
+                {
+                    "type":"archive",
+                    "path":"zbar-0.10.tar.gz",
+                    "sha256":"ead73fd323db83836160d4fb9a502f1ab29f1a81d126a99284ae0a097c9e4249"
+                },
+                {
+                    "type":"shell",
+                    "commands":[
+                        "export PKG_CONFIG_PATH=/app/lib/pkgconfig/",
+                        "ln -s /app/include/ImageMagick-7/MagickWand /app/include/wand"
+                    ]
+                }
+            ]
+        },
+        {
+            "name":"botan",
+            "no-autogen":true,
+            "sources":[
+                {
+                    "type":"git",
+                    "url":"https://github.com/randombit/botan",
+                    "tag":"2.6.0"
+                },
+                {
+                    "type":"script",
+                    "commands":[
+                        "./configure.py --prefix=/app"
+                    ],
+                    "dest-filename":"configure"
+                }
+            ]
+        },
+        {
+            "name":"libQtShadowsocks",
+            "no-autogen":true,
+            "sources":[
+                {
+                    "type":"git",
+                    "url":"https://github.com/shadowsocks/libQtShadowsocks",
+                    "tag":"v2.0.2"
+                },
+                {
+                    "type":"script",
+                    "commands":[
+                        "sed -i 's|/usr|/app|g' CMakeLists.txt",
+                        "cmake -DCMAKE_INSTALL_PREFIX=/app -DUSE_BOTAN2=ON ."
+                    ],
+                    "dest-filename":"configure"
+                }
+            ]
+        },
+        {
+            "name":"libqrencode",
+            "no-autogen":true,
+            "sources":[
+                {
+                    "type":"git",
+                    "url":"https://github.com/fukuchi/libqrencode",
+                    "tag":"v4.0.0"
+                },
+                {
+                    "type":"script",
+                    "commands":[
+                        "sed -i 's|/usr|/app|g' CMakeLists.txt",
+                        "cmake -DCMAKE_INSTALL_PREFIX=/app ."
+                    ],
+                    "dest-filename":"configure"
+                }
+            ]
+        },
+        {
+            "name":"shadowsocks-client",
+            "no-autogen":true,
+            "sources":[
+                {
+                    "type":"git",
+                    "url":"https://github.com/PikachuHy/shadowsocks-client",
+"branch":"dev"
+                },
+                {
+                    "type":"script",
+                    "commands":[
+                        "sed -i 's|/usr|/app|g' CMakeLists.txt",
+                        "cmake -DCMAKE_INSTALL_PREFIX=/app ."
+                    ],
+                    "dest-filename":"configure"
+                }
+            ]
+        }
+    ]
+}
+
+
