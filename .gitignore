@@ -3,3 +3,8 @@ cmake-build-release/
 .idea/
 build/
 *.pro.user
+flatpak/
+!flatpak/build_shadowsocks-client.sh
+!flatpak/cn.net.pikachu.shadowsocks-client.json
+!flatpak/Makefile
+!flatpak/zbar-0.10.tar.gz
