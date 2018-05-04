@@ -1,15 +1,22 @@
-# Shadowsocks Client
+# Shadowsocks Client: 一款专门Deepin打造的工具
 
 Shadowsocks Client: If you want to keep a secret, you must also hide it from yourself.
 
-Thanks a lot for [Deepin System Monitor](https://github.com/linuxdeepin/deepin-system-monitor), [Shadowsocks for Windows](https://github.com/shadowsocks/shadowsocks-windows),
-[libQtShadowsocks](https://github.com/shadowsocks/libQtShadowsocks).
+深度影梭客户端：一款专门为Deepin打造的工具，您贴心好帮手。
+
+Thanks a lot for 
+
+- [Deepin System Monitor](https://github.com/linuxdeepin/deepin-system-monitor)
+- [Shadowsocks for Windows](https://github.com/shadowsocks/shadowsocks-windows)
+- [libQtShadowsocks](https://github.com/shadowsocks/libQtShadowsocks)
 
 [English](./doc/README.en.md)
 
 开发这个软件用到的原理，技术请参考[影梭客户端原理剖析](doc/影梭客户端原理剖析.md)
 
 关于这个软件的开发进展，可以去deepin论坛，看[这个帖子](https://bbs.deepin.org/forum.php?mod=viewthread&tid=142900)
+
+如果遇到任何问题，请及时提Issues，或者去论坛发帖，我会尽快解决。
 
 ## 与其他客户端的比较
 
@@ -67,4 +74,16 @@ make -j4
 ### License
 
 Shadowsocks Client is licensed under [GPLv3](LICENSE).
+
+### Open Source Components / Libraries
+
+| NAME                   | LICENSE        | URL                                      |
+| ---------------------- | -------------- | ---------------------------------------- |
+| Deepin Tool Kit Core   | GPLv3          | https://github.com/linuxdeepin/dtkcore   |
+| Deepin Tool Kit Widget | GPLv3          | https://github.com/linuxdeepin/dtkwidget |
+| Botan                  | Simplified BSD | https://github.com/randombit/botan       |
+| libQtShadowsocks       | LGPLv3         | https://github.com/shadowsocks/libQtShadowsocks |
+| ZBar                   | LGPLv2.1       | https://github.com/ZBar/ZBar             |
+| libqrencode            | LGPLv2.1       | https://github.com/fukuchi/libqrencode   |
+
 
