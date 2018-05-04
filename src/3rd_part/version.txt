@@ -1,0 +1,2 @@
+Botan 2.6.0
+libQtShadowsocks 2.0.2
