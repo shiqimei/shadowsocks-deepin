@@ -117,7 +117,7 @@ MainWindow::~MainWindow() {
 
 void MainWindow::switchToPacMode() {
     auto guiConfig = GuiConfig::instance();
-    QString online_pac_uri = "https://raw.githubusercontent.com/PikachuHy/shadowsocks-client/master/autoproxy.pac";
+    QString online_pac_uri = "http://file.lolimay.cn/autoproxy.pac";
     QString pacURI = "";
     if (guiConfig->get("useOnlinePac").toBool(true)) {
         pacURI = guiConfig->get("pacUrl").toString();
