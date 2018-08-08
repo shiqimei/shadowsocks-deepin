@@ -1,16 +1,23 @@
-# Shadowsocks Client: 一款专门Deepin打造的工具
+# Shadowsocks-Client for Deepin
+![](https://img.shields.io/badge/version-1.2.1-blue.svg)
+![](https://img.shields.io/badge/license-GPLv3-green.svg)
+[Click here to see English version](./doc/README.en.md)
 
-Shadowsocks Client: If you want to keep a secret, you must also hide it from yourself.
+Shadowsocks-Client: If you want to keep a secret, you must also hide it from yourself.
 
-深度影梭客户端：一款专门为Deepin打造的工具，您贴心好帮手。
+深度影梭客户端：一款专门为Deepin打造的工具，您的贴心好帮手。
+
+**软件原作者: [@PikachuHy](https://bbs.deepin.org/home.php?mod=space&uid=71319)**
+
+> 由于[一些原因](https://bbs.deepin.org/forum.php?mod=viewthread&tid=166674)，[@PikachuHy](https://bbs.deepin.org/home.php?mod=space&uid=71319) 大神删除了自己在deepin论坛上所有的帖子以及github上shadowsocks-client仓库，这是shadowsocks-client 1.2.0版本的备份。
+
+由于原仓库被删，原pac配置(`https://raw.githubusercontent.com/PikachuHy/shadowsocks-client/master/autoproxy.pac`)失效，故将源码中的pac配置修改为我自己的七牛云pac配置(`http://file.lolimay.cn/autoproxy.pac`)，**并将版本号更新为1.2.1以区别之前的1.2.0版本**。
 
 Thanks a lot for 
 
 - [Deepin System Monitor](https://github.com/linuxdeepin/deepin-system-monitor)
 - [Shadowsocks for Windows](https://github.com/shadowsocks/shadowsocks-windows)
 - [libQtShadowsocks](https://github.com/shadowsocks/libQtShadowsocks)
-
-[English](./doc/README.en.md)
 
 开发这个软件用到的原理，技术请参考[影梭客户端原理剖析](doc/影梭客户端原理剖析.md)
 
