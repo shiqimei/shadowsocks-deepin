@@ -13,6 +13,8 @@ Shadowsocks-Client: If you want to keep a secret, you must also hide it from you
 
 由于原仓库被删，原pac配置(`https://raw.githubusercontent.com/PikachuHy/shadowsocks-client/master/autoproxy.pac`)失效，故将源码中的pac配置修改为我自己的七牛云pac配置(`http://file.lolimay.cn/autoproxy.pac`)，**并将版本号更新为1.2.1以区别之前的1.2.0版本**。
 
+<a href="http://file.lolimay.cn/shadowsocks-client_1.2.1_amd64.deb"><img src="http://images.lolimay.cn/18-8-9/78116321.jpg"/></a>
+
 Thanks a lot for 
 
 - [Deepin System Monitor](https://github.com/linuxdeepin/deepin-system-monitor)
