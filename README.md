@@ -11,9 +11,23 @@ Shadowsocks-Client: If you want to keep a secret, you must also hide it from you
 
 > 由于[一些原因](https://bbs.deepin.org/forum.php?mod=viewthread&tid=166674)，[@PikachuHy](https://bbs.deepin.org/home.php?mod=space&uid=71319) 大神删除了自己在deepin论坛上所有的帖子以及github上shadowsocks-client仓库，这是shadowsocks-client 1.2.0版本的备份。
 
-由于原仓库被删，原pac配置(`https://raw.githubusercontent.com/PikachuHy/shadowsocks-client/master/autoproxy.pac`)失效，故将源码中的pac配置修改为我自己的七牛云pac配置(`http://file.lolimay.cn/autoproxy.pac`)，**并将版本号更新为1.2.1以区别之前的1.2.0版本**。
+由于原仓库被删，原pac配置(https://raw.githubusercontent.com/PikachuHy/shadowsocks-client/master/autoproxy.pac)失效从而导致pac模式无法正常使用，故将源码中的pac源修改为个人的七牛云pac配置(http://file.lolimay.cn/autoproxy.pac)，**并将版本号更新为1.2.1以区别之前的1.2.0版本**。
+
+下面是我打包的版本，如果偷懒的话可以直接下载使用：
 
 <a href="http://file.lolimay.cn/shadowsocks-client_1.2.1_amd64.deb"><img src="http://images.lolimay.cn/18-8-9/78116321.jpg"/></a>
+
+如果不能正常使用，可以尝试自己打包，以下给出打包方法:
+
+1. [下载最新的源码](https://github.com/loliMay/shadowsocks-client/archive/v1.2.1.tar.gz)
+2. 解压至当前文件夹得到`shadowsocks-client-1.2.1`文件夹
+3. 右击文件管理器**在终端中打开** 输入以下命令
+````bash
+cd shadowsocks-client-1.2.1
+dh_make -f ../shadowsocks-client-1.2.1.tar.gz -c gpl3 -s
+dpkg-buildpackage -us -uc -b
+````
+
 
 Thanks a lot for 
 
