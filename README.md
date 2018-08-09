@@ -11,7 +11,7 @@ Shadowsocks-Client: If you want to keep a secret, you must also hide it from you
 
 > 由于[一些原因](https://bbs.deepin.org/forum.php?mod=viewthread&tid=166674)，[@PikachuHy](https://bbs.deepin.org/home.php?mod=space&uid=71319) 大神删除了自己在deepin论坛上所有的帖子以及github上shadowsocks-client仓库，这是shadowsocks-client 1.2.0版本的备份。
 
-由于原仓库被删，原pac配置(https://raw.githubusercontent.com/PikachuHy/shadowsocks-client/master/autoproxy.pac) 失效从而导致pac模式无法正常使用，故将源码中的pac源修改为个人的七牛云pac配置(http://file.lolimay.cn/autoproxy.pac) ，**并将版本号更新为1.2.1以区别之前的1.2.0版本**。
+由于原仓库被删，原pac配置(https://raw.githubusercontent.com/PikachuHy/shadowsocks-client/master/autoproxy.pac) 失效从而导致pac模式无法正常使用，故将源码中的pac源修改为个人的七牛云pac配置(http://file.lolimay.cn/autoproxy.pac) ，**并将版本号更新为1.2.1以区别之前的1.2.0版本，1.2.1版本可以正常使用pac模式**。
 
 下面是我打包的版本，想偷懒的话可以直接下载使用：
 
