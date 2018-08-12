@@ -8,10 +8,12 @@
 ![](http://images.lolimay.cn/18-8-12/98452500.jpg)
 
 与 Shadowsocks-Qt5 相比的优势
+
 |软件|系统代理模式|易用性|
 |:-:|:-:|:-:|
 |Shadowsocks-Qt5|仅支持全局模式|需要手动配置系统代理或配置Chrome拓展|
 |Shadowsocks Client|既支持全局模式也支持pac模式|无需任何配置
+
 # 下载使用
 
 <a href="http://file.lolimay.cn/shadowsocks-client_1.2.1_amd64.deb"><img src="http://images.lolimay.cn/18-8-9/78116321.jpg"/></a>
