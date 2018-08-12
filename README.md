@@ -1,29 +1,28 @@
-# Shadowsocks-Client for Deepin
+# Shadowsocks Client for Deepin
 ![](https://img.shields.io/badge/version-1.2.1-blue.svg)
 ![](https://img.shields.io/badge/license-GPLv3-green.svg)
 [Click here to see English version](./doc/README.en.md)
 
-Shadowsocks-Client: If you want to keep a secret, you must also hide it from yourself.
-
-深度影梭客户端：一款专门为Deepin打造的工具，您的贴心好帮手。
+深度影梭客户端：一款专门为Deepin打造的小飞机，您的贴心好帮手。
 
 ![](http://images.lolimay.cn/18-8-12/98452500.jpg)
 
-**软件原作者: [@PikachuHy](https://bbs.deepin.org/home.php?mod=space&uid=71319)**
-
-> 由于[一些原因](https://bbs.deepin.org/forum.php?mod=viewthread&tid=166674)，[@PikachuHy](https://bbs.deepin.org/home.php?mod=space&uid=71319) 大神删除了自己在deepin论坛上所有的帖子以及github上shadowsocks-client仓库，这是shadowsocks-client 1.2.0版本的备份。
-
-由于原仓库被删，原pac配置(https://raw.githubusercontent.com/PikachuHy/shadowsocks-client/master/autoproxy.pac) 失效从而导致pac模式无法正常使用，故将源码中的pac源修改为个人的七牛云pac配置(http://file.lolimay.cn/autoproxy.pac) ，**并将版本号更新为1.2.1以区别之前的1.2.0版本，1.2.1版本可以正常使用pac模式**。
-
-下面是我打包的版本，想偷懒的话可以直接下载使用：
+与 Shadowsocks-Qt5 相比的优势
+|软件|系统代理模式|易用性|
+|:-:|:-:|:-:|
+|Shadowsocks-Qt5|仅支持全局模式|需要手动配置系统代理或配置Chrome拓展|
+|Shadowsocks Client|既支持全局模式也支持pac模式|无需任何配置
+# 下载使用
 
 <a href="http://file.lolimay.cn/shadowsocks-client_1.2.1_amd64.deb"><img src="http://images.lolimay.cn/18-8-9/78116321.jpg"/></a>
 
-如果不能正常使用，可以尝试自己打包，以下给出打包方法:
+软件开箱即用，只要正确填写了你的服务器配置、选择好系统代理模式并启动系统代理后，小飞机即可起飞，**不需要手动配置系统代理，软件会自动修改系统代理配置**，在使用的过程中如遇到任何问题，欢迎提 [**issue**](https://github.com/loliMay/shadowsocks-client/issues/new)，我收到后会及时回复的。
 
-1. [下载最新的源码](https://github.com/loliMay/shadowsocks-client/archive/v1.2.1.tar.gz)
-2. 解压至当前文件夹得到`shadowsocks-client-1.2.1`文件夹
-3. 右击文件管理器**在终端中打开** 输入以下命令
+也可以尝试自己将源码打包成deb包，下面给出打包方法:
+
+1. [下载最新源码](https://github.com/loliMay/shadowsocks-client/archive/master.zip)
+2. 解压得到`shadowsocks-client-1.2.1`文件夹
+3. 在该目录下**打开终端**
 ````bash
 cd shadowsocks-client-1.2.1
 dh_make -f ../shadowsocks-client-1.2.1.tar.gz -c gpl3 -s
@@ -31,57 +30,13 @@ dpkg-buildpackage -us -uc -b
 ````
 如果在`shadowsocks-client-1.2.1.tar.gz`同目录下出现deb包则说明打包成功
 
-Thanks a lot for 
+# 参与开发
 
-- [Deepin System Monitor](https://github.com/linuxdeepin/deepin-system-monitor)
-- [Shadowsocks for Windows](https://github.com/shadowsocks/shadowsocks-windows)
-- [libQtShadowsocks](https://github.com/shadowsocks/libQtShadowsocks)
+开发这个软件用到的原理，请参考 [影梭客户端原理剖析](doc/影梭客户端原理剖析.md)
 
-开发这个软件用到的原理，技术请参考[影梭客户端原理剖析](doc/影梭客户端原理剖析.md)
-
-关于这个软件的开发进展，可以去deepin论坛，看[这个帖子](https://bbs.deepin.org/forum.php?mod=viewthread&tid=142900)
-
-如果遇到任何问题，请及时提Issues，或者去论坛发帖，我会尽快解决。
-
-## 与其他客户端的比较
-
-|                    | [ss-win](https://github.com/shadowsocks/shadowsocks-csharp) | [ssx-ng](https://github.com/shadowsocks/ShadowsocksX-NG) | [ss-qt5](https://github.com/shadowsocks/shadowsocks-qt5) | [ss-android](https://github.com/shadowsocks/shadowsocks-android) | ss-client |
-| ------------------ | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | --------- |
-| System Proxy       | ✓                                        | ✓                                        | ✗                                        | ✓                                        | ✓         |
-| CHNRoutes          | ✓                                        | ✓                                        | ✗                                        | ✓                                        | ✗         |
-| PAC Configuration  | ✓                                        | ✓                                        | ✗                                        | ✗                                        | ✓         |
-| Profile Switching  | ✓                                        | ✓                                        | ✓                                        | ✓                                        | ✓         |
-| QR Code Scan       | ✓                                        | ✓                                        | ✓                                        | ✓                                        | ✓         |
-| QR Code Generation | ✓                                        | ✓                                        | ✓                                        | ✓                                        | ✓         |
-
-
-
-## 使用
-建议直接下载我打包好的deb包 [最新发布](https://github.com/PikachuHy/shadowsocks-client/releases)
-
-日志文字存储在`~/.cache/pikachu/shadowsocks-client/`
-
-###  PAC配置
-
-默认使用pac配置文件，`https://raw.githubusercontent.com/PikachuHy/shadowsocks-client/master/autoproxy.pac`
-
-如果需要自己配置pac文件，可以使用genpac
-
-使用命令
-
-```shell
-genpac --format pac --pac-proxy "SOCKS5 127.0.0.1:1080" > autoproxy.pac
-```
-
-即可以生成需要的pac文件
-
-## Develop
-
-[CLion 2017.3](https://www.jetbrains.com/clion/) & [Qt 5.6](https://www.qt.io/) are required.
-
-```shell
-sudo apt update 
-sudo apt install qt5-default qttools5-dev-tools -y
+````
+sudo apt update
+sudo apt install qt5-default qttools5-dev-tools qt5-qmake g++ qtcreator -y
 sudo apt install libdtkbase-dev libdtkwidget-dev -y
 sudo apt install libdframeworkdbus-dev -y
 sudo apt install libqrencode-dev libzbar-dev -y
@@ -92,17 +47,28 @@ mkdir build && cd build
 cmake ..
 make -j4
 ./shadowsocks-client
-```
+````
+# 更新日志
+> 1.2.1版本 修复由于原pac文件地址失效导致的pac模式无法使用的BUG，最新pac文件地址为 http://file.lolimay.cn/autoproxy.pac
+>
+> 1.2.0版本 主要功能基本实现，支持全局模式和pac模式，支持切换服务器，支持二维码导入导出配置等高级功能。
 
-特别注意，需要Botan2.3以上版本，libQtShadowsocks 2.0.2以上版本
+# 关于
+1.2.0版本之前由 **[@PikachuHy](https://github.com/PikachuHy)** 开发，1.2.1版本之后由 **[@lolimay](https://github.com/lolimay)** 维护。
 
-### License
+# 开源许可
 
-Shadowsocks Client is licensed under [GPLv3](LICENSE).
+Shadowsocks Client 使用 [GPLv3](LICENSE) 许可协议.
 
-### Open Source Components / Libraries
+非常感谢以下开源项目 
 
-| NAME                   | LICENSE        | URL                                      |
+- [Deepin System Monitor](https://github.com/linuxdeepin/deepin-system-monitor)
+- [Shadowsocks for Windows](https://github.com/shadowsocks/shadowsocks-windows)
+- [libQtShadowsocks](https://github.com/shadowsocks/libQtShadowsocks)
+
+## 依赖的开源组件
+
+| 名称                   | 许可        | 链接                                      |
 | ---------------------- | -------------- | ---------------------------------------- |
 | Deepin Tool Kit Core   | GPLv3          | https://github.com/linuxdeepin/dtkcore   |
 | Deepin Tool Kit Widget | GPLv3          | https://github.com/linuxdeepin/dtkwidget |
