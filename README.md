@@ -7,6 +7,8 @@ Shadowsocks-Client: If you want to keep a secret, you must also hide it from you
 
 深度影梭客户端：一款专门为Deepin打造的工具，您的贴心好帮手。
 
+![](http://images.lolimay.cn/18-8-12/98452500.jpg)
+
 **软件原作者: [@PikachuHy](https://bbs.deepin.org/home.php?mod=space&uid=71319)**
 
 > 由于[一些原因](https://bbs.deepin.org/forum.php?mod=viewthread&tid=166674)，[@PikachuHy](https://bbs.deepin.org/home.php?mod=space&uid=71319) 大神删除了自己在deepin论坛上所有的帖子以及github上shadowsocks-client仓库，这是shadowsocks-client 1.2.0版本的备份。

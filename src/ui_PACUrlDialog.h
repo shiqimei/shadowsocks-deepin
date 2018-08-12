@@ -6,8 +6,8 @@
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PACURLDIALOG_H
-#define PACURLDIALOG_H
+#ifndef UI_PACURLDIALOG_H
+#define UI_PACURLDIALOG_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -76,4 +76,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // PACURLDIALOG_H
+#endif // UI_PACURLDIALOG_H
