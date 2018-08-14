@@ -8,3 +8,4 @@ flatpak/
 !flatpak/cn.net.pikachu.shadowsocks-client.json
 !flatpak/Makefile
 !flatpak/zbar-0.10.tar.gz
+.vscode/
