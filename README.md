@@ -1,4 +1,4 @@
-# Shadowsocks Client for Deepin
+# Shadowsocks-Deepin
 ![](https://img.shields.io/badge/version-1.2.1-blue.svg)
 ![](https://img.shields.io/badge/license-GPLv3-green.svg)
 [Click here to see English version](./doc/README.en.md)
@@ -12,7 +12,7 @@
 |软件|系统代理模式|易用性|
 |:-:|:-:|:-:|
 |Shadowsocks-Qt5|仅支持全局模式|需要手动配置系统代理或配置Chrome拓展|
-|Shadowsocks Client|既支持全局模式也支持pac模式|无需任何配置
+|Shadowsocks-Deepin|既支持全局模式也支持pac模式|无需任何配置
 
 # 下载使用
 
@@ -60,7 +60,7 @@ make -j4
 
 # 开源许可
 
-Shadowsocks Client 使用 [GPLv3](LICENSE) 许可协议.
+Shadowsocks-Deepin 使用 [GPLv3](LICENSE) 许可协议.
 
 非常感谢以下开源项目 
 
