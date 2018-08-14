@@ -20,7 +20,7 @@
 
 软件开箱即用，只要正确填写了你的服务器配置、选择好系统代理模式并启动系统代理后，小飞机即可起飞，**不需要手动配置系统代理，软件会自动修改系统代理配置**，在使用的过程中如遇到任何问题，欢迎提 [**issue**](https://github.com/loliMay/shadowsocks-client/issues/new)，我收到后会及时回复的。
 
-也可以尝试自己将源码打包成deb包，下面给出打包方法:
+也可以尝试自己将源码打包，下面给出打包方法:
 ````bash
 sudo apt update #更新源
 sudo apt install git dh-make #安装 git 和 dh-make
