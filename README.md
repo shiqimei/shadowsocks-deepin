@@ -1,7 +1,7 @@
 # Shadowsocks-Deepin
 ![](https://img.shields.io/badge/version-1.2.1-blue.svg)
 ![](https://img.shields.io/badge/license-GPLv3-green.svg)
-[Click here to see English version](./doc/README.en.md)
+[Click here to see English version](./docs/README.en.md)
 
 深度影梭客户端：一款专门为Deepin打造的小飞机，您的贴心好帮手。
 
@@ -40,7 +40,7 @@ sudo rm -rf ~/shadowsocks
 
 # 参与开发
 
-开发这个软件用到的原理，请参考 [影梭客户端原理剖析](doc/影梭客户端原理剖析.md)
+开发这个软件用到的原理，请参考 [影梭客户端原理剖析](docs/影梭客户端原理剖析.md)
 
 ````
 sudo apt update
