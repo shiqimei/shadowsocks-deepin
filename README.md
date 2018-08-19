@@ -54,6 +54,7 @@ cd shadowsocks-client
 mkdir build && cd build
 cmake ..
 make -j4
+cd src
 ./shadowsocks-client
 ````
 # 更新日志

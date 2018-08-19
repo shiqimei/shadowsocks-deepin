@@ -6,7 +6,7 @@
     <message>
         <location filename="../ConfigDialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">服务器配置</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ConfigDialog.ui" line="42"/>
@@ -16,7 +16,7 @@
     <message>
         <location filename="../ConfigDialog.ui" line="53"/>
         <source>Server Addr</source>
-        <translation type="unfinished">服务器地址</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ConfigDialog.ui" line="63"/>
