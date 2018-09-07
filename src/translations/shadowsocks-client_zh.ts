@@ -6,42 +6,42 @@
     <message>
         <location filename="../ConfigDialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>编辑服务器</translation>
     </message>
     <message>
         <location filename="../ConfigDialog.ui" line="42"/>
         <source>Server</source>
-        <translation type="unfinished">服务器</translation>
+        <translation>服务器</translation>
     </message>
     <message>
         <location filename="../ConfigDialog.ui" line="53"/>
         <source>Server Addr</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器地址</translation>
     </message>
     <message>
         <location filename="../ConfigDialog.ui" line="63"/>
         <source>Server Port</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器端口</translation>
     </message>
     <message>
         <location filename="../ConfigDialog.ui" line="70"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>密码</translation>
     </message>
     <message>
         <location filename="../ConfigDialog.ui" line="77"/>
         <source>Encryption</source>
-        <translation type="unfinished"></translation>
+        <translation>加密</translation>
     </message>
     <message>
         <location filename="../ConfigDialog.ui" line="84"/>
         <source>Remarks</source>
-        <translation type="unfinished"></translation>
+        <translation>备注</translation>
     </message>
     <message>
         <location filename="../ConfigDialog.ui" line="91"/>
         <source>Timeout(Sec)</source>
-        <translation type="unfinished"></translation>
+        <translation>超时(秒)</translation>
     </message>
     <message>
         <location filename="../ConfigDialog.ui" line="131"/>
@@ -117,42 +117,42 @@
     <message>
         <location filename="../HotkeySettingsDialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>编辑快捷键</translation>
     </message>
     <message>
         <location filename="../HotkeySettingsDialog.ui" line="20"/>
         <source>Reg All</source>
-        <translation type="unfinished"></translation>
+        <translation>注册全部快捷键</translation>
     </message>
     <message>
         <location filename="../HotkeySettingsDialog.ui" line="39"/>
         <source>Switch system proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>切换系统代理状态</translation>
     </message>
     <message>
         <location filename="../HotkeySettingsDialog.ui" line="49"/>
         <source>Switch system proxy mode</source>
-        <translation type="unfinished"></translation>
+        <translation>切换系统代理模式</translation>
     </message>
     <message>
         <location filename="../HotkeySettingsDialog.ui" line="56"/>
         <source>Switch share over LAN</source>
-        <translation type="unfinished"></translation>
+        <translation>切换局域网共享</translation>
     </message>
     <message>
         <location filename="../HotkeySettingsDialog.ui" line="69"/>
         <source>Show Logs</source>
-        <translation type="unfinished"></translation>
+        <translation>显示日志</translation>
     </message>
     <message>
         <location filename="../HotkeySettingsDialog.ui" line="85"/>
         <source>Switch to prev server</source>
-        <translation type="unfinished"></translation>
+        <translation>切换上个服务器</translation>
     </message>
     <message>
         <location filename="../HotkeySettingsDialog.ui" line="92"/>
         <source>Switch to next server</source>
-        <translation type="unfinished"></translation>
+        <translation>切换下个服务器</translation>
     </message>
 </context>
 <context>
@@ -160,19 +160,19 @@
     <message>
         <location filename="../LogMainWindow.ui" line="14"/>
         <source>MainWindow</source>
-        <translation type="unfinished"></translation>
+        <translation>日志查看器</translation>
     </message>
     <message>
         <location filename="../LogMainWindow.ui" line="27"/>
         <location filename="../LogMainWindow.ui" line="123"/>
         <source>&amp;Clean Logs</source>
-        <translation type="unfinished"></translation>
+        <translation>清除日志(&amp;C)</translation>
     </message>
     <message>
         <location filename="../LogMainWindow.ui" line="40"/>
         <location filename="../LogMainWindow.ui" line="128"/>
         <source>Change &amp;Font</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">修改字体(&amp;F)</translation>
     </message>
     <message>
         <location filename="../LogMainWindow.ui" line="53"/>
@@ -189,12 +189,12 @@
     <message>
         <location filename="../LogMainWindow.ui" line="91"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>文件(&amp;F)</translation>
     </message>
     <message>
         <location filename="../LogMainWindow.ui" line="98"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>视图(&amp;V)</translation>
     </message>
     <message>
         <location filename="../LogMainWindow.ui" line="113"/>
@@ -204,12 +204,12 @@
     <message>
         <location filename="../LogMainWindow.ui" line="118"/>
         <source>E&amp;xit</source>
-        <translation type="unfinished"></translation>
+        <translation>退出(&amp;X)</translation>
     </message>
     <message>
         <location filename="../LogMainWindow.ui" line="143"/>
         <source>&amp;Show Toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>显示工具栏(&amp;S)</translation>
     </message>
 </context>
 <context>
@@ -278,12 +278,12 @@
     <message>
         <location filename="../MainWindow.ui" line="139"/>
         <source>Forward Proxy...</source>
-        <translation type="unfinished"></translation>
+        <translation>正向代理...</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="147"/>
         <source>Allow Clients from LAN</source>
-        <translation type="unfinished"></translation>
+        <translation>允许其他设备连入</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="158"/>
