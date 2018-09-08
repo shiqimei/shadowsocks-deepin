@@ -284,8 +284,8 @@ void GuiConfig::addConfig(QString uri)
     o.insert("server_port",server_port);
     auto l3_ = ll.at(1);
     auto l3 = l3_.split('@');
-    QString server = l3.first();
-    QString password = l3.last();
+    QString password = l3.first();
+    QString server = l3.last();
     o.insert("server",server);
     o.insert("password",password);
     if(name.isEmpty()){
