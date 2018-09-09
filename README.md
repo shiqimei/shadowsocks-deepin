@@ -32,10 +32,7 @@ cd shadowsocks-deepin-1.2.1 #进入项目根目录
 dpkg-buildpackage -us -uc -b #打成.deb包
 ````
 
-右键在文件管理器中打开，若在`shadowsocks`目录下出现`.deb`包则说明打包成功，打包安装后清理多余的文件
-````
-sudo rm -rf ~/shadowsocks
-````
+右键在文件管理器中打开，若在`shadowsocks`目录下出现`.deb`包则说明打包成功。
 
 # 参与开发
 
