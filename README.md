@@ -23,7 +23,7 @@
 也可以尝试自己将源码打包，下面给出打包方法:
 ````bash
 sudo apt update #更新源
-sudo apt install git dh-make cmake fakeroot #安装相关依赖
+sudo apt install git dh-make cmake fakeroot -y #安装相关依赖
 mkdir shadowsocks && cd shadowsocks #新建shadowsocks文件夹并打开该文件夹
 git clone git@github.com:loliMay/shadowsocks-deepin.git #克隆shadowsocks-deepin仓库
 mv shadowsocks-deepin shadowsocks-deepin-1.2.1 #重命名
