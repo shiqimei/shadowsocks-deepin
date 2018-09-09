@@ -30,10 +30,9 @@ mv shadowsocks-deepin shadowsocks-deepin-1.2.1 #重命名
 tar -zcvf shadowsocks-deepin-1.2.1.tar.gz shadowsocks-deepin-1.2.1 #打成.tar.gz包
 cd shadowsocks-deepin-1.2.1 #进入项目根目录
 dpkg-buildpackage -us -uc -b #打成.deb包
-dde-file-manager ~/shadowsocks #在文件管理器打开
 ````
 
-若在`shadowsocks`目录下出现`.deb`包则说明打包成功，打包安装后清理多余的文件
+右键在文件管理器中打开，若在`shadowsocks`目录下出现`.deb`包则说明打包成功，打包安装后清理多余的文件
 ````
 sudo rm -rf ~/shadowsocks
 ````
