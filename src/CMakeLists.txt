@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.7)
-project(shadowsocks-client)
+project(shadowsocks-deepin)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
@@ -40,13 +40,13 @@ set(CMAKE_INSTALL_PREFIX /usr)
 # Install qm files
 file(GLOB QM_FILES "translations/*.qm")
 install(FILES ${QM_FILES}
-        DESTINATION share/shadowsocks-client/translations)
+        DESTINATION share/shadowsocks-deepin/translations)
 
 # Install icons
 foreach (ICON_SIZE 16 24 32 48 64 96 128 256)
     install(FILES Resources/ssw${ICON_SIZE}.svg
-            RENAME shadowsocks-client.svg
+            RENAME shadowsocks-deepin.svg
             DESTINATION share/icons/hicolor/${ICON_SIZE}x${ICON_SIZE}/apps)
 endforeach ()
-install(TARGETS shadowsocks-client DESTINATION bin)
-install(FILES ../shadowsocks-client.desktop DESTINATION share/applications)
+install(TARGETS shadowsocks-deepin DESTINATION bin)
+install(FILES ../shadowsocks-deepin.desktop DESTINATION share/applications)

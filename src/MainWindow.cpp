@@ -414,7 +414,7 @@ void MainWindow::on_actionGlobal_triggered(bool checked) {
 
 void MainWindow::on_actionStart_on_Boot_triggered(bool checked) {
     // 如果使用flatpak，这里可能有问题
-    QString url = "/usr/share/applications/shadowsocks-client.desktop";
+    QString url = "/usr/share/applications/shadowsocks-deepin.desktop";
     if (!checked) {
         QDBusPendingReply<bool> reply = startManagerInter.RemoveAutostart(url);
         reply.waitForFinished();
@@ -510,8 +510,7 @@ void MainWindow::on_actionScan_QRCode_from_Screen_triggered()
         QMessageBox::critical(
                     nullptr,
                     tr("QR Code Not Found"),
-                    tr("Can't find any QR code image that contains "
-                       "valid URI on your screen(s)."));
+                    tr("Can't find any QR code image that contains valid URI on your screen(s)."));
     } else {
         qDebug()<<"scan uri"<<uri;
         Utils::info(tr("found URI %1").arg(uri));

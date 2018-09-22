@@ -3,7 +3,7 @@
 
 /*
 * This file was automatically generated running
-* 'configure.py --prefix=/home/pikachu/src/shadowsocks-client/src/3rd_part'
+* 'configure.py --prefix=/home/pikachu/src/shadowsocks-deepin/src/3rd_part'
 *
 * Target
 *  - Compiler: g++ -fstack-protector -m64 -pthread -std=c++11 -D_REENTRANT -O3 -momit-leaf-frame-pointer
@@ -26,7 +26,7 @@
 #define BOTAN_MP_WORD_BITS 64
 
 
-#define BOTAN_INSTALL_PREFIX R"(/home/pikachu/src/shadowsocks-client/src/3rd_part)"
+#define BOTAN_INSTALL_PREFIX R"(/home/pikachu/src/shadowsocks-deepin/src/3rd_part)"
 #define BOTAN_INSTALL_HEADER_DIR "include/botan-2"
 #define BOTAN_INSTALL_LIB_DIR "lib"
 #define BOTAN_LIB_LINK "-ldl -lrt"

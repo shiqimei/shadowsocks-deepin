@@ -56,9 +56,9 @@ man(1), man(7), http://www.tldp.org/HOWTO/Man-Page/
   <!ENTITY dhsection   "SECTION">
   <!-- TITLE should be something like "User commands" or similar (see
        http://www.tldp.org/HOWTO/Man-Page/q2.html). -->
-  <!ENTITY dhtitle     "shadowsocks-client User Manual">
-  <!ENTITY dhucpackage "Shadowsocks-client">
-  <!ENTITY dhpackage   "shadowsocks-client">
+  <!ENTITY dhtitle     "shadowsocks-deepin User Manual">
+  <!ENTITY dhucpackage "shadowsocks-deepin">
+  <!ENTITY dhpackage   "shadowsocks-deepin">
 ]>
 
 <refentry>

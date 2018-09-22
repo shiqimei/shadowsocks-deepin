@@ -4,7 +4,7 @@
 .\" First parameter, NAME, should be all caps
 .\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
 .\" other parameters are allowed: see man(7), man(1)
-.TH Shadowsocks-client SECTION "August  9 2018"
+.TH shadowsocks-deepin SECTION "August  9 2018"
 .\" Please adjust this date whenever revising the manpage.
 .\"
 .\" Some roff macros, for reference:
@@ -18,16 +18,16 @@
 .\" .sp <n>    insert n+1 empty lines
 .\" for manpage-specific macros, see man(7)
 .SH NAME
-shadowsocks-client \- program to do something
+shadowsocks-deepin \- program to do something
 .SH SYNOPSIS
-.B shadowsocks-client
+.B shadowsocks-deepin
 .RI [ options ] " files" ...
 .br
 .B bar
 .RI [ options ] " files" ...
 .SH DESCRIPTION
 This manual page documents briefly the
-.B shadowsocks-client
+.B shadowsocks-deepin
 and
 .B bar
 commands.
@@ -35,7 +35,7 @@ commands.
 .\" TeX users may be more comfortable with the \fB<whatever>\fP and
 .\" \fI<whatever>\fP escape sequences to invode bold face and italics,
 .\" respectively.
-\fBshadowsocks-client\fP is a program that...
+\fBshadowsocks-deepin\fP is a program that...
 .SH OPTIONS
 These programs follow the usual GNU command line syntax, with long
 options starting with two dashes (`-').

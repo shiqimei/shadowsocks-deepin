@@ -26,8 +26,8 @@ manpage.1: manpage.sgml
   <!ENTITY dhsection   "<manvolnum>SECTION</manvolnum>">
   <!ENTITY dhemail     "<email>lolimay@unknown</email>">
   <!ENTITY dhusername  "unknown">
-  <!ENTITY dhucpackage "<refentrytitle>Shadowsocks-client</refentrytitle>">
-  <!ENTITY dhpackage   "shadowsocks-client">
+  <!ENTITY dhucpackage "<refentrytitle>shadowsocks-deepin</refentrytitle>">
+  <!ENTITY dhpackage   "shadowsocks-deepin">
 
   <!ENTITY debian      "<productname>Debian</productname>">
   <!ENTITY gnu         "<acronym>GNU</acronym>">

@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
     DApplication::loadDXcbPlugin();
     DApplication app(argc, argv);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps);
-    const QString socket_path(QString("shadowsocks-client_%1").arg(getuid()));
+    const QString socket_path(QString("shadowsocks-deepin_%1").arg(getuid()));
     if (app.setSingleInstance(socket_path)) {
         signal(SIGINT, onSignalRecv);
         signal(SIGTERM, onSignalRecv);
@@ -30,10 +30,10 @@ int main(int argc, char *argv[]) {
         const QString descriptionText = QApplication::tr(
                     "If you want to keep a secret, you must also hide it from yourself.");
 
-        const QString acknowledgementLink = "https://github.com/PikachuHy/shadowsocks-client";
+        const QString acknowledgementLink = "https://github.com/PikachuHy/shadowsocks-deepin";
 
         app.setOrganizationName("pikachu");
-        app.setApplicationName("shadowsocks-client");
+        app.setApplicationName("shadowsocks-deepin");
         app.setApplicationDisplayName(QObject::tr("Shadowsocks Client"));
         app.setApplicationVersion("1.1.0");
 

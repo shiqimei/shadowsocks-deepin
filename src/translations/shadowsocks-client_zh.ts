@@ -172,19 +172,19 @@
         <location filename="../LogMainWindow.ui" line="40"/>
         <location filename="../LogMainWindow.ui" line="128"/>
         <source>Change &amp;Font</source>
-        <translation type="unfinished">修改字体(&amp;F)</translation>
+        <translation>修改字体(&amp;F)</translation>
     </message>
     <message>
         <location filename="../LogMainWindow.ui" line="53"/>
         <location filename="../LogMainWindow.ui" line="133"/>
         <source>&amp;Wrap Text</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;文本换行</translation>
     </message>
     <message>
         <location filename="../LogMainWindow.ui" line="66"/>
         <location filename="../LogMainWindow.ui" line="138"/>
         <source>&amp;Top Most</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;置顶</translation>
     </message>
     <message>
         <location filename="../LogMainWindow.ui" line="91"/>
@@ -199,7 +199,7 @@
     <message>
         <location filename="../LogMainWindow.ui" line="113"/>
         <source>&amp;Open Location</source>
-        <translation type="unfinished"></translation>
+        <translation>打开位置</translation>
     </message>
     <message>
         <location filename="../LogMainWindow.ui" line="118"/>
@@ -217,12 +217,12 @@
     <message>
         <location filename="../MainWindow.ui" line="14"/>
         <source>MainWindow</source>
-        <translation type="unfinished"></translation>
+        <translation>主窗口</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="18"/>
         <source>Tray</source>
-        <translation type="unfinished"></translation>
+        <translation>托盘</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="22"/>
@@ -268,12 +268,12 @@
     <message>
         <location filename="../MainWindow.ui" line="123"/>
         <source>Statistics Config...</source>
-        <translation type="unfinished"></translation>
+        <translation>统计配置</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="134"/>
         <source>Start on Boot</source>
-        <translation>开机启动</translation>
+        <translation>开机自启</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="139"/>
@@ -309,7 +309,7 @@
         <location filename="../MainWindow.ui" line="181"/>
         <source>
 Edit User Rule for GFWList...</source>
-        <translation>编辑 GFWList 的用户规则...</translation>
+        <translation>编辑 GFWList 的用户规则</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="190"/>
@@ -324,17 +324,17 @@ Edit User Rule for GFWList...</source>
     <message>
         <location filename="../MainWindow.ui" line="200"/>
         <source>Share Server Config...</source>
-        <translation>分享服务器配置...</translation>
+        <translation>分享二维码</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="208"/>
         <source>Scan QRCode from Screen...</source>
-        <translation>扫描屏幕上的二维码...</translation>
+        <translation>扫描二维码</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="216"/>
         <source>Import URL from Clipboard...</source>
-        <translation>从剪贴板导入URL...</translation>
+        <translation>从剪贴板导入</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="224"/>
@@ -404,12 +404,12 @@ Edit User Rule for GFWList...</source>
     <message>
         <location filename="../MainWindow.ui" line="304"/>
         <source>Import from gui-config.json</source>
-        <translation>从gui-config.json导入</translation>
+        <translation>导入配置文件</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="309"/>
         <source>Export as gui-config.json</source>
-        <translation>导出为gui-config.json</translation>
+        <translation>导出配置文件</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="314"/>
@@ -421,18 +421,33 @@ Edit User Rule for GFWList...</source>
         <source>Disconnect</source>
         <translation>断开连接</translation>
     </message>
+    <message>
+    <location filename="../MainWindow.ui" line="358"/>
+    <source>choose gui-config.json file</source>
+    <translation>请选择一个配置文件</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="512"/>
+        <source>QR Code Not Found</source>
+        <translation>未发现二维码</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="513"/>
+        <source>Can't find any QR code image that contains valid URI on your screen(s).</source>
+        <translation>在你的屏幕上找不到任何有效的二维码</translation>
+    </message>
 </context>
 <context>
     <name>PACUrlDialog</name>
     <message>
         <location filename="../PACUrlDialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../PACUrlDialog.ui" line="20"/>
         <source>Please input PAC Url</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入pac文件url地址</translation>
     </message>
 </context>
 <context>
@@ -440,42 +455,42 @@ Edit User Rule for GFWList...</source>
     <message>
         <location filename="../ProxyDialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../ProxyDialog.ui" line="42"/>
         <source>Use Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>使用代理</translation>
     </message>
     <message>
         <location filename="../ProxyDialog.ui" line="58"/>
         <source>Proxy Type</source>
-        <translation type="unfinished"></translation>
+        <translation>代理类型</translation>
     </message>
     <message>
         <location filename="../ProxyDialog.ui" line="66"/>
         <source>HTTP</source>
-        <translation type="unfinished"></translation>
+        <translation>HTTP</translation>
     </message>
     <message>
         <location filename="../ProxyDialog.ui" line="71"/>
         <source>SOCKS5</source>
-        <translation type="unfinished"></translation>
+        <translation>SOCKS5</translation>
     </message>
     <message>
         <location filename="../ProxyDialog.ui" line="79"/>
         <source>Timeout(Sec)</source>
-        <translation type="unfinished"></translation>
+        <translation>超时(秒)</translation>
     </message>
     <message>
         <location filename="../ProxyDialog.ui" line="89"/>
         <source>Proxy Addr</source>
-        <translation type="unfinished"></translation>
+        <translation>代理地址</translation>
     </message>
     <message>
         <location filename="../ProxyDialog.ui" line="99"/>
         <source>Proxy Port</source>
-        <translation type="unfinished">代理端口</translation>
+        <translation>代理端口</translation>
     </message>
 </context>
 <context>
@@ -531,12 +546,12 @@ Edit User Rule for GFWList...</source>
     <message>
         <location filename="../main.cpp" line="27"/>
         <source>If you want to keep a secret, you must also hide it from yourself.</source>
-        <translation type="unfinished"></translation>
+        <translation>小飞机可以带你装逼带你飞哦~</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="38"/>
         <source>Shadowsocks Client</source>
-        <translation>深度影梭客户端</translation>
+        <translation>影梭</translation>
     </message>
 </context>
 <context>
@@ -544,7 +559,7 @@ Edit User Rule for GFWList...</source>
     <message>
         <location filename="../main.cpp" line="34"/>
         <source>Shadowsocks Client</source>
-        <translation>深度影梭客户端</translation>
+        <translation>影梭</translation>
     </message>
 </context>
 <context>
@@ -552,7 +567,15 @@ Edit User Rule for GFWList...</source>
     <message>
         <location filename="../Toolbar.cpp" line="44"/>
         <source>Search</source>
-        <translation type="unfinished">搜索</translation>
+        <translation>搜索</translation>
+    </message>
+</context>
+<context>
+    <name>ShareDialog</name>
+    <message>
+        <location filename="../ShareDialog.cpp" line="38"/>
+        <source>Profile list</source>
+        <translation>配置列表</translation>
     </message>
 </context>
 </TS>

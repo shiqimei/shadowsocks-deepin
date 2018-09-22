@@ -1,5 +1,5 @@
-shadowsocks-client (1.2.1) unstable; urgency=medium
+shadowsocks-deepin (1.2.2) unstable; urgency=medium
 
   * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
 
- -- unknown <lolimay@unknown>  Thu, 09 Aug 2018 01:40:03 +0800
+ -- lolimay <lolimay@lolimay.cn>  Thu, 09 Aug 2018 01:40:03 +0800

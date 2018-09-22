@@ -1,6 +1,6 @@
-# Defaults for shadowsocks-client initscript
-# sourced by /etc/init.d/shadowsocks-client
-# installed at /etc/default/shadowsocks-client by the maintainer scripts
+# Defaults for shadowsocks-deepin initscript
+# sourced by /etc/init.d/shadowsocks-deepin
+# installed at /etc/default/shadowsocks-deepin by the maintainer scripts
 
 #
 # This is a POSIX shell fragment

@@ -1,14 +1,14 @@
-Source: shadowsocks-client
+Source: shadowsocks-deepin
 Section: network
 Priority: optional
 Maintainer: unknown <lolimay@unknown>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.8
 Homepage: <insert the upstream URL, if relevant>
-#Vcs-Git: https://anonscm.debian.org/collab-maint/shadowsocks-client.git
-#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/shadowsocks-client.git
+#Vcs-Git: https://anonscm.debian.org/collab-maint/shadowsocks-deepin.git
+#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/shadowsocks-deepin.git
 
-Package: shadowsocks-client
+Package: shadowsocks-deepin
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: 深度影梭客户端（Shadowsocks for deepin）

@@ -1,13 +1,13 @@
-Package: shadowsocks-client-dbgsym
-Source: shadowsocks-client
-Version: 1.2.1
+Package: shadowsocks-deepin-dbgsym
+Source: shadowsocks-deepin
+Version: 1.2.2
 Auto-Built-Package: debug-symbols
 Architecture: amd64
-Maintainer: unknown <lolimay@unknown>
+Maintainer: lolimay <lolimay@lolimay.cn>
 Installed-Size: 549
-Depends: shadowsocks-client (= 1.2.1)
+Depends: shadowsocks-deepin (= 1.2.2)
 Section: debug
 Priority: extra
 Homepage: <insert the upstream URL, if relevant>
-Description: Debug symbols for shadowsocks-client
+Description: Debug symbols for shadowsocks-deepin
 Build-Ids: 74503fec7ef7587e9f54d80c7d01a18cbb4f2542

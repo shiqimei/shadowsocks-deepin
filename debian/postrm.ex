@@ -1,5 +1,5 @@
 #!/bin/sh
-# postrm script for shadowsocks-client
+# postrm script for shadowsocks-deepin
 #
 # see: dh_installdeb(1)
 

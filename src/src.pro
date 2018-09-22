@@ -8,7 +8,7 @@ QT       += core gui network dbus x11extras
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = shadowsocks-client
+TARGET = shadowsocks-deepin
 TEMPLATE = app
 CONFIG += link_pkgconfig
 CONFIG += c++11
@@ -90,8 +90,8 @@ FORMS += \
     ProxyDialog.ui
 RESOURCES += \
     qrc.qrc
-TRANSLATIONS += translations/shadowsocks-client_zh.ts \
-               translations/shadowsocks-client_en.ts
+TRANSLATIONS += translations/shadowsocks-deepin_zh.ts \
+               translations/shadowsocks-deepin_en.ts
 
 DISTFILES += \
     translate_generation.sh \

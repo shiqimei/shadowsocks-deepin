@@ -1,5 +1,5 @@
 #!/bin/sh
-# preinst script for shadowsocks-client
+# preinst script for shadowsocks-deepin
 #
 # see: dh_installdeb(1)
 

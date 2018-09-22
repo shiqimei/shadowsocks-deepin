@@ -1,5 +1,5 @@
-Package: shadowsocks-client
-Version: 1.2.1
+Package: shadowsocks-deepin
+Version: 1.2.2
 Architecture: amd64
 Maintainer: unknown <lolimay@unknown>
 Installed-Size: 1870
@@ -7,4 +7,4 @@ Depends: libc6 (>= 2.17), libdframeworkdbus2, libdtkcore2 (>= 2.0.7.1), libdtkwi
 Section: network
 Priority: optional
 Homepage: <insert the upstream URL, if relevant>
-Description: 深度影梭客户端（Shadowsocks for deepin）
+Description: 深度影梭客户端（Shadowsocks-Deepin) 1.2.2 修复一些已知的BUG、汉化大部分界面
