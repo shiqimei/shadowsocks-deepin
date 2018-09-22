@@ -1,5 +1,5 @@
 # Shadowsocks-Deepin
-![](https://img.shields.io/badge/version-1.2.1-blue.svg)
+![](https://img.shields.io/badge/version-1.2.2-blue.svg)
 ![](https://img.shields.io/badge/license-GPLv3-green.svg)
 [Click here to see English version](./docs/README.en.md)
 
@@ -16,7 +16,7 @@
 
 # 下载使用
 
-<a href="http://file.lolimay.cn/shadowsocks-client_1.2.1_amd64.deb"><img src="http://images.lolimay.cn/18-8-9/78116321.jpg"/></a>
+<a href="http://file.lolimay.cn/shadowsocks-client_1.2.2_amd64.deb"><img src="http://images.lolimay.cn/18-8-9/78116321.jpg"/></a>
 
 软件开箱即用，只要正确填写了你的服务器配置、选择好系统代理模式并启动系统代理后，小飞机即可起飞，**不需要手动配置系统代理，软件会自动修改系统代理配置**，在使用的过程中如遇到任何问题，欢迎提 [**issue**](https://github.com/loliMay/shadowsocks-client/issues/new)，我收到后会及时回复的。
 
@@ -26,9 +26,9 @@ sudo apt update #更新源
 sudo apt install git dh-make cmake fakeroot -y #安装相关依赖
 mkdir shadowsocks && cd shadowsocks #新建shadowsocks文件夹并打开该文件夹
 git clone git@github.com:loliMay/shadowsocks-deepin.git #克隆shadowsocks-deepin仓库
-mv shadowsocks-deepin shadowsocks-deepin-1.2.1 #重命名
-tar -zcvf shadowsocks-deepin-1.2.1.tar.gz shadowsocks-deepin-1.2.1 #打成.tar.gz包
-cd shadowsocks-deepin-1.2.1 #进入项目根目录
+mv shadowsocks-deepin shadowsocks-deepin-1.2.2 #重命名
+tar -zcvf shadowsocks-deepin-1.2.2.tar.gz shadowsocks-deepin-1.2.2 #打成.tar.gz包
+cd shadowsocks-deepin-1.2.2 #进入项目根目录
 dpkg-buildpackage -us -uc -b #打成.deb包
 ````
 
@@ -54,6 +54,8 @@ cd src
 ./shadowsocks-client
 ````
 # 更新日志
+> 1.2.2版本 修复 [#9](https://github.com/lolimay/shadowsocks-deepin/issues/9)，汉化软件主要界面，将流量上下标改成 [shadowsocks-windows](https://github.com/shadowsocks/shadowsocks-windows) 风格
+>
 > 1.2.1版本 修复由于原pac文件地址失效导致的pac模式无法使用的BUG，最新pac文件地址为 http://file.lolimay.cn/autoproxy.pac
 >
 > 1.2.0版本 主要功能基本实现，支持全局模式和pac模式，支持切换服务器，支持二维码导入导出配置等高级功能。
