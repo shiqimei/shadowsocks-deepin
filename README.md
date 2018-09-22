@@ -1,4 +1,4 @@
-# Shadowsocks-Deepin
+# Shadowsocks for Deepin
 ![](https://img.shields.io/badge/version-1.2.2-blue.svg)
 ![](https://img.shields.io/badge/license-GPLv3-green.svg)
 [Click here to see English version](./docs/README.en.md)
