@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Deepin Shadowsocks Client
-Name[zh_CN]=深度影梭客户端
-GenericName=Shadowsocks Client
-GenericName[zh_CN]=影梭客户端
+Name=Shadowsocks for Deepin
+Name[zh_CN]=影梭
+GenericName=Shadowsocks
+GenericName[zh_CN]=影梭
 Comment=If you want to keep a secret, you must also hide it from yourself.
 Comment[zh_CN]=If you want to keep a secret, you must also hide it from yourself.
 Exec=shadowsocks-deepin %f
