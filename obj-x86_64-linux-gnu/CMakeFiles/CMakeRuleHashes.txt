@@ -1,2 +1,2 @@
 # Hashes of file build rules.
-ee3482dd4e55f8848f222a730aaaefb1 src/CMakeFiles/shadowsocks-client_autogen
+ee3482dd4e55f8848f222a730aaaefb1 src/CMakeFiles/shadowsocks-deepin_autogen

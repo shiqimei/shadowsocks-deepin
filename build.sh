@@ -18,7 +18,7 @@ fi
 if [ -d "*.tar.gz" ]; then
 rm *.tar.gz
 fi
-project=shadowsocks-client
+project=shadowsocks-deepin
 dir="$project-$1"
 if [ -d "$dir" ]; then
 echo "remove dir $dir"

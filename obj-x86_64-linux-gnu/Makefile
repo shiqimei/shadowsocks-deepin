@@ -51,10 +51,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lolimay/Downloads/shadowsocks-client-1.2.1
+CMAKE_SOURCE_DIR = /home/lolimay/Downloads/shadowsocks-deepin-1.2.1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu
+CMAKE_BINARY_DIR = /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -129,9 +129,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/CMakeFiles /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/CMakeFiles /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -160,30 +160,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named shadowsocks-client
+# Target rules for targets named shadowsocks-deepin
 
 # Build rule for target.
-shadowsocks-client: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 shadowsocks-client
-.PHONY : shadowsocks-client
+shadowsocks-deepin: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 shadowsocks-deepin
+.PHONY : shadowsocks-deepin
 
 # fast build rule for target.
-shadowsocks-client/fast:
-	$(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/build
-.PHONY : shadowsocks-client/fast
+shadowsocks-deepin/fast:
+	$(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/build
+.PHONY : shadowsocks-deepin/fast
 
 #=============================================================================
-# Target rules for targets named shadowsocks-client_autogen
+# Target rules for targets named shadowsocks-deepin_autogen
 
 # Build rule for target.
-shadowsocks-client_autogen: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 shadowsocks-client_autogen
-.PHONY : shadowsocks-client_autogen
+shadowsocks-deepin_autogen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 shadowsocks-deepin_autogen
+.PHONY : shadowsocks-deepin_autogen
 
 # fast build rule for target.
-shadowsocks-client_autogen/fast:
-	$(MAKE) -f src/CMakeFiles/shadowsocks-client_autogen.dir/build.make src/CMakeFiles/shadowsocks-client_autogen.dir/build
-.PHONY : shadowsocks-client_autogen/fast
+shadowsocks-deepin_autogen/fast:
+	$(MAKE) -f src/CMakeFiles/shadowsocks-deepin_autogen.dir/build.make src/CMakeFiles/shadowsocks-deepin_autogen.dir/build
+.PHONY : shadowsocks-deepin_autogen/fast
 
 # Help Target
 help:
@@ -197,8 +197,8 @@ help:
 	@echo "... list_install_components"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... shadowsocks-client"
-	@echo "... shadowsocks-client_autogen"
+	@echo "... shadowsocks-deepin"
+	@echo "... shadowsocks-deepin_autogen"
 .PHONY : help
 
 

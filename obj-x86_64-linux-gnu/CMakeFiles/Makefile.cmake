@@ -148,6 +148,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "src/CMakeFiles/shadowsocks-client.dir/DependInfo.cmake"
-  "src/CMakeFiles/shadowsocks-client_autogen.dir/DependInfo.cmake"
+  "src/CMakeFiles/shadowsocks-deepin.dir/DependInfo.cmake"
+  "src/CMakeFiles/shadowsocks-deepin_autogen.dir/DependInfo.cmake"
   )

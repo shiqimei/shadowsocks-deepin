@@ -58,11 +58,11 @@ ui界面
 
 ```shell
 sudo apt install dh-make fakeroot cmake
-tar -cvzf shadowsocks-client-0.6.1.tar.gz shadowsocks-client-0.6.1
-cd shadowsocks-client-0.6.1
-dh_make -f ../shadowsocks-client-0.6.1.tar.gz -c gpl3 -s
+tar -cvzf shadowsocks-deepin-0.6.1.tar.gz shadowsocks-deepin-0.6.1
+cd shadowsocks-deepin-0.6.1
+dh_make -f ../shadowsocks-deepin-0.6.1.tar.gz -c gpl3 -s
 dpkg-buildpackage -us -uc -b
-sudo apt purge shadowsocks-client
+sudo apt purge shadowsocks-deepin
 ```
 保存 git密码
 ```

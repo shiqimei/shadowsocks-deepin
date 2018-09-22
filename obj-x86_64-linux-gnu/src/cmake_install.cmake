@@ -1,4 +1,4 @@
-# Install script for directory: /home/lolimay/Downloads/shadowsocks-client-1.2.1/src
+# Install script for directory: /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -33,61 +33,61 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/shadowsocks-client/translations" TYPE FILE FILES
-    "/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/translations/shadowsocks-client_en.qm"
-    "/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/translations/shadowsocks-client_zh.qm"
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/shadowsocks-deepin/translations" TYPE FILE FILES
+    "/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/translations/shadowsocks-deepin_en.qm"
+    "/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/translations/shadowsocks-deepin_zh.qm"
     )
 endif()
 
 if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/16x16/apps" TYPE FILE RENAME "shadowsocks-client.svg" FILES "/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/Resources/ssw16.svg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/16x16/apps" TYPE FILE RENAME "shadowsocks-deepin.svg" FILES "/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/Resources/ssw16.svg")
 endif()
 
 if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/24x24/apps" TYPE FILE RENAME "shadowsocks-client.svg" FILES "/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/Resources/ssw24.svg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/24x24/apps" TYPE FILE RENAME "shadowsocks-deepin.svg" FILES "/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/Resources/ssw24.svg")
 endif()
 
 if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/32x32/apps" TYPE FILE RENAME "shadowsocks-client.svg" FILES "/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/Resources/ssw32.svg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/32x32/apps" TYPE FILE RENAME "shadowsocks-deepin.svg" FILES "/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/Resources/ssw32.svg")
 endif()
 
 if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/48x48/apps" TYPE FILE RENAME "shadowsocks-client.svg" FILES "/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/Resources/ssw48.svg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/48x48/apps" TYPE FILE RENAME "shadowsocks-deepin.svg" FILES "/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/Resources/ssw48.svg")
 endif()
 
 if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/64x64/apps" TYPE FILE RENAME "shadowsocks-client.svg" FILES "/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/Resources/ssw64.svg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/64x64/apps" TYPE FILE RENAME "shadowsocks-deepin.svg" FILES "/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/Resources/ssw64.svg")
 endif()
 
 if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/96x96/apps" TYPE FILE RENAME "shadowsocks-client.svg" FILES "/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/Resources/ssw96.svg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/96x96/apps" TYPE FILE RENAME "shadowsocks-deepin.svg" FILES "/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/Resources/ssw96.svg")
 endif()
 
 if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/128x128/apps" TYPE FILE RENAME "shadowsocks-client.svg" FILES "/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/Resources/ssw128.svg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/128x128/apps" TYPE FILE RENAME "shadowsocks-deepin.svg" FILES "/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/Resources/ssw128.svg")
 endif()
 
 if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/256x256/apps" TYPE FILE RENAME "shadowsocks-client.svg" FILES "/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/Resources/ssw256.svg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/256x256/apps" TYPE FILE RENAME "shadowsocks-deepin.svg" FILES "/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/Resources/ssw256.svg")
 endif()
 
 if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/shadowsocks-client" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/shadowsocks-client")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/shadowsocks-deepin" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/shadowsocks-deepin")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/shadowsocks-client"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/shadowsocks-deepin"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/shadowsocks-client" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/shadowsocks-client")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/shadowsocks-deepin" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/shadowsocks-deepin")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/shadowsocks-client")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/shadowsocks-deepin")
     endif()
   endif()
 endif()
 
 if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/applications" TYPE FILE FILES "/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/../shadowsocks-client.desktop")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/applications" TYPE FILE FILES "/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/../shadowsocks-deepin.desktop")
 endif()
 

@@ -1,7 +1,7 @@
 BUILDER_OPTIONS = --force-clean --ccache
 TARGET_REPO = repo
 FLATPAK_BUILDER = $(shell which flatpak-builder)
-MANIFEST = cn.net.pikachu.shadowsocks-client.json
+MANIFEST = cn.net.pikachu.shadowsocks-deepin.json
 
 all: build bundle
 
@@ -13,7 +13,7 @@ build: $(MANIFEST)
 		app \
 		$(MANIFEST)
 bundle:
-	flatpak build-bundle ./repo bundle cn.net.pikachu.shadowsocks-client master
+	flatpak build-bundle ./repo bundle cn.net.pikachu.shadowsocks-deepin master
 
 clean:
 	rm -rf app repo bundle

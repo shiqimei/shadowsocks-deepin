@@ -4,7 +4,7 @@ Shadowsocks Client: If you want to keep a secret, you must also hide it from you
 
 Thanks a lot for [Shadowsocks for Windows](https://github.com/shadowsocks/shadowsocks-windows).
 
-[中文说明](https://github.com/PikachuHy/deepin-shadowsocks-client/wiki/%E6%B7%B1%E5%BA%A6%E5%BD%B1%E6%A2%AD%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
+[中文说明](https://github.com/PikachuHy/deepin-shadowsocks-deepin/wiki/%E6%B7%B1%E5%BA%A6%E5%BD%B1%E6%A2%AD%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
 
 ### Features
 
@@ -12,7 +12,7 @@ Thanks a lot for [Shadowsocks for Windows](https://github.com/shadowsocks/shadow
 2. PAC mode and global mode
 ### Download
 
-Download the [latest release.](https://github.com/PikachuHy/deepin-shadowsocks-client/releases)
+Download the [latest release.](https://github.com/PikachuHy/deepin-shadowsocks-deepin/releases)
 
 ### Requirements
 
@@ -48,11 +48,11 @@ sudo apt install libdframeworkdbus-dev -y
 sudo apt install libqrencode-dev libzbar-dev -y
 sudo apt install libdtkbase-dev libdtkcore-dev libdtksettings-dev libdtksettingsview-dev libdtkutil-dev libdtkwidget-dev libdtkwm-dev -y
 sudo apt install dh-make fakeroot -y
-cd shadowsocks-client
+cd shadowsocks-deepin
 mkdir build && cd build
 cmake ..
 make -j4
-./shadowsocks-client
+./shadowsocks-deepin
 ```
 
 

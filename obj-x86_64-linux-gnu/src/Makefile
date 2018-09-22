@@ -51,10 +51,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lolimay/Downloads/shadowsocks-client-1.2.1
+CMAKE_SOURCE_DIR = /home/lolimay/Downloads/shadowsocks-deepin-1.2.1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu
+CMAKE_BINARY_DIR = /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -129,14 +129,14 @@ install/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(CMAKE_COMMAND) -E cmake_progress_start /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/CMakeFiles /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/CMakeFiles/progress.marks
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/CMakeFiles 0
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(CMAKE_COMMAND) -E cmake_progress_start /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/CMakeFiles /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/CMakeFiles/progress.marks
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f CMakeFiles/Makefile2 src/clean
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -146,48 +146,48 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
-src/CMakeFiles/shadowsocks-client.dir/rule:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/shadowsocks-client.dir/rule
-.PHONY : src/CMakeFiles/shadowsocks-client.dir/rule
+src/CMakeFiles/shadowsocks-deepin.dir/rule:
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/shadowsocks-deepin.dir/rule
+.PHONY : src/CMakeFiles/shadowsocks-deepin.dir/rule
 
 # Convenience name for target.
-shadowsocks-client: src/CMakeFiles/shadowsocks-client.dir/rule
+shadowsocks-deepin: src/CMakeFiles/shadowsocks-deepin.dir/rule
 
-.PHONY : shadowsocks-client
+.PHONY : shadowsocks-deepin
 
 # fast build rule for target.
-shadowsocks-client/fast:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/build
-.PHONY : shadowsocks-client/fast
+shadowsocks-deepin/fast:
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/build
+.PHONY : shadowsocks-deepin/fast
 
 # Convenience name for target.
-src/CMakeFiles/shadowsocks-client_autogen.dir/rule:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/shadowsocks-client_autogen.dir/rule
-.PHONY : src/CMakeFiles/shadowsocks-client_autogen.dir/rule
+src/CMakeFiles/shadowsocks-deepin_autogen.dir/rule:
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/shadowsocks-deepin_autogen.dir/rule
+.PHONY : src/CMakeFiles/shadowsocks-deepin_autogen.dir/rule
 
 # Convenience name for target.
-shadowsocks-client_autogen: src/CMakeFiles/shadowsocks-client_autogen.dir/rule
+shadowsocks-deepin_autogen: src/CMakeFiles/shadowsocks-deepin_autogen.dir/rule
 
-.PHONY : shadowsocks-client_autogen
+.PHONY : shadowsocks-deepin_autogen
 
 # fast build rule for target.
-shadowsocks-client_autogen/fast:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client_autogen.dir/build.make src/CMakeFiles/shadowsocks-client_autogen.dir/build
-.PHONY : shadowsocks-client_autogen/fast
+shadowsocks-deepin_autogen/fast:
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin_autogen.dir/build.make src/CMakeFiles/shadowsocks-deepin_autogen.dir/build
+.PHONY : shadowsocks-deepin_autogen/fast
 
 3rd_part/include/QtShadowsocks/chacha.o: 3rd_part/include/QtShadowsocks/chacha.cpp.o
 
@@ -195,7 +195,7 @@ shadowsocks-client_autogen/fast:
 
 # target to build an object file
 3rd_part/include/QtShadowsocks/chacha.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/3rd_part/include/QtShadowsocks/chacha.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/3rd_part/include/QtShadowsocks/chacha.cpp.o
 .PHONY : 3rd_part/include/QtShadowsocks/chacha.cpp.o
 
 3rd_part/include/QtShadowsocks/chacha.i: 3rd_part/include/QtShadowsocks/chacha.cpp.i
@@ -204,7 +204,7 @@ shadowsocks-client_autogen/fast:
 
 # target to preprocess a source file
 3rd_part/include/QtShadowsocks/chacha.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/3rd_part/include/QtShadowsocks/chacha.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/3rd_part/include/QtShadowsocks/chacha.cpp.i
 .PHONY : 3rd_part/include/QtShadowsocks/chacha.cpp.i
 
 3rd_part/include/QtShadowsocks/chacha.s: 3rd_part/include/QtShadowsocks/chacha.cpp.s
@@ -213,7 +213,7 @@ shadowsocks-client_autogen/fast:
 
 # target to generate assembly for a file
 3rd_part/include/QtShadowsocks/chacha.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/3rd_part/include/QtShadowsocks/chacha.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/3rd_part/include/QtShadowsocks/chacha.cpp.s
 .PHONY : 3rd_part/include/QtShadowsocks/chacha.cpp.s
 
 ConfigDialog.o: ConfigDialog.cpp.o
@@ -222,7 +222,7 @@ ConfigDialog.o: ConfigDialog.cpp.o
 
 # target to build an object file
 ConfigDialog.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/ConfigDialog.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/ConfigDialog.cpp.o
 .PHONY : ConfigDialog.cpp.o
 
 ConfigDialog.i: ConfigDialog.cpp.i
@@ -231,7 +231,7 @@ ConfigDialog.i: ConfigDialog.cpp.i
 
 # target to preprocess a source file
 ConfigDialog.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/ConfigDialog.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/ConfigDialog.cpp.i
 .PHONY : ConfigDialog.cpp.i
 
 ConfigDialog.s: ConfigDialog.cpp.s
@@ -240,7 +240,7 @@ ConfigDialog.s: ConfigDialog.cpp.s
 
 # target to generate assembly for a file
 ConfigDialog.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/ConfigDialog.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/ConfigDialog.cpp.s
 .PHONY : ConfigDialog.cpp.s
 
 DDEProxyModeManager.o: DDEProxyModeManager.cpp.o
@@ -249,7 +249,7 @@ DDEProxyModeManager.o: DDEProxyModeManager.cpp.o
 
 # target to build an object file
 DDEProxyModeManager.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/DDEProxyModeManager.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/DDEProxyModeManager.cpp.o
 .PHONY : DDEProxyModeManager.cpp.o
 
 DDEProxyModeManager.i: DDEProxyModeManager.cpp.i
@@ -258,7 +258,7 @@ DDEProxyModeManager.i: DDEProxyModeManager.cpp.i
 
 # target to preprocess a source file
 DDEProxyModeManager.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/DDEProxyModeManager.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/DDEProxyModeManager.cpp.i
 .PHONY : DDEProxyModeManager.cpp.i
 
 DDEProxyModeManager.s: DDEProxyModeManager.cpp.s
@@ -267,7 +267,7 @@ DDEProxyModeManager.s: DDEProxyModeManager.cpp.s
 
 # target to generate assembly for a file
 DDEProxyModeManager.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/DDEProxyModeManager.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/DDEProxyModeManager.cpp.s
 .PHONY : DDEProxyModeManager.cpp.s
 
 GuiConfig.o: GuiConfig.cpp.o
@@ -276,7 +276,7 @@ GuiConfig.o: GuiConfig.cpp.o
 
 # target to build an object file
 GuiConfig.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/GuiConfig.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/GuiConfig.cpp.o
 .PHONY : GuiConfig.cpp.o
 
 GuiConfig.i: GuiConfig.cpp.i
@@ -285,7 +285,7 @@ GuiConfig.i: GuiConfig.cpp.i
 
 # target to preprocess a source file
 GuiConfig.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/GuiConfig.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/GuiConfig.cpp.i
 .PHONY : GuiConfig.cpp.i
 
 GuiConfig.s: GuiConfig.cpp.s
@@ -294,7 +294,7 @@ GuiConfig.s: GuiConfig.cpp.s
 
 # target to generate assembly for a file
 GuiConfig.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/GuiConfig.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/GuiConfig.cpp.s
 .PHONY : GuiConfig.cpp.s
 
 HotkeySettingsDialog.o: HotkeySettingsDialog.cpp.o
@@ -303,7 +303,7 @@ HotkeySettingsDialog.o: HotkeySettingsDialog.cpp.o
 
 # target to build an object file
 HotkeySettingsDialog.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/HotkeySettingsDialog.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/HotkeySettingsDialog.cpp.o
 .PHONY : HotkeySettingsDialog.cpp.o
 
 HotkeySettingsDialog.i: HotkeySettingsDialog.cpp.i
@@ -312,7 +312,7 @@ HotkeySettingsDialog.i: HotkeySettingsDialog.cpp.i
 
 # target to preprocess a source file
 HotkeySettingsDialog.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/HotkeySettingsDialog.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/HotkeySettingsDialog.cpp.i
 .PHONY : HotkeySettingsDialog.cpp.i
 
 HotkeySettingsDialog.s: HotkeySettingsDialog.cpp.s
@@ -321,7 +321,7 @@ HotkeySettingsDialog.s: HotkeySettingsDialog.cpp.s
 
 # target to generate assembly for a file
 HotkeySettingsDialog.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/HotkeySettingsDialog.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/HotkeySettingsDialog.cpp.s
 .PHONY : HotkeySettingsDialog.cpp.s
 
 LogMainWindow.o: LogMainWindow.cpp.o
@@ -330,7 +330,7 @@ LogMainWindow.o: LogMainWindow.cpp.o
 
 # target to build an object file
 LogMainWindow.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/LogMainWindow.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/LogMainWindow.cpp.o
 .PHONY : LogMainWindow.cpp.o
 
 LogMainWindow.i: LogMainWindow.cpp.i
@@ -339,7 +339,7 @@ LogMainWindow.i: LogMainWindow.cpp.i
 
 # target to preprocess a source file
 LogMainWindow.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/LogMainWindow.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/LogMainWindow.cpp.i
 .PHONY : LogMainWindow.cpp.i
 
 LogMainWindow.s: LogMainWindow.cpp.s
@@ -348,7 +348,7 @@ LogMainWindow.s: LogMainWindow.cpp.s
 
 # target to generate assembly for a file
 LogMainWindow.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/LogMainWindow.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/LogMainWindow.cpp.s
 .PHONY : LogMainWindow.cpp.s
 
 MainWindow.o: MainWindow.cpp.o
@@ -357,7 +357,7 @@ MainWindow.o: MainWindow.cpp.o
 
 # target to build an object file
 MainWindow.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/MainWindow.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/MainWindow.cpp.o
 .PHONY : MainWindow.cpp.o
 
 MainWindow.i: MainWindow.cpp.i
@@ -366,7 +366,7 @@ MainWindow.i: MainWindow.cpp.i
 
 # target to preprocess a source file
 MainWindow.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/MainWindow.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/MainWindow.cpp.i
 .PHONY : MainWindow.cpp.i
 
 MainWindow.s: MainWindow.cpp.s
@@ -375,7 +375,7 @@ MainWindow.s: MainWindow.cpp.s
 
 # target to generate assembly for a file
 MainWindow.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/MainWindow.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/MainWindow.cpp.s
 .PHONY : MainWindow.cpp.s
 
 PACUrlDialog.o: PACUrlDialog.cpp.o
@@ -384,7 +384,7 @@ PACUrlDialog.o: PACUrlDialog.cpp.o
 
 # target to build an object file
 PACUrlDialog.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/PACUrlDialog.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/PACUrlDialog.cpp.o
 .PHONY : PACUrlDialog.cpp.o
 
 PACUrlDialog.i: PACUrlDialog.cpp.i
@@ -393,7 +393,7 @@ PACUrlDialog.i: PACUrlDialog.cpp.i
 
 # target to preprocess a source file
 PACUrlDialog.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/PACUrlDialog.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/PACUrlDialog.cpp.i
 .PHONY : PACUrlDialog.cpp.i
 
 PACUrlDialog.s: PACUrlDialog.cpp.s
@@ -402,7 +402,7 @@ PACUrlDialog.s: PACUrlDialog.cpp.s
 
 # target to generate assembly for a file
 PACUrlDialog.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/PACUrlDialog.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/PACUrlDialog.cpp.s
 .PHONY : PACUrlDialog.cpp.s
 
 ProxyDialog.o: ProxyDialog.cpp.o
@@ -411,7 +411,7 @@ ProxyDialog.o: ProxyDialog.cpp.o
 
 # target to build an object file
 ProxyDialog.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/ProxyDialog.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/ProxyDialog.cpp.o
 .PHONY : ProxyDialog.cpp.o
 
 ProxyDialog.i: ProxyDialog.cpp.i
@@ -420,7 +420,7 @@ ProxyDialog.i: ProxyDialog.cpp.i
 
 # target to preprocess a source file
 ProxyDialog.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/ProxyDialog.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/ProxyDialog.cpp.i
 .PHONY : ProxyDialog.cpp.i
 
 ProxyDialog.s: ProxyDialog.cpp.s
@@ -429,7 +429,7 @@ ProxyDialog.s: ProxyDialog.cpp.s
 
 # target to generate assembly for a file
 ProxyDialog.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/ProxyDialog.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/ProxyDialog.cpp.s
 .PHONY : ProxyDialog.cpp.s
 
 ProxyManager.o: ProxyManager.cpp.o
@@ -438,7 +438,7 @@ ProxyManager.o: ProxyManager.cpp.o
 
 # target to build an object file
 ProxyManager.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/ProxyManager.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/ProxyManager.cpp.o
 .PHONY : ProxyManager.cpp.o
 
 ProxyManager.i: ProxyManager.cpp.i
@@ -447,7 +447,7 @@ ProxyManager.i: ProxyManager.cpp.i
 
 # target to preprocess a source file
 ProxyManager.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/ProxyManager.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/ProxyManager.cpp.i
 .PHONY : ProxyManager.cpp.i
 
 ProxyManager.s: ProxyManager.cpp.s
@@ -456,7 +456,7 @@ ProxyManager.s: ProxyManager.cpp.s
 
 # target to generate assembly for a file
 ProxyManager.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/ProxyManager.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/ProxyManager.cpp.s
 .PHONY : ProxyManager.cpp.s
 
 QRCodeCapturer.o: QRCodeCapturer.cpp.o
@@ -465,7 +465,7 @@ QRCodeCapturer.o: QRCodeCapturer.cpp.o
 
 # target to build an object file
 QRCodeCapturer.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/QRCodeCapturer.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/QRCodeCapturer.cpp.o
 .PHONY : QRCodeCapturer.cpp.o
 
 QRCodeCapturer.i: QRCodeCapturer.cpp.i
@@ -474,7 +474,7 @@ QRCodeCapturer.i: QRCodeCapturer.cpp.i
 
 # target to preprocess a source file
 QRCodeCapturer.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/QRCodeCapturer.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/QRCodeCapturer.cpp.i
 .PHONY : QRCodeCapturer.cpp.i
 
 QRCodeCapturer.s: QRCodeCapturer.cpp.s
@@ -483,7 +483,7 @@ QRCodeCapturer.s: QRCodeCapturer.cpp.s
 
 # target to generate assembly for a file
 QRCodeCapturer.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/QRCodeCapturer.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/QRCodeCapturer.cpp.s
 .PHONY : QRCodeCapturer.cpp.s
 
 SSValidator.o: SSValidator.cpp.o
@@ -492,7 +492,7 @@ SSValidator.o: SSValidator.cpp.o
 
 # target to build an object file
 SSValidator.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/SSValidator.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/SSValidator.cpp.o
 .PHONY : SSValidator.cpp.o
 
 SSValidator.i: SSValidator.cpp.i
@@ -501,7 +501,7 @@ SSValidator.i: SSValidator.cpp.i
 
 # target to preprocess a source file
 SSValidator.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/SSValidator.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/SSValidator.cpp.i
 .PHONY : SSValidator.cpp.i
 
 SSValidator.s: SSValidator.cpp.s
@@ -510,7 +510,7 @@ SSValidator.s: SSValidator.cpp.s
 
 # target to generate assembly for a file
 SSValidator.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/SSValidator.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/SSValidator.cpp.s
 .PHONY : SSValidator.cpp.s
 
 Settings.o: Settings.cpp.o
@@ -519,7 +519,7 @@ Settings.o: Settings.cpp.o
 
 # target to build an object file
 Settings.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/Settings.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/Settings.cpp.o
 .PHONY : Settings.cpp.o
 
 Settings.i: Settings.cpp.i
@@ -528,7 +528,7 @@ Settings.i: Settings.cpp.i
 
 # target to preprocess a source file
 Settings.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/Settings.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/Settings.cpp.i
 .PHONY : Settings.cpp.i
 
 Settings.s: Settings.cpp.s
@@ -537,7 +537,7 @@ Settings.s: Settings.cpp.s
 
 # target to generate assembly for a file
 Settings.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/Settings.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/Settings.cpp.s
 .PHONY : Settings.cpp.s
 
 ShareDialog.o: ShareDialog.cpp.o
@@ -546,7 +546,7 @@ ShareDialog.o: ShareDialog.cpp.o
 
 # target to build an object file
 ShareDialog.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/ShareDialog.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/ShareDialog.cpp.o
 .PHONY : ShareDialog.cpp.o
 
 ShareDialog.i: ShareDialog.cpp.i
@@ -555,7 +555,7 @@ ShareDialog.i: ShareDialog.cpp.i
 
 # target to preprocess a source file
 ShareDialog.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/ShareDialog.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/ShareDialog.cpp.i
 .PHONY : ShareDialog.cpp.i
 
 ShareDialog.s: ShareDialog.cpp.s
@@ -564,7 +564,7 @@ ShareDialog.s: ShareDialog.cpp.s
 
 # target to generate assembly for a file
 ShareDialog.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/ShareDialog.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/ShareDialog.cpp.s
 .PHONY : ShareDialog.cpp.s
 
 Toolbar.o: Toolbar.cpp.o
@@ -573,7 +573,7 @@ Toolbar.o: Toolbar.cpp.o
 
 # target to build an object file
 Toolbar.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/Toolbar.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/Toolbar.cpp.o
 .PHONY : Toolbar.cpp.o
 
 Toolbar.i: Toolbar.cpp.i
@@ -582,7 +582,7 @@ Toolbar.i: Toolbar.cpp.i
 
 # target to preprocess a source file
 Toolbar.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/Toolbar.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/Toolbar.cpp.i
 .PHONY : Toolbar.cpp.i
 
 Toolbar.s: Toolbar.cpp.s
@@ -591,7 +591,7 @@ Toolbar.s: Toolbar.cpp.s
 
 # target to generate assembly for a file
 Toolbar.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/Toolbar.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/Toolbar.cpp.s
 .PHONY : Toolbar.cpp.s
 
 URIHelper.o: URIHelper.cpp.o
@@ -600,7 +600,7 @@ URIHelper.o: URIHelper.cpp.o
 
 # target to build an object file
 URIHelper.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/URIHelper.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/URIHelper.cpp.o
 .PHONY : URIHelper.cpp.o
 
 URIHelper.i: URIHelper.cpp.i
@@ -609,7 +609,7 @@ URIHelper.i: URIHelper.cpp.i
 
 # target to preprocess a source file
 URIHelper.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/URIHelper.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/URIHelper.cpp.i
 .PHONY : URIHelper.cpp.i
 
 URIHelper.s: URIHelper.cpp.s
@@ -618,7 +618,7 @@ URIHelper.s: URIHelper.cpp.s
 
 # target to generate assembly for a file
 URIHelper.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/URIHelper.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/URIHelper.cpp.s
 .PHONY : URIHelper.cpp.s
 
 dbusinterface/DBusStartManager.o: dbusinterface/DBusStartManager.cpp.o
@@ -627,7 +627,7 @@ dbusinterface/DBusStartManager.o: dbusinterface/DBusStartManager.cpp.o
 
 # target to build an object file
 dbusinterface/DBusStartManager.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/dbusinterface/DBusStartManager.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/dbusinterface/DBusStartManager.cpp.o
 .PHONY : dbusinterface/DBusStartManager.cpp.o
 
 dbusinterface/DBusStartManager.i: dbusinterface/DBusStartManager.cpp.i
@@ -636,7 +636,7 @@ dbusinterface/DBusStartManager.i: dbusinterface/DBusStartManager.cpp.i
 
 # target to preprocess a source file
 dbusinterface/DBusStartManager.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/dbusinterface/DBusStartManager.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/dbusinterface/DBusStartManager.cpp.i
 .PHONY : dbusinterface/DBusStartManager.cpp.i
 
 dbusinterface/DBusStartManager.s: dbusinterface/DBusStartManager.cpp.s
@@ -645,7 +645,7 @@ dbusinterface/DBusStartManager.s: dbusinterface/DBusStartManager.cpp.s
 
 # target to generate assembly for a file
 dbusinterface/DBusStartManager.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/dbusinterface/DBusStartManager.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/dbusinterface/DBusStartManager.cpp.s
 .PHONY : dbusinterface/DBusStartManager.cpp.s
 
 interface/SystemProxyModeManager.o: interface/SystemProxyModeManager.cpp.o
@@ -654,7 +654,7 @@ interface/SystemProxyModeManager.o: interface/SystemProxyModeManager.cpp.o
 
 # target to build an object file
 interface/SystemProxyModeManager.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/interface/SystemProxyModeManager.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/interface/SystemProxyModeManager.cpp.o
 .PHONY : interface/SystemProxyModeManager.cpp.o
 
 interface/SystemProxyModeManager.i: interface/SystemProxyModeManager.cpp.i
@@ -663,7 +663,7 @@ interface/SystemProxyModeManager.i: interface/SystemProxyModeManager.cpp.i
 
 # target to preprocess a source file
 interface/SystemProxyModeManager.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/interface/SystemProxyModeManager.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/interface/SystemProxyModeManager.cpp.i
 .PHONY : interface/SystemProxyModeManager.cpp.i
 
 interface/SystemProxyModeManager.s: interface/SystemProxyModeManager.cpp.s
@@ -672,7 +672,7 @@ interface/SystemProxyModeManager.s: interface/SystemProxyModeManager.cpp.s
 
 # target to generate assembly for a file
 interface/SystemProxyModeManager.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/interface/SystemProxyModeManager.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/interface/SystemProxyModeManager.cpp.s
 .PHONY : interface/SystemProxyModeManager.cpp.s
 
 main.o: main.cpp.o
@@ -681,7 +681,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/main.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -690,7 +690,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/main.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -699,62 +699,62 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/main.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.o: shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.cpp.o
+shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.o: shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.cpp.o
 
-.PHONY : shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.o
-
-# target to build an object file
-shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.cpp.o
-.PHONY : shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.cpp.o
-
-shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.i: shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.cpp.i
-
-.PHONY : shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.i
-
-# target to preprocess a source file
-shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.cpp.i
-.PHONY : shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.cpp.i
-
-shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.s: shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.cpp.s
-
-.PHONY : shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.s
-
-# target to generate assembly for a file
-shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.cpp.s
-.PHONY : shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.cpp.s
-
-shadowsocks-client_autogen/mocs_compilation.o: shadowsocks-client_autogen/mocs_compilation.cpp.o
-
-.PHONY : shadowsocks-client_autogen/mocs_compilation.o
+.PHONY : shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.o
 
 # target to build an object file
-shadowsocks-client_autogen/mocs_compilation.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/shadowsocks-client_autogen/mocs_compilation.cpp.o
-.PHONY : shadowsocks-client_autogen/mocs_compilation.cpp.o
+shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.cpp.o:
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.cpp.o
+.PHONY : shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.cpp.o
 
-shadowsocks-client_autogen/mocs_compilation.i: shadowsocks-client_autogen/mocs_compilation.cpp.i
+shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.i: shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.cpp.i
 
-.PHONY : shadowsocks-client_autogen/mocs_compilation.i
+.PHONY : shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.i
 
 # target to preprocess a source file
-shadowsocks-client_autogen/mocs_compilation.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/shadowsocks-client_autogen/mocs_compilation.cpp.i
-.PHONY : shadowsocks-client_autogen/mocs_compilation.cpp.i
+shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.cpp.i:
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.cpp.i
+.PHONY : shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.cpp.i
 
-shadowsocks-client_autogen/mocs_compilation.s: shadowsocks-client_autogen/mocs_compilation.cpp.s
+shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.s: shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.cpp.s
 
-.PHONY : shadowsocks-client_autogen/mocs_compilation.s
+.PHONY : shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.s
 
 # target to generate assembly for a file
-shadowsocks-client_autogen/mocs_compilation.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/shadowsocks-client_autogen/mocs_compilation.cpp.s
-.PHONY : shadowsocks-client_autogen/mocs_compilation.cpp.s
+shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.cpp.s:
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.cpp.s
+.PHONY : shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.cpp.s
+
+shadowsocks-deepin_autogen/mocs_compilation.o: shadowsocks-deepin_autogen/mocs_compilation.cpp.o
+
+.PHONY : shadowsocks-deepin_autogen/mocs_compilation.o
+
+# target to build an object file
+shadowsocks-deepin_autogen/mocs_compilation.cpp.o:
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/shadowsocks-deepin_autogen/mocs_compilation.cpp.o
+.PHONY : shadowsocks-deepin_autogen/mocs_compilation.cpp.o
+
+shadowsocks-deepin_autogen/mocs_compilation.i: shadowsocks-deepin_autogen/mocs_compilation.cpp.i
+
+.PHONY : shadowsocks-deepin_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+shadowsocks-deepin_autogen/mocs_compilation.cpp.i:
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/shadowsocks-deepin_autogen/mocs_compilation.cpp.i
+.PHONY : shadowsocks-deepin_autogen/mocs_compilation.cpp.i
+
+shadowsocks-deepin_autogen/mocs_compilation.s: shadowsocks-deepin_autogen/mocs_compilation.cpp.s
+
+.PHONY : shadowsocks-deepin_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+shadowsocks-deepin_autogen/mocs_compilation.cpp.s:
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/shadowsocks-deepin_autogen/mocs_compilation.cpp.s
+.PHONY : shadowsocks-deepin_autogen/mocs_compilation.cpp.s
 
 stdafx.o: stdafx.cpp.o
 
@@ -762,7 +762,7 @@ stdafx.o: stdafx.cpp.o
 
 # target to build an object file
 stdafx.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/stdafx.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/stdafx.cpp.o
 .PHONY : stdafx.cpp.o
 
 stdafx.i: stdafx.cpp.i
@@ -771,7 +771,7 @@ stdafx.i: stdafx.cpp.i
 
 # target to preprocess a source file
 stdafx.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/stdafx.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/stdafx.cpp.i
 .PHONY : stdafx.cpp.i
 
 stdafx.s: stdafx.cpp.s
@@ -780,7 +780,7 @@ stdafx.s: stdafx.cpp.s
 
 # target to generate assembly for a file
 stdafx.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/stdafx.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/stdafx.cpp.s
 .PHONY : stdafx.cpp.s
 
 utils.o: utils.cpp.o
@@ -789,7 +789,7 @@ utils.o: utils.cpp.o
 
 # target to build an object file
 utils.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/utils.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/utils.cpp.o
 .PHONY : utils.cpp.o
 
 utils.i: utils.cpp.i
@@ -798,7 +798,7 @@ utils.i: utils.cpp.i
 
 # target to preprocess a source file
 utils.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/utils.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/utils.cpp.i
 .PHONY : utils.cpp.i
 
 utils.s: utils.cpp.s
@@ -807,7 +807,7 @@ utils.s: utils.cpp.s
 
 # target to generate assembly for a file
 utils.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/utils.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/utils.cpp.s
 .PHONY : utils.cpp.s
 
 widget/ProfileItem.o: widget/ProfileItem.cpp.o
@@ -816,7 +816,7 @@ widget/ProfileItem.o: widget/ProfileItem.cpp.o
 
 # target to build an object file
 widget/ProfileItem.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/widget/ProfileItem.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/widget/ProfileItem.cpp.o
 .PHONY : widget/ProfileItem.cpp.o
 
 widget/ProfileItem.i: widget/ProfileItem.cpp.i
@@ -825,7 +825,7 @@ widget/ProfileItem.i: widget/ProfileItem.cpp.i
 
 # target to preprocess a source file
 widget/ProfileItem.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/widget/ProfileItem.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/widget/ProfileItem.cpp.i
 .PHONY : widget/ProfileItem.cpp.i
 
 widget/ProfileItem.s: widget/ProfileItem.cpp.s
@@ -834,7 +834,7 @@ widget/ProfileItem.s: widget/ProfileItem.cpp.s
 
 # target to generate assembly for a file
 widget/ProfileItem.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/widget/ProfileItem.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/widget/ProfileItem.cpp.s
 .PHONY : widget/ProfileItem.cpp.s
 
 widget/ProfileView.o: widget/ProfileView.cpp.o
@@ -843,7 +843,7 @@ widget/ProfileView.o: widget/ProfileView.cpp.o
 
 # target to build an object file
 widget/ProfileView.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/widget/ProfileView.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/widget/ProfileView.cpp.o
 .PHONY : widget/ProfileView.cpp.o
 
 widget/ProfileView.i: widget/ProfileView.cpp.i
@@ -852,7 +852,7 @@ widget/ProfileView.i: widget/ProfileView.cpp.i
 
 # target to preprocess a source file
 widget/ProfileView.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/widget/ProfileView.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/widget/ProfileView.cpp.i
 .PHONY : widget/ProfileView.cpp.i
 
 widget/ProfileView.s: widget/ProfileView.cpp.s
@@ -861,7 +861,7 @@ widget/ProfileView.s: widget/ProfileView.cpp.s
 
 # target to generate assembly for a file
 widget/ProfileView.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/widget/ProfileView.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/widget/ProfileView.cpp.s
 .PHONY : widget/ProfileView.cpp.s
 
 widget/QRWidget.o: widget/QRWidget.cpp.o
@@ -870,7 +870,7 @@ widget/QRWidget.o: widget/QRWidget.cpp.o
 
 # target to build an object file
 widget/QRWidget.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/widget/QRWidget.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/widget/QRWidget.cpp.o
 .PHONY : widget/QRWidget.cpp.o
 
 widget/QRWidget.i: widget/QRWidget.cpp.i
@@ -879,7 +879,7 @@ widget/QRWidget.i: widget/QRWidget.cpp.i
 
 # target to preprocess a source file
 widget/QRWidget.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/widget/QRWidget.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/widget/QRWidget.cpp.i
 .PHONY : widget/QRWidget.cpp.i
 
 widget/QRWidget.s: widget/QRWidget.cpp.s
@@ -888,7 +888,7 @@ widget/QRWidget.s: widget/QRWidget.cpp.s
 
 # target to generate assembly for a file
 widget/QRWidget.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/widget/QRWidget.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/widget/QRWidget.cpp.s
 .PHONY : widget/QRWidget.cpp.s
 
 widget/SingleListItem.o: widget/SingleListItem.cpp.o
@@ -897,7 +897,7 @@ widget/SingleListItem.o: widget/SingleListItem.cpp.o
 
 # target to build an object file
 widget/SingleListItem.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/widget/SingleListItem.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/widget/SingleListItem.cpp.o
 .PHONY : widget/SingleListItem.cpp.o
 
 widget/SingleListItem.i: widget/SingleListItem.cpp.i
@@ -906,7 +906,7 @@ widget/SingleListItem.i: widget/SingleListItem.cpp.i
 
 # target to preprocess a source file
 widget/SingleListItem.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/widget/SingleListItem.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/widget/SingleListItem.cpp.i
 .PHONY : widget/SingleListItem.cpp.i
 
 widget/SingleListItem.s: widget/SingleListItem.cpp.s
@@ -915,7 +915,7 @@ widget/SingleListItem.s: widget/SingleListItem.cpp.s
 
 # target to generate assembly for a file
 widget/SingleListItem.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/widget/SingleListItem.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/widget/SingleListItem.cpp.s
 .PHONY : widget/SingleListItem.cpp.s
 
 widget/SingleListView.o: widget/SingleListView.cpp.o
@@ -924,7 +924,7 @@ widget/SingleListView.o: widget/SingleListView.cpp.o
 
 # target to build an object file
 widget/SingleListView.cpp.o:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/widget/SingleListView.cpp.o
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/widget/SingleListView.cpp.o
 .PHONY : widget/SingleListView.cpp.o
 
 widget/SingleListView.i: widget/SingleListView.cpp.i
@@ -933,7 +933,7 @@ widget/SingleListView.i: widget/SingleListView.cpp.i
 
 # target to preprocess a source file
 widget/SingleListView.cpp.i:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/widget/SingleListView.cpp.i
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/widget/SingleListView.cpp.i
 .PHONY : widget/SingleListView.cpp.i
 
 widget/SingleListView.s: widget/SingleListView.cpp.s
@@ -942,7 +942,7 @@ widget/SingleListView.s: widget/SingleListView.cpp.s
 
 # target to generate assembly for a file
 widget/SingleListView.cpp.s:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-client.dir/build.make src/CMakeFiles/shadowsocks-client.dir/widget/SingleListView.cpp.s
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(MAKE) -f src/CMakeFiles/shadowsocks-deepin.dir/build.make src/CMakeFiles/shadowsocks-deepin.dir/widget/SingleListView.cpp.s
 .PHONY : widget/SingleListView.cpp.s
 
 # Help Target
@@ -953,12 +953,12 @@ help:
 	@echo "... depend"
 	@echo "... install/strip"
 	@echo "... edit_cache"
-	@echo "... shadowsocks-client"
+	@echo "... shadowsocks-deepin"
 	@echo "... rebuild_cache"
 	@echo "... list_install_components"
 	@echo "... install/local"
 	@echo "... install"
-	@echo "... shadowsocks-client_autogen"
+	@echo "... shadowsocks-deepin_autogen"
 	@echo "... 3rd_part/include/QtShadowsocks/chacha.o"
 	@echo "... 3rd_part/include/QtShadowsocks/chacha.i"
 	@echo "... 3rd_part/include/QtShadowsocks/chacha.s"
@@ -1016,12 +1016,12 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.o"
-	@echo "... shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.i"
-	@echo "... shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.s"
-	@echo "... shadowsocks-client_autogen/mocs_compilation.o"
-	@echo "... shadowsocks-client_autogen/mocs_compilation.i"
-	@echo "... shadowsocks-client_autogen/mocs_compilation.s"
+	@echo "... shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.o"
+	@echo "... shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.i"
+	@echo "... shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.s"
+	@echo "... shadowsocks-deepin_autogen/mocs_compilation.o"
+	@echo "... shadowsocks-deepin_autogen/mocs_compilation.i"
+	@echo "... shadowsocks-deepin_autogen/mocs_compilation.s"
 	@echo "... stdafx.o"
 	@echo "... stdafx.i"
 	@echo "... stdafx.s"
@@ -1054,6 +1054,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -4,8 +4,8 @@ cmake-build-release/
 build/
 *.pro.user
 flatpak/
-!flatpak/build_shadowsocks-client.sh
-!flatpak/cn.net.pikachu.shadowsocks-client.json
+!flatpak/build_shadowsocks-deepin.sh
+!flatpak/cn.net.pikachu.shadowsocks-deepin.json
 !flatpak/Makefile
 !flatpak/zbar-0.10.tar.gz
 .vscode/

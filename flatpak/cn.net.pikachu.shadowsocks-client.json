@@ -1,9 +1,9 @@
 {
-    "app-id":"cn.net.pikachu.shadowsocks-client",
+    "app-id":"cn.net.pikachu.shadowsocks-deepin",
     "runtime":"com.deepin.Platform",
     "runtime-version":"15.5.2",
     "sdk":"com.deepin.Sdk",
-    "command":"shadowsocks-client",
+    "command":"shadowsocks-deepin",
     "finish-args":[
     "--share=ipc",
     "--socket=x11",
@@ -15,7 +15,7 @@
     "--filesystem=home",
     "--filesystem=xdg-run/dconf",
     "--own-name=n.net.pikachu.ShadowsocksClient",
-    "--own-name=cn.net.pikachu.SingleInstance.shadowsocks-client"
+    "--own-name=cn.net.pikachu.SingleInstance.shadowsocks-deepin"
     ],
     "modules":[
         {
@@ -113,12 +113,12 @@
             ]
         },
         {
-            "name":"shadowsocks-client",
+            "name":"shadowsocks-deepin",
             "no-autogen":true,
             "sources":[
                 {
                     "type":"git",
-                    "url":"https://github.com/PikachuHy/shadowsocks-client",
+                    "url":"https://github.com/PikachuHy/shadowsocks-deepin",
 "branch":"dev"
                 },
                 {

@@ -300,49 +300,49 @@ QString
 unordered_set
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_ConfigDialog.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_ConfigDialog.cpp
 ../../../../src/ConfigDialog.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ConfigDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ConfigDialog.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_DDEProxyModeManager.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_DDEProxyModeManager.cpp
 ../../../../src/DDEProxyModeManager.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/DDEProxyModeManager.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/DDEProxyModeManager.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_GuiConfig.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_GuiConfig.cpp
 ../../../../src/GuiConfig.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/GuiConfig.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/GuiConfig.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_HotkeySettingsDialog.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_HotkeySettingsDialog.cpp
 ../../../../src/HotkeySettingsDialog.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/HotkeySettingsDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/HotkeySettingsDialog.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_LogMainWindow.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_LogMainWindow.cpp
 ../../../../src/LogMainWindow.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/LogMainWindow.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/LogMainWindow.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_MainWindow.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_MainWindow.cpp
 ../../../../src/MainWindow.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/MainWindow.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/MainWindow.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
@@ -350,243 +350,243 @@ QtCore/qmetatype.h
 QtCore/QList
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_PACUrlDialog.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_PACUrlDialog.cpp
 ../../../../src/PACUrlDialog.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/PACUrlDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/PACUrlDialog.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_ProxyDialog.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_ProxyDialog.cpp
 ../../../../src/ProxyDialog.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ProxyDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ProxyDialog.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_ProxyManager.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_ProxyManager.cpp
 ../../../../src/ProxyManager.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ProxyManager.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ProxyManager.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_QRCodeCapturer.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_QRCodeCapturer.cpp
 ../../../../src/QRCodeCapturer.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/QRCodeCapturer.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/QRCodeCapturer.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_Settings.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_Settings.cpp
 ../../../../src/Settings.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/Settings.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/Settings.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_ShareDialog.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_ShareDialog.cpp
 ../../../../src/ShareDialog.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ShareDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ShareDialog.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_Toolbar.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_Toolbar.cpp
 ../../../../src/Toolbar.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/Toolbar.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/Toolbar.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/qrc_qrc.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/qrc_qrc.cpp
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/RLQM5O6ZDW/moc_DBusStartManager.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/RLQM5O6ZDW/moc_DBusStartManager.cpp
 ../../../../src/dbusinterface/DBusStartManager.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/dbusinterface/DBusStartManager.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/dbusinterface/DBusStartManager.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/UZBZ344ZLF/moc_ProfileItem.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/UZBZ344ZLF/moc_ProfileItem.cpp
 ../../../../src/widget/ProfileItem.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/ProfileItem.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/ProfileItem.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/UZBZ344ZLF/moc_ProfileView.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/UZBZ344ZLF/moc_ProfileView.cpp
 ../../../../src/widget/ProfileView.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/ProfileView.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/ProfileView.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/UZBZ344ZLF/moc_QRWidget.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/UZBZ344ZLF/moc_QRWidget.cpp
 ../../../../src/widget/QRWidget.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/QRWidget.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/QRWidget.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/UZBZ344ZLF/moc_SingleListItem.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/UZBZ344ZLF/moc_SingleListItem.cpp
 ../../../../src/widget/SingleListItem.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/SingleListItem.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/SingleListItem.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/UZBZ344ZLF/moc_SingleListView.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/UZBZ344ZLF/moc_SingleListView.cpp
 ../../../../src/widget/SingleListView.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/SingleListView.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/SingleListView.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/XBG7L5Z4V6/moc_SystemProxyModeManager.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/XBG7L5Z4V6/moc_SystemProxyModeManager.cpp
 ../../../../src/interface/SystemProxyModeManager.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/interface/SystemProxyModeManager.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/interface/SystemProxyModeManager.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/ZBXKKCVT6Y/moc_address.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/ZBXKKCVT6Y/moc_address.cpp
 ../../../../src/3rd_part/include/QtShadowsocks/address.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/address.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/address.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/ZBXKKCVT6Y/moc_addresstester.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/ZBXKKCVT6Y/moc_addresstester.cpp
 ../../../../src/3rd_part/include/QtShadowsocks/addresstester.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/addresstester.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/addresstester.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/ZBXKKCVT6Y/moc_controller.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/ZBXKKCVT6Y/moc_controller.cpp
 ../../../../src/3rd_part/include/QtShadowsocks/controller.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/controller.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/controller.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/ZBXKKCVT6Y/moc_httpproxy.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/ZBXKKCVT6Y/moc_httpproxy.cpp
 ../../../../src/3rd_part/include/QtShadowsocks/httpproxy.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/httpproxy.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/httpproxy.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/ZBXKKCVT6Y/moc_socketstream.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/ZBXKKCVT6Y/moc_socketstream.cpp
 ../../../../src/3rd_part/include/QtShadowsocks/socketstream.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/socketstream.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/socketstream.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/ZBXKKCVT6Y/moc_tcprelay.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/ZBXKKCVT6Y/moc_tcprelay.cpp
 ../../../../src/3rd_part/include/QtShadowsocks/tcprelay.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/tcprelay.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/tcprelay.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/ZBXKKCVT6Y/moc_tcpserver.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/ZBXKKCVT6Y/moc_tcpserver.cpp
 ../../../../src/3rd_part/include/QtShadowsocks/tcpserver.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/tcpserver.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/tcpserver.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/ZBXKKCVT6Y/moc_udprelay.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/ZBXKKCVT6Y/moc_udprelay.cpp
 ../../../../src/3rd_part/include/QtShadowsocks/udprelay.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/udprelay.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/udprelay.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/mocs_compilation.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/mocs_compilation.cpp
 ZBXKKCVT6Y/moc_address.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/ZBXKKCVT6Y/moc_address.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/ZBXKKCVT6Y/moc_address.cpp
 ZBXKKCVT6Y/moc_addresstester.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/ZBXKKCVT6Y/moc_addresstester.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/ZBXKKCVT6Y/moc_addresstester.cpp
 ZBXKKCVT6Y/moc_controller.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/ZBXKKCVT6Y/moc_controller.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/ZBXKKCVT6Y/moc_controller.cpp
 ZBXKKCVT6Y/moc_httpproxy.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/ZBXKKCVT6Y/moc_httpproxy.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/ZBXKKCVT6Y/moc_httpproxy.cpp
 ZBXKKCVT6Y/moc_socketstream.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/ZBXKKCVT6Y/moc_socketstream.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/ZBXKKCVT6Y/moc_socketstream.cpp
 ZBXKKCVT6Y/moc_tcprelay.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/ZBXKKCVT6Y/moc_tcprelay.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/ZBXKKCVT6Y/moc_tcprelay.cpp
 ZBXKKCVT6Y/moc_tcpserver.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/ZBXKKCVT6Y/moc_tcpserver.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/ZBXKKCVT6Y/moc_tcpserver.cpp
 ZBXKKCVT6Y/moc_udprelay.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/ZBXKKCVT6Y/moc_udprelay.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/ZBXKKCVT6Y/moc_udprelay.cpp
 EWIEGA46WW/moc_ConfigDialog.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_ConfigDialog.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_ConfigDialog.cpp
 EWIEGA46WW/moc_DDEProxyModeManager.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_DDEProxyModeManager.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_DDEProxyModeManager.cpp
 EWIEGA46WW/moc_GuiConfig.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_GuiConfig.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_GuiConfig.cpp
 EWIEGA46WW/moc_HotkeySettingsDialog.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_HotkeySettingsDialog.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_HotkeySettingsDialog.cpp
 EWIEGA46WW/moc_LogMainWindow.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_LogMainWindow.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_LogMainWindow.cpp
 EWIEGA46WW/moc_MainWindow.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_MainWindow.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_MainWindow.cpp
 EWIEGA46WW/moc_PACUrlDialog.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_PACUrlDialog.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_PACUrlDialog.cpp
 EWIEGA46WW/moc_ProxyDialog.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_ProxyDialog.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_ProxyDialog.cpp
 EWIEGA46WW/moc_ProxyManager.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_ProxyManager.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_ProxyManager.cpp
 EWIEGA46WW/moc_QRCodeCapturer.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_QRCodeCapturer.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_QRCodeCapturer.cpp
 EWIEGA46WW/moc_Settings.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_Settings.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_Settings.cpp
 EWIEGA46WW/moc_ShareDialog.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_ShareDialog.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_ShareDialog.cpp
 EWIEGA46WW/moc_Toolbar.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/EWIEGA46WW/moc_Toolbar.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/EWIEGA46WW/moc_Toolbar.cpp
 RLQM5O6ZDW/moc_DBusStartManager.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/RLQM5O6ZDW/moc_DBusStartManager.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/RLQM5O6ZDW/moc_DBusStartManager.cpp
 XBG7L5Z4V6/moc_SystemProxyModeManager.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/XBG7L5Z4V6/moc_SystemProxyModeManager.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/XBG7L5Z4V6/moc_SystemProxyModeManager.cpp
 UZBZ344ZLF/moc_ProfileItem.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/UZBZ344ZLF/moc_ProfileItem.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/UZBZ344ZLF/moc_ProfileItem.cpp
 UZBZ344ZLF/moc_ProfileView.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/UZBZ344ZLF/moc_ProfileView.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/UZBZ344ZLF/moc_ProfileView.cpp
 UZBZ344ZLF/moc_QRWidget.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/UZBZ344ZLF/moc_QRWidget.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/UZBZ344ZLF/moc_QRWidget.cpp
 UZBZ344ZLF/moc_SingleListItem.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/UZBZ344ZLF/moc_SingleListItem.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/UZBZ344ZLF/moc_SingleListItem.cpp
 UZBZ344ZLF/moc_SingleListView.cpp
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-client_autogen/UZBZ344ZLF/moc_SingleListView.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/obj-x86_64-linux-gnu/src/shadowsocks-deepin_autogen/UZBZ344ZLF/moc_SingleListView.cpp
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/address.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/address.h
 QString
 -
 QHostAddress
@@ -600,11 +600,11 @@ memory
 vector
 -
 export.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/addresstester.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/addresstester.h
 export.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
 QHostAddress
 -
 QTcpSocket
@@ -614,11 +614,11 @@ QTime
 QTimer
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/chacha.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/chacha.cpp
 chacha.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/chacha.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/chacha.h
 common.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/common.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/common.h
 botan/loadstor.h
 -
 botan/rotate.h
@@ -626,15 +626,15 @@ botan/rotate.h
 stdexcept
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/chacha.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/chacha.h
 string
 -
 vector
 -
 export.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/cipher.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/cipher.h
 array
 -
 unordered_map
@@ -642,55 +642,55 @@ unordered_map
 memory
 -
 rc4.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/rc4.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/rc4.h
 chacha.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/chacha.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/chacha.h
 export.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/common.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/common.h
 QHostAddress
 -
 export.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/controller.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/controller.h
 QHostAddress
 -
 QObject
 -
 tcpserver.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/tcpserver.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/tcpserver.h
 export.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
 httpproxy.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/httpproxy.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/httpproxy.h
 profile.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/profile.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/profile.h
 udprelay.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/udprelay.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/udprelay.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/encryptor.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/encryptor.h
 memory
 -
 export.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
 cipher.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/cipher.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/cipher.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
 QtGlobal
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/httpproxy.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/httpproxy.h
 QTcpServer
 -
 QNetworkProxy
 -
 export.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/profile.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/profile.h
 string
 -
 cstdint
@@ -698,25 +698,25 @@ cstdint
 memory
 -
 export.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/rc4.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/rc4.h
 vector
 -
 string
 -
 export.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/socketstream.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/socketstream.h
 QObject
 -
 QAbstractSocket
 -
 export.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/tcprelay.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/tcprelay.h
 QObject
 -
 QTcpSocket
@@ -726,11 +726,11 @@ QTimer
 QTime
 -
 address.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/address.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/address.h
 encryptor.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/encryptor.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/encryptor.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/tcpserver.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/tcpserver.h
 QTcpServer
 -
 list
@@ -738,13 +738,13 @@ list
 memory
 -
 address.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/address.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/address.h
 export.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/export.h
 tcprelay.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/tcprelay.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/tcprelay.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/udprelay.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/udprelay.h
 QObject
 -
 QUdpSocket
@@ -754,153 +754,153 @@ QHostAddress
 map
 -
 address.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/address.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/address.h
 encryptor.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/3rd_part/include/QtShadowsocks/encryptor.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/3rd_part/include/QtShadowsocks/encryptor.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ConfigDialog.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ConfigDialog.cpp
 ConfigDialog.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ConfigDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ConfigDialog.h
 ui_ConfigDialog.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ui_ConfigDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ui_ConfigDialog.h
 GuiConfig.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/GuiConfig.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/GuiConfig.h
 utils.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/utils.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/utils.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ConfigDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ConfigDialog.h
 stdafx.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/stdafx.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/stdafx.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/DDEProxyModeManager.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/DDEProxyModeManager.cpp
 DDEProxyModeManager.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/DDEProxyModeManager.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/DDEProxyModeManager.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/DDEProxyModeManager.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/DDEProxyModeManager.h
 stdafx.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/stdafx.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/stdafx.h
 interface/SystemProxyModeManager.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/interface/SystemProxyModeManager.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/interface/SystemProxyModeManager.h
 com_deepin_daemon_network.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/GuiConfig.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/GuiConfig.cpp
 GuiConfig.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/GuiConfig.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/GuiConfig.h
 utils.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/utils.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/utils.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/GuiConfig.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/GuiConfig.h
 stdafx.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/stdafx.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/stdafx.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/HotkeySettingsDialog.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/HotkeySettingsDialog.cpp
 HotkeySettingsDialog.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/HotkeySettingsDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/HotkeySettingsDialog.h
 ui_HotkeySettingsDialog.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ui_HotkeySettingsDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ui_HotkeySettingsDialog.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/HotkeySettingsDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/HotkeySettingsDialog.h
 QDialog
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/LogMainWindow.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/LogMainWindow.cpp
 LogMainWindow.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/LogMainWindow.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/LogMainWindow.h
 ui_LogMainWindow.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ui_LogMainWindow.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ui_LogMainWindow.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/LogMainWindow.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/LogMainWindow.h
 QMainWindow
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/MainWindow.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/MainWindow.cpp
 stdafx.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/stdafx.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/stdafx.h
 utils.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/utils.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/utils.h
 MainWindow.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/MainWindow.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/MainWindow.h
 ui_MainWindow.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ui_MainWindow.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ui_MainWindow.h
 ConfigDialog.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ConfigDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ConfigDialog.h
 PACUrlDialog.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/PACUrlDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/PACUrlDialog.h
 ProxyDialog.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ProxyDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ProxyDialog.h
 LogMainWindow.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/LogMainWindow.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/LogMainWindow.h
 Toolbar.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/Toolbar.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/Toolbar.h
 GuiConfig.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/GuiConfig.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/GuiConfig.h
 DDEProxyModeManager.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/DDEProxyModeManager.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/DDEProxyModeManager.h
 widget/ProfileView.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/ProfileView.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/ProfileView.h
 widget/ProfileItem.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/ProfileItem.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/ProfileItem.h
 QRCodeCapturer.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/QRCodeCapturer.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/QRCodeCapturer.h
 SSValidator.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/SSValidator.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/SSValidator.h
 ShareDialog.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ShareDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ShareDialog.h
 DDesktopServices
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/MainWindow.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/MainWindow.h
 stdafx.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/stdafx.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/stdafx.h
 ProxyManager.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ProxyManager.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ProxyManager.h
 interface/SystemProxyModeManager.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/interface/SystemProxyModeManager.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/interface/SystemProxyModeManager.h
 dbusinterface/DBusStartManager.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/dbusinterface/DBusStartManager.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/dbusinterface/DBusStartManager.h
 Settings.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/Settings.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/Settings.h
 Toolbar.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/Toolbar.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/Toolbar.h
 widget/ProfileView.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/ProfileView.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/ProfileView.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/PACUrlDialog.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/PACUrlDialog.cpp
 PACUrlDialog.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/PACUrlDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/PACUrlDialog.h
 ui_PACUrlDialog.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ui_PACUrlDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ui_PACUrlDialog.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/PACUrlDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/PACUrlDialog.h
 QDialog
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ProxyDialog.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ProxyDialog.cpp
 ProxyDialog.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ProxyDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ProxyDialog.h
 ui_ProxyDialog.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ui_ProxyDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ui_ProxyDialog.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ProxyDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ProxyDialog.h
 QDialog
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ProxyManager.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ProxyManager.cpp
 ProxyManager.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ProxyManager.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ProxyManager.h
 utils.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/utils.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/utils.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ProxyManager.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ProxyManager.h
 stdafx.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/stdafx.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/stdafx.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/QRCodeCapturer.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/QRCodeCapturer.cpp
 QRCodeCapturer.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/QRCodeCapturer.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/QRCodeCapturer.h
 URIHelper.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/URIHelper.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/URIHelper.h
 QApplication
 -
 QMoveEvent
@@ -912,27 +912,27 @@ QDesktopWidget
 QScreen
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/QRCodeCapturer.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/QRCodeCapturer.h
 QMainWindow
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/SSValidator.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/SSValidator.cpp
 SSValidator.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/SSValidator.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/SSValidator.h
 QtShadowsocks
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/SSValidator.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/SSValidator.h
 QString
 -
 QStringList
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/Settings.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/Settings.cpp
 constant.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/constant.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/constant.h
 Settings.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/Settings.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/Settings.h
 QApplication
 -
 QDir
@@ -940,65 +940,65 @@ QDir
 QStandardPaths
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/Settings.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/Settings.h
 QSettings
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ShareDialog.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ShareDialog.cpp
 ShareDialog.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ShareDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ShareDialog.h
 GuiConfig.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/GuiConfig.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/GuiConfig.h
 widget/SingleListItem.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/SingleListItem.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/SingleListItem.h
 QGridLayout
 -
 QHBoxLayout
 -
 utils.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/utils.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/utils.h
 DDesktopServices
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ShareDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ShareDialog.h
 stdafx.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/stdafx.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/stdafx.h
 widget/QRWidget.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/QRWidget.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/QRWidget.h
 widget/SingleListView.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/SingleListView.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/SingleListView.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/Toolbar.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/Toolbar.cpp
 stdafx.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/stdafx.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/stdafx.h
 Toolbar.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/Toolbar.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/Toolbar.h
 utils.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/utils.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/utils.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/Toolbar.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/Toolbar.h
 stdafx.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/stdafx.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/stdafx.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/URIHelper.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/URIHelper.cpp
 URIHelper.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/URIHelper.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/URIHelper.h
 zbar.h
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/URIHelper.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/URIHelper.h
 QString
 -
 QImage
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/constant.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/constant.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/dbusinterface/DBusStartManager.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/dbusinterface/DBusStartManager.cpp
 DBusStartManager.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/dbusinterface/DBusStartManager.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/dbusinterface/DBusStartManager.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/dbusinterface/DBusStartManager.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/dbusinterface/DBusStartManager.h
 QtCore/QObject
 -
 QtCore/QByteArray
@@ -1016,35 +1016,35 @@ QtCore/QVariant
 QtDBus/QtDBus
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/interface/SystemProxyModeManager.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/interface/SystemProxyModeManager.cpp
 SystemProxyModeManager.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/interface/SystemProxyModeManager.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/interface/SystemProxyModeManager.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/interface/SystemProxyModeManager.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/interface/SystemProxyModeManager.h
 stdafx.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/interface/stdafx.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/interface/stdafx.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/main.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/main.cpp
 stdafx.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/stdafx.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/stdafx.h
 utils.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/utils.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/utils.h
 MainWindow.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/MainWindow.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/MainWindow.h
 widget/ProfileView.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/ProfileView.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/ProfileView.h
 GuiConfig.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/GuiConfig.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/GuiConfig.h
 widget/ProfileItem.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/ProfileItem.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/ProfileItem.h
 ShareDialog.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/ShareDialog.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/ShareDialog.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/stdafx.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/stdafx.cpp
 stdafx.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/stdafx.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/stdafx.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/stdafx.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/stdafx.h
 QtCore
 -
 QtGui
@@ -1088,9 +1088,9 @@ csignal
 QtShadowsocks
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/utils.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/utils.cpp
 utils.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/utils.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/utils.h
 QApplication
 -
 QDir
@@ -1148,7 +1148,7 @@ time.h
 unordered_set
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/utils.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/utils.h
 QString
 -
 QDateTime
@@ -1166,33 +1166,33 @@ QString
 unordered_set
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/ProfileItem.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/ProfileItem.cpp
 ProfileItem.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/ProfileItem.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/ProfileItem.h
 GuiConfig.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/GuiConfig.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/GuiConfig.h
 utils.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/utils.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/utils.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/ProfileItem.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/ProfileItem.h
 stdafx.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/stdafx.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/stdafx.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/ProfileView.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/ProfileView.cpp
 stdafx.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/stdafx.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/stdafx.h
 dthememanager.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/dthememanager.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/dthememanager.h
 ProfileView.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/ProfileView.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/ProfileView.h
 QTimer
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/ProfileView.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/ProfileView.h
 DSimpleListView
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/QRWidget.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/QRWidget.cpp
 QPainter
 -
 QStyleOption
@@ -1202,37 +1202,37 @@ QDebug
 qrencode.h
 -
 QRWidget.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/QRWidget.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/QRWidget.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/QRWidget.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/QRWidget.h
 QWidget
 -
 QPaintEvent
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/SingleListItem.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/SingleListItem.cpp
 SingleListItem.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/SingleListItem.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/SingleListItem.h
 QColor
 -
 DThemeManager
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/SingleListItem.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/SingleListItem.h
 DSimpleListItem
 -
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/SingleListView.cpp
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/SingleListView.cpp
 SingleListView.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/SingleListView.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/SingleListView.h
 SingleListItem.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/SingleListItem.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/SingleListItem.h
 DThemeManager
 -
 stdafx.h
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/stdafx.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/stdafx.h
 
-/home/lolimay/Downloads/shadowsocks-client-1.2.1/src/widget/SingleListView.h
+/home/lolimay/Downloads/shadowsocks-deepin-1.2.1/src/widget/SingleListView.h
 DSimpleListView
 -
 
@@ -6390,7 +6390,7 @@ QtCore/qnamespace.h
 QtX11Extras/qtx11extrasglobal.h
 /usr/include/x86_64-linux-gnu/qt5/QtX11Extras/QtX11Extras/qtx11extrasglobal.h
 
-src/shadowsocks-client_autogen/include/ui_ConfigDialog.h
+src/shadowsocks-deepin_autogen/include/ui_ConfigDialog.h
 QtCore/QVariant
 -
 QtWidgets/QAction
@@ -6426,7 +6426,7 @@ QtWidgets/QSpinBox
 QtWidgets/QWidget
 -
 
-src/shadowsocks-client_autogen/include/ui_HotkeySettingsDialog.h
+src/shadowsocks-deepin_autogen/include/ui_HotkeySettingsDialog.h
 QtCore/QVariant
 -
 QtWidgets/QAction
@@ -6452,7 +6452,7 @@ QtWidgets/QLabel
 QtWidgets/QPushButton
 -
 
-src/shadowsocks-client_autogen/include/ui_LogMainWindow.h
+src/shadowsocks-deepin_autogen/include/ui_LogMainWindow.h
 QtCore/QVariant
 -
 QtWidgets/QAction
@@ -6480,7 +6480,7 @@ QtWidgets/QTextBrowser
 QtWidgets/QWidget
 -
 
-src/shadowsocks-client_autogen/include/ui_MainWindow.h
+src/shadowsocks-deepin_autogen/include/ui_MainWindow.h
 QtCore/QVariant
 -
 QtWidgets/QAction
@@ -6496,7 +6496,7 @@ QtWidgets/QMainWindow
 QtWidgets/QMenu
 -
 
-src/shadowsocks-client_autogen/include/ui_PACUrlDialog.h
+src/shadowsocks-deepin_autogen/include/ui_PACUrlDialog.h
 QtCore/QVariant
 -
 QtWidgets/QAction
@@ -6518,7 +6518,7 @@ QtWidgets/QLabel
 QtWidgets/QLineEdit
 -
 
-src/shadowsocks-client_autogen/include/ui_ProxyDialog.h
+src/shadowsocks-deepin_autogen/include/ui_ProxyDialog.h
 QtCore/QVariant
 -
 QtWidgets/QAction

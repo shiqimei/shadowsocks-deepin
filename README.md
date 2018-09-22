@@ -16,9 +16,9 @@
 
 # 下载使用
 
-<a href="http://file.lolimay.cn/shadowsocks-client_1.2.2_amd64.deb"><img src="http://images.lolimay.cn/18-8-9/78116321.jpg"/></a>
+<a href="http://file.lolimay.cn/shadowsocks-deepin_1.2.2_amd64.deb"><img src="http://images.lolimay.cn/18-8-9/78116321.jpg"/></a>
 
-软件开箱即用，只要正确填写了你的服务器配置、选择好系统代理模式并启动系统代理后，小飞机即可起飞，**不需要手动配置系统代理，软件会自动修改系统代理配置**，在使用的过程中如遇到任何问题，欢迎提 [**issue**](https://github.com/loliMay/shadowsocks-client/issues/new)，我收到后会及时回复的。
+软件开箱即用，只要正确填写了你的服务器配置、选择好系统代理模式并启动系统代理后，小飞机即可起飞，**不需要手动配置系统代理，软件会自动修改系统代理配置**，在使用的过程中如遇到任何问题，欢迎提 [**issue**](https://github.com/loliMay/shadowsocks-deepin/issues/new)，我收到后会及时回复的。
 
 也可以尝试自己将源码打包，下面给出打包方法:
 ````bash
@@ -46,12 +46,12 @@ sudo apt install libdframeworkdbus-dev -y
 sudo apt install libqrencode-dev libzbar-dev -y
 sudo apt install libdtkbase-dev libdtkcore-dev libdtksettings-dev libdtksettingsview-dev libdtkutil-dev libdtkwidget-dev libdtkwm-dev -y
 sudo apt install dh-make fakeroot -y
-cd shadowsocks-client
+cd shadowsocks-deepin
 mkdir build && cd build
 cmake ..
 make -j4
 cd src
-./shadowsocks-client
+./shadowsocks-deepin
 ````
 # 更新日志
 > 1.2.2版本 修复 [#9](https://github.com/lolimay/shadowsocks-deepin/issues/9)，汉化软件主要界面，将流量上下标改成 [shadowsocks-windows](https://github.com/shadowsocks/shadowsocks-windows) 风格
