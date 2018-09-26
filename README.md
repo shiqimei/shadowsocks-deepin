@@ -16,7 +16,7 @@
 
 # 下载使用
 
-<a href="http://file.lolimay.cn/shadowsocks-deepin_1.2.2_amd64.deb"><img src="http://images.lolimay.cn/18-8-9/78116321.jpg"/></a>
+<a href="http://file.lolimay.cn/shadowsocks-client_1.2.1_amd64.deb"><img src="http://images.lolimay.cn/18-8-9/78116321.jpg"/></a>
 
 软件开箱即用，只要正确填写了你的服务器配置、选择好系统代理模式并启动系统代理后，小飞机即可起飞，**不需要手动配置系统代理，软件会自动修改系统代理配置**，在使用的过程中如遇到任何问题，欢迎提 [**issue**](https://github.com/loliMay/shadowsocks-deepin/issues/new)，我收到后会及时回复的。
 
