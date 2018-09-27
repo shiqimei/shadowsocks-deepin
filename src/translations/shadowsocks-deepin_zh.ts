@@ -422,9 +422,9 @@ Edit User Rule for GFWList...</source>
         <translation>断开连接</translation>
     </message>
     <message>
-    <location filename="../MainWindow.ui" line="358"/>
-    <source>choose gui-config.json file</source>
-    <translation>请选择一个配置文件</translation>
+        <location filename="../MainWindow.ui" line="358"/>
+        <source>choose gui-config.json file</source>
+        <translation>请选择一个配置文件</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="512"/>
@@ -433,7 +433,7 @@ Edit User Rule for GFWList...</source>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="513"/>
-        <source>Can't find any QR code image that contains valid URI on your screen(s).</source>
+        <source>Can&apos;t find any QR code image that contains valid URI on your screen(s).</source>
         <translation>在你的屏幕上找不到任何有效的二维码</translation>
     </message>
 </context>
@@ -546,7 +546,7 @@ Edit User Rule for GFWList...</source>
     <message>
         <location filename="../main.cpp" line="27"/>
         <source>If you want to keep a secret, you must also hide it from yourself.</source>
-        <translation>小飞机可以带你装逼带你飞哦~</translation>
+        <translation>小飞机可以带你装逼带你飞哦.</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="38"/>
