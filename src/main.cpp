@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
         const QString descriptionText = QApplication::tr(
                     "If you want to keep a secret, you must also hide it from yourself.");
 
-        const QString acknowledgementLink = "https://github.com/PikachuHy/shadowsocks-deepin";
+        const QString acknowledgementLink = "https://github.com/lolimay/shadowsocks-deepin";
 
         app.setOrganizationName("pikachu");
         app.setApplicationName("shadowsocks-deepin");
@@ -53,6 +53,6 @@ int main(int argc, char *argv[]) {
         Dtk::Widget::moveToCenter(&window);
         return app.exec();
     }
-    qDebug() << "app has started";
+    qDebug() << "\033[32mApp has started";
     return 0;
 }

@@ -1,10 +1,10 @@
 Source: shadowsocks-deepin
 Section: network
 Priority: optional
-Maintainer: unknown <lolimay@unknown>
+Maintainer: lolimay <lolimay@lolimay.cn>
 Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.8
-Homepage: <insert the upstream URL, if relevant>
+Standards-Version: 1.2.2
+Homepage: https://github.com/lolimay/shadowsocks-deepin
 #Vcs-Git: https://anonscm.debian.org/collab-maint/shadowsocks-deepin.git
 #Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/shadowsocks-deepin.git
 
