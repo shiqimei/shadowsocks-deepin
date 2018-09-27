@@ -11,4 +11,4 @@ Homepage: https://github.com/lolimay/shadowsocks-deepin
 Package: shadowsocks-deepin
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: 影梭1.2.2 更新日志： 1.修复扫描二维码地址密码颠倒BUG 2.汉化率达到95% 3.托盘流量上下标
+Description: 影梭1.2.2 更新日志： 1.修复扫描二维码地址密码颠倒BUG 2.汉化率达到95% 3.托盘流量上下标与Windows版风格统一
