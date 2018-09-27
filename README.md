@@ -8,14 +8,14 @@
 
 shadowsocks-deepin 是一款专门为 deepin 打造的小飞机，科学上网必备！
 
-<p align="center"><img src="http://images.lolimay.cn/18-9-28/46503745.jpg" height="200"></p>
+<img src="http://images.lolimay.cn/18-9-28/46503745.jpg" height="200">
 
 
+与 Shadowsocks-Qt5 相比的优势
 |软件|系统代理模式|易用性|
 |:-:|:-:|:-:|
 |Shadowsocks-Qt5|仅支持全局模式|需要手动配置系统代理或配置Chrome拓展|
 |Shadowsocks-Deepin|既支持全局模式也支持pac模式|无需任何配置
-<p align="center">与 Shadowsocks-Qt5 相比的优势</p>
 
 # 下载安装
 <br>
