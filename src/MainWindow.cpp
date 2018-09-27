@@ -368,7 +368,7 @@ void MainWindow::on_actionEnable_System_Proxy_triggered(bool flag) {
     auto guiConfig = GuiConfig::instance();
     if (!flag) {
         proxyManager->stop();
-        // 又混着了，
+        // 又混着了
         systemProxyModeManager->switchToNone();
     } else {
         auto configs = guiConfig->getConfigs();
@@ -532,12 +532,20 @@ void MainWindow::on_actionImport_URL_from_Clipboard_triggered()
 {
     QString uri = QApplication::clipboard()->text();
     if(SSValidator::validate(uri)){
-        Utils::info("URI is valid");
+        QMessageBox::information(
+            nullptr,
+            tr("info"),
+            tr("URI is valid")
+        );
         GuiConfig::instance()->addConfig(uri);
         updateMenu();
         on_actionEdit_Servers_triggered();
     }else{
-        Utils::info("URI is invalid");
+        QMessageBox::information(
+            nullptr,
+            tr("info"),
+            tr("URI is invalid")
+        );
     }
 }
 

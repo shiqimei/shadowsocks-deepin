@@ -215,6 +215,26 @@
 <context>
     <name>MainWindow</name>
     <message>
+        <location filename="../MainWindow.cpp" line="520"/>
+        <source>URI is valid</source>
+        <translation>有效的URI</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="525"/>
+        <source>URI is invalid</source>
+        <translation>无效的URI</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="538"/>
+        <source>URI is valid</source>
+        <translation>有效的URI</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="547"/>
+        <source>URI is invalid</source>
+        <translation>无效的URI</translation>
+    </message>
+    <message>
         <location filename="../MainWindow.ui" line="14"/>
         <source>MainWindow</source>
         <translation>主窗口</translation>
@@ -601,19 +621,6 @@ Edit User Rule for GFWList...</source>
         <location filename="../ShareDialog.cpp" line="78"/>
         <source>Save QRCode Image</source>
         <translation>保存图片</translation>
-    </message>
-</context>
-<context>
-    <name>MainWindowCPP</name>
-    <message>
-        <location filename="../MainWindow.cpp" line="525"/>
-        <source>URI is invalid</source>
-        <translation>无效的URI</translation>
-    </message>
-    <message>
-        <location filename="../MainWindow.cpp" line="540"/>
-        <source>URI is invalid</source>
-        <translation>无效的URI</translation>
     </message>
 </context>
 </TS>
