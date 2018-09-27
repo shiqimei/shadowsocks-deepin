@@ -11,4 +11,4 @@ Homepage: <insert the upstream URL, if relevant>
 Package: shadowsocks-deepin
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: 深度影梭客户端（Shadowsocks for deepin）
+Description: 影梭（Shadowsocks for Deepin）
