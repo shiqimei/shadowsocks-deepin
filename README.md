@@ -1,22 +1,25 @@
-# Shadowsocks for Deepin
-![](https://img.shields.io/badge/version-1.2.2-blue.svg)
-![](https://img.shields.io/badge/license-GPLv3-green.svg)
-[Click here to see English version](./docs/README.en.md)
+<p align="center"><a href="https://github.com/lolimay/shadowsocks-deepin" target="_blank" rel="noopener noreferrer"><img width="100" src="http://images.lolimay.cn/18-9-28/52492273.jpg" alt="Shadowsocks logo"></a></p><p align="center">
+  <a href="https://github.com/lolimay/shadowsocks-deepin"><img src="https://img.shields.io/github/stars/lolimay/shadowsocks-deepin.svg" alt="License"></a>
+  <a href="https://github.com/lolimay/shadowsocks-deepin"><img src="https://img.shields.io/badge/version-1.2.2-blue.svg" alt="Version"></a>
+  <a href="https://github.com/lolimay/shadowsocks-deepin"><img src="https://img.shields.io/badge/license-GPLv3-green.svg" alt="License"></a>
+</p>
 
-深度影梭客户端：一款专门为Deepin打造的小飞机，您的贴心好帮手。
+<h2 align="center">Shadowsocks for Deepin</h2>
 
-![](http://images.lolimay.cn/18-8-12/98452500.jpg)
+shadowsocks-deepin 是一款专门为 deepin 打造的小飞机，科学上网必备！
 
-与 Shadowsocks-Qt5 相比的优势
+<p align="center"><img src="http://images.lolimay.cn/18-9-28/46503745.jpg" height="200"></p>
+
 
 |软件|系统代理模式|易用性|
 |:-:|:-:|:-:|
 |Shadowsocks-Qt5|仅支持全局模式|需要手动配置系统代理或配置Chrome拓展|
 |Shadowsocks-Deepin|既支持全局模式也支持pac模式|无需任何配置
+<p align="center">与 Shadowsocks-Qt5 相比的优势</p>
 
-# 下载使用
-
-<a href="http://file.lolimay.cn/shadowsocks-client_1.2.1_amd64.deb"><img src="http://images.lolimay.cn/18-8-9/78116321.jpg"/></a>
+# 下载安装
+<br>
+<p align="center"><a href="http://file.lolimay.cn/shadowsocks-deepin_1.2.2_amd64.deb"><img src="http://images.lolimay.cn/18-9-28/51226561.jpg"/></a></p>
 
 软件开箱即用，只要正确填写了你的服务器配置、选择好系统代理模式并启动系统代理后，小飞机即可起飞，**不需要手动配置系统代理，软件会自动修改系统代理配置**，在使用的过程中如遇到任何问题，欢迎提 [**issue**](https://github.com/loliMay/shadowsocks-deepin/issues/new)，我收到后会及时回复的。
 
