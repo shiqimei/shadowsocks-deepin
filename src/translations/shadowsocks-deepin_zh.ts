@@ -573,9 +573,47 @@ Edit User Rule for GFWList...</source>
 <context>
     <name>ShareDialog</name>
     <message>
+        <location filename="../ShareDialog.cpp" line="15"/>
+        <source>save QRCode Image</source>
+        <translation>保存图片</translation>
+    </message>
+    <message>
         <location filename="../ShareDialog.cpp" line="38"/>
         <source>Profile list</source>
         <translation>配置列表</translation>
+    </message>
+    <message>
+        <location filename="../ShareDialog.cpp" line="39"/>
+        <source>QRCode</source>
+        <translation>二维码</translation>
+    </message>
+    <message>
+        <location filename="../ShareDialog.cpp" line="67"/>
+        <source>Save QRCode Image</source>
+        <translation>保存图片</translation>
+    </message>
+    <message>
+        <location filename="../ShareDialog.cpp" line="75"/>
+        <source>Save QRCode Image</source>
+        <translation>保存图片</translation>
+    </message>
+    <message>
+        <location filename="../ShareDialog.cpp" line="78"/>
+        <source>Save QRCode Image</source>
+        <translation>保存图片</translation>
+    </message>
+</context>
+<context>
+    <name>MainWindowCPP</name>
+    <message>
+        <location filename="../MainWindow.cpp" line="525"/>
+        <source>URI is invalid</source>
+        <translation>无效的URI</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="540"/>
+        <source>URI is invalid</source>
+        <translation>无效的URI</translation>
     </message>
 </context>
 </TS>

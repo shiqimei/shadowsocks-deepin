@@ -12,7 +12,7 @@ ShareDialog::ShareDialog(QWidget *parent) :
     listView = new SingleListView(this);
     qrWidget = new QRWidget(this);
     uriLabel = new QLabel("uri:");
-    saveButton = new QPushButton(tr("save QRCode Image"));
+    saveButton = new QPushButton( tr("save QRCode Image"));
     listView->setMinimumSize(200,350);
     qrWidget->setMinimumSize(350,350);
     // 始终无法处理好换行的问题，放弃，不显示
@@ -35,8 +35,8 @@ ShareDialog::ShareDialog(QWidget *parent) :
     }
     listView->refreshItems(items);
     QGridLayout* layout = new QGridLayout(this);
-    layout->addWidget(new QLabel("Profile list"),0,0);
-    layout->addWidget(new QLabel("QRCode"),0,1);
+    layout->addWidget(new QLabel( tr("Profile list") ),0,0);
+    layout->addWidget(new QLabel( tr("QRCode") ),0,1);
     layout->addWidget(listView,1,0);
     layout->addWidget(qrWidget,1,1);
     layout->addWidget(saveButton,2,1,Qt::AlignTop | Qt::AlignRight);

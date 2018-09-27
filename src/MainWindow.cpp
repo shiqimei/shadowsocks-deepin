@@ -517,12 +517,12 @@ void MainWindow::on_actionScan_QRCode_from_Screen_triggered()
         if(uri.startsWith("ss://")){
             qDebug()<<"shadowsocks";
             if(SSValidator::validate(uri)){
-                Utils::info("URI is valid");
+                Utils::info( tr("URI is valid") );
                 GuiConfig::instance()->addConfig(uri);
                 updateMenu();
                 on_actionEdit_Servers_triggered();
             }else{
-                Utils::info("URI is invalid");
+                Utils::info( tr("URI is invalid") );
             }
         }
     }
