@@ -1,6 +1,6 @@
 <p align="center"><a href="https://github.com/lolimay/shadowsocks-deepin" target="_blank" rel="noopener noreferrer"><img width="100" src="http://images.lolimay.cn/18-9-28/52492273.jpg" alt="Shadowsocks logo"></a></p><p align="center">
   <a href="https://github.com/lolimay/shadowsocks-deepin"><img src="https://img.shields.io/github/stars/lolimay/shadowsocks-deepin.svg" alt="License"></a>
-  <a href="https://github.com/lolimay/shadowsocks-deepin"><img src="https://img.shields.io/badge/version-1.2.2-blue.svg" alt="Version"></a>
+  <a href="https://github.com/lolimay/shadowsocks-deepin"><img src="https://img.shields.io/badge/version-1.2.2-brightgreen.svg" alt="Version"></a>
   <a href="https://github.com/lolimay/shadowsocks-deepin"><img src="https://img.shields.io/badge/license-GPLv3-green.svg" alt="License"></a>
 </p>
 
