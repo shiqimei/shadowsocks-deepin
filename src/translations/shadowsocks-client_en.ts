@@ -535,7 +535,7 @@ Edit User Rule for GFWList...</source>
     </message>
     <message>
         <location filename="../main.cpp" line="38"/>
-        <source>Shadowsocks Client</source>
+        <source>Shadowsocks Deepin</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -543,7 +543,7 @@ Edit User Rule for GFWList...</source>
     <name>QObject</name>
     <message>
         <location filename="../main.cpp" line="34"/>
-        <source>Shadowsocks Client</source>
+        <source>Shadowsocks Deepin</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
