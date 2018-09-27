@@ -122,7 +122,7 @@ void MainWindow::switchToPacMode() {
     if (guiConfig->get("useOnlinePac").toBool(true)) {
         pacURI = guiConfig->get("pacUrl").toString();
         if (pacURI.isEmpty()) {
-            Utils::warning("online pac uri is empty. we will use default uri.");
+            qDebug() << "\033[30mWARNING: online pac uri is empty. we will use default uri.";
             pacURI = online_pac_uri;
             guiConfig->set("pacUrl", pacURI);
         }
