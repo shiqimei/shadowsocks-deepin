@@ -70,6 +70,8 @@ private slots:
 
     void on_actionGlobal_triggered(bool checked);
 
+    void on_actionManual_triggered(bool checked);
+
     void updateTrayIcon();
 
     void on_actionStart_on_Boot_triggered(bool checked);
@@ -118,6 +120,8 @@ private:
     void switchToPacMode();
 
     void switchToGlobal();
+
+    void switchToManual();
 
     // QWidget interface
 protected:

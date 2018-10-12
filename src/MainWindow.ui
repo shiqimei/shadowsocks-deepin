@@ -23,6 +23,7 @@
     </property>
     <addaction name="actionPAC"/>
     <addaction name="actionGlobal"/>
+    <addaction name="actionManual"/>
    </widget>
    <widget class="QMenu" name="menuServers">
     <property name="title">
@@ -111,6 +112,14 @@
    </property>
    <property name="text">
     <string>Global</string>
+   </property>
+  </action>
+  <action name="actionManual">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Manual</string>
    </property>
   </action>
   <action name="actionEdit_Servers">

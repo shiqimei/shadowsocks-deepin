@@ -68,11 +68,6 @@ MainWindow::MainWindow(QWidget *parent) :
     systemProxyModeManager = new DDEProxyModeManager(this);
     if (guiConfig->get("enabled").toBool()) {
         on_actionEnable_System_Proxy_triggered(true);
-        if (guiConfig->get("global").toBool()) {
-            switchToGlobal();
-        } else {
-            switchToPacMode();
-        }
     }
     in = 0;
     out = 0;
@@ -175,8 +170,10 @@ void MainWindow::updateTrayIcon() {
     out = 0;
     if (!GuiConfig::instance()->get("enabled").toBool()) {
         icon.append("_none");
-    } else if (GuiConfig::instance()->get("global").toBool()) {
+    } else if (GuiConfig::instance()->get("manual").toBool()) {
         icon.append("_manual");
+    } else if (GuiConfig::instance()->get("global").toBool()) {
+        icon.append("_global");
     } else {
         icon.append("_auto");
     }
@@ -277,12 +274,20 @@ void MainWindow::updateMenu() {
         ui->actionEnable_System_Proxy->setChecked(false);
         ui->menuMode->setEnabled(false);
     }
-    if (guiConfig->get("global").toBool()) {
-        ui->actionGlobal->setChecked(true);
-        ui->actionPAC->setChecked(false);
-    } else {
-        ui->actionGlobal->setChecked(false);
+    if (guiConfig->get("auto").toBool()) {
         ui->actionPAC->setChecked(true);
+        ui->actionGlobal->setChecked(false);
+        ui->actionManual->setChecked(false);
+    }
+    if (guiConfig->get("global").toBool()) {
+        ui->actionPAC->setChecked(false);
+        ui->actionGlobal->setChecked(true);
+        ui->actionManual->setChecked(false);
+    }
+    if (guiConfig->get("manual").toBool()) {
+        ui->actionPAC->setChecked(false);
+        ui->actionGlobal->setChecked(false);
+        ui->actionManual->setChecked(true);
     }
     if (guiConfig->get("useOnlinePac").toBool()) {
         ui->actionOnline_PAC->setChecked(true);
@@ -381,9 +386,12 @@ void MainWindow::on_actionEnable_System_Proxy_triggered(bool flag) {
             guiConfig->updateLastUsed();
             proxyManager->setConfig(config);
             proxyManager->start();
-            if(guiConfig->get("global").toBool()){
+            if(guiConfig->get("manual").toBool()){
+                systemProxyModeManager->switchToNone();
+                updateMenu();
+            } else if(guiConfig->get("global").toBool()){
                 switchToGlobal();
-            } else{
+            } else if(guiConfig->get("auto").toBool()){
                 switchToPacMode();
             }
         }
@@ -395,8 +403,10 @@ void MainWindow::on_actionEnable_System_Proxy_triggered(bool flag) {
 void MainWindow::on_actionPAC_triggered(bool checked) {
     qDebug() << "pac" << checked;
     auto guiConfig = GuiConfig::instance();
-    if (guiConfig->get("global").toBool() == checked) {
-        guiConfig->set("global", !checked);
+    guiConfig->set("manual", !checked);
+    guiConfig->set("global", !checked);
+    if (guiConfig->get("auto").toBool() != checked) {
+        guiConfig->set("auto", checked);
         switchToPacMode();
     }
     updateMenu();
@@ -405,9 +415,23 @@ void MainWindow::on_actionPAC_triggered(bool checked) {
 void MainWindow::on_actionGlobal_triggered(bool checked) {
     qDebug() << "global" << checked;
     auto guiConfig = GuiConfig::instance();
+    guiConfig->set("auto", !checked);
+    guiConfig->set("manual", !checked);
     if (guiConfig->get("global").toBool() != checked) {
         guiConfig->set("global", checked);
         switchToGlobal();
+    }
+    updateMenu();
+}
+
+void MainWindow::on_actionManual_triggered(bool checked) {
+    qDebug() << "manual" << checked;
+    auto guiConfig = GuiConfig::instance();
+    guiConfig->set("auto", !checked);
+    guiConfig->set("global", !checked);
+    if (guiConfig->get("manual").toBool() != checked) {
+        guiConfig->set("manual", checked);
+        systemProxyModeManager->switchToNone();
     }
     updateMenu();
 }
