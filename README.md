@@ -48,7 +48,7 @@ sudo apt install qt5-default qttools5-dev-tools qt5-qmake g++ qtcreator -y
 sudo apt install libdtkbase-dev libdtkwidget-dev -y
 sudo apt install libdframeworkdbus-dev -y
 sudo apt install libqrencode-dev libzbar-dev -y
-sudo apt install libdtkbase-dev libdtkcore-dev libdtksettings-dev libdtksettingsview-dev libdtkutil-dev libdtkwidget-dev libdtkwm-dev -y
+sudo apt install libdtkcore-dev libdtkwidget-dev libdtkwm-dev libdtkcore-bin libdtksettings-dev libdtksettingsview-dev -y
 sudo apt install dh-make fakeroot -y
 cd shadowsocks-deepin
 mkdir build && cd build
