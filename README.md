@@ -8,7 +8,7 @@
 
 shadowsocks-deepin 是一款专门为 deepin 打造的小飞机，科学上网必备！
 
-<img src="./images/shadowsocks-deepin.jpg" height="150">
+![](./images/shadowsocks-deepin.jpg)
 
 
 与 Shadowsocks-Qt5 相比的优势
@@ -44,7 +44,7 @@ dpkg-buildpackage -us -uc -b #打成.deb包
 
 ````
 sudo apt update
-sudo apt install qt5-default qttools5-dev-tools qt5-qmake g++ qtcreator -y
+sudo apt install qt5-default qttools5-dev-tools qt5-qmake g++ qtcreator qttools5-dev -y
 sudo apt install libdtkbase-dev libdtkwidget-dev -y
 sudo apt install libdframeworkdbus-dev -y
 sudo apt install libqrencode-dev libzbar-dev -y

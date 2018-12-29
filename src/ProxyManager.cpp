@@ -56,7 +56,7 @@ void ProxyManager::connectController() {
 void ProxyManager::getProfile(const QJsonObject &config, QSS::Profile &profile) {
     QString server = config.value("server").toString();
     if (server.isEmpty()) {
-        Utils::critical("server is empty.");
+        Utils::critical(tr("server is empty."));
     }
     profile.setServerAddress(server.toStdString());
     QString password = config.value("password").toString();

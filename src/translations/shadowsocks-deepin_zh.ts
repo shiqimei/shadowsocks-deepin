@@ -623,4 +623,12 @@ Edit User Rule for GFWList...</source>
         <translation>保存图片</translation>
     </message>
 </context>
+<context>
+    <name>ProxyManager</name>
+    <message>
+        <location filename="../ProxyManager.cpp" line="59"/>
+        <source>server is empty.</source>
+        <translation>服务器地址不能为空</translation>
+    </message>
+</context>
 </TS>
