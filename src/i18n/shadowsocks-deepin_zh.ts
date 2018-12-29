@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ConfigDialog</name>
     <message>
@@ -44,61 +44,43 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ConfigDialog.ui" line="131"/>
+        <location filename="../ConfigDialog.ui" line="135"/>
         <source>&amp;Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ConfigDialog.ui" line="138"/>
+        <location filename="../ConfigDialog.ui" line="142"/>
         <source>&amp;Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ConfigDialog.ui" line="145"/>
+        <location filename="../ConfigDialog.ui" line="149"/>
         <source>Dupli&amp;cate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ConfigDialog.ui" line="152"/>
+        <location filename="../ConfigDialog.ui" line="156"/>
         <source>Move &amp;Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ConfigDialog.ui" line="159"/>
+        <location filename="../ConfigDialog.ui" line="163"/>
         <source>Move D&amp;own</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ConfigDialog.ui" line="178"/>
+        <location filename="../ConfigDialog.ui" line="182"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ConfigDialog.ui" line="185"/>
+        <location filename="../ConfigDialog.ui" line="189"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ConfigDialog.ui" line="204"/>
+        <location filename="../ConfigDialog.ui" line="208"/>
         <source>Proxy Port</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ConfigItem</name>
-    <message>
-        <location filename="../ConfigItem.cpp" line="175"/>
-        <source>connected</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ConfigItem.cpp" line="178"/>
-        <source>unconnect</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ConfigItem.cpp" line="182"/>
-        <source>unsupport</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -106,8 +88,8 @@
     <name>GuiConfig</name>
     <message>
         <location filename="../GuiConfig.cpp" line="25"/>
-        <location filename="../GuiConfig.cpp" line="68"/>
         <location filename="../GuiConfig.cpp" line="69"/>
+        <location filename="../GuiConfig.cpp" line="70"/>
         <source>%1 open fail</source>
         <translation type="unfinished"></translation>
     </message>
@@ -421,6 +403,49 @@ Edit User Rule for GFWList...</source>
         <source>Disconnect</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="43"/>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="512"/>
+        <source>QR Code Not Found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="513"/>
+        <source>Can&apos;t find any QR code image that contains valid URI on your screen(s).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="516"/>
+        <source>found URI %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="520"/>
+        <location filename="../MainWindow.cpp" line="538"/>
+        <source>URI is valid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="525"/>
+        <location filename="../MainWindow.cpp" line="547"/>
+        <source>URI is invalid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="537"/>
+        <location filename="../MainWindow.cpp" line="546"/>
+        <source>info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="562"/>
+        <source>Save gui-config.json</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PACUrlDialog</name>
@@ -432,6 +457,72 @@ Edit User Rule for GFWList...</source>
     <message>
         <location filename="../PACUrlDialog.ui" line="20"/>
         <source>Please input PAC Url</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ProfileItem</name>
+    <message>
+        <location filename="../widget/ProfileItem.cpp" line="184"/>
+        <source>connected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget/ProfileItem.cpp" line="187"/>
+        <source>unconnect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget/ProfileItem.cpp" line="191"/>
+        <source>unsupport</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ProfileView</name>
+    <message>
+        <location filename="../widget/ProfileView.cpp" line="22"/>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget/ProfileView.cpp" line="22"/>
+        <source>Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget/ProfileView.cpp" line="22"/>
+        <source>Status</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget/ProfileView.cpp" line="22"/>
+        <source>Latency</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget/ProfileView.cpp" line="22"/>
+        <source>Local Port</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget/ProfileView.cpp" line="22"/>
+        <source>Term Usage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget/ProfileView.cpp" line="23"/>
+        <source>Total</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget/ProfileView.cpp" line="23"/>
+        <source>Reset Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget/ProfileView.cpp" line="23"/>
+        <source>Last Used</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -479,62 +570,22 @@ Edit User Rule for GFWList...</source>
     </message>
 </context>
 <context>
-    <name>ProxyView</name>
+    <name>ProxyManager</name>
     <message>
-        <location filename="../ProxyView.cpp" line="45"/>
-        <source>Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ProxyView.cpp" line="45"/>
-        <source>Server</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ProxyView.cpp" line="45"/>
-        <source>Status</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ProxyView.cpp" line="45"/>
-        <source>Latency</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ProxyView.cpp" line="45"/>
-        <source>Local Port</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ProxyView.cpp" line="45"/>
-        <source>Term Usage</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ProxyView.cpp" line="46"/>
-        <source>Total</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ProxyView.cpp" line="46"/>
-        <source>Reset Date</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ProxyView.cpp" line="46"/>
-        <source>Last Used</source>
+        <location filename="../ProxyManager.cpp" line="59"/>
+        <source>server is empty.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>QApplication</name>
     <message>
-        <location filename="../main.cpp" line="27"/>
+        <location filename="../main.cpp" line="30"/>
         <source>If you want to keep a secret, you must also hide it from yourself.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="38"/>
+        <location filename="../main.cpp" line="41"/>
         <source>Shadowsocks Deepin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -542,15 +593,69 @@ Edit User Rule for GFWList...</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="34"/>
+        <location filename="../main.cpp" line="37"/>
         <source>Shadowsocks Deepin</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QRCodeCapturer</name>
+    <message>
+        <location filename="../QRCodeCapturer.cpp" line="24"/>
+        <source>QR Capturer</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QRWidget</name>
+    <message>
+        <location filename="../widget/QRWidget.cpp" line="37"/>
+        <source>Generating QR code failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ShareDialog</name>
+    <message>
+        <location filename="../ShareDialog.cpp" line="15"/>
+        <source>save QRCode Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ShareDialog.cpp" line="38"/>
+        <source>Profile list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ShareDialog.cpp" line="39"/>
+        <source>QRCode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ShareDialog.cpp" line="67"/>
+        <source>Save QRCode Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ShareDialog.cpp" line="69"/>
+        <source>Images (*.png *.xpm *.jpg)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ShareDialog.cpp" line="75"/>
+        <source>Save QRCode Image Success</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ShareDialog.cpp" line="78"/>
+        <source>Save QRCode Image Error</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Toolbar</name>
     <message>
-        <location filename="../Toolbar.cpp" line="44"/>
+        <location filename="../Toolbar.cpp" line="22"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>

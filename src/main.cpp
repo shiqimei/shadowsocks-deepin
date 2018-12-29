@@ -53,6 +53,5 @@ int main(int argc, char *argv[]) {
         Dtk::Widget::moveToCenter(&window);
         return app.exec();
     }
-    qDebug() << "\033[32mApp has started";
     return 0;
 }

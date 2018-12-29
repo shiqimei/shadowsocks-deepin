@@ -16,7 +16,7 @@ before_install:
   - sudo apt-get -qq install -y dde libdtkbase-dev libdtkwidget-dev libdframeworkdbus-dev
 
 script:
-  - mkdir build && cd build
+  - mkdir dist && cd dist
   - cmake ..
   - make
 

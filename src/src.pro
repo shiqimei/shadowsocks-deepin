@@ -90,10 +90,10 @@ FORMS += \
     ProxyDialog.ui
 RESOURCES += \
     qrc.qrc
-TRANSLATIONS += translations/shadowsocks-deepin_zh.ts \
-               translations/shadowsocks-deepin_en.ts
+TRANSLATIONS += i18n/shadowsocks-deepin_zh.ts \
+               i18n/shadowsocks-deepin_en.ts
 
 DISTFILES += \
-    translate_generation.sh \
+    ../build/translate_generation.sh \
     dbusinterface/com.deepin.StartManager.xml
 
