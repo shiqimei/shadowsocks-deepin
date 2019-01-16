@@ -13,7 +13,7 @@ Shadowsocks-deepin is a powerful shadowsocks client for linux deepin. [中文文
 
 Advantages compared to Shadowsocks-Qt5
 
-|Software|Agent Mode|Accessibllity|
+|Software|Agent Mode|Accessibility|
 |:-:|:-:|:-:|
 |Shadowsocks-Qt5|only support global mode|need to manually configure system proxy or use Chrome extension|
 |Shadowsocks-Deepin|both global mode and pac mode supported|no extra configuration required
