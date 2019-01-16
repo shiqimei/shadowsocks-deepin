@@ -6,41 +6,42 @@
 
 <h2 align="center">Shadowsocks for Deepin</h2>
 
-shadowsocks-deepin 是一款专门为 deepin 打造的小飞机，科学上网必备！
+Shadowsocks-deepin is a powerful shadowsocks client for linux deepin. [中文文档](docs/README_CN.md)
 
-![](./images/shadowsocks-deepin.jpg)
+![](./images/demo_EN.png)
 
 
-与 Shadowsocks-Qt5 相比的优势
+Advantages compared to Shadowsocks-Qt5
 
-|软件|系统代理模式|易用性|
+|Software|Agent Mode|Accessibllity|
 |:-:|:-:|:-:|
-|Shadowsocks-Qt5|仅支持全局模式|需要手动配置系统代理或配置Chrome拓展|
-|Shadowsocks-Deepin|既支持全局模式也支持pac模式|无需任何配置
+|Shadowsocks-Qt5|only support global mode|need to manually configure system proxy or use Chrome extension|
+|Shadowsocks-Deepin|both global mode and pac mode supported|no extra configuration required
 
-# 下载安装
+# Installation
 <br>
-<p align="center"><a href="http://file.lolimay.cn/shadowsocks-deepin_1.2.2_amd64.deb"><img src="http://images.lolimay.cn/18-9-28/51226561.jpg"/></a></p>
+<p align="center"><a href="http://file.lolimay.cn/shadowsocks-deepin_1.2.2_amd64.deb"><img src="images/download_button.png" height="50"/></a></p>
 
-软件开箱即用，只要正确填写了你的服务器配置、选择好系统代理模式并启动系统代理后，小飞机即可起飞，**不需要手动配置系统代理，软件会自动修改系统代理配置**，在使用的过程中如遇到任何问题，欢迎提 [**issue**](https://github.com/loliMay/shadowsocks-deepin/issues/new)，我收到后会及时回复的。
+Shadowsocks-deepin is ready to use right out of box, as long as the right server configration was added and proper proxy mode selected, it should works well. **no extra system proxy configuration required, the software will done this for you**.
+Any problems encounted during the use, please feel free to propose [**issues**](https://github.com/loliMay/shadowsocks-deepin/issues/new) to help us improve this project.
 
-也可以尝试自己将源码打包，下面给出打包方法:
+You can also try to package the source code yourself. The packing method is given below:
 ````bash
-sudo apt update #更新源
-sudo apt install git dh-make cmake fakeroot qtcreator-dde qttools5-dev g++ -y #安装相关依赖
-mkdir shadowsocks && cd shadowsocks #新建shadowsocks文件夹并打开该文件夹
-git clone git@github.com:loliMay/shadowsocks-deepin.git #克隆shadowsocks-deepin仓库
-mv shadowsocks-deepin shadowsocks-deepin-1.2.2 #重命名
-tar -zcvf shadowsocks-deepin-1.2.2.tar.gz shadowsocks-deepin-1.2.2 #打成.tar.gz包
-cd shadowsocks-deepin-1.2.2 #进入项目根目录
-dpkg-buildpackage -us -uc -b #打成.deb包
+sudo apt update # update source
+sudo apt install git dh-make cmake fakeroot qtcreator-dde qttools5-dev g++ -y #install dependencies
+mkdir shadowsocks && cd shadowsocks # create shadowsocks folder and switch to this path
+git clone git@github.com:loliMay/shadowsocks-deepin.git # clone shadowsocks-deepin repo
+mv shadowsocks-deepin shadowsocks-deepin-1.2.2 #rename
+tar -zcvf shadowsocks-deepin-1.2.2.tar.gz shadowsocks-deepin-1.2.2 # package to *.tar.gz
+cd shadowsocks-deepin-1.2.2 # switch to the project root directory
+dpkg-buildpackage -us -uc -b # package
 ````
 
-右键在文件管理器中打开，若在`shadowsocks`目录下出现`.deb`包则说明打包成功。
+Right click and select `opens in the file manager`, the `*.deb` file will appear in the `shadowsocks` directory.
 
-# 参与开发
+# Development
 
-开发这个软件用到的原理，请参考 [影梭客户端原理剖析](docs/影梭客户端原理剖析.md)
+You can make contributions by participating in development. Start with the following steps:
 
 ````
 sudo apt update
@@ -57,35 +58,35 @@ make -j4
 cd src
 ./shadowsocks-deepin
 ````
-# 更新日志
-> 1.2.2版本 修复 [#9](https://github.com/lolimay/shadowsocks-deepin/issues/9)，汉化软件主要界面，将流量上下标改成 [shadowsocks-windows](https://github.com/shadowsocks/shadowsocks-windows) 风格
+# Update Logs
+> 1.2.2 Fixes [#9](https://github.com/lolimay/shadowsocks-deepin/issues/9), complete chinese localization for main interface, change the traffic icon to [shadowsocks-windows](https://github.com/shadowsocks/shadowsocks-windows) style.
 >
-> 1.2.1版本 修复由于原pac文件地址失效导致的pac模式无法使用的BUG，最新pac文件地址为 http://file.lolimay.cn/autoproxy.pac
+> 1.2.1 Fixes the bug that the pac mode cannot be used due to the invalidation of the original pac file online address. The latest pac file address is http://file.lolimay.cn/autoproxy.pac.
 >
-> 1.2.0版本 主要功能基本实现，支持全局模式和pac模式，支持切换服务器，支持二维码导入导出配置等高级功能。
+> 1.2.0 The main functions are almost all implemented.
 
-# 关于
-1.2.0版本之前由 **[@PikachuHy](https://github.com/PikachuHy)** 开发，1.2.1版本之后由 **[@lolimay](https://github.com/lolimay)** 维护。
+# About this project
+The initiator of this project is **[@PikachuHy](https://github.com/PikachuHy)**. Remember that without his hard work, we cannot use shadowsocks which is almost the same experience as it on windows. After the version 1.2.2, this project was maintained by [@LoliMay](https://github.com/lolimay).
 
-# 开源许可
+# Licence
 
-Shadowsocks-Deepin 使用 [GPLv3](LICENSE) 许可协议.
+Shadowsocks-deepin is under [GPLv3](LICENSE) licence.
 
-非常感谢以下开源项目 
+Appreciation to the following open source projects:
 
 - [Deepin System Monitor](https://github.com/linuxdeepin/deepin-system-monitor)
 - [Shadowsocks for Windows](https://github.com/shadowsocks/shadowsocks-windows)
 - [libQtShadowsocks](https://github.com/shadowsocks/libQtShadowsocks)
 
-## 依赖的开源组件
+## Dependencies
 
-| 名称                   | 许可        | 链接                                      |
-| ---------------------- | -------------- | ---------------------------------------- |
-| Deepin Tool Kit Core   | GPLv3          | https://github.com/linuxdeepin/dtkcore   |
-| Deepin Tool Kit Widget | GPLv3          | https://github.com/linuxdeepin/dtkwidget |
-| Botan                  | Simplified BSD | https://github.com/randombit/botan       |
-| libQtShadowsocks       | LGPLv3         | https://github.com/shadowsocks/libQtShadowsocks |
-| ZBar                   | LGPLv2.1       | https://github.com/ZBar/ZBar             |
-| libqrencode            | LGPLv2.1       | https://github.com/fukuchi/libqrencode   |
+| Name                   | License        |
+| ---------------------- | -------------- | ----------------------------------------  |
+| [Deepin Tool Kit Core](https://github.com/linuxdeepin/dtkcore)   | GPLv3          |
+| [Deepin Tool Kit Widget](https://github.com/linuxdeepin/dtkwidget) | GPLv3          |
+| [Botan](https://github.com/randombit/botanss)                  | Simplified BSD |
+| [libQtShadowsocks](https://github.com/shadowsocks/libQtShadowsocks)       | LGPLv3         |
+| [ZBar](https://github.com/ZBar/ZBar)                   | LGPLv2.1       |
+| [libqrencode](https://github.com/fukuchi/libqrencode)            | LGPLv2.1       |
 
 
