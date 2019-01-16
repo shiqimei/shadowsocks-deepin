@@ -81,11 +81,11 @@ Appreciation to the following open source projects:
 ## Dependencies
 
 | Name                   | License        |
-| ---------------------- | -------------- | ----------------------------------------  |
+| ---------------------- | -------------- |
 | [Deepin Tool Kit Core](https://github.com/linuxdeepin/dtkcore)   | GPLv3          |
 | [Deepin Tool Kit Widget](https://github.com/linuxdeepin/dtkwidget) | GPLv3          |
 | [Botan](https://github.com/randombit/botanss)                  | Simplified BSD |
-| [libQtShadowsocks](https://github.com/shadowsocks/libQtShadowsocks)       | LGPLv3         |
+| [libQtShadowsocks](https://github.com/shadowsocks/libQtShadowsocks)       | LGPLv3   |
 | [ZBar](https://github.com/ZBar/ZBar)                   | LGPLv2.1       |
 | [libqrencode](https://github.com/fukuchi/libqrencode)            | LGPLv2.1       |
 
