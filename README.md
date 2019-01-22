@@ -39,6 +39,20 @@ dpkg-buildpackage -us -uc -b # package
 
 Right click and select `opens in the file manager`, the `*.deb` file will appear in the `shadowsocks` directory.
 
+# Terminal Proxy
+Terminal cannot access target url through shadowsocks proxy by default either appling global mode or pac mode. [Proxychains](https://github.com/haad/proxychains) is a tool that forces any TCP connection to follow through shadowsocks proxy. Follow below steps and make any terminal commands access network through shadowsocks proxy:
+1. `sudo apt install proxychains -y # insall proxychains`
+2. `echo -e "[ProxyList]\nsocks5 127.0.0.1 1080" | tee ~/.proxychains/proxychains.conf # configration`
+3. Prefix `proxychains` for any commands which you want it access network through proxy.
+
+Example:
+````bash
+npm install chalk # no proxy
+proxychains npm install chalk # using socks5 proxy via proxychains
+````
+
+
+
 # Development
 
 You can make contributions by participating in development. Start with the following steps:

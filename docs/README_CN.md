@@ -38,6 +38,20 @@ dpkg-buildpackage -us -uc -b #打成.deb包
 
 右键在文件管理器中打开，若在`shadowsocks`目录下出现`.deb`包则说明打包成功。
 
+
+# 终端代理
+默认情况下，终端无法通过 shadowsocks 代理访问目标URL，无论是应用全局模式还是 pac 模式。[Proxychains](https://github.com/haad/proxychains) 是一个强制任何TCP连接走 shadowsocks 代理的工具。 按照以下步骤操作，可以使任何终端命令通过 shadowsocks 代理访问网络：
+
+1. `sudo apt install proxychains -y # 安装 proxychains`
+2. `echo -e "[ProxyList]\nsocks5 127.0.0.1 1080" | tee ~/.proxychains/proxychains.conf # 初始化配置`
+3. 为希望通过代理访问网络的命令添加 `proxychains` 前缀：
+
+例：
+````bash
+npm install chalk # 未使用代理
+proxychains npm install chalk # 使用代理
+````
+
 # 参与开发
 
 开发这个软件用到的原理，请参考 [影梭客户端原理剖析](docs/影梭客户端原理剖析.md)
