@@ -1,14 +1,13 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: shadowsocks-deepin
-Source: <url://example.com>
+Source: https://github.com/lolimay/shadowsocks-deepin
 
 Files: *
-Copyright: <years> <put author's name and email here>
-           <years> <likewise for another author>
+Copyright: 2019 lolimay <lolimay@lolimay.cn>
 License: GPL-3.0+
 
 Files: debian/*
-Copyright: 2018 unknown <lolimay@unknown>
+Copyright: 2019 lolimay <lolimay@lolimay.cn>
 License: GPL-3.0+
 
 License: GPL-3.0+

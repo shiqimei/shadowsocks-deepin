@@ -1,10 +1,15 @@
 cmake_minimum_required(VERSION 3.7)
 project(shadowsocks-deepin)
+
+message(${CMAKE_INSTALL_PREFIX})
+return()
+
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
+
 if (NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))
     set(CMAKE_CXX_FLAGS -O3)
     # generate qm files
@@ -13,19 +18,25 @@ if (NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))
 else ()
     set(CMAKE_CXX_COMPILER "clang++")
 endif ()
+
 file(GLOB_RECURSE SOURCES "*.cpp")
 file(GLOB_RECURSE HEADERS "*.h")
 file(GLOB_RECURSE FORMS "*.ui")
 file(GLOB_RECURSE RESOURCES "*.qrc")
+
 find_package(PkgConfig REQUIRED)
 set(QT Core Gui Widgets Network DBus Sql LinguistTools)
 find_package(Qt5 REQUIRED ${QT})
-pkg_check_modules(3rd_lib REQUIRED
+
+# add 3rd_party libs
+pkg_check_modules(lib REQUIRED
 #        QtShadowsocks
         dtkwidget dframeworkdbus
         dtkcore
         libqrencode zbar
         )
+
+
 #add_dependencies(../libQtShadowsocks)
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${FORMS} ${RESOURCES})
 target_include_directories(${PROJECT_NAME} PUBLIC ${3rd_lib_INCLUDE_DIRS} 
@@ -48,5 +59,6 @@ foreach (ICON_SIZE 16 24 32 48 64 96 128 256)
             RENAME shadowsocks-deepin.svg
             DESTINATION share/icons/hicolor/${ICON_SIZE}x${ICON_SIZE}/apps)
 endforeach ()
-install(TARGETS shadowsocks-deepin DESTINATION bin)
+
+install(TARGETS ${PROJECT_NAME} DESTINATION bin)
 install(FILES ../shadowsocks-deepin.desktop DESTINATION share/applications)
