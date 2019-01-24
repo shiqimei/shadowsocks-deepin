@@ -1,0 +1,27 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>resources/icons/ss16.png</file>
+        <file>resources/icons/ss20.png</file>
+        <file>resources/icons/ss24.png</file>
+        <file>resources/icons/ssIn24.png</file>
+        <file>resources/icons/ssOut24.png</file>
+        <file>resources/icons/ssw128.png</file>
+        <file>resources/icons/ssw128.svg</file>
+        <file>resources/icons/ssw96.svg</file>
+        <file>resources/icons/ssw48.svg</file>
+        <file>resources/icons/ssw36.svg</file>
+        <file>resources/icons/ssw24.svg</file>
+        <file>resources/icons/ssw_in_auto128.svg</file>
+        <file>resources/icons/ssw_in_manual128.svg</file>
+        <file>resources/icons/ssw_in_none128.svg</file>
+        <file>resources/icons/ssw_in_out_auto128.svg</file>
+        <file>resources/icons/ssw_in_out_none128.svg</file>
+        <file>resources/icons/ssw_manual128.svg</file>
+        <file>resources/icons/ssw_none128.svg</file>
+        <file>resources/icons/ssw_out_auto128.svg</file>
+        <file>resources/icons/ssw_out_none128.svg</file>
+        <file>resources/icons/ssw_auto128.svg</file>
+        <file>resources/icons/ssw_out_manual128.svg</file>
+        <file>resources/icons/ssw_in_out_manual128.svg</file>
+    </qresource>
+</RCC>

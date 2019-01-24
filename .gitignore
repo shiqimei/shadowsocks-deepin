@@ -2,7 +2,6 @@ cmake-build-debug/
 cmake-build-release/
 .idea/
 build/
-dist/
 *.pro.user
 flatpak/
 !flatpak/build_shadowsocks-deepin.sh

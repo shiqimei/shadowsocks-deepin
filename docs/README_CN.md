@@ -8,7 +8,7 @@
 
 shadowsocks-deepin 是一款专门为 deepin 打造的小飞机，科学上网必备！
 
-![](../images/shadowsocks-deepin.jpg)
+![](/docs/images/shadowsocks-deepin.jpg)
 
 
 与 Shadowsocks-Qt5 相比的优势
