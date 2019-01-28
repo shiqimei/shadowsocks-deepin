@@ -6,7 +6,9 @@
 
 <h2 align="center">Shadowsocks for Deepin</h2>
 
-Shadowsocks-deepin is a powerful shadowsocks client for linux deepin. [中文文档](docs/README_CN.md)
+**<p align="center">English | <a href="./docs/README_CN.md">中文</a></p>**
+
+Shadowsocks-deepin is a powerful shadowsocks client for linux deepin.
 
 ![](docs/images/demo_EN.png)
 
