@@ -51,6 +51,7 @@ Example:
 ````bash
 npm install chalk # no proxy
 proxychains npm install chalk # using socks5 proxy via proxychains
+proxychains git clone git@github.com:lolimay/shadowsocks-deepin.git # using proxy
 ````
 
 
