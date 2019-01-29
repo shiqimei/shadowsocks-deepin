@@ -1,24 +1,22 @@
 cmake_minimum_required(VERSION 3.7)
 project(shadowsocks-deepin)
 
-message(${CMAKE_INSTALL_PREFIX})
-return()
-
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
+# generate *.qm files
 if (NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))
     set(CMAKE_CXX_FLAGS -O3)
-    # generate qm files
     execute_process(COMMAND bash "translate_generation.sh"
-                    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src)
+                    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/utils)
 else ()
     set(CMAKE_CXX_COMPILER "clang++")
 endif ()
 
+# collect all source files
 file(GLOB_RECURSE SOURCES "*.cpp")
 file(GLOB_RECURSE HEADERS "*.h")
 file(GLOB_RECURSE FORMS "*.ui")
@@ -30,11 +28,10 @@ find_package(Qt5 REQUIRED ${QT})
 
 # add 3rd_party libs
 pkg_check_modules(lib REQUIRED
-#        QtShadowsocks
-        dtkwidget dframeworkdbus
-        dtkcore
-        libqrencode zbar
-        )
+    dtkwidget dframeworkdbus
+    dtkcore
+    libqrencode zbar
+)
 
 
 #add_dependencies(../libQtShadowsocks)

@@ -1,3 +1,0 @@
-shlibs:Depends=libc6 (>= 2.17), libdframeworkdbus2, libdtkcore2 (>= 2.0.7.1), libdtkwidget2 (>= 2.0.7.2), libgcc1 (>= 1:3.0), libqrencode3 (>= 3.2.0), libqt5core5a (>= 5.6.1), libqt5dbus5 (>= 5.0.2), libqt5gui5 (>= 5.2.0), libqt5network5 (>= 5.0.2), libqt5sql5 (>= 5.0.2), libqt5widgets5 (>= 5.2.0~alpha1), libstdc++6 (>= 5.2), libzbar0 (>= 0.10)
-misc:Depends=
-misc:Pre-Depends=
