@@ -1,6 +1,6 @@
 #include "ShareDialog.h"
 #include "GuiConfig.h"
-#include "widget/SingleListItem.h"
+#include "widgets/SingleListItem.h"
 #include <QGridLayout>
 #include <QHBoxLayout>
 #include "utils.h"

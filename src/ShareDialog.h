@@ -1,8 +1,8 @@
 #ifndef SHAREDIALOG_H
 #define SHAREDIALOG_H
 #include "stdafx.h"
-#include "widget/QRWidget.h"
-#include "widget/SingleListView.h"
+#include "widgets/QRWidget.h"
+#include "widgets/SingleListView.h"
 
 class ShareDialog : public QDialog
 {
