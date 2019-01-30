@@ -6,7 +6,9 @@
 
 <h2 align="center">Shadowsocks for Deepin</h2>
 
-shadowsocks-deepin 是一款专门为 deepin 打造的小飞机，科学上网必备！
+**<p align="center"><a href="https://github.com/lolimay/shadowsocks-deepin">English</a> | 中文</p>**
+
+Shadowsocks-deepin 是一款专门为 deepin 打造的小飞机，科学上网必备！
 
 ![](/docs/images/shadowsocks-deepin.jpg)
 
@@ -50,6 +52,7 @@ dpkg-buildpackage -us -uc -b #打成.deb包
 ````bash
 npm install chalk # 未使用代理
 proxychains npm install chalk # 使用代理
+proxychains git clone git@github.com:lolimay/shadowsocks-deepin.git # 使用代理
 ````
 
 # 参与开发
