@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.13.3)
 project(shadowsocks-deepin VERSION 1.3.0)
 
+# Debug
+# set(CMAKE_BUILD_TYPE Debug)
+
 # Set Environment Variables
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -34,7 +37,6 @@ pkg_search_module(DFRAMEWORKDBUS REQUIRED dframeworkdbus)
 pkg_search_module(QRENCODE REQUIRED libqrencode)
 pkg_search_module(ZBAR REQUIRED zbar)
 pkg_search_module(QTSHADOWSOCKS REQUIRED QtShadowsocks)
-pkg_search_module(BOTAN2 REQUIRED botan-2)
 
 include_directories(AFTER ${DTKCORE_INCLUDE_DIRS})
 include_directories(AFTER ${DTKWIDGET_INCLUDE_DIRS})
@@ -42,13 +44,39 @@ include_directories(AFTER ${DFRAMEWORKDBUS_INCLUDE_DIRS})
 include_directories(AFTER ${QRENCODE_INCLUDE_DIRS})
 include_directories(AFTER ${ZBAR_INCLUDE_DIRS})
 include_directories(AFTER ${QTSHADOWSOCKS_INCLUDE_DIRS})
-include_directories(AFTER ${BOTAN2_INCLUDE_DIRS})
 
-file(GLOB_RECURSE SOURCES "*.cpp")
-file(GLOB_RECURSE HEADERS "*.h")
-file(GLOB_RECURSE FORMS "*.ui")
-file(GLOB_RECURSE RESOURCES "*.qrc")
-set(SOURCE_FILES ${SOURCES} ${HEADERS} ${FORMS} ${RESOURCES})
+set(SOURCE_FILES main.cpp
+                 MainWindow.h          MainWindow.cpp
+                 GuiConfig.h           GuiConfig.cpp
+                 Settings.h            Settings.cpp
+                 ConfigDialog.h        ConfigDialog.cpp
+                 ProxyDialog.h         ProxyDialog.cpp
+                 ProxyManager.h        ProxyManager.cpp
+                 utils.h               utils.cpp
+                 ShareDialog.h         ShareDialog.cpp
+                 SSValidator.h         SSValidator.cpp
+                 QRCodeCapturer.h      QRCodeCapturer.cpp
+                 PACUrlDialog.h        PACUrlDialog.cpp
+                 Toolbar.h             Toolbar.cpp
+                 DDEProxyModeManager.h DDEProxyModeManager.cpp
+                 LogMainWindow.h       LogMainWindow.cpp
+                 URIHelper.h           URIHelper.cpp
+)
+
+set(WIDGETS
+    widgets/ProfileItem.h    widgets/ProfileItem.cpp
+    widgets/ProfileView.h    widgets/ProfileView.cpp
+    widgets/QRWidget.h       widgets/QRWidget.cpp
+    widgets/SingleListItem.h widgets/SingleListItem.cpp
+    widgets/SingleListView.h widgets/SingleListView.cpp
+)
+
+set(INTERFACE
+    interface/SystemProxyModeManager.h
+    interface/SystemProxyModeManager.cpp
+    dbusinterface/DBusStartManager.h
+    dbusinterface/DBusStartManager.cpp
+)
 
 set(LINK_LIBS
     Qt5::Core
@@ -61,11 +89,14 @@ set(LINK_LIBS
     ${QRENCODE_LIBRARIES}
     ${ZBAR_LIBRARIES}
     ${QTSHADOWSOCKS_LIBRARIES}
-    ${BOTAN2_LIBRARIES}
 )
 
-add_executable(${PROJECT_NAME} ${SOURCE_FILES})
-target_link_libraries(${PROJECT_NAME} PUBLIC ${LINK_LIBS})
+add_executable(${PROJECT_NAME}
+               ${SOURCE_FILES}
+               ${WIDGETS}
+               ${INTERFACE}
+)
+target_link_libraries(${PROJECT_NAME} ${LINK_LIBS})
 
 ### Installation && Package ###
 file(GLOB QM_FILES "translations/*.qm")

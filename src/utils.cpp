@@ -33,7 +33,7 @@
 class DApplication;
 namespace Utils {
 QString getIconQrcPath(QString imageName) {
-    return QString(":/icon/Resources/%1").arg(imageName);
+    return QString(":/icon/resources/icons/%1").arg(imageName);
 }
 
 qint64 getTimestamp() {
