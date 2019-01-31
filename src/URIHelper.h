@@ -1,8 +1,9 @@
 /**
  * Copyright (C) 2017 ~ 2018 PikachuHy
+ *               2018 ~ 2019 lolimay
  *
  * Author:     PikachuHy <pikachuhy@163.com>
- * Maintainer: PikachuHy <pikachuhy@163.com>
+ * Maintainer: lolimay   <lolimay@lolimay.cn>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
