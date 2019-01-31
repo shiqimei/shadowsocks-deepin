@@ -11,7 +11,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOUIC_SEARCH_PATHS forms)
-set(QT Core Gui Widgets Network DBus Sql LinguistTools)
+
 set(CPACK_GENERATOR "DEB")
 set(CPACK_DEBIAN_PACKAGE_NAME "Shadowsocks-deepin")
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "lolimay")
@@ -26,7 +26,7 @@ else()
     set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
 endif()
 
-# load modules
+# Load modules
 find_package(PkgConfig REQUIRED)
 find_package(Qt5Core CONFIG REQUIRED)
 find_package(Qt5Widgets CONFIG REQUIRED)
