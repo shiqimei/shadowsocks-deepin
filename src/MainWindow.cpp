@@ -84,22 +84,22 @@ MainWindow::MainWindow(QWidget *parent) :
     timer->start(100);
     // 流量监控
     connect(proxyManager, &ProxyManager::bytesReceivedChanged, [=](quint64 n) {
-        qDebug() << "bytesReceivedChanged" << n;
+        // ### DEBUG ### qDebug() << "bytesReceivedChanged" << n;
         term_usage_in = n;
         GuiConfig::instance()->setCurrentTermUsage(term_usage_in + term_usage_out);
     });
     connect(proxyManager, &ProxyManager::bytesSentChanged, [=](quint64 n) {
-        qDebug() << "bytesSentChanged" << n;
+        // ### DEBUG ### qDebug() << "bytesSentChanged" << n;
         term_usage_out = n;
         GuiConfig::instance()->setCurrentTermUsage(term_usage_in + term_usage_out);
     });
     connect(proxyManager, &ProxyManager::newBytesReceived, [=](quint64 n) {
-        qDebug() << "newBytesReceived" << n;
+        // ### DEBUG ### qDebug() << "newBytesReceived" << n;
         in += n;
         GuiConfig::instance()->addTotalUsage(n);
     });
     connect(proxyManager, &ProxyManager::newBytesSent, [=](quint64 n) {
-        qDebug() << "newBytesSent" << n;
+        // ### DEBUG ### qDebug() << "newBytesSent" << n;
         out += n;
         GuiConfig::instance()->addTotalUsage(n);
     });

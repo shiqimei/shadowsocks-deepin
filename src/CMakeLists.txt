@@ -13,7 +13,9 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOUIC_SEARCH_PATHS forms)
 set(QT Core Gui Widgets Network DBus Sql LinguistTools)
 set(CPACK_GENERATOR "DEB")
+set(CPACK_DEBIAN_PACKAGE_NAME "Shadowsocks-deepin")
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "lolimay")
+set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "a powful shadowsocks client for deepin")
 
 # Generate tranlation(*.qm) files
 if(NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))
@@ -45,38 +47,11 @@ include_directories(AFTER ${QRENCODE_INCLUDE_DIRS})
 include_directories(AFTER ${ZBAR_INCLUDE_DIRS})
 include_directories(AFTER ${QTSHADOWSOCKS_INCLUDE_DIRS})
 
-set(SOURCE_FILES main.cpp
-                 MainWindow.h          MainWindow.cpp
-                 GuiConfig.h           GuiConfig.cpp
-                 Settings.h            Settings.cpp
-                 ConfigDialog.h        ConfigDialog.cpp
-                 ProxyDialog.h         ProxyDialog.cpp
-                 ProxyManager.h        ProxyManager.cpp
-                 utils.h               utils.cpp
-                 ShareDialog.h         ShareDialog.cpp
-                 SSValidator.h         SSValidator.cpp
-                 QRCodeCapturer.h      QRCodeCapturer.cpp
-                 PACUrlDialog.h        PACUrlDialog.cpp
-                 Toolbar.h             Toolbar.cpp
-                 DDEProxyModeManager.h DDEProxyModeManager.cpp
-                 LogMainWindow.h       LogMainWindow.cpp
-                 URIHelper.h           URIHelper.cpp
-)
-
-set(WIDGETS
-    widgets/ProfileItem.h    widgets/ProfileItem.cpp
-    widgets/ProfileView.h    widgets/ProfileView.cpp
-    widgets/QRWidget.h       widgets/QRWidget.cpp
-    widgets/SingleListItem.h widgets/SingleListItem.cpp
-    widgets/SingleListView.h widgets/SingleListView.cpp
-)
-
-set(INTERFACE
-    interface/SystemProxyModeManager.h
-    interface/SystemProxyModeManager.cpp
-    dbusinterface/DBusStartManager.h
-    dbusinterface/DBusStartManager.cpp
-)
+file(GLOB_RECURSE SOURCES "*.cpp")
+file(GLOB_RECURSE HEADERS "*.h")
+file(GLOB_RECURSE FORMS "*.ui")
+file(GLOB_RECURSE RESOURCES "*.qrc")
+set(SOURCE_FILES ${SOURCES} ${HEADERS} ${FORMS} ${RESOURCES})
 
 set(LINK_LIBS
     Qt5::Core
@@ -91,18 +66,14 @@ set(LINK_LIBS
     ${QTSHADOWSOCKS_LIBRARIES}
 )
 
-add_executable(${PROJECT_NAME}
-               ${SOURCE_FILES}
-               ${WIDGETS}
-               ${INTERFACE}
-)
+add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 target_link_libraries(${PROJECT_NAME} ${LINK_LIBS})
 
 ### Installation && Package ###
 file(GLOB QM_FILES "translations/*.qm")
 install(FILES ${QM_FILES} DESTINATION share/shadowsocks-deepin/translations)
 foreach (ICON_SIZE 16 24 32 48 64 96 128 256)
-    install(FILES       "resources/ssw${ICON_SIZE}.svg"
+    install(FILES       "resources/icons/ssw${ICON_SIZE}.svg"
             RENAME      "shadowsocks-deepin.svg"
             DESTINATION "/usr/share/icons/hicolor/${ICON_SIZE}x${ICON_SIZE}/apps")
 endforeach ()

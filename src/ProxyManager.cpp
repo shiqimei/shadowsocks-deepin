@@ -26,7 +26,7 @@ void ProxyManager::setConfig(const QJsonObject &config) {
 bool ProxyManager::start() {
     bool flag = controller->start();
     if (!flag) {
-        Utils::critical("start fail");
+        qDebug() << "start fail";
     } else {
         isRunning = true;
     }
