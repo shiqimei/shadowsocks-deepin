@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.13.3)
-project(shadowsocks-deepin VERSION 1.3.0)
-
-# Debug
-# set(CMAKE_BUILD_TYPE Debug)
+project(shadowsocks-deepin
+    VERSION 1.3.0
+    DESCRIPTION "a powful shadowsocks client for deepin"
+)
 
 # Set Environment Variables
 set(CMAKE_CXX_STANDARD 14)
@@ -14,9 +14,9 @@ set(CMAKE_AUTOUIC_SEARCH_PATHS forms)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
 set(CPACK_GENERATOR "DEB")
-set(CPACK_DEBIAN_PACKAGE_NAME "Shadowsocks-deepin")
+set(CPACK_DEBIAN_PACKAGE_NAME ${PROJECT_NAME})
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "lolimay")
-set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "a powful shadowsocks client for deepin")
+set(CPACK_DEBIAN_PACKAGE_DESCRIPTION ${PROJECT_DESCRIPTION})
 
 # Generate tranlation(*.qm) files
 if(NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))
