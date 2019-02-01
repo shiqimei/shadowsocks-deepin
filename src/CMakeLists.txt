@@ -70,7 +70,7 @@ set(LINK_LIBS
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 target_link_libraries(${PROJECT_NAME} ${LINK_LIBS})
 
-### Installation && Package ###
+# Installation
 file(GLOB QM_FILES "translations/*.qm")
 install(FILES ${QM_FILES} DESTINATION share/shadowsocks-deepin/translations)
 foreach (ICON_SIZE 16 24 32 48 64 96 128 256)
