@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
 
         app.setOrganizationName("pikachu");
         app.setApplicationName("shadowsocks-deepin");
-        app.setApplicationDisplayName(QObject::tr("Shadowsocks"));
+        app.setApplicationDisplayName(QApplication::tr("Shadowsocks"));
         app.setApplicationVersion("1.3.0");
 
         app.setProductIcon(QIcon(Utils::getIconQrcPath("ssw128.svg")));

@@ -52,6 +52,7 @@ file(GLOB_RECURSE SOURCES "*.cpp")
 file(GLOB_RECURSE HEADERS "*.h")
 file(GLOB_RECURSE FORMS "*.ui")
 file(GLOB_RECURSE RESOURCES "*.qrc")
+file(GLOB QM_FILES "i18n/*.qm")
 set(SOURCE_FILES ${SOURCES} ${HEADERS} ${FORMS} ${RESOURCES})
 
 set(LINK_LIBS
@@ -71,7 +72,6 @@ add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 target_link_libraries(${PROJECT_NAME} ${LINK_LIBS})
 
 # Installation
-file(GLOB QM_FILES "translations/*.qm")
 install(FILES ${QM_FILES} DESTINATION share/shadowsocks-deepin/translations)
 foreach (ICON_SIZE 16 24 32 48 64 96 128 256)
     install(FILES       "resources/icons/ssw${ICON_SIZE}.svg"
