@@ -283,6 +283,11 @@ Edit User Rule for GFWList...</source>
         <source>Proxy Port</source>
         <translation>代理端口</translation>
     </message>
+    <message>
+        <location filename="../ConfigDialog.cpp" line="127"/>
+        <source>Are you sure?</source>
+        <translation>是否确认删除？</translation>
+    </message>
 </context>
 <context>
     <name>GuiConfig</name>
@@ -609,6 +614,16 @@ Edit User Rule for GFWList...</source>
         <translation type="unfinished">添加</translation>
     </message>
     <message>
+        <location filename="../MainWindow.cpp" line="358"/>
+        <source>choose gui-config.json file</source>
+        <translation>选择gui-config.json文件</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="378"/>
+        <source>choose server to start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../MainWindow.cpp" line="512"/>
         <source>QR Code Not Found</source>
         <translation type="unfinished">未发现二维码</translation>
@@ -779,6 +794,31 @@ Edit User Rule for GFWList...</source>
     <message>
         <location filename="../ProxyManager.cpp" line="59"/>
         <source>server is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ProxyManager.cpp" line="64"/>
+        <source>password is empty.</source>
+        <translation>密码为空</translation>
+    </message>
+    <message>
+        <location filename="../ProxyManager.cpp" line="69"/>
+        <source>server port is 0.</source>
+        <translation>服务器端口未填</translation>
+    </message>
+    <message>
+        <location filename="../ProxyManager.cpp" line="74"/>
+        <source>method is empty.</source>
+        <translation>加密方法为空</translation>
+    </message>
+    <message>
+        <location filename="../ProxyManager.cpp" line="79"/>
+        <source>timeout is 0. we will change the value to 6.</source>
+        <translation>延迟未填，已设为默认值6</translation>
+    </message>
+    <message>
+        <location filename="../ProxyManager.cpp" line="85"/>
+        <source>本地端口未填。已设为默认值1080.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

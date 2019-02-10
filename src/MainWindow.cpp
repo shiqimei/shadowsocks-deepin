@@ -355,7 +355,7 @@ void MainWindow::updateMenu() {
 }
 
 void MainWindow::on_actionImport_from_gui_config_json_triggered() {
-    QString filename = QFileDialog::getOpenFileName(this, "choose gui-config.json file", QDir::homePath(),
+    QString filename = QFileDialog::getOpenFileName(this, tr("choose gui-config.json file"), QDir::homePath(),
                                                     "gui-config.json");
     if (filename.isEmpty()) {
         return;
@@ -375,7 +375,7 @@ void MainWindow::on_actionEnable_System_Proxy_triggered(bool flag) {
         auto index = guiConfig->get("index").toInt();
         if (configs.size() < index + 1) {
             //TODO: choose a server to start
-            Utils::warning("choose server to start");
+            Utils::warning(tr("choose server to start"));
         } else {
             auto config = configs.at(index).toObject();
             guiConfig->updateLastUsed();

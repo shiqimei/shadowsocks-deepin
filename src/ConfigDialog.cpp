@@ -124,7 +124,7 @@ void ConfigDialog::on_pushButtonAdd_clicked() {
 }
 
 void ConfigDialog::on_pushButtonDelete_clicked() {
-    int ret = QMessageBox::warning(nullptr, "warning", "Are you sure?", QMessageBox::Yes | QMessageBox::No);
+    int ret = QMessageBox::warning(nullptr, "warning", tr("Are you sure?"), QMessageBox::Yes | QMessageBox::No);
     if (ret == QMessageBox::No) {
         return;
     }
