@@ -184,6 +184,7 @@ bool GuiConfig::existConfig(const QJsonObject &j) {
 }
 
 void GuiConfig::addConfig(QJsonObject j) {
+    // ### DEBUG ###
     auto array = guiConfig["configs"].toArray();
     QString id = j["id"].toString();
     if (id.isEmpty()) {

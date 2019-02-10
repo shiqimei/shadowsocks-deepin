@@ -77,7 +77,7 @@ void ConfigDialog::modified() {
 
 void ConfigDialog::checkModify() {
     if (isModified) {
-        auto ret = QMessageBox::information(nullptr, "warning", "Your config is modified. Do you want to save it?",
+        auto ret = QMessageBox::information(nullptr, "warning", tr("Your config is modified. Do you want to save it?"),
                                             QMessageBox::Yes | QMessageBox::No);
         if (ret == QMessageBox::Yes) {
             save();
@@ -115,7 +115,7 @@ void ConfigDialog::on_pushButtonAdd_clicked() {
     o.insert("update_time", t);
     o.insert("password", "");
     o.insert("server", "");
-    o.insert("remarks", "unname");
+    o.insert("remarks", tr("unname"));
     GuiConfig::calId(o);
     array.append(o);
     save();

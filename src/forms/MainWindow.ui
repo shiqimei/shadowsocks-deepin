@@ -1,326 +1,326 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>782</width>
-    <height>445</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>MainWindow</string>
-  </property>
-  <widget class="QMenu" name="menuTray">
-   <property name="title">
-    <string>Tray</string>
-   </property>
-   <widget class="QMenu" name="menuMode">
-    <property name="title">
-     <string>Mode</string>
-    </property>
-    <addaction name="actionPAC"/>
-    <addaction name="actionGlobal"/>
-   </widget>
-   <widget class="QMenu" name="menuServers">
-    <property name="title">
-     <string>Servers</string>
-    </property>
-    <addaction name="actionLoad_Balance"/>
-    <addaction name="actionHigh_Availability"/>
-    <addaction name="actionChoose_by_statistics"/>
-    <addaction name="actionAvailability_Statistics"/>
-    <addaction name="separator"/>
-    <addaction name="actionEdit_Servers"/>
-    <addaction name="actionStatistics_Config"/>
-    <addaction name="separator"/>
-    <addaction name="actionShare_Server_Config"/>
-    <addaction name="actionScan_QRCode_from_Screen"/>
-    <addaction name="actionImport_URL_from_Clipboard"/>
-   </widget>
-   <widget class="QMenu" name="menuPAC">
-    <property name="title">
-     <string>PAC</string>
-    </property>
-    <addaction name="actionLocal_PAC"/>
-    <addaction name="actionOnline_PAC"/>
-    <addaction name="separator"/>
-    <addaction name="actionEdit_Local_PAC_File"/>
-    <addaction name="actionUpdate_Local_PAC_from_GFWList"/>
-    <addaction name="action_Edit_User_Rule_for_GFWList"/>
-    <addaction name="actionSecure_Local_PAC"/>
-    <addaction name="actionCopy_Local_PAC_URL"/>
-    <addaction name="actionEdit_Online_PAC_URL"/>
-   </widget>
-   <widget class="QMenu" name="menuHelp">
-    <property name="title">
-     <string>Help</string>
-    </property>
-    <property name="toolTipsVisible">
-     <bool>false</bool>
-    </property>
-    <widget class="QMenu" name="menuUpdates">
-     <property name="title">
-      <string>Updates...</string>
-     </property>
-     <addaction name="actionCheck_for_Updates"/>
-     <addaction name="separator"/>
-     <addaction name="actionCheck_for_Updates_at_Startup"/>
-     <addaction name="actionCheck_Pre_release_Version"/>
-    </widget>
-    <addaction name="actionShow_Logs"/>
-    <addaction name="actionVerbose_Logging"/>
-    <addaction name="menuUpdates"/>
-    <addaction name="actionAbout"/>
-   </widget>
-   <addaction name="actionEnable_System_Proxy"/>
-   <addaction name="menuMode"/>
-   <addaction name="menuServers"/>
-   <addaction name="menuPAC"/>
-   <addaction name="actionForward_Proxy"/>
-   <addaction name="separator"/>
-   <addaction name="actionStart_on_Boot"/>
-   <addaction name="actionAllow_Clients_from_LAN"/>
-   <addaction name="separator"/>
-   <addaction name="actionEdit_Hotkeys"/>
-   <addaction name="menuHelp"/>
-   <addaction name="separator"/>
-   <addaction name="actionQuit"/>
-  </widget>
-  <action name="actionEnable_System_Proxy">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Enable System Proxy</string>
-   </property>
-  </action>
-  <action name="actionPAC">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>PAC</string>
-   </property>
-  </action>
-  <action name="actionGlobal">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Global</string>
-   </property>
-  </action>
-  <action name="actionEdit_Servers">
-   <property name="text">
-    <string>Edit Servers...</string>
-   </property>
-  </action>
-  <action name="actionStatistics_Config">
-   <property name="text">
-    <string>Statistics Config...</string>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-  </action>
-  <action name="actionStart_on_Boot">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Start on Boot</string>
-   </property>
-  </action>
-  <action name="actionForward_Proxy">
-   <property name="text">
-    <string>Forward Proxy...</string>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-  </action>
-  <action name="actionAllow_Clients_from_LAN">
-   <property name="text">
-    <string>Allow Clients from LAN</string>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-  </action>
-  <action name="actionLocal_PAC">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Local PAC</string>
-   </property>
-  </action>
-  <action name="actionOnline_PAC">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Online PAC</string>
-   </property>
-  </action>
-  <action name="actionEdit_Local_PAC_File">
-   <property name="text">
-    <string>Edit Local PAC File...</string>
-   </property>
-  </action>
-  <action name="actionUpdate_Local_PAC_from_GFWList">
-   <property name="text">
-    <string>Update Local PAC from GFWList</string>
-   </property>
-  </action>
-  <action name="action_Edit_User_Rule_for_GFWList">
-   <property name="text">
-    <string>
+    <class>MainWindow</class>
+    <widget class="QMainWindow" name="MainWindow">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>782</width>
+                <height>445</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>MainWindow</string>
+        </property>
+        <widget class="QMenu" name="menuTray">
+            <property name="title">
+                <string>Tray</string>
+            </property>
+            <widget class="QMenu" name="menuMode">
+                <property name="title">
+                    <string>Mode</string>
+                </property>
+                <addaction name="actionPAC"/>
+                <addaction name="actionGlobal"/>
+            </widget>
+            <widget class="QMenu" name="menuServers">
+                <property name="title">
+                    <string>Servers</string>
+                </property>
+                <addaction name="actionLoad_Balance"/>
+                <addaction name="actionHigh_Availability"/>
+                <addaction name="actionChoose_by_statistics"/>
+                <addaction name="actionAvailability_Statistics"/>
+                <addaction name="separator"/>
+                <addaction name="actionEdit_Servers"/>
+                <addaction name="actionStatistics_Config"/>
+                <addaction name="separator"/>
+                <addaction name="actionShare_Server_Config"/>
+                <addaction name="actionScan_QRCode_from_Screen"/>
+                <addaction name="actionImport_URL_from_Clipboard"/>
+            </widget>
+            <widget class="QMenu" name="menuPAC">
+                <property name="title">
+                    <string>PAC</string>
+                </property>
+                <addaction name="actionLocal_PAC"/>
+                <addaction name="actionOnline_PAC"/>
+                <addaction name="separator"/>
+                <addaction name="actionEdit_Local_PAC_File"/>
+                <addaction name="actionUpdate_Local_PAC_from_GFWList"/>
+                <addaction name="action_Edit_User_Rule_for_GFWList"/>
+                <addaction name="actionSecure_Local_PAC"/>
+                <addaction name="actionCopy_Local_PAC_URL"/>
+                <addaction name="actionEdit_Online_PAC_URL"/>
+            </widget>
+            <widget class="QMenu" name="menuHelp">
+                <property name="title">
+                    <string>Help</string>
+                </property>
+                <property name="toolTipsVisible">
+                    <bool>false</bool>
+                </property>
+                <widget class="QMenu" name="menuUpdates">
+                    <property name="title">
+                        <string>Updates...</string>
+                    </property>
+                    <addaction name="actionCheck_for_Updates"/>
+                    <addaction name="separator"/>
+                    <addaction name="actionCheck_for_Updates_at_Startup"/>
+                    <addaction name="actionCheck_Pre_release_Version"/>
+                </widget>
+                <addaction name="actionShow_Logs"/>
+                <addaction name="actionVerbose_Logging"/>
+                <addaction name="menuUpdates"/>
+                <addaction name="actionAbout"/>
+            </widget>
+            <addaction name="actionEnable_System_Proxy"/>
+            <addaction name="menuMode"/>
+            <addaction name="menuServers"/>
+            <addaction name="menuPAC"/>
+            <addaction name="actionForward_Proxy"/>
+            <addaction name="separator"/>
+            <addaction name="actionStart_on_Boot"/>
+            <addaction name="actionAllow_Clients_from_LAN"/>
+            <addaction name="separator"/>
+            <addaction name="actionEdit_Hotkeys"/>
+            <addaction name="menuHelp"/>
+            <addaction name="separator"/>
+            <addaction name="actionQuit"/>
+        </widget>
+        <action name="actionEnable_System_Proxy">
+            <property name="checkable">
+                <bool>true</bool>
+            </property>
+            <property name="text">
+                <string>Enable System Proxy</string>
+            </property>
+        </action>
+        <action name="actionPAC">
+            <property name="checkable">
+                <bool>true</bool>
+            </property>
+            <property name="text">
+                <string>PAC</string>
+            </property>
+        </action>
+        <action name="actionGlobal">
+            <property name="checkable">
+                <bool>true</bool>
+            </property>
+            <property name="text">
+                <string>Global</string>
+            </property>
+        </action>
+        <action name="actionEdit_Servers">
+            <property name="text">
+                <string>Edit Servers...</string>
+            </property>
+        </action>
+        <action name="actionStatistics_Config">
+            <property name="text">
+                <string>Statistics Config...</string>
+            </property>
+            <property name="visible">
+                <bool>false</bool>
+            </property>
+        </action>
+        <action name="actionStart_on_Boot">
+            <property name="checkable">
+                <bool>true</bool>
+            </property>
+            <property name="text">
+                <string>Start on Boot</string>
+            </property>
+        </action>
+        <action name="actionForward_Proxy">
+            <property name="text">
+                <string>Forward Proxy...</string>
+            </property>
+            <property name="visible">
+                <bool>false</bool>
+            </property>
+        </action>
+        <action name="actionAllow_Clients_from_LAN">
+            <property name="text">
+                <string>Allow Clients from LAN</string>
+            </property>
+            <property name="visible">
+                <bool>false</bool>
+            </property>
+        </action>
+        <action name="actionLocal_PAC">
+            <property name="checkable">
+                <bool>true</bool>
+            </property>
+            <property name="text">
+                <string>Local PAC</string>
+            </property>
+        </action>
+        <action name="actionOnline_PAC">
+            <property name="checkable">
+                <bool>true</bool>
+            </property>
+            <property name="text">
+                <string>Online PAC</string>
+            </property>
+        </action>
+        <action name="actionEdit_Local_PAC_File">
+            <property name="text">
+                <string>Edit Local PAC File...</string>
+            </property>
+        </action>
+        <action name="actionUpdate_Local_PAC_from_GFWList">
+            <property name="text">
+                <string>Update Local PAC from GFWList</string>
+            </property>
+        </action>
+        <action name="action_Edit_User_Rule_for_GFWList">
+            <property name="text">
+                <string>
 Edit User Rule for GFWList...</string>
-   </property>
-  </action>
-  <action name="actionSecure_Local_PAC">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Secure Local PAC</string>
-   </property>
-  </action>
-  <action name="actionCopy_Local_PAC_URL">
-   <property name="text">
-    <string>Copy Local PAC URL</string>
-   </property>
-  </action>
-  <action name="actionShare_Server_Config">
-   <property name="text">
-    <string>Share Server Config...</string>
-   </property>
-   <property name="visible">
-    <bool>true</bool>
-   </property>
-  </action>
-  <action name="actionScan_QRCode_from_Screen">
-   <property name="text">
-    <string>Scan QRCode from Screen...</string>
-   </property>
-   <property name="visible">
-    <bool>true</bool>
-   </property>
-  </action>
-  <action name="actionImport_URL_from_Clipboard">
-   <property name="text">
-    <string>Import URL from Clipboard...</string>
-   </property>
-   <property name="visible">
-    <bool>true</bool>
-   </property>
-  </action>
-  <action name="actionAvailability_Statistics">
-   <property name="text">
-    <string>Availability Statistics</string>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-  </action>
-  <action name="actionShow_Logs">
-   <property name="text">
-    <string>Show Logs...</string>
-   </property>
-  </action>
-  <action name="actionVerbose_Logging">
-   <property name="text">
-    <string>Verbose Logging</string>
-   </property>
-  </action>
-  <action name="actionCheck_for_Updates">
-   <property name="text">
-    <string>Check for Updates...</string>
-   </property>
-  </action>
-  <action name="actionCheck_for_Updates_at_Startup">
-   <property name="text">
-    <string>Check for Updates at Startup</string>
-   </property>
-  </action>
-  <action name="actionCheck_Pre_release_Version">
-   <property name="text">
-    <string>Check Pre-release Version</string>
-   </property>
-  </action>
-  <action name="actionEdit_Hotkeys">
-   <property name="text">
-    <string>Edit Hotkeys...</string>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-  </action>
-  <action name="actionAbout">
-   <property name="text">
-    <string>About...</string>
-   </property>
-  </action>
-  <action name="actionQuit">
-   <property name="text">
-    <string>Quit</string>
-   </property>
-  </action>
-  <action name="actionLoad_Balance">
-   <property name="text">
-    <string>Load Balance</string>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-  </action>
-  <action name="actionHigh_Availability">
-   <property name="text">
-    <string>High Availability</string>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-  </action>
-  <action name="actionChoose_by_statistics">
-   <property name="text">
-    <string>Choose by statistics</string>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-  </action>
-  <action name="actionEdit_Online_PAC_URL">
-   <property name="text">
-    <string>Edit Online PAC URL...</string>
-   </property>
-  </action>
-  <action name="actionImport_from_gui_config_json">
-   <property name="text">
-    <string>Import from gui-config.json</string>
-   </property>
-  </action>
-  <action name="actionExport_as_gui_config_json">
-   <property name="text">
-    <string>Export as gui-config.json</string>
-   </property>
-  </action>
-  <action name="actionConnect">
-   <property name="text">
-    <string>Connect</string>
-   </property>
-  </action>
-  <action name="actionDisconnect">
-   <property name="text">
-    <string>Disconnect</string>
-   </property>
-  </action>
- </widget>
- <layoutdefault spacing="6" margin="11"/>
- <resources/>
- <connections/>
+            </property>
+        </action>
+        <action name="actionSecure_Local_PAC">
+            <property name="checkable">
+                <bool>true</bool>
+            </property>
+            <property name="text">
+                <string>Secure Local PAC</string>
+            </property>
+        </action>
+        <action name="actionCopy_Local_PAC_URL">
+            <property name="text">
+                <string>Copy Local PAC URL</string>
+            </property>
+        </action>
+        <action name="actionShare_Server_Config">
+            <property name="text">
+                <string>Share Server Config...</string>
+            </property>
+            <property name="visible">
+                <bool>true</bool>
+            </property>
+        </action>
+        <action name="actionScan_QRCode_from_Screen">
+            <property name="text">
+                <string>Scan QRCode from Screen...</string>
+            </property>
+            <property name="visible">
+                <bool>true</bool>
+            </property>
+        </action>
+        <action name="actionImport_URL_from_Clipboard">
+            <property name="text">
+                <string>Import URL from Clipboard...</string>
+            </property>
+            <property name="visible">
+                <bool>true</bool>
+            </property>
+        </action>
+        <action name="actionAvailability_Statistics">
+            <property name="text">
+                <string>Availability Statistics</string>
+            </property>
+            <property name="visible">
+                <bool>false</bool>
+            </property>
+        </action>
+        <action name="actionShow_Logs">
+            <property name="text">
+                <string>Show Logs...</string>
+            </property>
+        </action>
+        <action name="actionVerbose_Logging">
+            <property name="text">
+                <string>Verbose Logging</string>
+            </property>
+        </action>
+        <action name="actionCheck_for_Updates">
+            <property name="text">
+                <string>Check for Updates...</string>
+            </property>
+        </action>
+        <action name="actionCheck_for_Updates_at_Startup">
+            <property name="text">
+                <string>Check for Updates at Startup</string>
+            </property>
+        </action>
+        <action name="actionCheck_Pre_release_Version">
+            <property name="text">
+                <string>Check Pre-release Version</string>
+            </property>
+        </action>
+        <action name="actionEdit_Hotkeys">
+            <property name="text">
+                <string>Edit Hotkeys...</string>
+            </property>
+            <property name="visible">
+                <bool>false</bool>
+            </property>
+        </action>
+        <action name="actionAbout">
+            <property name="text">
+                <string>About...</string>
+            </property>
+        </action>
+        <action name="actionQuit">
+            <property name="text">
+                <string>Quit</string>
+            </property>
+        </action>
+        <action name="actionLoad_Balance">
+            <property name="text">
+                <string>Load Balance</string>
+            </property>
+            <property name="visible">
+                <bool>false</bool>
+            </property>
+        </action>
+        <action name="actionHigh_Availability">
+            <property name="text">
+                <string>High Availability</string>
+            </property>
+            <property name="visible">
+                <bool>false</bool>
+            </property>
+        </action>
+        <action name="actionChoose_by_statistics">
+            <property name="text">
+                <string>Choose by statistics</string>
+            </property>
+            <property name="visible">
+                <bool>false</bool>
+            </property>
+        </action>
+        <action name="actionEdit_Online_PAC_URL">
+            <property name="text">
+                <string>Edit Online PAC URL...</string>
+            </property>
+        </action>
+        <action name="actionImport_from_gui_config_json">
+            <property name="text">
+                <string>Import from gui-config.json</string>
+            </property>
+        </action>
+        <action name="actionExport_as_gui_config_json">
+            <property name="text">
+                <string>Export as gui-config.json</string>
+            </property>
+        </action>
+        <action name="actionConnect">
+            <property name="text">
+                <string>Connect</string>
+            </property>
+        </action>
+        <action name="actionDisconnect">
+            <property name="text">
+                <string>Disconnect</string>
+            </property>
+        </action>
+    </widget>
+    <layoutdefault spacing="6" margin="11"/>
+    <resources/>
+    <connections/>
 </ui>

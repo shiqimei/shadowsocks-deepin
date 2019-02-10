@@ -517,7 +517,6 @@ void MainWindow::on_actionScan_QRCode_from_Screen_triggered()
         if(uri.startsWith("ss://")){
             qDebug()<<"shadowsocks";
             if(SSValidator::validate(uri)){
-                Utils::info( tr("URI is valid") );
                 GuiConfig::instance()->addConfig(uri);
                 updateMenu();
                 on_actionEdit_Servers_triggered();
@@ -532,11 +531,6 @@ void MainWindow::on_actionImport_URL_from_Clipboard_triggered()
 {
     QString uri = QApplication::clipboard()->text();
     if(SSValidator::validate(uri)){
-        QMessageBox::information(
-            nullptr,
-            tr("info"),
-            tr("URI is valid")
-        );
         GuiConfig::instance()->addConfig(uri);
         updateMenu();
         on_actionEdit_Servers_triggered();

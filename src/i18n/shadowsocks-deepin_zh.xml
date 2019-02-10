@@ -241,32 +241,32 @@ Edit User Rule for GFWList...</source>
     <message>
         <location filename="../forms/ConfigDialog.ui" line="91"/>
         <source>Timeout(Sec)</source>
-        <translation>超时(秒)</translation>
+        <translation>超时（秒）</translation>
     </message>
     <message>
         <location filename="../forms/ConfigDialog.ui" line="135"/>
         <source>&amp;Add</source>
-        <translation>添加(&amp;A)</translation>
+        <translation>新建</translation>
     </message>
     <message>
         <location filename="../forms/ConfigDialog.ui" line="142"/>
         <source>&amp;Delete</source>
-        <translation>删除(&amp;D)</translation>
+        <translation>删除</translation>
     </message>
     <message>
         <location filename="../forms/ConfigDialog.ui" line="149"/>
         <source>Dupli&amp;cate</source>
-        <translation>复制(&amp;C)</translation>
+        <translation>复制</translation>
     </message>
     <message>
         <location filename="../forms/ConfigDialog.ui" line="156"/>
         <source>Move &amp;Up</source>
-        <translation>上移(&amp;U)</translation>
+        <translation>上移</translation>
     </message>
     <message>
         <location filename="../forms/ConfigDialog.ui" line="163"/>
         <source>Move D&amp;own</source>
-        <translation>下移(&amp;O)</translation>
+        <translation>下移</translation>
     </message>
     <message>
         <location filename="../forms/ConfigDialog.ui" line="182"/>
@@ -282,6 +282,16 @@ Edit User Rule for GFWList...</source>
         <location filename="../forms/ConfigDialog.ui" line="208"/>
         <source>Proxy Port</source>
         <translation>代理端口</translation>
+    </message>
+    <message>
+        <location filename="../ConfigDialog.cpp" line="80"/>
+        <source>Your config is modified. Do you want to save it?</source>
+        <translation>是否确认修改？</translation>
+    </message>
+    <message>
+        <location filename="../ConfigDialog.cpp" line="118"/>
+        <source>unname</source>
+        <translation>未命名</translation>
     </message>
     <message>
         <location filename="../ConfigDialog.cpp" line="127"/>
@@ -353,13 +363,13 @@ Edit User Rule for GFWList...</source>
         <location filename="../forms/LogMainWindow.ui" line="27"/>
         <location filename="../forms/LogMainWindow.ui" line="123"/>
         <source>&amp;Clean Logs</source>
-        <translation>清除日志(&amp;C)</translation>
+        <translation>清除日志</translation>
     </message>
     <message>
         <location filename="../forms/LogMainWindow.ui" line="40"/>
         <location filename="../forms/LogMainWindow.ui" line="128"/>
         <source>Change &amp;Font</source>
-        <translation>修改字体(&amp;F)</translation>
+        <translation>修改字体</translation>
     </message>
     <message>
         <location filename="../forms/LogMainWindow.ui" line="53"/>
@@ -376,12 +386,12 @@ Edit User Rule for GFWList...</source>
     <message>
         <location filename="../forms/LogMainWindow.ui" line="91"/>
         <source>&amp;File</source>
-        <translation>文件(&amp;F)</translation>
+        <translation>文件</translation>
     </message>
     <message>
         <location filename="../forms/LogMainWindow.ui" line="98"/>
         <source>&amp;View</source>
-        <translation>视图(&amp;V)</translation>
+        <translation>视图</translation>
     </message>
     <message>
         <location filename="../forms/LogMainWindow.ui" line="113"/>
@@ -391,12 +401,12 @@ Edit User Rule for GFWList...</source>
     <message>
         <location filename="../forms/LogMainWindow.ui" line="118"/>
         <source>E&amp;xit</source>
-        <translation>退出(&amp;X)</translation>
+        <translation>退出</translation>
     </message>
     <message>
         <location filename="../forms/LogMainWindow.ui" line="143"/>
         <source>&amp;Show Toolbar</source>
-        <translation>显示工具栏(&amp;S)</translation>
+        <translation>显示工具栏</translation>
     </message>
 </context>
 <context>
@@ -404,17 +414,17 @@ Edit User Rule for GFWList...</source>
     <message>
         <location filename="../forms/MainWindow.ui" line="14"/>
         <source>MainWindow</source>
-        <translation type="unfinished"></translation>
+        <translation>主窗口</translation>
     </message>
     <message>
         <location filename="../forms/MainWindow.ui" line="18"/>
         <source>Tray</source>
-        <translation type="unfinished">托盘</translation>
+        <translation>托盘</translation>
     </message>
     <message>
         <location filename="../forms/MainWindow.ui" line="22"/>
         <source>Mode</source>
-        <translation type="unfinished">系统代理模式</translation>
+        <translation>系统代理模式</translation>
     </message>
     <message>
         <location filename="../forms/MainWindow.ui" line="29"/>
@@ -621,7 +631,7 @@ Edit User Rule for GFWList...</source>
     <message>
         <location filename="../MainWindow.cpp" line="378"/>
         <source>choose server to start</source>
-        <translation type="unfinished"></translation>
+        <translation>未指定代理服务器！</translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="512"/>
@@ -639,25 +649,22 @@ Edit User Rule for GFWList...</source>
         <translation type="unfinished">发现URI %1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="520"/>
-        <location filename="../MainWindow.cpp" line="538"/>
         <source>URI is valid</source>
-        <translation type="unfinished">URI有效</translation>
+        <translation type="obsolete">URI有效</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="525"/>
-        <location filename="../MainWindow.cpp" line="547"/>
+        <location filename="../MainWindow.cpp" line="524"/>
+        <location filename="../MainWindow.cpp" line="541"/>
         <source>URI is invalid</source>
         <translation type="unfinished">URI无效</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="537"/>
-        <location filename="../MainWindow.cpp" line="546"/>
+        <location filename="../MainWindow.cpp" line="540"/>
         <source>info</source>
         <translation type="unfinished">信息</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="562"/>
+        <location filename="../MainWindow.cpp" line="556"/>
         <source>Save gui-config.json</source>
         <translation type="unfinished">保存至gui-config.json</translation>
     </message>
@@ -794,32 +801,32 @@ Edit User Rule for GFWList...</source>
     <message>
         <location filename="../ProxyManager.cpp" line="59"/>
         <source>server is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器地址不能为空！</translation>
     </message>
     <message>
         <location filename="../ProxyManager.cpp" line="64"/>
         <source>password is empty.</source>
-        <translation>密码为空</translation>
+        <translation>服务器密码不能为空！</translation>
     </message>
     <message>
         <location filename="../ProxyManager.cpp" line="69"/>
         <source>server port is 0.</source>
-        <translation>服务器端口未填</translation>
+        <translation>服务器端口不能为空！</translation>
     </message>
     <message>
         <location filename="../ProxyManager.cpp" line="74"/>
         <source>method is empty.</source>
-        <translation>加密方法为空</translation>
+        <translation>未指定加密方法！</translation>
     </message>
     <message>
         <location filename="../ProxyManager.cpp" line="79"/>
         <source>timeout is 0. we will change the value to 6.</source>
-        <translation>延迟未填，已设为默认值6</translation>
+        <translation>未设置延迟！已设为默认值6</translation>
     </message>
     <message>
         <location filename="../ProxyManager.cpp" line="85"/>
-        <source>本地端口未填。已设为默认值1080.</source>
-        <translation type="unfinished"></translation>
+        <source>local_port is 0. we will change the value to 1080.</source>
+        <translation>未设置本地端口！已设为默认值1080</translation>
     </message>
 </context>
 <context>
@@ -832,7 +839,7 @@ Edit User Rule for GFWList...</source>
     <message>
         <location filename="../main.cpp" line="38"/>
         <source>Shadowsocks</source>
-        <translation type="unfinished">影梭</translation>
+        <translation>影梭</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="42"/>
