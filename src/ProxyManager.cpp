@@ -43,14 +43,16 @@ void ProxyManager::stop() {
 void ProxyManager::disconnectController() {
     disconnect(controller);
 }
-
+// Switch server
 void ProxyManager::connectController() {
+    qDebug() << "\033[32mConnect Controller Start\033[0m";
     connect(controller, &QSS::Controller::bytesReceivedChanged, this, &ProxyManager::bytesReceivedChanged);
     connect(controller, &QSS::Controller::bytesSentChanged, this, &ProxyManager::bytesSentChanged);
     connect(controller, &QSS::Controller::newBytesReceived, this, &ProxyManager::newBytesReceived);
     connect(controller, &QSS::Controller::newBytesSent, this, &ProxyManager::newBytesSent);
     connect(controller, &QSS::Controller::runningStateChanged, this, &ProxyManager::runningStateChanged);
     connect(controller, &QSS::Controller::tcpLatencyAvailable, this, &ProxyManager::tcpLatencyAvailable);
+    qDebug() << "\033[32mConnect Controller End\033[0m";
 }
 
 void ProxyManager::getProfile(const QJsonObject &config, QSS::Profile &profile) {

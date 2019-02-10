@@ -47,15 +47,15 @@ QString configPath() {
 }
 
 void critical(QString msg) {
-    QMessageBox::critical(nullptr, "critical", msg);
+    QMessageBox::critical(nullptr, QObject::tr("critical"), msg);
 }
 
 void warning(QString msg) {
-    QMessageBox::warning(nullptr, "warning", msg);
+    QMessageBox::warning(nullptr, QObject::tr("warning"), msg);
 }
 
 void info(QString msg) {
-    QMessageBox::information(nullptr, "info", msg);
+    QMessageBox::information(nullptr, QObject::tr("info"), msg);
 }
 
 // copy from deepin-system-monitor

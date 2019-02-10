@@ -853,6 +853,21 @@ Edit User Rule for GFWList...</source>
         <source>Shadowsocks</source>
         <translation type="vanished">影梭</translation>
     </message>
+    <message>
+        <location filename="../utils.cpp" line="50"/>
+        <source>critical</source>
+        <translation>错误</translation>
+    </message>
+    <message>
+        <location filename="../utils.cpp" line="54"/>
+        <source>warning</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="../utils.cpp" line="58"/>
+        <source>info</source>
+        <translation>信息</translation>
+    </message>
 </context>
 <context>
     <name>QRCodeCapturer</name>
