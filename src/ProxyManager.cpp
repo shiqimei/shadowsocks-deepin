@@ -13,15 +13,13 @@ void ProxyManager::setConfig(const QJsonObject &config) {
             isRunning = false;
         }
         disconnectController();
-        qDebug("\033[31mDelete controller address: %p\033[0m", controller);
-        controller->deleteLater(); //! #31
+        controller->deleteLater(); //! fix #31
     }
     qDebug() << config;
     QSS::Profile profile;
     getProfile(config, profile);
     // profile.enableDebug();
     controller = new QSS::Controller(profile, true, true, this);
-    qDebug("\033[32mNew controller address: %p\033[0m", controller);
     connectController();
 }
 
