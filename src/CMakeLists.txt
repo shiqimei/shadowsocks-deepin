@@ -5,6 +5,7 @@ project(shadowsocks-deepin
 )
 
 # Set Environment Variables
+# set(CMAKE_BUILD_TYPE DEBUG)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)

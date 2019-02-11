@@ -13,20 +13,22 @@ void ProxyManager::setConfig(const QJsonObject &config) {
             isRunning = false;
         }
         disconnectController();
-        delete controller;
+        qDebug("\033[31mDelete controller address: %p\033[0m", controller);
+        controller->deleteLater(); //! #31
     }
     qDebug() << config;
     QSS::Profile profile;
     getProfile(config, profile);
     // profile.enableDebug();
     controller = new QSS::Controller(profile, true, true, this);
+    qDebug("\033[32mNew controller address: %p\033[0m", controller);
     connectController();
 }
 
 bool ProxyManager::start() {
     bool flag = controller->start();
     if (!flag) {
-        qDebug() << "start fail";
+        qDebug() << "\033[31mstart fail\033[0m";
     } else {
         isRunning = true;
     }
@@ -45,14 +47,12 @@ void ProxyManager::disconnectController() {
 }
 // Switch server
 void ProxyManager::connectController() {
-    qDebug() << "\033[32mConnect Controller Start\033[0m";
     connect(controller, &QSS::Controller::bytesReceivedChanged, this, &ProxyManager::bytesReceivedChanged);
     connect(controller, &QSS::Controller::bytesSentChanged, this, &ProxyManager::bytesSentChanged);
     connect(controller, &QSS::Controller::newBytesReceived, this, &ProxyManager::newBytesReceived);
     connect(controller, &QSS::Controller::newBytesSent, this, &ProxyManager::newBytesSent);
     connect(controller, &QSS::Controller::runningStateChanged, this, &ProxyManager::runningStateChanged);
     connect(controller, &QSS::Controller::tcpLatencyAvailable, this, &ProxyManager::tcpLatencyAvailable);
-    qDebug() << "\033[32mConnect Controller End\033[0m";
 }
 
 void ProxyManager::getProfile(const QJsonObject &config, QSS::Profile &profile) {
