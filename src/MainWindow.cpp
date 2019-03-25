@@ -15,7 +15,8 @@
 #include "SSValidator.h"
 #include "ShareDialog.h"
 #include <DDesktopServices>
-MainWindow::MainWindow(QWidget *parent) :
+
+MainWindow::MainWindow(QWidget *parent):
     DMainWindow(parent),
     ui(new Ui::MainWindow) {
     ui->setupUi(this);
@@ -47,10 +48,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(config_view, &ProfileView::rightClickItems, this, &MainWindow::popupMenu);
     connect(config_view, &ProfileView::rightClickBlank, this, &MainWindow::popupMenuBlank);
     w->setCentralWidget(config_view);
+
     systemTrayIcon = new QSystemTrayIcon();
     systemTrayIcon->setContextMenu(ui->menuTray);
-    systemTrayIcon->setIcon(QIcon(Utils::getIconQrcPath("ss16.png")));
+    systemTrayIcon->setIcon(QIcon(Utils::getIconQrcPath("ssw_auto128.svg")));
     systemTrayIcon->show();
+
     const auto &titlebar = w->titlebar();
     if (titlebar != nullptr) {
         auto menu = new QMenu();
@@ -81,7 +84,11 @@ MainWindow::MainWindow(QWidget *parent) :
     auto timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &MainWindow::updateTrayIcon);
     connect(timer, &QTimer::timeout, this, &MainWindow::updateList);
-    timer->start(100);
+
+    //! Do not modify this period
+    //! If less than 150ms, the trayicon will be not shown normally.
+    timer->start(150);
+
     // 流量监控
     connect(proxyManager, &ProxyManager::bytesReceivedChanged, [=](quint64 n) {
         // ### DEBUG ### qDebug() << "bytesReceivedChanged" << n;
@@ -117,8 +124,8 @@ MainWindow::~MainWindow() {
 
 void MainWindow::switchToPacMode() {
     auto guiConfig = GuiConfig::instance();
-    QString online_pac_uri = "http://file.lolimay.cn/autoproxy.pac";
-    QString pacURI = "";
+    QString online_pac_uri = "https://files.lolimay.cn/autoproxy.pac";
+    QString pacURI = "https://files.lolimay.cn/autoproxy.pac";
     if (guiConfig->get("useOnlinePac").toBool(true)) {
         pacURI = guiConfig->get("pacUrl").toString();
         if (pacURI.isEmpty()) {
@@ -161,6 +168,9 @@ void MainWindow::contextMenuEvent(QContextMenuEvent *)
     qDebug()<<"right click";
 }
 
+/**
+ * update tray icon
+ */
 void MainWindow::updateTrayIcon() {
     ins.append(in);
     outs.append(out);
@@ -174,11 +184,14 @@ void MainWindow::updateTrayIcon() {
     in = 0;
     out = 0;
     if (!GuiConfig::instance()->get("enabled").toBool()) {
+        qDebug() << "icon_none";
         icon.append("_none");
     } else if (GuiConfig::instance()->get("global").toBool()) {
         icon.append("_manual");
+        qDebug() << "icon_manual";
     } else {
         icon.append("_auto");
+        qDebug() << "icon_auto";
     }
     icon.append("128.svg");
     systemTrayIcon->setIcon(QIcon(Utils::getIconQrcPath(icon)));
@@ -551,14 +564,19 @@ void MainWindow::on_actionShare_Server_Config_triggered()
     d->exec();
 }
 
+
+/**
+ * save gui-config.json
+ */
 void MainWindow::on_actionExport_as_gui_config_json_triggered()
 {
-    QString filename = QFileDialog::getExistingDirectory(nullptr,tr("Save gui-config.json"),
-                                                         QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation).first());
+    QString savePath = QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation).first();
+    QString filename = QFileDialog::getExistingDirectory(nullptr, tr("Save gui-config.json"), savePath);
+
     if(filename.isEmpty()){
         return;
     }
-    filename=filename+"/gui-config.json";
+    filename = filename + "/gui-config.json";
     GuiConfig::instance()->saveToDisk(filename);
     DDesktopServices::showFileItem(filename);
 }

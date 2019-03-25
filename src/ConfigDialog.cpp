@@ -49,7 +49,7 @@ ConfigDialog::ConfigDialog(QWidget *parent) :
     ui->comboBoxEncryption->addItems(methodList);
     connectChanged();
 
-    //    disconnectChanged();
+    // disconnectChanged();
     ui->listWidget->setCurrentRow(0);
     Dtk::Widget::moveToCenter(this);
 }

@@ -25,7 +25,7 @@
 #include "stdafx.h"
 
 namespace Ui {
-class ConfigDialog;
+    class ConfigDialog;
 }
 
 class ConfigDialog : public QDialog {

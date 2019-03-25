@@ -28,11 +28,6 @@ int main(int argc, char *argv[]) {
         app.setTheme("light");
         app.loadTranslator();
 
-        const QString descriptionText = QApplication::tr(
-                    "If you want to keep a secret, you must also hide it from yourself.");
-
-        const QString acknowledgementLink = "https://github.com/lolimay/shadowsocks-deepin";
-
         app.setOrganizationName("pikachu");
         app.setApplicationName("shadowsocks-deepin");
         app.setApplicationDisplayName(QApplication::tr("Shadowsocks"));
@@ -40,8 +35,8 @@ int main(int argc, char *argv[]) {
 
         app.setProductIcon(QIcon(Utils::getIconQrcPath("ssw128.svg")));
         app.setProductName(QApplication::tr("Shadowsocks Deepin"));
-        app.setApplicationDescription(descriptionText);
-        app.setApplicationAcknowledgementPage(acknowledgementLink);
+        app.setApplicationDescription("If you want to keep a secret, you must also hide it from yourself.");
+        app.setApplicationAcknowledgementPage("https://github.com/lolimay/shadowsocks-deepin");
 
         app.setWindowIcon(QIcon(Utils::getIconQrcPath("ssw128.png")));
         app.setQuitOnLastWindowClosed(false);

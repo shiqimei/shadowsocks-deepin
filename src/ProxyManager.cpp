@@ -13,7 +13,7 @@ void ProxyManager::setConfig(const QJsonObject &config) {
             isRunning = false;
         }
         disconnectController();
-        controller->deleteLater(); //! fix #31
+        controller->deleteLater();
     }
     qDebug() << config;
     QSS::Profile profile;
