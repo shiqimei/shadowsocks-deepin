@@ -17,8 +17,8 @@
 #include <DDesktopServices>
 
 MainWindow::MainWindow(QWidget *parent):
-    DMainWindow(parent),
-    ui(new Ui::MainWindow) {
+DMainWindow(parent),
+ui(new Ui::MainWindow) {
     ui->setupUi(this);
     installEventFilter(this);   // add event filter
     GuiConfig::instance()->readFromDisk();
@@ -26,7 +26,7 @@ MainWindow::MainWindow(QWidget *parent):
     settings = new Settings(this);
     settings->init();
 
-    // Init window size.
+    // init window size
     int width = Constant::WINDOW_MIN_WIDTH;
     int height = Constant::WINDOW_MIN_HEIGHT;
 
@@ -43,16 +43,18 @@ MainWindow::MainWindow(QWidget *parent):
     rightMenuBlank = new QMenu(this);
     menuAdd = new QMenu(tr("Add"),this);
     config_view = new ProfileView(getColumnHideFlags());
-//    config_view->setColumnSortingAlgorithms(alorithms, getSortingIndex(), getSortingOrder());
+    // config_view->setColumnSortingAlgorithms(alorithms, getSortingIndex(), getSortingOrder());
     config_view->setSearchAlgorithm(&ProfileItem::search);
     connect(config_view, &ProfileView::rightClickItems, this, &MainWindow::popupMenu);
     connect(config_view, &ProfileView::rightClickBlank, this, &MainWindow::popupMenuBlank);
     w->setCentralWidget(config_view);
 
+    // draw trayIcon
     systemTrayIcon = new QSystemTrayIcon();
     systemTrayIcon->setContextMenu(ui->menuTray);
     systemTrayIcon->setIcon(QIcon(Utils::getIconQrcPath("ssw_auto128.svg")));
     systemTrayIcon->show();
+
 
     const auto &titlebar = w->titlebar();
     if (titlebar != nullptr) {
@@ -87,26 +89,26 @@ MainWindow::MainWindow(QWidget *parent):
 
     //! Do not modify this period
     //! If less than 150ms, the trayicon will be not shown normally.
-    timer->start(150);
+    timer->start(300);
 
-    // 流量监控
+    // data monitoring
     connect(proxyManager, &ProxyManager::bytesReceivedChanged, [=](quint64 n) {
-        // ### DEBUG ### qDebug() << "bytesReceivedChanged" << n;
+        // qDebug() << "bytesReceivedChanged" << n;
         term_usage_in = n;
         GuiConfig::instance()->setCurrentTermUsage(term_usage_in + term_usage_out);
     });
     connect(proxyManager, &ProxyManager::bytesSentChanged, [=](quint64 n) {
-        // ### DEBUG ### qDebug() << "bytesSentChanged" << n;
+        // qDebug() << "bytesSentChanged" << n;
         term_usage_out = n;
         GuiConfig::instance()->setCurrentTermUsage(term_usage_in + term_usage_out);
     });
     connect(proxyManager, &ProxyManager::newBytesReceived, [=](quint64 n) {
-        // ### DEBUG ### qDebug() << "newBytesReceived" << n;
+        // qDebug() << "newBytesReceived" << n;
         in += n;
         GuiConfig::instance()->addTotalUsage(n);
     });
     connect(proxyManager, &ProxyManager::newBytesSent, [=](quint64 n) {
-        // ### DEBUG ### qDebug() << "newBytesSent" << n;
+        // qDebug() << "newBytesSent" << n;
         out += n;
         GuiConfig::instance()->addTotalUsage(n);
     });
@@ -125,7 +127,7 @@ MainWindow::~MainWindow() {
 void MainWindow::switchToPacMode() {
     auto guiConfig = GuiConfig::instance();
     QString online_pac_uri = "https://files.lolimay.cn/autoproxy.pac";
-    QString pacURI = "https://files.lolimay.cn/autoproxy.pac";
+    QString pacURI = "";
     if (guiConfig->get("useOnlinePac").toBool(true)) {
         pacURI = guiConfig->get("pacUrl").toString();
         if (pacURI.isEmpty()) {
@@ -184,14 +186,11 @@ void MainWindow::updateTrayIcon() {
     in = 0;
     out = 0;
     if (!GuiConfig::instance()->get("enabled").toBool()) {
-        qDebug() << "icon_none";
         icon.append("_none");
     } else if (GuiConfig::instance()->get("global").toBool()) {
         icon.append("_manual");
-        qDebug() << "icon_manual";
     } else {
         icon.append("_auto");
-        qDebug() << "icon_auto";
     }
     icon.append("128.svg");
     systemTrayIcon->setIcon(QIcon(Utils::getIconQrcPath(icon)));
@@ -364,7 +363,7 @@ void MainWindow::updateMenu() {
     ui->menuServers->addSeparator();
 
     ui->menuHelp->menuAction()->setVisible(false);
-    ui->menuPAC->menuAction()->setVisible(false);
+    // ui->menuPAC->menuAction()->setVisible(false);
 }
 
 void MainWindow::on_actionImport_from_gui_config_json_triggered() {

@@ -21,7 +21,7 @@
     </message>
     <message>
         <source>PAC</source>
-        <translation type="vanished">PAC 模式</translation>
+        <translation type="vanished">PAC</translation>
     </message>
     <message>
         <source>Help</source>
@@ -435,7 +435,7 @@ Edit User Rule for GFWList...</source>
         <location filename="../forms/MainWindow.ui" line="45"/>
         <location filename="../forms/MainWindow.ui" line="105"/>
         <source>PAC</source>
-        <translation type="unfinished">PAC 模式</translation>
+        <translation type="unfinished">PAC</translation>
     </message>
     <message>
         <location filename="../forms/MainWindow.ui" line="59"/>
