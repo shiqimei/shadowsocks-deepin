@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13.3)
+cmake_minimum_required(VERSION 3.11.2)
 project(shadowsocks-deepin
     VERSION 1.3.0
     DESCRIPTION "a powful shadowsocks client for deepin"
