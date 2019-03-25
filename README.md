@@ -68,6 +68,7 @@ sudo apt install libdframeworkdbus-dev -y
 sudo apt install libqrencode-dev libzbar-dev -y
 sudo apt install libdtkcore-dev libdtkwidget-dev libdtkwm-dev libdtkcore-bin -y
 sudo apt install libdtksettings-dev libdtksettingsview-dev -y
+sudo apt install libqtshadowsocks-dev -y
 sudo apt install dh-make fakeroot -y
 cd shadowsocks-deepin
 mkdir build && cd build
