@@ -149,7 +149,9 @@ void GuiConfig::updateLastUsed() {
 GuiConfig::GuiConfig() {
     guiConfig.insert("strategy", "");
     guiConfig.insert("index", 3);
+    guiConfig.insert("auto", false);
     guiConfig.insert("global", false);
+    guiConfig.insert("manual", true);
     guiConfig.insert("localPort", 1080);
     guiConfig.insert("enabled", true);
     guiConfig.insert("shareOverLan", false);

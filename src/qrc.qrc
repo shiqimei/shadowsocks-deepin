@@ -12,16 +12,20 @@
         <file>Resources/ssw36.svg</file>
         <file>Resources/ssw24.svg</file>
         <file>Resources/ssw_in_auto128.svg</file>
+        <file>Resources/ssw_in_global128.svg</file>
         <file>Resources/ssw_in_manual128.svg</file>
         <file>Resources/ssw_in_none128.svg</file>
         <file>Resources/ssw_in_out_auto128.svg</file>
         <file>Resources/ssw_in_out_none128.svg</file>
+        <file>Resources/ssw_global128.svg</file>
         <file>Resources/ssw_manual128.svg</file>
         <file>Resources/ssw_none128.svg</file>
         <file>Resources/ssw_out_auto128.svg</file>
         <file>Resources/ssw_out_none128.svg</file>
         <file>Resources/ssw_auto128.svg</file>
+        <file>Resources/ssw_out_global128.svg</file>
         <file>Resources/ssw_out_manual128.svg</file>
+        <file>Resources/ssw_in_out_global128.svg</file>
         <file>Resources/ssw_in_out_manual128.svg</file>
     </qresource>
 </RCC>
