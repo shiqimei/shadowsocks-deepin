@@ -22,7 +22,7 @@ Advantages compared to Shadowsocks-Qt5
 
 # Installation
 <br>
-<p align="center"><a href="http://file.lolimay.cn/shadowsocks-deepin_1.2.2_amd64.deb"><img src="docs/images/download_button.png" height="50"/></a></p>
+<p align="center"><a href="https://files.lolimay.cn/shadowsocks-deepin_1.2.2_amd64.deb"><img src="docs/images/download_button.png" height="50"/></a></p>
 
 Shadowsocks-deepin is ready to use right out of box, as long as the right server configration was added and proper proxy mode selected, it should works well. **no extra system proxy configuration required, the software will done this for you**.
 Any problems encounted during the use, please feel free to propose [**issues**](https://github.com/loliMay/shadowsocks-deepin/issues/new) to help us improve this project.
