@@ -57,7 +57,7 @@ proxychains git clone git@github.com:lolimay/shadowsocks-deepin.git # 使用代�
 
 # 参与开发
 
-开发这个软件用到的原理，请参考 [影梭客户端原理剖析](docs/影梭客户端原理剖析.md)
+开发这个软件用到的原理，请参考 [影梭客户端原理剖析](/docs/影梭客户端原理剖析.md)
 
 ````
 sudo apt update
